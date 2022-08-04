@@ -11,7 +11,7 @@ $fullname = isset(Auth::user()->name) ? Auth::user()->name : '';
         <ul class="navbar-nav">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Welcome {{ $fullname }} <img style="margin-left: 10px;display: inline-block;" width="30" src="{{asset('img/MinistryLogo.png')}}" alt="logo">
+                    Welcome {{ $fullname }} <img style="margin-left: 10px;display: inline-block;" width="30" src="{{asset('img/7.png')}}" alt="logo">
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                     <a class="list-group-item-action-main" href="{{ route('logout') }}"
