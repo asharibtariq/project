@@ -19,7 +19,7 @@ class AjaxController extends Controller{
         switch ($action) {
             case 'project_content':
                 $where = array();
-                $title = $request->title != '' ? $request->title : '';
+                $name = $request->name != '' ? $request->name : '';
                 $per_page = $request->select_limit != '' ? $request->select_limit : 10;
                 /*
                     if (!empty($title))
@@ -32,7 +32,7 @@ class AjaxController extends Controller{
                         'tbl_project.status',
                         'tbl_project.created_at',
                         'tbl_project.updated_at')
-                    ->where('name', 'LIKE', '%' . $title . '%')
+                    ->where('name', 'LIKE', '%' . $name . '%')
                 //    ->groupBy('tbl_project.id')
                     ->orderBy('tbl_project.id', 'DESC')
                     ->paginate($per_page);

@@ -1,0 +1,109 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Project;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Http\Requests\ProjectRequest;
+use Illuminate\Support\Facades\Auth;
+
+class ProjectController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $title = "Project";
+        return view('adminpanel.project.project')->with('title', $title);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        $title = "Add Project";
+        return view('adminpanel.project.add_project')->with('title', $title);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(ProjectRequest $request)
+    {
+        $userId = Auth::id();
+        $insertData = $request->all();
+        //    $insertData['slug'] = strtolower(str_replace(' ','_',$insertData['title']));
+        $insertData['created_by'] = $userId;
+        $insertData['updated_by'] = $userId;
+        //    pre($request->all(),1);
+        Project::create($insertData);
+        return redirect('project')->with('success', 'Project Added Successfully');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Project  $project
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Project $project)
+    {
+       //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Project  $project
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $project = Project::findOrFail($id);
+        $title = "Edit Project";
+        $data['project'] = $project;
+        return view('adminpanel.project.edit_project', $data)->with('title', $title);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Project  $project
+     * @return \Illuminate\Http\Response
+     */
+    public function update(ProjectRequest $request,$id)
+    {
+        $userId = Auth::id();
+        $project = Project::findOrFail($id);
+        $updateData = $request->all();
+        //    $updateData['slug'] = strtolower(str_replace(' ','_',$updateData['title']));
+        $updateData['updated_by'] = $userId;
+        //    pre($request->all(),1);
+        $project->update($updateData);
+        return redirect('project')->with('success', 'Project Updated Successfully');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Project  $project
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $project = Project::findOrFail($id);
+        $project->delete();
+        return redirect('project')->with('success', 'Project Successfully Deleted');
+    }
+}

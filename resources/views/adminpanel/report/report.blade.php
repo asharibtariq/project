@@ -95,7 +95,7 @@
 
             var post_data = {
                 "_token": CSRF_TOKEN,
-                "name": $("#name").val(),
+                "title": $("#title").val(),
                 "select_limit": $("#select_limit").val(),
                 'action': "project_content"
             };
