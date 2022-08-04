@@ -1,0 +1,548 @@
+.collapse .navbar-nav .nav-item .nav-link {
+    color: black;
+    font-size: 14px;
+    font-family: "Montserrat";
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    transition: transform .2s;
+}
+
+.collapse .navbar-nav .nav-item .nav-link:hover {
+    transform: scale(1.15);
+    color: #257a14;
+}
+
+.collapse .button .btn {
+    color: white;
+    background-color: #011a2a;
+    font-size: 11px;
+    font-family: "Montserrat";
+    border-radius: 10px;
+}
+
+.collapse .button .btn:hover {
+    background-color: #257a14;
+}
+
+.heading1 {
+    color: white;
+    font-size: 3.75rem;
+    font-weight: 800;
+}
+
+.heading2 {
+    color: white;
+    font-family: "Montserrat";
+    font-size: 1.75rem;
+    font-weight: 800;
+}
+
+.input-group-rounded .input-group-field {
+    border-radius: 5000px 0 0 5000px;
+    padding-left: 1rem;
+    font-family: "Montserrat";
+    outline: none;
+}
+
+.input-group-button .btn {
+    border-radius: 50px !important;
+    font-size: 1rem;
+    background-color: #0000ff;
+    font-family: "Montserrat";
+    color: white;
+}
+
+.international h3 {
+    color: black;
+    font-size: 29px;
+    font-family: "Montserrat";
+    font-weight: 800;
+}
+
+hr.solidblack {
+    border-top: 3px solid black;
+    width: 15%;
+}
+
+.international p {
+    color: black;
+    font-family: "Montserrat";
+    text-align: justify;
+    font-size: 18px;
+    font-weight: 500;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.international .lohbtn {
+    color: white;
+    font-size: 12px;
+    border-radius: 50px;
+    font-family: "Montserrat";
+    background-color: #257a14;
+    width: 300px;
+    height: 40px;
+}
+
+.international .cwhbtn {
+    color: white;
+    font-size: 12px;
+    border-radius: 50px;
+    font-family: "Montserrat";
+    background-color: #011a2a;
+    width: 300px;
+    height: 40px;
+}
+
+.jci {
+    background-color: #011a2a;
+}
+
+.jci h3 {
+    color: white;
+    font-size: 30px;
+    font-weight: 800;
+    font-family: "Montserrat";
+}
+
+hr.solidwhite {
+    border-top: 3px solid white;
+    width: 25%;
+}
+
+.jci p {
+    color: white;
+    font-family: "Montserrat";
+    text-align: justify;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.jcicards .card {
+    background-color: white;
+    font-family: "Montserrat";
+    text-align: center;
+    margin-left: 70px;
+    margin-bottom: 70px;
+    padding: 1.5em 0.5em 0.5em 1.5em;
+    border-radius: 2em;
+}
+
+.jcicards .card img {
+    width: 100%;
+    font-family: "Montserrat";
+}
+
+.jcicards p {
+    color: black;
+    font-size: 14px;
+    font-family: "Montserrat";
+}
+
+.testimonials h3 {
+    color: black;
+    font-size: 30px;
+    font-weight: 800;
+    font-family: "Montserrat";
+}
+
+.testimonials .card {
+    margin-top: 2em;
+    min-height: 380px;
+    padding: 1.5em 0.5em 0.5em;
+    border-radius: 2em;
+    font-family: "Montserrat";
+    text-align: center;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.testimonials .card img {
+    width: 25%;
+    border-radius: 100%;
+    margin: 0 auto;
+}
+
+.exceptional {
+    background-color: #011a2a;
+}
+
+.exceptional h3 {
+    color: white;
+    font-family: "Montserrat";
+    font-size: 21px;
+    font-weight: 800;
+}
+
+.exceptional a {
+    color: white;
+    font-size: 21px;
+    font-family: "Montserrat";
+    font-weight: 800;
+}
+
+.medicalvisa h3 {
+    color: black;
+    font-size: 30px;
+    font-weight: 800;
+    font-family: "Montserrat";
+}
+
+.medicalvisa p {
+    text-align: justify;
+    color: black;
+    font-size: 18px;
+    font-weight: 500;
+    font-family: "Montserrat";
+}
+
+.medicalvisa .btn {
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: "Montserrat";
+}
+
+.healthcareforall {
+    background-color: #011a2a;
+}
+
+.healthcareforall h3 {
+    color: white;
+    font-size: 30px;
+    font-family: "Montserrat";
+    font-weight: 800;
+}
+
+.healthcareforall p {
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+    text-align: justify;
+    font-family: "Montserrat";
+}
+
+.instant h4 {
+    color: black;
+    font-size: 20px;
+    font-weight: 600;
+    font-family: "Montserrat";
+}
+
+.instant .btn {
+    background-color: #011a2a;
+    color: white;
+    font-family: "Montserrat";
+}
+
+.instantbutton .btn {
+    color: white;
+    font-size: 14px;
+    font-family: "Montserrat";
+    font-weight: 600;
+}
+
+.expand h3 {
+    color: black;
+    font-size: 29px;
+    font-family: "Montserrat";
+    font-weight: 800;
+}
+
+.expand h4 {
+    font-size: 21px;
+    font-weight: 800;
+    font-family: "Montserrat";
+}
+
+.expand h4 a {
+    color: #257a14;
+    font-family: "Montserrat";
+}
+
+.expand h5 {
+    text-align: justify;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: "Montserrat";
+    line-height: 1.5em;
+}
+
+.expand ul li a {
+    color: black;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: "Montserrat";
+}
+
+.moh h4 {
+    color: black;
+    font-size: 1rem;
+    font-weight: 800;
+    font-family: "Montserrat";
+}
+
+.moh .btn {
+    background-color: #011a2a;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: "Montserrat";
+}
+
+.moh p {
+    text-align: justify;
+    color: black;
+    font-size: 18px;
+    font-weight: 500;
+    font-family: "Montserrat";
+}
+
+.zoom {
+    /*
+    padding: 50px;
+    width: 200px;
+    height: 200px;
+    */
+    transition: transform .2s;
+    margin: 0 auto;
+}
+
+.zoom:hover {
+    -ms-transform: scale(1.2);
+    /* IE 9 */
+    -webkit-transform: scale(1.2);
+    /* Safari 3-8 */
+    transform: scale(1.2);
+    color: #257a14 !important;
+}
+
+.nav-button {
+    transition: transform .5s;
+    margin: 0 auto;
+}
+
+.nav-button:hover {
+    background-color: #257a14 !important;
+    color: white !important;
+}
+
+.bnbtn .btn {
+    color: white;
+    font-size: 14px;
+    font-family: "Montserrat";
+    font-weight: 600;
+    background-color: #011a2a;
+}
+
+.Internationally h3 {
+    color: black;
+    font-size: 29px;
+    font-weight: 800;
+}
+
+.Internationally p {
+    color: var( --e-global-color-1defc5e3);
+    font-family: "Montserrat";
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.provinces .card {
+    margin-top: 2em;
+    padding: 1.5em 0.5em 0.5em;
+    border-radius: 1em;
+    font-family: "Montserrat";
+    text-align: center;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.provinces .card img {
+    width: 30%;
+}
+
+.provinces .card-title {
+    color: black;
+    font-size: 16px;
+}
+
+.operators p {
+    color: var( --e-global-color-1defc5e3);
+    font-family: "Montserrat";
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.operators .btn {
+    color: white;
+    font-size: 14px;
+    border-radius: 50px;
+}
+
+.operators h3 {
+    color: black;
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.insurance p {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.link {
+    text-align: center;
+    margin: 7px;
+    line-height: 80px;
+}
+
+a i {
+    transition: all 0.1s linear;
+}
+
+a:hover i {
+    transform: scale(1.5);
+}
+
+.whatsapp:hover {
+    color: green;
+}
+
+.whatsapp {
+    color: darkgreen;
+}
+
+.phone:hover {
+    color: blue;
+}
+
+.phone {
+    color: black;
+}
+
+.mail:hover {
+    color: red;
+}
+
+.mail {
+    color: brown;
+}
+
+.location:hover {
+    color: blue;
+}
+
+.opt h4 {
+    font-size: 1.25rem;
+    font-weight: 800;
+}
+
+.opt .btn {
+    color: white;
+    font-size: 12px;
+    border-radius: 50px;
+}
+
+.opt ul li a:hover {
+    color: black;
+}
+
+.opt ul li a {
+    color: green;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.hospital_list_card .btn {
+    background-color: #011a2a;
+    color: white;
+    padding: 12px;
+    font-size: 10px;
+    border-radius: 12px
+}
+
+.hospital_list_card .card {
+    height: 400px;
+    font-family: 'Montserrat';
+    line-height: 1.5;
+    border-radius: 2em;
+    font-family: "Montserrat";
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.hospital_list_card h3 {
+    font-weight: 800;
+    font-size: 16px;
+    color: #3a3a3a;
+}
+
+.hospital_list_card p {
+    font-size: 14px;
+}
+
+.category h2 {
+    color: #011a2a;
+    font-size: 24px;
+    font-weight: 800;
+    font-family: "Montserrat";
+}
+
+.category a {
+    color: black;
+}
+
+.category a:hover {
+    color: #61ce70;
+}
+
+.dummy {
+    background-color: #f3f3f3;
+    height: 180px;
+    border-radius: 12px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.findhosp {
+    background-color: white;
+    box-shadow: 0 1px 30px rgb(0 0 0 / 5%), 0 1px 4px rgb(0 0 0 / 15%);
+    border-radius: 8px;
+    margin-bottom: 2em;
+}
+
+.findhosp .badge {
+    float: right;
+    border-radius: 25px;
+    padding: 12px;
+}
+
+
+/* Toggle Classes Start */
+
+.togglebtn h3 {
+    color: white;
+    font-family: "Montserrat";
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.togglebtn a {
+    color: white;
+    font-size: 21px;
+    font-family: "Montserrat";
+    font-weight: 800;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+    background-color: #257a14;
+    color: #fff;
+}
+
+.nav-pills>li>a {
+    border-radius: 4px;
+    color: black;
+    background: #eeeeee;
+}
+
+
+/* Toggle Classes End */

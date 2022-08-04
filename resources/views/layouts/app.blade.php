@@ -1,83 +1,94 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!DOCTYPE html>
+<html>
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-    <!-- Styles -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />{{--Important for ajax request--}}
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}"/>
+    <title>Project Monitoring | {{ isset($title) ? $title : '' }} </title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/admin-style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/datepicker.css') }}" rel="stylesheet">
+    {{--<link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">--}}
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.mask.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
+    <script src="{{ asset('js/select2.full.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.table2excel.js') }}"></script>
+    <script src="{{ asset('js/jquery.print.js') }}"></script>
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <style>
+        .font-hg {
+            font-size: 23px;
+        }
+        .font-lg {
+            font-size: 18px;
+        }
+        .font-md {
+            font-size: 14px;
+        }
+        .font-sm {
+            font-size: 13px;
+        }
+        .font-xs {
+            font-size: 11px;
+        }
+        .content-heading {
+            color: #FFFFFF !important;
+        }
+        .requriedstar {
+            color: #ff2825 !important;
+        }
+    </style>
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+<script>
+    $(document).ready(function () {
+        $("form").attr("autocomplete", 'off');
+        $(".select2").select2();
+        $(".mobile_no").mask("0000-0000000");
+        $(".year_mask").mask("0000");
+        $(".cnic").mask("0000000000000");
+    //    $(".datepicker").datepicker({dateFormat: "mm/dd/yy"});
+        $(".datepicker").datepicker({dateFormat: "dd-mm-yy"});
+    });
+    //for only alphabets
+    $(document).on("input", ".only_alpha", function () {
+        $(this).val($(this).val().replace(/[^A-Z a-z]/g, ''));
+    });
+    //for only number
+    $(document).on("input", ".only_numeric", function () {
+        $(this).val($(this).val().replace(/[^0-9]/g, ''));
+    });
+</script>
+<div id="wrapper">
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
+    @if(isset(Auth::user()->name))
+        @include('layouts.left')
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            @include('layouts.header')
+            <div class="dashboard-middle-content">
+                <div id="loadingDiv" class="loading"></div>
+                @yield('content')
             </div>
-        </nav>
+            <!-- Content Wrapper. Contains page content -->
+            <!-- /.content-wrapper -->
+            @include('layouts.footer')
+        </div>
+    @else
+        <br/>
+        @yield('content')
+    @endif
 
-        <main class="py-4">
-            @yield('content')
-        </main>
-    </div>
+</div>
 </body>
 </html>
