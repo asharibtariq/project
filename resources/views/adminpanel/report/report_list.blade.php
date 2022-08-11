@@ -3,9 +3,7 @@
     <thead>
     <tr role="row">
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="0"> Sr#</th>
-        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="1"> Name</th>
-        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Status</th>
-        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Operation</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="1"> FY</th>
     </thead>
     <tbody>
 
@@ -17,18 +15,7 @@
 
             <tr role="row">
                 <td> {{$i}} </td>
-                <td> {{$r->name}} </td>
-                <td>
-                    @if($r->status == 'Y')
-                        <button type="button" class="btn btn-success">Active</button>
-                    @elseif($r->status == 'N')
-                        <button type="button" class="btn btn-danger">In-active</button>
-                    @endif
-                </td>
-                <td>
-                    <a onClick="return confirm('Are you sure you want to update?');" href="{{url('edit_project', $r->id)}}" class="btn btn-info" id="btn-view"><i class="fa fa-edit"></i> Edit</a>
-                    <a onClick="return confirm('Are you sure you want to delete?');" href="{{url('delete_project', $r->id)}}" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
-                </td>
+                <td> {{$r->fiscal_year}} </td>
             </tr>
             @php
                 $i++;

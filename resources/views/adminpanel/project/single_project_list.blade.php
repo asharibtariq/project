@@ -4,6 +4,7 @@
     <tr role="row">
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="0"> Sr#</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="1"> FY</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Project</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Allocation - Rupee Allocation</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Allocation - Foreign Aid</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Allocation - Revised Rupee Allocation</th>
@@ -32,21 +33,22 @@
             <tr role="row">
                 <td> {{$i}} </td>
                 <td> {{-- $r->fy --}} </td>
-                <td> {{$r->alloc_rupee}} </td>
-                <td> {{$r->alloc_foreign}} </td>
-                <td> {{$r->alloc_revised}} </td>
-                <td> {{$r->release_fund_auth}} </td>
-                <td> {{$r->release_fund_actual}} </td>
-                <td> {{$r->release_foreign}} </td>
-                <td> {{$r->release_total_actual}} </td>
-                <td> {{$r->util_actual}} </td>
-                <td> {{$r->util_foreign}} </td>
-                <td> {{$r->util_total}} </td>
-                <td> {{$r->amt_surrender}} </td>
-                <td> {{$r->amt_lapsed}} </td>
-                <td> {{$r->financial_prog}} </td>
-                <td> {{$r->physical_prog}} </td>
-                <td> {{$r->comp_date_likely}} </td>
+                <td> {{$r->project}} </td>
+                <td> {{$r->alloc_rupee > 0 ? $r->alloc_rupee : '-'}} </td>
+                <td> {{$r->alloc_foreign > 0 ? $r->alloc_foreign : '-'}} </td>
+                <td> {{$r->alloc_revised > 0 ? $r->alloc_revised : '-'}} </td>
+                <td> {{$r->release_fund_auth > 0 ? $r->release_fund_auth : '-'}} </td>
+                <td> {{$r->release_fund_actual > 0 ? $r->release_fund_actual : '-'}} </td>
+                <td> {{$r->release_foreign > 0 ? $r->release_foreign : '-'}} </td>
+                <td> {{$r->release_total_actual > 0 ? $r->release_total_actual : '-'}} </td>
+                <td> {{$r->util_actual > 0 ? $r->util_actual : '-'}} </td>
+                <td> {{$r->util_foreign > 0 ? $r->util_foreign : '-'}} </td>
+                <td> {{$r->util_total > 0 ? $r->util_total : '-'}} </td>
+                <td> {{$r->amt_surrender > 0 ? $r->amt_surrender : '-'}} </td>
+                <td> {{$r->amt_lapsed > 0 ? $r->amt_lapsed : '-'}} </td>
+                <td> {{$r->financial_prog > 0 ? $r->financial_prog : '-'}} </td>
+                <td> {{$r->physical_prog > 0 ? $r->physical_prog : '-'}} </td>
+                <td> {{$r->comp_date_likely > 0 ? $r->comp_date_likely : '-'}} </td>
                 <td>
                     <a onClick="return confirm('Are you sure you want to update?');" href="{{url('edit_project', $r->id)}}" class="btn btn-info" id="btn-view"><i class="fa fa-edit"></i> Edit</a>
                     <a onClick="return confirm('Are you sure you want to delete?');" href="{{url('delete_project', $r->id)}}" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>

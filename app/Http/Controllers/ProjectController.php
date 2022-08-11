@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
+use App\Models\Report;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProjectRequest;
@@ -42,11 +43,30 @@ class ProjectController extends Controller
     {
         $userId = Auth::id();
         $insertData = $request->all();
-        //    $insertData['slug'] = strtolower(str_replace(' ','_',$insertData['title']));
-        $insertData['created_by'] = $userId;
-        $insertData['updated_by'] = $userId;
-        //    pre($request->all(),1);
-        Project::create($insertData);
+    //    $insertData['slug'] = strtolower(str_replace(' ','_',$insertData['title']));
+    //    $insertData['created_by'] = $userId;
+    //    $insertData['updated_by'] = $userId;
+    //    Project::create($insertData);
+
+        $project = new Project();
+        $project->psdp = $insertData['psdp'];
+        $project->psid = $insertData['psid'];
+        $project->name = $insertData['name'];
+        $project->cost = $insertData['cost'];
+        $project->complete_date = $insertData['complete_date'];
+        $project->created_by = $userId;
+        $project->updated_by = $userId;
+        $project->save();
+        $id = $project->id;
+
+        /*
+        $report = new Report();
+        $report->project_id = $id;
+        $report->project = $insertData['name'];
+        $report->created_by = $userId;
+        $report->save();
+        */
+
         return redirect('project')->with('success', 'Project Added Successfully');
     }
 

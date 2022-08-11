@@ -18,15 +18,21 @@
                 <br/>
                 <div class="card">
                     <div class="card-header">
-                        <h4>Project</h4>
+                        <h4>Project Summary</h4>
                     </div>
                     <div class="card-body">
 
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label for="name" class="control-label label-paf">Name</label>
-                                    <input type="text" placeholder="Name" class="form-control input-paf" id="name" />
+                                    <label for="project_id" class="control-label label-paf">Project</label>
+                                    {!! $project_select !!}
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="project_id" class="control-label label-paf">FY</label>
+                                    {!! $fiscal_year_select !!}
                                 </div>
                             </div>
                             <div class="col-md-3">
@@ -95,9 +101,10 @@
 
             var post_data = {
                 "_token": CSRF_TOKEN,
-                "title": $("#title").val(),
+                "project_id": $("#project_id").val(),
+                "fiscal_year": $("#fiscal_year").val(),
                 "select_limit": $("#select_limit").val(),
-                'action': "project_content"
+                'action': "report_content"
             };
 
             $.ajax({
