@@ -32,7 +32,7 @@
 
             <tr role="row">
                 <td> {{$i}} </td>
-                <td> {{-- $r->fy --}} </td>
+                <td> {{$r->fiscal_year}} </td>
                 <td> {{$r->project}} </td>
                 <td> {{$r->alloc_rupee > 0 ? $r->alloc_rupee : '-'}} </td>
                 <td> {{$r->alloc_foreign > 0 ? $r->alloc_foreign : '-'}} </td>
@@ -50,8 +50,8 @@
                 <td> {{$r->physical_prog > 0 ? $r->physical_prog : '-'}} </td>
                 <td> {{$r->comp_date_likely > 0 ? $r->comp_date_likely : '-'}} </td>
                 <td>
-                    <a onClick="return confirm('Are you sure you want to update?');" href="{{url('edit_project', $r->id)}}" class="btn btn-info" id="btn-view"><i class="fa fa-edit"></i> Edit</a>
-                    <a onClick="return confirm('Are you sure you want to delete?');" href="{{url('delete_project', $r->id)}}" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
+                    <a onClick="return confirm('Are you sure you want to update?');" href="{{url('edit_report', $r->id)}}" class="btn btn-info" id="btn-view"><i class="fa fa-edit"></i> Edit</a>
+                    <a onClick="return confirm('Are you sure you want to delete?');" href="{{url('delete_report', $r->id)}}" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
                 </td>
             </tr>
             @php

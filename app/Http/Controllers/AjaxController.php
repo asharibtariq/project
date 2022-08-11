@@ -55,9 +55,10 @@ class AjaxController extends Controller{
                         $where['tbl_report.title'] = $title;
                 */
                 $project = DB::table('tbl_report')
+                    ->leftJoin('tbl_project', 'tbl_report.project_id', '=', 'tbl_project.id')
                     ->select('tbl_report.id',
                         'tbl_report.project_id',
-                        'tbl_report.project',
+                        'tbl_report.fiscal_year',
                         'tbl_report.alloc_rupee',
                         'tbl_report.alloc_foreign',
                         'tbl_report.alloc_revised',
@@ -74,7 +75,12 @@ class AjaxController extends Controller{
                         'tbl_report.physical_prog',
                         'tbl_report.comp_date_likely',
                         'tbl_report.remarks',
-                        'tbl_report.note')
+                        'tbl_report.note',
+                        'tbl_project.psdp',
+                        'tbl_project.name as project',
+                        'tbl_project.psid',
+                        'tbl_project.cost',
+                        'tbl_project.complete_date')
                     ->where('tbl_report.project_id', '=', $project_id)
                 //    ->groupBy('tbl_report.id')
                     ->orderBy('tbl_report.id', 'DESC')

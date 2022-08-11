@@ -106,7 +106,8 @@ class ReportController extends Controller
         $report = Report::findOrFail($id);
         $title = "Edit Report";
         $data['report'] = $report;
-        return view('adminpanel.report.edit_project', $data)->with('title', $title);
+        $data['fiscal_year_select'] = get_fiscal_year($report->fiscal_year);
+        return view('adminpanel.report.edit_report', $data)->with('title', $title);
     }
 
     /**

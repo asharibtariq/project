@@ -24,10 +24,8 @@
                                     <div class="form-group">
                                         <label for="fiscal_year" class="control-label label-paf">FY</label>
                                         {!! $fiscal_year_select !!}
+                                        <input type="hidden" name="project_id" id="project_id" value="{{ $report->project_id }}">
                                     </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <input type="text" value="{{ $project->id }}" hidden>
                                 </div>
                             </div>
                             <div class="row">
@@ -224,8 +222,8 @@
                                     <div class="form-group">
                                         <label class="label-paf" for="status">Status</label>
                                         <select class="form-control input-paf" name="status" id="status">
-                                            <option value="Y" {{$project->status == "Y" ? "selected" : ""}}>Active</option>
-                                            <option value="N" {{$project->status == "N" ? "selected" : ""}}>In-Active</option>
+                                            <option value="Y" {{$report->status == "Y" ? "selected" : ""}}>Active</option>
+                                            <option value="N" {{$report->status == "N" ? "selected" : ""}}>In-Active</option>
                                         </select>
                                     </div>
                                 </div>
