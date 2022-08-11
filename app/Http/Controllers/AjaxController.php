@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Http\Controllers;
+
 use App\Models\News;
 use App\Models\Report;
 use Illuminate\Http\Request;
@@ -37,7 +39,7 @@ class AjaxController extends Controller{
                         'tbl_project.created_at',
                         'tbl_project.updated_at')
                     ->where('name', 'LIKE', '%' . $name . '%')
-                //    ->groupBy('tbl_project.id')
+                    //    ->groupBy('tbl_project.id')
                     ->orderBy('tbl_project.id', 'DESC')
                     ->paginate($per_page);
 
@@ -82,7 +84,7 @@ class AjaxController extends Controller{
                         'tbl_project.cost',
                         'tbl_project.complete_date')
                     ->where('tbl_report.project_id', '=', $project_id)
-                //    ->groupBy('tbl_report.id')
+                    //    ->groupBy('tbl_report.id')
                     ->orderBy('tbl_report.id', 'DESC')
                     ->paginate($per_page);
 
@@ -128,7 +130,7 @@ class AjaxController extends Controller{
                         'tbl_project.cost',
                         'tbl_project.complete_date')
                     ->where($where)
-                //    ->groupBy('tbl_report.id')
+                    //    ->groupBy('tbl_report.id')
                     ->orderBy('tbl_report.id', 'DESC')
                     ->paginate($per_page);
 
@@ -140,27 +142,28 @@ class AjaxController extends Controller{
                 break;
         }
     }
+
     public function getFiscalYearList(Request $request){
         $html = "";
         $where = array();
         $project_id = $request->project_id != '' ? $request->project_id : '';
         $fiscal_year = $request->fiscal_year != '' ? $request->fiscal_year : '';
-        if (!empty($project_id))
-            $where['tbl_report.project_id'] = $project_id;
-        if (!empty($fiscal_year))
-            $where['tbl_report.fiscal_year'] = $fiscal_year;
+        if ($request->project_id != '')
+            $where['tbl_report.project_id'] = $request->project_id;
+        if ($request->fiscal_year != '')
+            $where['tbl_report.fiscal_year'] = $request->fiscal_year;
 
-        $report= Report::all()->where($where);
+    //    $report = Report::all()->where($where);
 
-        if (!empty($report) && count($report) > 0){
+        $report = DB::table('tbl_report')->where($where)->paginate();
+        $report = $report->items();
 
-            $html ="Record Exists";
+        if (!empty($report) && count($report) > 0) {
+            $result = 1;
+        } else {
+            $result = 0;
         }
-        else{
-            $html ="No Record Found";
-        }
-
-        return $html;
+        return $result;
     }
 
 }

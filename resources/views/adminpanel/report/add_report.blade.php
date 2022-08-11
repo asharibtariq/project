@@ -269,10 +269,10 @@
 
         });
         $(document).on('change', '#fiscal_year', function () {
-            var projectid = $("#project_id").val();
+            var project_id = $("#project_id").val();
             $.ajax({
                 url: '{{url('ajax_list')}}',
-                data: {"_token": CSRF_TOKEN, "fiscal_year": $(this).val(), "projectid":projectid},
+                data: {"_token": CSRF_TOKEN, "fiscal_year": $(this).val(), "project_id":project_id},
                 type: 'POST',
                 success: function (data) {
                    alert(data);
