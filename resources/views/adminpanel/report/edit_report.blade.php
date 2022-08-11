@@ -7,7 +7,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Edit Project</h4>
+                        <h4>Edit Report</h4>
                     </div>
                     <div class="card-body">
                         @if($errors->any())
@@ -16,37 +16,204 @@
                             @endforeach
                         @endif
 
-                        <form method="post" action="{{url('update_project', $project->id)}}" enctype="multipart/form-data">
+                        <form method="post" action="{{url('update_report', $report->id)}}" enctype="multipart/form-data">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             {{--<input type="hidden" name="_method" value="PUT">--}}
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="label-paf" for="name">Name</label>
-                                        <input type="text"
-                                               name="name"
-                                               id="name"
-                                               class="form-control input-paf only_alpha"
-                                               placeholder="Name"
-                                               minlength="3"
-                                               value="{{ $project->name}}"
-                                               required />
-                                        @if ($errors->has('name'))
-                                            <span class="text-danger">{{ $errors->first('name') }}</span>
+                                        <label for="fiscal_year" class="control-label label-paf">FY</label>
+                                        {!! $fiscal_year_select !!}
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="project_id" class="control-label label-paf">Project</label>
+                                        {!! $project_select !!}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <h4>Allocation</h4>
+                                </div>
+                            </div>
+                            <div class="row">
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="label-paf" for="alloc_rupee">Allocation (Rupee)</label>
+                                        <input type="text" name="alloc_rupee" id="alloc_rupee" class="form-control input-paf only_alpha" placeholder="Allocation (Rupee" minlength="3" value="{{ $report->alloc_rupee}}" required />
+                                        @if ($errors->has('alloc_rupee'))
+                                            <span class="text-danger">{{ $errors->first('alloc_rupee') }}</span>
                                         @endif
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="label-paf" for="cost">Cost</label>
-                                        <input type="text"
-                                               name="cost"
-                                               id="cost"
-                                               class="form-control input-paf"
-                                               value="{{ $project->cost }}"
-                                               placeholder="Cost" />
-                                        @if ($errors->has('cost'))
-                                            <span class="text-danger">{{ $errors->first('cost') }}</span>
+                                        <label class="label-paf" for="alloc_foreign">Foreign Aid</label>
+                                        <input type="text" name="alloc_foreign" id="alloc_foreign" class="form-control input-paf" placeholder="Foreign Aid" minlength="3" value="{{ $report->alloc_foreign}}"  />
+                                        @if ($errors->has('alloc_foreign'))
+                                            <span class="text-danger">{{ $errors->first('alloc_foreign') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="label-paf" for="alloc_revised">Revised Rupee Allocation</label>
+                                        <input type="text" name="alloc_revised" id="alloc_revised" class="form-control input-paf" placeholder="Revised Rupee" minlength="3" value="{{ $report->alloc_revised}}" />
+                                        @if ($errors->has('alloc_revised'))
+                                            <span class="text-danger">{{ $errors->first('alloc_revised') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <h4>Releases / Sanction</h4>
+                                </div>
+                            </div>
+                            <div class="row">
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="label-paf" for="release_fund_auth">Funds authorized by M/o PD&SI (Rupee)</label>
+                                        <input type="text" name="release_fund_auth" id="release_fund_auth" class="form-control input-paf only_alpha" placeholder="Funds authorized by M/o" minlength="3" value="{{ $report->release_fund_auth}}" />
+                                        @if ($errors->has('release_fund_auth'))
+                                            <span class="text-danger">{{ $errors->first('release_fund_auth') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="label-paf" for="release_fund_actual">Actual released/ sanctioned by Ministry/Division Rupee </label>
+                                        <input type="text" name="release_fund_actual" id="release_fund_actual" class="form-control input-paf" placeholder="Actual released/ sanctioned by Ministry" minlength="3" value="{{ $report->release_fund_actual}}" />
+                                        @if ($errors->has('release_fund_actual'))
+                                            <span class="text-danger">{{ $errors->first('release_fund_actual') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="label-paf" for="release_foreign">Foreign Aid Disbursed</label>
+                                        <input type="text" name="alloc_revised" id="release_foreign" class="form-control input-paf" placeholder="Foreign Aid Disbursed" minlength="3" value="{{ $report->release_foreign}}" />
+                                        @if ($errors->has('release_foreign'))
+                                            <span class="text-danger">{{ $errors->first('release_foreign') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="label-paf" for="release_total_actual">Total actual releases / disbursement</label>
+                                        <input type="text" name="release_total_actual" id="release_total_actual" class="form-control input-paf" placeholder="Total actual releases" minlength="3" value="{{ $report->release_total_actual}}" />
+                                        @if ($errors->has('release_total_actual'))
+                                            <span class="text-danger">{{ $errors->first('release_total_actual') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <h4>Utilization</h4>
+                                </div>
+                            </div>
+                            <div class="row">
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="label-paf" for="util_actual">Actual Rupee Utilization</label>
+                                        <input type="text" name="util_actual" id="util_actual" class="form-control input-paf only_alpha" placeholder="Actual Rupee Utilization" minlength="3" value="{{ $report->util_actual}}" />
+                                        @if ($errors->has('util_actual'))
+                                            <span class="text-danger">{{ $errors->first('util_actual') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="label-paf" for="util_foreign">Foreign Aid utilization</label>
+                                        <input type="text" name="util_foreign" id="util_foreign" class="form-control input-paf" placeholder="Foreign Aid utilization" minlength="3"value="{{ $report->util_foreign}}"  />
+                                        @if ($errors->has('util_foreign'))
+                                            <span class="text-danger">{{ $errors->first('util_foreign') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="label-paf" for="util_total">Total Utilization</label>
+                                        <input type="text" name="util_total" id="util_total" class="form-control input-paf" placeholder="Total Utilization" minlength="3"value="{{ $report->util_total}}"  />
+                                        @if ($errors->has('util_total'))
+                                            <span class="text-danger">{{ $errors->first('util_total') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <h4>End of FY</h4>
+                                </div>
+                            </div>
+                            <div class="row">
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="label-paf" for="amt_surrender">Amount surrendered (if any)</label>
+                                        <input type="text" name="amt_surrender" id="amt_surrender" class="form-control input-paf only_alpha" placeholder="Amount surrendered" minlength="3" value="{{ $report->amt_surrender}}" />
+                                        @if ($errors->has('amt_surrender'))
+                                            <span class="text-danger">{{ $errors->first('amt_surrender') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="label-paf" for="amt_lapsed">Amount lapsed (if any) </label>
+                                        <input type="text" name="amt_lapsed" id="amt_lapsed" class="form-control input-paf" placeholder="Amount lapsed" minlength="3" value="{{ $report->amt_lapsed}}" />
+                                        @if ($errors->has('amt_lapsed'))
+                                            <span class="text-danger">{{ $errors->first('amt_lapsed') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="label-paf" for="financial_prog">Financial Progress (%)n</label>
+                                        <input type="text" name="financial_prog" id="financial_prog" class="form-control input-paf" placeholder="Financial Progress (%)" minlength="3" value="{{ $report->financial_prog}}" />
+                                        @if ($errors->has('financial_prog'))
+                                            <span class="text-danger">{{ $errors->first('financial_prog') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="label-paf" for="physical_prog">Physical Progress (%)</label>
+                                        <input type="text" name="physical_prog" id="physical_prog" class="form-control input-paf" placeholder="Physical Progress (%)" minlength="3" value="{{ $report->physical_prog}}" />
+                                        @if ($errors->has('physical_prog'))
+                                            <span class="text-danger">{{ $errors->first('physical_prog') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="label-paf" for="comp_date_likely">Completion date/likely date of completion</label>
+                                        <input type="text" name="comp_date_likely" id="comp_date_likely" class="form-control input-paf" placeholder="Completion date" minlength="3" value="{{ $report->comp_date_likely}}" />
+                                        @if ($errors->has('comp_date_likely'))
+                                            <span class="text-danger">{{ $errors->first('comp_date_likely') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="label-paf" for="remarks">Remarks/ issues/Bottlenecks (if any)</label>
+                                        <input type="text" name="remarks" id="remarks" class="form-control input-paf" placeholder="remarks" minlength="3" value="{{ $report->remarks}}" />
+                                        @if ($errors->has('remarks'))
+                                            <span class="text-danger">{{ $errors->first('remarks') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="label-paf" for="note">Note for our use</label>
+                                        <input type="text" name="note" id="note" class="form-control input-paf" placeholder="note" minlength="3" value="{{ $report->note}}" />
+                                        @if ($errors->has('note'))
+                                            <span class="text-danger">{{ $errors->first('note') }}</span>
                                         @endif
                                     </div>
                                 </div>

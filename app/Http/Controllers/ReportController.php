@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Report;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\ReporttRequest;
+use Illuminate\Support\Facades\Auth;
 
 class ReportController extends Controller
 {
@@ -15,7 +17,8 @@ class ReportController extends Controller
      */
     public function index()
     {
-        //
+        $title = "Report";
+        return view('adminpanel.report.report')->with('title', $title);
     }
 
     /**
@@ -25,7 +28,10 @@ class ReportController extends Controller
      */
     public function create()
     {
-        //
+        $title = "Add Report";
+        $data['fiscal_year_select'] = get_fiscal_year();
+        $data['project_select'] = get_project();
+        return view('adminpanel.report.add_report', $data)->with('title', $title);
     }
 
     /**
@@ -34,9 +40,16 @@ class ReportController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ReportRequest $request)
     {
-        //
+        $userId = Auth::id();
+        $insertData = $request->all();
+        //    $insertData['slug'] = strtolower(str_replace(' ','_',$insertData['title']));
+        $insertData['created_by'] = $userId;
+        $insertData['updated_by'] = $userId;
+        //    pre($request->all(),1);
+        Report::create($insertData);
+        return redirect('report')->with('success', 'Report Added Successfully');
     }
 
     /**
@@ -45,9 +58,13 @@ class ReportController extends Controller
      * @param  \App\Models\Report  $report
      * @return \Illuminate\Http\Response
      */
-    public function show(Report $report)
+    public function show($id)
     {
-        //
+        $report = Report::findOrFail($id);
+        $title = "Report Detail";
+        $data['report'] = $report;
+        $data['fiscal_year_select'] = get_fiscal_year();
+        return view('adminpanel.report.report', $data)->with('title', $title);
     }
 
     /**
@@ -56,9 +73,12 @@ class ReportController extends Controller
      * @param  \App\Models\Report  $report
      * @return \Illuminate\Http\Response
      */
-    public function edit(Report $report)
+    public function edit($id)
     {
-        //
+        $report = Report::findOrFail($id);
+        $title = "Edit Report";
+        $data['report'] = $report;
+        return view('adminpanel.report.edit_project', $data)->with('title', $title);
     }
 
     /**
@@ -68,9 +88,16 @@ class ReportController extends Controller
      * @param  \App\Models\Report  $report
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Report $report)
+    public function update(ReportRequest $request, $id)
     {
-        //
+        $userId = Auth::id();
+        $report = Report::findOrFail($id);
+        $updateData = $request->all();
+        //    $updateData['slug'] = strtolower(str_replace(' ','_',$updateData['title']));
+        $updateData['updated_by'] = $userId;
+        //    pre($request->all(),1);
+        $report->update($updateData);
+        return redirect('reprot')->with('success', 'Report Updated Successfully');
     }
 
     /**
@@ -79,8 +106,10 @@ class ReportController extends Controller
      * @param  \App\Models\Report  $report
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Report $report)
+    public function destroy($id)
     {
-        //
+        $report= Report::findOrFail($id);
+        $report->delete();
+        return redirect('report')->with('success', 'Report Successfully Deleted');
     }
 }
