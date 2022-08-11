@@ -93,6 +93,7 @@ class AjaxController extends Controller{
                 if (!empty($title))
                     $where['tbl_report.fiscal_year'] = $fiscal_year;
                 $project = DB::table('tbl_report')
+                    ->leftJoin('tbl_project', 'tbl_report.project_id', '=', 'tbl_project.id')
                     ->select('tbl_report.id',
                         'tbl_report.fiscal_year',
                         'tbl_report.project_id',
@@ -114,7 +115,11 @@ class AjaxController extends Controller{
                         'tbl_report.physical_prog',
                         'tbl_report.comp_date_likely',
                         'tbl_report.remarks',
-                        'tbl_report.note')
+                        'tbl_report.note',
+                        'tbl_project.psdp',
+                        'tbl_project.psid',
+                        'tbl_project.cost',
+                        'tbl_project.complete_date')
                     ->where($where)
                 //    ->groupBy('tbl_report.id')
                     ->orderBy('tbl_report.id', 'DESC')

@@ -38,7 +38,7 @@
 
             <tr role="row">
                 <td> {{$i}} </td>
-                <td> {{$r->pspd}} </td>
+                <td> {{$r->psdp}} </td>
                 <td> {{$r->psid}} </td>
                 <td> {{$r->fiscal_year}} </td>
                 <td> {{$r->project}} </td>
@@ -47,6 +47,21 @@
                 <td> {{$r->alloc_rupee}} </td>
                 <td> {{$r->alloc_foreign}} </td>
                 <td> {{$r->alloc_revised}} </td>
+                <td> {{$r->release_fund_auth}} </td>
+                <td> {{$r->release_fund_actual}} </td>
+                <td> {{$r->release_foreign}} </td>
+                <td> {{$r->release_total_actual}} </td>
+                <td> {{$r->util_actual}} </td>
+                <td> {{$r->util_foreign}} </td>
+                <td> {{$r->util_total}} </td>
+                <td> {{$r->amt_surrender}} </td>
+                <td> {{$r->amt_lapsed}} </td>
+                <td> {{$r->financial_prog}} </td>
+                <td> {{$r->physical_prog}} </td>
+                <td> {{$r->complete_date}} </td>
+                <td> {{$r->comp_date_likely}} </td>
+                <td> {{$r->remarks}} </td>
+                <td> {{$r->note}} </td>
             </tr>
             @php
                 $i++;

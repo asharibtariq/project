@@ -9,9 +9,6 @@
                     <div class="alert alert-success">{{Session::get('success')}}</div>
                 </div>
             @endif
-            <div class="col-md-12">
-                <a href="{{url('add_project')}}" class="btn btn-success"><i class="fa fa-plus-circle"></i> Add Project</a>
-            </div>
         </div>
         <div class="row">
             <div class="col-md-12">
@@ -39,12 +36,16 @@
                                 <div class="form-group">
                                     <label class="control-label">&nbsp;</label>
                                     <div id="div_btn">
-                                        <button type="button" id='b_search' class="btn btn-info">
-                                            <i class="fa fa-check"></i> Search</button>
-                                        {{--
-                                        <button type="button" id='btn-excel' class="btn btn-success">
-                                            <i class="fa fa-file-excel-o"></i> Export</button>
-                                        --}}
+                                        <button type="button"
+                                                id='b_search'
+                                                title="Search"
+                                                class="btn btn-info">
+                                            <i class="fa fa-search"></i></button>
+                                        <button type="button"
+                                                id='btn-excel'
+                                                title="Export to Excel"
+                                                class="btn btn-success">
+                                            <i class="fa fa-file-excel-o"></i></button>
                                     </div>
                                 </div>
                             </div>
@@ -85,6 +86,15 @@
             });
             $(document).on('change', '#select_limit', function () {
                 show_ajax_cards('');
+            });
+            $("#btn-excel").click(function () {
+                $("#my_data th:last-child, #my_data td:last-child").remove();
+                $("#my_data").table2excel({
+                    exclude: ".noExl",
+                    name: "Project Summary",
+                    filename: "Project Summary"
+                });
+                location.reload();
             });
             //load page for fitrs time
             show_ajax_cards('');
