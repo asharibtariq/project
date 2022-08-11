@@ -3,8 +3,30 @@
     <thead>
     <tr role="row">
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="0"> Sr#</th>
-        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="1"> FY</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="1"> PSPD</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> ID</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> FY</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Project</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Total Cost</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Actual Expenditure</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Rupee Allocation</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Foreign Aid</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Revised Rupee Allocation</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Funds authorized by M/o PD&SI (Rupee)</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Actual released/ sanctioned by Ministry/Division Rupee</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Foreign Aid Disbursed</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Total actual releases / disbursement (Col 9 +10)</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Actual Rupee Utilization</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Foreign Aid utilization</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Total Utilization (Col 12 + 13)</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Amount surrendered (if any)</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Amount lapsed (if any)</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Financial Progress (%)</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Physical Progress (%)</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Completion Date as per PC-I</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Completion date/likely date of completion</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Remarks/issues/Bottlenecks (if any)</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Note for our use</th>
     </thead>
     <tbody>
 
@@ -16,8 +38,15 @@
 
             <tr role="row">
                 <td> {{$i}} </td>
+                <td> {{$r->pspd}} </td>
+                <td> {{$r->psid}} </td>
                 <td> {{$r->fiscal_year}} </td>
                 <td> {{$r->project}} </td>
+                <td> {{$r->cost}} </td>
+                <td> {{$r->actual_expend}} </td>
+                <td> {{$r->alloc_rupee}} </td>
+                <td> {{$r->alloc_foreign}} </td>
+                <td> {{$r->alloc_revised}} </td>
             </tr>
             @php
                 $i++;

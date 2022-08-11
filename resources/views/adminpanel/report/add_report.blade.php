@@ -105,7 +105,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="label-paf" for="release_total_actual">Total actual releases / disbursement</label>
-                                        <input type="text" name="release_total_actual" id="release_total_actual" class="form-control input-paf" placeholder="Total actual releases" minlength="3"  />
+                                        <input type="text" name="release_total_actual" id="release_total_actual" class="form-control input-paf" placeholder="Total actual releases" minlength="3" readonly />
                                         @if ($errors->has('release_total_actual'))
                                             <span class="text-danger">{{ $errors->first('release_total_actual') }}</span>
                                         @endif
@@ -241,4 +241,12 @@
         </div>
     </div>
 
+    <script>
+        $(document).ready(function () {
+            var release_fund_actual = $("#release_fund_actual").val();
+            var release_foreign = $("#release_foreign").val();
+            var release_total_actual = parseFloat(release_fund_actual) + parseFloat(release_foreign);
+            $("#release_total_actual").val(release_total_actual);
+        });
+    </script>
 @endsection

@@ -94,9 +94,10 @@ class AjaxController extends Controller{
                     $where['tbl_report.fiscal_year'] = $fiscal_year;
                 $project = DB::table('tbl_report')
                     ->select('tbl_report.id',
+                        'tbl_report.fiscal_year',
                         'tbl_report.project_id',
                         'tbl_report.project',
-                        'tbl_report.fiscal_year',
+                        'tbl_report.actual_expend',
                         'tbl_report.alloc_rupee',
                         'tbl_report.alloc_foreign',
                         'tbl_report.alloc_revised',
