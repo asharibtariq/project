@@ -44,7 +44,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="label-paf" for="alloc_rupee">Allocation (Rupee)</label>
-                                        <input type="text" name="alloc_rupee" id="alloc_rupee" class="form-control input-paf " placeholder="Allocation (Rupee)" minlength="3" required />
+                                        <input type="text" name="alloc_rupee" id="alloc_rupee" class="form-control input-paf only_numeric" placeholder="Allocation (Rupee)"  required />
                                         @if ($errors->has('alloc_rupee'))
                                             <span class="text-danger">{{ $errors->first('alloc_rupee') }}</span>
                                         @endif
@@ -62,7 +62,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="label-paf" for="alloc_revised">Revised Rupee Allocation</label>
-                                        <input type="text" name="alloc_revised" id="alloc_revised" class="form-control input-paf" placeholder="Revised Rupee" minlength="3"  />
+                                        <input type="text" name="alloc_revised" id="alloc_revised" class="form-control input-paf" placeholder="Revised Rupee"  />
                                         @if ($errors->has('alloc_revised'))
                                             <span class="text-danger">{{ $errors->first('alloc_revised') }}</span>
                                         @endif
@@ -79,7 +79,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="label-paf" for="release_fund_auth">Funds authorized by M/o PD&SI (Rupee)</label>
-                                        <input type="text" name="release_fund_auth" id="release_fund_auth" class="form-control input-paf " placeholder="Funds authorized by M/o" minlength="3"  />
+                                        <input type="text" name="release_fund_auth" id="release_fund_auth" class="form-control input-paf " placeholder="Funds authorized by M/o"   />
                                         @if ($errors->has('release_fund_auth'))
                                             <span class="text-danger">{{ $errors->first('release_fund_auth') }}</span>
                                         @endif
@@ -97,7 +97,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="label-paf" for="release_foreign">Foreign Aid Disbursed</label>
-                                        <input type="text" name="alloc_revised" id="release_foreign" class="form-control input-paf InvQty" placeholder="Foreign Aid Disbursed"   />
+                                        <input type="text" name="release_foreign" id="release_foreign" class="form-control input-paf InvQty" placeholder="Foreign Aid Disbursed"   />
                                         @if ($errors->has('release_foreign'))
                                             <span class="text-danger">{{ $errors->first('release_foreign') }}</span>
                                         @endif
@@ -158,7 +158,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="label-paf" for="amt_surrender">Amount surrendered (if any)</label>
-                                        <input type="text" name="amt_surrender" id="amt_surrender" class="form-control input-paf " placeholder="Amount surrendered" minlength="3"  />
+                                        <input type="text" name="amt_surrender" id="amt_surrender" class="form-control input-paf " placeholder="Amount surrendered"   />
                                         @if ($errors->has('amt_surrender'))
                                             <span class="text-danger">{{ $errors->first('amt_surrender') }}</span>
                                         @endif
@@ -176,7 +176,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="label-paf" for="financial_prog">Financial Progress (%)n</label>
-                                        <input type="text" name="financial_prog" id="financial_prog" class="form-control input-paf" placeholder="Financial Progress (%)" minlength="3"  />
+                                        <input type="text" name="financial_prog" id="financial_prog" class="form-control input-paf" placeholder="Financial Progress (%)"   />
                                         @if ($errors->has('financial_prog'))
                                             <span class="text-danger">{{ $errors->first('financial_prog') }}</span>
                                         @endif
@@ -185,7 +185,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="label-paf" for="physical_prog">Physical Progress (%)</label>
-                                        <input type="text" name="physical_prog" id="physical_prog" class="form-control input-paf" placeholder="Physical Progress (%)" minlength="3"  />
+                                        <input type="text" name="physical_prog" id="physical_prog" class="form-control input-paf" placeholder="Physical Progress (%)"  />
                                         @if ($errors->has('physical_prog'))
                                             <span class="text-danger">{{ $errors->first('physical_prog') }}</span>
                                         @endif
@@ -194,7 +194,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="label-paf" for="comp_date_likely">Completion date/likely date of completion</label>
-                                        <input type="text" name="comp_date_likely" id="comp_date_likely" class="form-control input-paf" placeholder="Completion date" minlength="3"  />
+                                        <input type="text" name="comp_date_likely" id="comp_date_likely" class="form-control input-paf" placeholder="Completion date"   />
                                         @if ($errors->has('comp_date_likely'))
                                             <span class="text-danger">{{ $errors->first('comp_date_likely') }}</span>
                                         @endif
@@ -219,7 +219,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="label-paf" for="note">Note for our use</label>
-                                        <textarea name="note" id="note" class="form-control input-paf" placeholder="Notes" minlength="3"  ></textarea>
+                                        <textarea name="note" id="note" class="form-control input-paf" placeholder="Notes"   ></textarea>
                                         @if ($errors->has('note'))
                                             <span class="text-danger">{{ $errors->first('note') }}</span>
                                         @endif
