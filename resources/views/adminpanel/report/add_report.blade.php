@@ -199,19 +199,26 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                            </div>
+                                <div class="row">
+                                    <div class="form-group">
+                                        <h4>Reports/ Remarks</h4>
+                                    </div>
+
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="label-paf" for="remarks">Remarks/ issues/Bottlenecks (if any)</label>
-                                        <input type="text" name="remarks" id="remarks" class="form-control input-paf" placeholder="remarks" minlength="3"  />
-                                        @if ($errors->has('remarks'))
+                                        <textarea name="remarks" id="remarks" class="form-control input-paf" placeholder="Remarks" minlength="3"  ></textarea>
+                                       @if ($errors->has('remarks'))
                                             <span class="text-danger">{{ $errors->first('remarks') }}</span>
                                         @endif
+
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="label-paf" for="note">Note for our use</label>
-                                        <input type="text" name="note" id="note" class="form-control input-paf" placeholder="note" minlength="3"  />
+                                        <textarea name="note" id="note" class="form-control input-paf" placeholder="Notes" minlength="3"  ></textarea>
                                         @if ($errors->has('note'))
                                             <span class="text-danger">{{ $errors->first('note') }}</span>
                                         @endif
