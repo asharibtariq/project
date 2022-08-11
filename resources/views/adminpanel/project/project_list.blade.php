@@ -45,7 +45,7 @@
         @endforeach
     @else
         <tr>
-            <th scope="row" colspan="5">
+            <th scope="row" colspan="8">
                 <div style="color:#FFFFFF;text-align: center; background-color: #ff0000;" class="alert alert-danger" role="alert">
                     <strong>NO DATA FOUND</strong>
                 </div>

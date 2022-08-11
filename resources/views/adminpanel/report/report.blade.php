@@ -88,7 +88,7 @@
                 show_ajax_cards('');
             });
             $("#btn-excel").click(function () {
-                $("#my_data th:last-child, #my_data td:last-child").remove();
+            //    $("#my_data th:last-child, #my_data td:last-child").remove();
                 $("#my_data").table2excel({
                     exclude: ".noExl",
                     name: "Project Summary",
