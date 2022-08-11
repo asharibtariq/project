@@ -21,16 +21,17 @@
                             @csrf
                             <div class="row">
                                 <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="fiscal_year" class="control-label label-paf">FY</label>
-                                    {!! $fiscal_year_select !!}
-                                </div>
-                                </div>
-                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="project_id" class="control-label label-paf">Project</label>
                                         {!! $project_select !!}
                                     </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="fiscal_year" class="control-label label-paf">FY</label>
+                                        {!! $fiscal_year_select !!}
+                                    </div>
+
                                 </div>
                             </div>
                             <div class="row">
@@ -43,7 +44,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="label-paf" for="alloc_rupee">Allocation (Rupee)</label>
-                                        <input type="text" name="alloc_rupee" id="alloc_rupee" class="form-control input-paf only_alpha" placeholder="Allocation (Rupee)" minlength="3" required />
+                                        <input type="text" name="alloc_rupee" id="alloc_rupee" class="form-control input-paf " placeholder="Allocation (Rupee)" minlength="3" required />
                                         @if ($errors->has('alloc_rupee'))
                                             <span class="text-danger">{{ $errors->first('alloc_rupee') }}</span>
                                         @endif
@@ -52,7 +53,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="label-paf" for="alloc_foreign">Foreign Aid</label>
-                                        <input type="text" name="alloc_foreign" id="alloc_foreign" class="form-control input-paf" placeholder="Foreign Aid" minlength="3"  />
+                                        <input type="text" name="alloc_foreign" id="alloc_foreign" class="form-control input-paf" placeholder="Foreign Aid" />
                                         @if ($errors->has('alloc_foreign'))
                                             <span class="text-danger">{{ $errors->first('alloc_foreign') }}</span>
                                         @endif
@@ -78,7 +79,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="label-paf" for="release_fund_auth">Funds authorized by M/o PD&SI (Rupee)</label>
-                                        <input type="text" name="release_fund_auth" id="release_fund_auth" class="form-control input-paf only_alpha" placeholder="Funds authorized by M/o" minlength="3"  />
+                                        <input type="text" name="release_fund_auth" id="release_fund_auth" class="form-control input-paf " placeholder="Funds authorized by M/o" minlength="3"  />
                                         @if ($errors->has('release_fund_auth'))
                                             <span class="text-danger">{{ $errors->first('release_fund_auth') }}</span>
                                         @endif
@@ -86,8 +87,8 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="label-paf" for="release_fund_actual">Actual released/ sanctioned by Ministry/Division Rupee </label>
-                                        <input type="text" name="release_fund_actual" id="release_fund_actual" class="form-control input-paf" placeholder="Actual released/ sanctioned by Ministry" minlength="3"  />
+                                        <label class="label-paf" for="release_fund_actual">Actual released by Ministry/Division Rupee </label>
+                                        <input type="text" name="release_fund_actual" id="release_fund_actual" class="form-control input-paf InvQty" placeholder="Actual released/ sanctioned by Ministry"   />
                                         @if ($errors->has('release_fund_actual'))
                                             <span class="text-danger">{{ $errors->first('release_fund_actual') }}</span>
                                         @endif
@@ -96,7 +97,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="label-paf" for="release_foreign">Foreign Aid Disbursed</label>
-                                        <input type="text" name="alloc_revised" id="release_foreign" class="form-control input-paf" placeholder="Foreign Aid Disbursed" minlength="3"  />
+                                        <input type="text" name="alloc_revised" id="release_foreign" class="form-control input-paf InvQty" placeholder="Foreign Aid Disbursed"   />
                                         @if ($errors->has('release_foreign'))
                                             <span class="text-danger">{{ $errors->first('release_foreign') }}</span>
                                         @endif
@@ -105,7 +106,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="label-paf" for="release_total_actual">Total actual releases / disbursement</label>
-                                        <input type="text" name="release_total_actual" id="release_total_actual" class="form-control input-paf" placeholder="Total actual releases" minlength="3" readonly />
+                                        <input type="text" name="release_total_actual" id="Total" class="form-control input-paf Total" placeholder="Total actual releases"  readonly />
                                         @if ($errors->has('release_total_actual'))
                                             <span class="text-danger">{{ $errors->first('release_total_actual') }}</span>
                                         @endif
@@ -122,7 +123,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="label-paf" for="util_actual">Actual Rupee Utilization</label>
-                                        <input type="text" name="util_actual" id="util_actual" class="form-control input-paf only_alpha" placeholder="Actual Rupee Utilization" minlength="3"  />
+                                        <input type="text" name="util_actual" id="util_actual" class="form-control input-paf InvQty1" placeholder="Actual Rupee Utilization"   />
                                         @if ($errors->has('util_actual'))
                                             <span class="text-danger">{{ $errors->first('util_actual') }}</span>
                                         @endif
@@ -131,7 +132,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="label-paf" for="util_foreign">Foreign Aid utilization</label>
-                                        <input type="text" name="util_foreign" id="util_foreign" class="form-control input-paf" placeholder="Foreign Aid utilization" minlength="3"  />
+                                        <input type="text" name="util_foreign" id="util_foreign" class="form-control input-paf InvQty1" placeholder="Foreign Aid utilization"   />
                                         @if ($errors->has('util_foreign'))
                                             <span class="text-danger">{{ $errors->first('util_foreign') }}</span>
                                         @endif
@@ -140,7 +141,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="label-paf" for="util_total">Total Utilization</label>
-                                        <input type="text" name="util_total" id="util_total" class="form-control input-paf" placeholder="Total Utilization" minlength="3"  />
+                                        <input type="text" name="util_total" id="Total1" class="form-control input-paf" placeholder="Total Utilization" readonly />
                                         @if ($errors->has('util_total'))
                                             <span class="text-danger">{{ $errors->first('util_total') }}</span>
                                         @endif
@@ -157,7 +158,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="label-paf" for="amt_surrender">Amount surrendered (if any)</label>
-                                        <input type="text" name="amt_surrender" id="amt_surrender" class="form-control input-paf only_alpha" placeholder="Amount surrendered" minlength="3"  />
+                                        <input type="text" name="amt_surrender" id="amt_surrender" class="form-control input-paf " placeholder="Amount surrendered" minlength="3"  />
                                         @if ($errors->has('amt_surrender'))
                                             <span class="text-danger">{{ $errors->first('amt_surrender') }}</span>
                                         @endif
@@ -242,11 +243,29 @@
     </div>
 
     <script>
-        $(document).ready(function () {
-            var release_fund_actual = $("#release_fund_actual").val();
-            var release_foreign = $("#release_foreign").val();
-            var release_total_actual = parseFloat(release_fund_actual) + parseFloat(release_foreign);
-            $("#release_total_actual").val(release_total_actual);
+        $(document).ready(function(){
+            $('.InvQty').keyup(function(){
+
+                var val2 = 0;
+                $('.InvQty').each(function(){
+                    val2+=(parseFloat($(this).val()) || 0);
+                });
+                $('#Total').val(val2);
+
+            });
+
+            $('.InvQty1').keyup(function(){
+                var val2 = 0;
+                $('.InvQty1').each(function(){
+                    val2+=(parseFloat($(this).val()) || 0);
+                });
+                $('#Total1').val(val2);
+            });
+
+            $("#Total1").attr({
+                "max" : $("#Total").val()      // substitute your own
+            });
+
         });
     </script>
 @endsection

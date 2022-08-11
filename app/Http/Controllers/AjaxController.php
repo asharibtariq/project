@@ -97,7 +97,6 @@ class AjaxController extends Controller{
                     ->select('tbl_report.id',
                         'tbl_report.fiscal_year',
                         'tbl_report.project_id',
-                        'tbl_report.project',
                         'tbl_report.actual_expend',
                         'tbl_report.alloc_rupee',
                         'tbl_report.alloc_foreign',
@@ -117,6 +116,7 @@ class AjaxController extends Controller{
                         'tbl_report.remarks',
                         'tbl_report.note',
                         'tbl_project.psdp',
+                        'tbl_project.name as project',
                         'tbl_project.psid',
                         'tbl_project.cost',
                         'tbl_project.complete_date')
