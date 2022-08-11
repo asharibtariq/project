@@ -43,7 +43,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="label-paf" for="alloc_rupee">Allocation (Rupee)</label>
-                                        <input type="text" name="alloc_rupee" id="alloc_rupee" class="form-control input-paf only_alpha" placeholder="Allocation (Rupee" minlength="3" required />
+                                        <input type="text" name="alloc_rupee" id="alloc_rupee" class="form-control input-paf only_alpha" placeholder="Allocation (Rupee)" minlength="3" required />
                                         @if ($errors->has('alloc_rupee'))
                                             <span class="text-danger">{{ $errors->first('alloc_rupee') }}</span>
                                         @endif

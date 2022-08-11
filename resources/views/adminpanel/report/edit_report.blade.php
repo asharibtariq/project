@@ -199,24 +199,30 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="row">
                                     <div class="form-group">
-                                        <label class="label-paf" for="remarks">Remarks/ issues/Bottlenecks (if any)</label>
-                                        <input type="text" name="remarks" id="remarks" class="form-control input-paf" placeholder="remarks" minlength="3" value="{{ $report->remarks}}" />
-                                        @if ($errors->has('remarks'))
-                                            <span class="text-danger">{{ $errors->first('remarks') }}</span>
-                                        @endif
+                                        <h4>Reports/ Remarks</h4>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="label-paf" for="note">Note for our use</label>
-                                        <input type="text" name="note" id="note" class="form-control input-paf" placeholder="note" minlength="3" value="{{ $report->note}}" />
-                                        @if ($errors->has('note'))
-                                            <span class="text-danger">{{ $errors->first('note') }}</span>
-                                        @endif
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="label-paf" for="remarks">Remarks/ issues/Bottlenecks (if any)</label>
+                                            <textarea name="remarks" id="remarks" class="form-control input-paf" placeholder="Remarks" minlength="3" value="{{ $report->remarks}}" ></textarea>
+                                            @if ($errors->has('remarks'))
+                                                <span class="text-danger">{{ $errors->first('remarks') }}</span>
+                                            @endif
+
+                                        </div>
                                     </div>
-                                </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="label-paf" for="note">Note for our use</label>
+                                            <textarea name="note" id="note" class="form-control input-paf" placeholder="Notes" minlength="3" value="{{ $report->note}}"></textarea>
+                                            @if ($errors->has('note'))
+                                                <span class="text-danger">{{ $errors->first('note') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="label-paf" for="status">Status</label>
