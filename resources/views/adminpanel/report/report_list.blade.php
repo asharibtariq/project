@@ -4,6 +4,7 @@
     <tr role="row">
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="0"> Sr#</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="1"> FY</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Project</th>
     </thead>
     <tbody>
 
@@ -16,6 +17,7 @@
             <tr role="row">
                 <td> {{$i}} </td>
                 <td> {{$r->fiscal_year}} </td>
+                <td> {{$r->project}} </td>
             </tr>
             @php
                 $i++;

@@ -18,7 +18,9 @@ class ReportController extends Controller
     public function index()
     {
         $title = "Report";
-        return view('adminpanel.report.report')->with('title', $title);
+        $data['project_select'] = get_project();
+        $data['fiscal_year_select'] = get_fiscal_year();
+        return view('adminpanel.report.report', $data)->with('title', $title);
     }
 
     /**
@@ -93,9 +95,9 @@ class ReportController extends Controller
         $userId = Auth::id();
         $report = Report::findOrFail($id);
         $updateData = $request->all();
-        //    $updateData['slug'] = strtolower(str_replace(' ','_',$updateData['title']));
+    //    $updateData['slug'] = strtolower(str_replace(' ','_',$updateData['title']));
         $updateData['updated_by'] = $userId;
-        //    pre($request->all(),1);
+    //    pre($request->all(),1);
         $report->update($updateData);
         return redirect('reprot')->with('success', 'Report Updated Successfully');
     }
