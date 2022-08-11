@@ -3,7 +3,11 @@
     <thead>
     <tr role="row">
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="0"> Sr#</th>
-        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="1"> Name</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="1"> PSDP</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> ID</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Name</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Cost</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Complete Date</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Status</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Operation</th>
     </thead>
@@ -17,15 +21,20 @@
 
             <tr role="row">
                 <td> {{$i}} </td>
+                <td> {{$r->psdp}} </td>
+                <td> {{$r->psid}} </td>
                 <td> {{$r->name}} </td>
+                <td> {{$r->cost}} </td>
+                <td> {{$r->complete_date}} </td>
                 <td>
                     @if($r->status == 'Y')
-                        <button type="button" class="btn btn-success">Active</button>
+                        <button type="button" class="btn btn-primary">Active</button>
                     @elseif($r->status == 'N')
                         <button type="button" class="btn btn-danger">In-active</button>
                     @endif
                 </td>
                 <td>
+                    <a href="{{url('project', $r->id)}}" target="_blank" class="btn btn-success" id="btn-view"><i class="fa fa-list"></i> Details</a>
                     <a onClick="return confirm('Are you sure you want to update?');" href="{{url('edit_project', $r->id)}}" class="btn btn-info" id="btn-view"><i class="fa fa-edit"></i> Edit</a>
                     <a onClick="return confirm('Are you sure you want to delete?');" href="{{url('delete_project', $r->id)}}" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
                 </td>

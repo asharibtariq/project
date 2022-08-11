@@ -12,8 +12,11 @@ class Project extends Model
     protected $table = 'tbl_project';
 
     protected $fillable = [
+        'psdp',
+        'psid',
         'name',
         'cost',
+        'complete_date',
         'status',
         'created_by',
         'updated_by'

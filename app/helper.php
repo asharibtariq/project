@@ -92,6 +92,32 @@ if(!function_exists('get_project')) {
     }
 }
 
+if(!function_exists('get_fiscal_year')) {
+    function get_fiscal_year($default = 0, $where = '', $name = 'fiscal_year', $attr = '') {
+        $html = '';
+        $start_date = 2015;
+        $end_date = date('Y') + 1;
+        $default_select = 'Select';
+        if (substr($name, -2) == "[]")
+            $name_id = str_replace("]", "", str_replace("[", "", $name));
+        else
+            $name_id = $name;
+        $html .= "<select id='" . $name_id . "' name='" . $name . "' class='form-control input-paf select2' " . $attr . " >";
+        $html .= "<option value=''>" . $default_select . "</option>";
+        for ($i = $end_date; $i > $start_date; $i--) {
+            $date_minus_one = $i - 1;
+            $fy_date_formate = $date_minus_one.' - '.$i;
+            if ($default > 0){
+                $html .= "<option selected=\"selected\" value=\"" . $i . "\" >" . $fy_date_formate . "</option>";
+            }else{
+                $html .= "<option value=\"" . $i . "\" >" . $fy_date_formate . "</option>";
+            }
+        }
+        $html .= "</select>";
+        return $html;
+    }
+}
+
 if(!function_exists('getsinglefield')) {
     function getsinglefield($tbl, $field, $where = '') {
         $result = DB::select("SELECT $field FROM " . $tbl. " ".$where);

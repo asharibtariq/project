@@ -56,9 +56,13 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function show(Project $project)
+    public function show($id)
     {
-       //
+        $project = Project::findOrFail($id);
+        $title = "Project Detail";
+        $data['project'] = $project;
+        $data['fiscal_year_select'] = get_fiscal_year();
+        return view('adminpanel.project.projects', $data)->with('title', $title);
     }
 
     /**
