@@ -19,6 +19,7 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::post('ajax_content', [\App\Http\Controllers\AjaxController::class, 'content']);
+Route::post('ajax_list', [\App\Http\Controllers\AjaxController::class, 'getFiscalYearList']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

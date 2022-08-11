@@ -243,6 +243,7 @@
     </div>
 
     <script>
+        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
         $(document).ready(function(){
             $('.InvQty').keyup(function(){
 
@@ -265,6 +266,19 @@
             $("#Total1").attr({
                 "max" : $("#Total").val()      // substitute your own
             });
+
+        });
+        $(document).on('change', '#fiscal_year', function () {
+            var projectid = $("#project_id").val();
+            $.ajax({
+                url: '{{url('ajax_list')}}',
+                data: {"_token": CSRF_TOKEN, "fiscal_year": $(this).val(), "projectid":projectid},
+                type: 'POST',
+                success: function (data) {
+                   alert(data);
+                }
+            });
+
 
         });
     </script>

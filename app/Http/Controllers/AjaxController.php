@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 use App\Models\News;
+use App\Models\Report;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -88,9 +89,9 @@ class AjaxController extends Controller{
                 $project_id = $request->project_id != '' ? $request->project_id : '';
                 $fiscal_year = $request->fiscal_year != '' ? $request->fiscal_year : '';
                 $per_page = $request->select_limit != '' ? $request->select_limit : 10;
-                if (!empty($title))
+                if (!empty($project_id))
                     $where['tbl_report.project_id'] = $project_id;
-                if (!empty($title))
+                if (!empty($fiscal_year))
                     $where['tbl_report.fiscal_year'] = $fiscal_year;
                 $project = DB::table('tbl_report')
                     ->leftJoin('tbl_project', 'tbl_report.project_id', '=', 'tbl_project.id')
@@ -132,6 +133,28 @@ class AjaxController extends Controller{
             default:
                 break;
         }
+    }
+    public function getFiscalYearList(Request $request){
+        $html = "";
+        $where = array();
+        $project_id = $request->project_id != '' ? $request->project_id : '';
+        $fiscal_year = $request->fiscal_year != '' ? $request->fiscal_year : '';
+        if (!empty($project_id))
+            $where['tbl_report.project_id'] = $project_id;
+        if (!empty($fiscal_year))
+            $where['tbl_report.fiscal_year'] = $fiscal_year;
+
+        $report= Report::all()->where($where);
+
+        if (!empty($report) && count($report) > 0){
+
+            $html ="Record Exists";
+        }
+        else{
+            $html ="No Record Found";
+        }
+
+        return $html;
     }
 
 }
