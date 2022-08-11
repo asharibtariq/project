@@ -100,7 +100,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="label-paf" for="release_total_actual">Total actual releases / disbursement</label>
-                                        <input type="text" name="release_total_actual" id="Total" class="form-control input-paf" placeholder="Total actual releases"  value="{{ $report->release_total_actual}}" />
+                                        <input type="text" name="release_total_actual" id="Total" class="form-control input-paf" placeholder="Total actual releases"  value="{{ $report->release_total_actual}}" readonly />
                                         @if ($errors->has('release_total_actual'))
                                             <span class="text-danger">{{ $errors->first('release_total_actual') }}</span>
                                         @endif
@@ -135,7 +135,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="label-paf" for="util_total">Total Utilization</label>
-                                        <input type="text" name="util_total" id="Total1" class="form-control input-paf" placeholder="Total Utilization"value="{{ $report->util_total}}"  />
+                                        <input type="text" name="util_total" id="Total1" class="form-control input-paf" placeholder="Total Utilization"value="{{ $report->util_total}}" readonly />
                                         @if ($errors->has('util_total'))
                                             <span class="text-danger">{{ $errors->first('util_total') }}</span>
                                         @endif
