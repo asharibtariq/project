@@ -174,7 +174,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="label-paf" for="amt_lapsed">Amount lapsed (if any) </label>
-                                        <input type="text" name="amt_lapsed" id="amt_lapsed" class="form-control input-paf" placeholder="Amount lapsed" minlength="3"  />
+                                        <input type="text" name="amt_lapsed" id="amt_lapsed" class="form-control input-paf" placeholder="Amount lapsed"  />
                                         @if ($errors->has('amt_lapsed'))
                                             <span class="text-danger">{{ $errors->first('amt_lapsed') }}</span>
                                         @endif
@@ -217,7 +217,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="label-paf" for="remarks">Remarks/ issues/Bottlenecks (if any)</label>
-                                        <textarea name="remarks" id="remarks" class="form-control input-paf" placeholder="Remarks" minlength="3"  ></textarea>
+                                        <textarea name="remarks" id="remarks" class="form-control input-paf" placeholder="Remarks"  ></textarea>
                                        @if ($errors->has('remarks'))
                                             <span class="text-danger">{{ $errors->first('remarks') }}</span>
                                         @endif
