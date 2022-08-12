@@ -102,7 +102,7 @@ if(!function_exists('get_fiscal_year')) {
             $name_id = str_replace("]", "", str_replace("[", "", $name));
         else
             $name_id = $name;
-        $html .= "<select id='" . $name_id . "' name='" . $name . "' class='form-control input-paf select2' " . $attr . " >";
+        $html .= "<select id='" . $name_id . "' name='" . $name . "' class='form-control input-paf select2' required " . $attr . " >";
         $html .= "<option value=''>" . $default_select . "</option>";
         for ($i = $end_date; $i > $start_date; $i--) {
             $date_minus_one = $i - 1;

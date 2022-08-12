@@ -23,7 +23,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="project_id" class="control-label label-paf" readonly="">Project</label>
-                                        <input type="text" class="form-control input-paf "name="project_id" id="project_id" value="{{ $report->project_id }}" readonly>
+                                        <input type="text" class="form-control input-paf " id="project_id" value="{{ $report->project}}" readonly>
                                     </div>
 
                                 </div>
@@ -31,7 +31,11 @@
                                     <div class="form-group">
                                         <label for="fiscal_year" class="control-label label-paf" readonly="">FY</label>
                                         {{--{!! $fiscal_year_select !!}--}}
-                                        <input type="text" class="form-control input-paf "name="project_id" id="project_id" value="{{ $report->fiscal_year}}" readonly>
+                                        <?php
+                                        $fiscal_year_start = $report->fiscal_year - 1;
+                                        $fiscal_year = $fiscal_year_start." - ".$report->fiscal_year;
+                                        ?>
+                                        <input type="text" class="form-control input-paf " id="fiscal_year " value="{{ $fiscal_year}}" readonly>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -215,7 +219,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="label-paf" for="remarks">Remarks/ issues/Bottlenecks (if any)</label>
-                                            <textarea name="remarks" id="remarks" class="form-control input-paf" placeholder="Remarks" minlength="3" value="{{ $report->remarks}}" ></textarea>
+                                            <textarea name="remarks" id="remarks" class="form-control input-paf" placeholder="Remarks"  value="{{ $report->remarks}}" ></textarea>
                                             @if ($errors->has('remarks'))
                                                 <span class="text-danger">{{ $errors->first('remarks') }}</span>
                                             @endif
@@ -225,7 +229,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="label-paf" for="note">Note for our use</label>
-                                            <textarea name="note" id="note" class="form-control input-paf" placeholder="Notes" minlength="3" value="{{ $report->note}}"></textarea>
+                                            <textarea name="note" id="note" class="form-control input-paf" placeholder="Notes"  value="{{ $report->note}}"></textarea>
                                             @if ($errors->has('note'))
                                                 <span class="text-danger">{{ $errors->first('note') }}</span>
                                             @endif

@@ -24,18 +24,19 @@
                                     <div class="form-group">
                                         <label for="project_id" class="control-label label-paf">Project</label>
                                         {!! $project_select !!}
+                                        <input type="hidden" name="project" id="project" >
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="fiscal_year" class="control-label label-paf">FY</label>
-                                        {!! $fiscal_year_select !!}
+                                        {!!  $fiscal_year_select !!}
                                     </div>
                                 </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="actual_expend" class="control-label label-paf">Actual Expenditure</label>
-                                            <input type="text" class="form-control input-paf "name="actual_expend" id="actual_expend" >
+                                            <input type="text" id="actual_expend" class="form-control input-paf "name="actual_expend" >
                                         </div>
                                 </div>
 
@@ -200,11 +201,12 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="label-paf" for="comp_date_likely">Completion date/likely date of completion</label>
-                                        <input type="text" name="comp_date_likely" id="comp_date_likely" class="form-control input-paf" placeholder="Completion date"   />
+                                        <input type="text" name="comp_date_likely" id="comp_date_likely" class="form-control input-paf datepicker" placeholder="MM/DD/YYYY" readonly required   />
                                         @if ($errors->has('comp_date_likely'))
                                             <span class="text-danger">{{ $errors->first('comp_date_likely') }}</span>
                                         @endif
                                     </div>
+
                                 </div>
                             </div>
                                 <div class="row">
@@ -273,21 +275,51 @@
                 "max" : $("#Total").val()      // substitute your own
             });
 
+        //    $('#').prop('max', val);
+
+        });
+        $(document).on('change', '#project_id', function () {
+            var project_id = $(this).val();
+            if (project_id > 0){
+                $('#actual_expend').prop('readonly', true);
+                var project = $("#project_id option:selected").text();
+                $("#project").val(project);
+            }else{
+                $('#actual_expend').prop('readonly', false);
+            }
+            $('#fiscal_year').val('').change();
+            $('#actual_expend').val('');
         });
         $(document).on('change', '#fiscal_year', function () {
             var project_id = $("#project_id").val();
-            $.ajax({
-                url: '{{url('ajax_list')}}',
-                data: {"_token": CSRF_TOKEN, "fiscal_year": $(this).val(), "project_id":project_id},
-                type: 'POST',
-                success: function (data) {
-                    var jsonData = $.parseJSON(data);
-                    var status = jsonData.status;
-                    var util_total = jsonData.util_total;
-                }
-            });
+            if (project_id > 0) {
+                $.ajax({
+                    url: '{{url('ajax_list')}}',
+                    data: {"_token": CSRF_TOKEN, "fiscal_year": $(this).val(), "project_id": project_id},
+                    type: 'POST',
+                    success: function (data) {
+                        var jsonData = $.parseJSON(data);
+                        var status = jsonData.status;
+                        var util_total = jsonData.util_total;
 
+                        if (util_total > 0) {
+                            $('#actual_expend').prop('readonly', true);
+                        } else {
+                            $('#actual_expend').prop('readonly', false);
+                        }
 
+                        if (status == 1) {
+                            alert("Fiscal Year Already Added...");
+                            $('#fiscal_year').val('').change();
+                            //    $('#actual_expend').val('');
+                            return false;
+                        } else {
+                            $('#actual_expend').val(util_total);
+                        }
+                    }
+                });
+            }
         });
+
     </script>
 @endsection
