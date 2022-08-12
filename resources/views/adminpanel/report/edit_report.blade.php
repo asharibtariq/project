@@ -22,9 +22,22 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="fiscal_year" class="control-label label-paf">FY</label>
-                                        {!! $fiscal_year_select !!}
-                                        <input type="hidden" name="project_id" id="project_id" value="{{ $report->project_id }}">
+                                        <label for="project_id" class="control-label label-paf" readonly="">Project</label>
+                                        <input type="text" class="form-control input-paf "name="project_id" id="project_id" value="{{ $report->project_id }}" readonly>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="fiscal_year" class="control-label label-paf" readonly="">FY</label>
+                                        {{--{!! $fiscal_year_select !!}--}}
+                                        <input type="text" class="form-control input-paf "name="project_id" id="project_id" value="{{ $report->fiscal_year}}" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                <label for="actual_expend" class="control-label label-paf">Actual Expenditure</label>
+                                <input type="text" class="form-control input-paf "name="actual_expend" id="actual_expend"  value="{{ $report->actual_expend}}" readonly>
                                     </div>
                                 </div>
                             </div>
