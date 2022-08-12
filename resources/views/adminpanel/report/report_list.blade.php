@@ -15,10 +15,10 @@
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Funds authorized by M/o PD&SI (Rupee)</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Actual released/ sanctioned by Ministry/Division Rupee</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Foreign Aid Disbursed</th>
-        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Total actual releases / disbursement (Col 9 +10)</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Total actual releases / disbursement</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Actual Rupee Utilization</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Foreign Aid utilization</th>
-        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Total Utilization (Col 12 + 13)</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Total Utilization</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Amount surrendered (if any)</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Amount lapsed (if any)</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Financial Progress (%)</th>
@@ -105,7 +105,7 @@
             @endphp
         @endforeach
         <tr>
-            <td colspan="5" class="text-center">Total</td>
+            <th colspan="5" class="text-center">Total</th>
             <td>{{$cost}}</td>
             <td>{{$actual_expend}}</td>
             <td>{{$alloc_rupee}}</td>
