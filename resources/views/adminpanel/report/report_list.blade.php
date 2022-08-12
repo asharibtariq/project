@@ -33,6 +33,21 @@
     @php
         $i = 1;
         $cost = 0;
+        $actual_expend =0;
+        $alloc_rupee =0;
+        $alloc_foreign =0;
+        $alloc_revised =0;
+        $release_fund_auth =0;
+        $release_fund_actual =0;
+        $release_foreign =0;
+        $release_total_actual =0;
+        $util_actual =0;
+        $util_foreign =0;
+        $util_total =0;
+        $amt_surrender =0;
+        $amt_lapsed =0;
+        $financial_prog =0;
+        $physical_prog =0;
     @endphp
     @if(is_array($result) && count($result) > 0)
         @foreach ($result as $r)
@@ -41,6 +56,22 @@
             $fiscal_year = $fiscal_year_start." - ".$r->fiscal_year;
 
             $cost = $cost + $r->cost;
+        $actual_expend = $actual_expend + $r->actual_expend;
+        $alloc_rupee = $alloc_rupee + $r->alloc_rupee;
+        $alloc_foreign = $alloc_foreign + $r->alloc_foreign;
+        $alloc_revised = $alloc_revised + $r->alloc_revised;
+        $release_fund_auth = $release_fund_auth + $r->release_fund_auth;
+        $release_fund_actual = $release_fund_actual + $r->release_fund_actual;
+        $release_foreign = $release_foreign + $r->release_foreign;
+        $release_total_actual = $release_total_actual + $r->release_total_actual;
+        $util_actual = $util_actual + $r->util_actual;
+        $util_foreign = $util_foreign + $r->util_foreign;
+        $util_total = $util_total + $r->util_total;
+        $amt_surrender = $amt_surrender + $r->amt_surrender;
+        $amt_lapsed = $amt_lapsed + $r->amt_lapsed;
+        $financial_prog = $financial_prog + $r->financial_prog;
+        $physical_prog = $physical_prog + $r->physical_prog;
+
         ?>
             <tr role="row">
                 <td> {{$i}} </td>
@@ -76,21 +107,21 @@
         <tr>
             <td colspan="5" class="text-center">Total</td>
             <td>{{$cost}}</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>{{$actual_expend}}</td>
+            <td>{{$alloc_rupee}}</td>
+            <td>{{$alloc_foreign}}</td>
+            <td>{{$alloc_revised}}</td>
+            <td>{{$release_fund_auth}}</td>
+            <td>{{$release_fund_actual}}</td>
+            <td>{{$release_foreign}}</td>
+            <td>{{$release_total_actual}}</td>
+            <td>{{$util_actual}}</td>
+            <td>{{$util_foreign}}</td>
+            <td>{{$util_total}}</td>
+            <td>{{$amt_surrender}}</td>
+            <td>{{$amt_lapsed}}</td>
+            <td>{{$financial_prog}}</td>
+            <td>{{$physical_prog}}</td>
             <td colspan="4"></td>
         </tr>
     @else
