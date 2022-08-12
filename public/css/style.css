@@ -1,7 +1,6 @@
 .collapse .navbar-nav .nav-item .nav-link {
     color: black;
     font-size: 14px;
-    font-family: "Montserrat";
     font-weight: 600;
     letter-spacing: 0.04em;
     transition: transform .2s;
@@ -16,7 +15,6 @@
     color: white;
     background-color: #011a2a;
     font-size: 11px;
-    font-family: "Montserrat";
     border-radius: 10px;
 }
 
@@ -32,7 +30,6 @@
 
 .heading2 {
     color: white;
-    font-family: "Montserrat";
     font-size: 1.75rem;
     font-weight: 800;
 }
@@ -40,7 +37,6 @@
 .input-group-rounded .input-group-field {
     border-radius: 5000px 0 0 5000px;
     padding-left: 1rem;
-    font-family: "Montserrat";
     outline: none;
 }
 
@@ -48,14 +44,12 @@
     border-radius: 50px !important;
     font-size: 1rem;
     background-color: #0000ff;
-    font-family: "Montserrat";
     color: white;
 }
 
 .international h3 {
     color: black;
     font-size: 29px;
-    font-family: "Montserrat";
     font-weight: 800;
 }
 
@@ -66,7 +60,6 @@ hr.solidblack {
 
 .international p {
     color: black;
-    font-family: "Montserrat";
     text-align: justify;
     font-size: 18px;
     font-weight: 500;
@@ -78,7 +71,6 @@ hr.solidblack {
     color: white;
     font-size: 12px;
     border-radius: 50px;
-    font-family: "Montserrat";
     background-color: #257a14;
     width: 300px;
     height: 40px;
@@ -88,7 +80,6 @@ hr.solidblack {
     color: white;
     font-size: 12px;
     border-radius: 50px;
-    font-family: "Montserrat";
     background-color: #011a2a;
     width: 300px;
     height: 40px;
@@ -102,7 +93,6 @@ hr.solidblack {
     color: white;
     font-size: 30px;
     font-weight: 800;
-    font-family: "Montserrat";
 }
 
 hr.solidwhite {
@@ -112,7 +102,6 @@ hr.solidwhite {
 
 .jci p {
     color: white;
-    font-family: "Montserrat";
     text-align: justify;
     font-size: 18px;
     font-weight: 500;
@@ -120,7 +109,6 @@ hr.solidwhite {
 
 .jcicards .card {
     background-color: white;
-    font-family: "Montserrat";
     text-align: center;
     margin-left: 70px;
     margin-bottom: 70px;
@@ -130,20 +118,17 @@ hr.solidwhite {
 
 .jcicards .card img {
     width: 100%;
-    font-family: "Montserrat";
 }
 
 .jcicards p {
     color: black;
     font-size: 14px;
-    font-family: "Montserrat";
 }
 
 .testimonials h3 {
     color: black;
     font-size: 30px;
     font-weight: 800;
-    font-family: "Montserrat";
 }
 
 .testimonials .card {
@@ -151,7 +136,6 @@ hr.solidwhite {
     min-height: 380px;
     padding: 1.5em 0.5em 0.5em;
     border-radius: 2em;
-    font-family: "Montserrat";
     text-align: center;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
@@ -168,7 +152,6 @@ hr.solidwhite {
 
 .exceptional h3 {
     color: white;
-    font-family: "Montserrat";
     font-size: 21px;
     font-weight: 800;
 }
@@ -176,7 +159,6 @@ hr.solidwhite {
 .exceptional a {
     color: white;
     font-size: 21px;
-    font-family: "Montserrat";
     font-weight: 800;
 }
 
@@ -184,7 +166,6 @@ hr.solidwhite {
     color: black;
     font-size: 30px;
     font-weight: 800;
-    font-family: "Montserrat";
 }
 
 .medicalvisa p {
@@ -192,14 +173,12 @@ hr.solidwhite {
     color: black;
     font-size: 18px;
     font-weight: 500;
-    font-family: "Montserrat";
 }
 
 .medicalvisa .btn {
     color: white;
     font-size: 14px;
     font-weight: 600;
-    font-family: "Montserrat";
 }
 
 .healthcareforall {
@@ -209,7 +188,6 @@ hr.solidwhite {
 .healthcareforall h3 {
     color: white;
     font-size: 30px;
-    font-family: "Montserrat";
     font-weight: 800;
 }
 
@@ -218,52 +196,44 @@ hr.solidwhite {
     font-size: 18px;
     font-weight: 500;
     text-align: justify;
-    font-family: "Montserrat";
 }
 
 .instant h4 {
     color: black;
     font-size: 20px;
     font-weight: 600;
-    font-family: "Montserrat";
 }
 
 .instant .btn {
     background-color: #011a2a;
     color: white;
-    font-family: "Montserrat";
 }
 
 .instantbutton .btn {
     color: white;
     font-size: 14px;
-    font-family: "Montserrat";
     font-weight: 600;
 }
 
 .expand h3 {
     color: black;
     font-size: 29px;
-    font-family: "Montserrat";
     font-weight: 800;
 }
 
 .expand h4 {
     font-size: 21px;
     font-weight: 800;
-    font-family: "Montserrat";
 }
 
 .expand h4 a {
     color: #257a14;
-    font-family: "Montserrat";
 }
 
 .expand h5 {
     text-align: justify;
     font-size: 16px;
     font-weight: 500;
-    font-family: "Montserrat";
     line-height: 1.5em;
 }
 
@@ -271,14 +241,12 @@ hr.solidwhite {
     color: black;
     font-size: 16px;
     font-weight: 500;
-    font-family: "Montserrat";
 }
 
 .moh h4 {
     color: black;
     font-size: 1rem;
     font-weight: 800;
-    font-family: "Montserrat";
 }
 
 .moh .btn {
@@ -286,7 +254,6 @@ hr.solidwhite {
     color: white;
     font-size: 14px;
     font-weight: 500;
-    font-family: "Montserrat";
 }
 
 .moh p {
@@ -294,7 +261,6 @@ hr.solidwhite {
     color: black;
     font-size: 18px;
     font-weight: 500;
-    font-family: "Montserrat";
 }
 
 .zoom {
@@ -329,7 +295,6 @@ hr.solidwhite {
 .bnbtn .btn {
     color: white;
     font-size: 14px;
-    font-family: "Montserrat";
     font-weight: 600;
     background-color: #011a2a;
 }
@@ -342,7 +307,6 @@ hr.solidwhite {
 
 .Internationally p {
     color: var( --e-global-color-1defc5e3);
-    font-family: "Montserrat";
     font-size: 16px;
     font-weight: 600;
 }
@@ -351,7 +315,6 @@ hr.solidwhite {
     margin-top: 2em;
     padding: 1.5em 0.5em 0.5em;
     border-radius: 1em;
-    font-family: "Montserrat";
     text-align: center;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
@@ -367,7 +330,6 @@ hr.solidwhite {
 
 .operators p {
     color: var( --e-global-color-1defc5e3);
-    font-family: "Montserrat";
     font-size: 16px;
     font-weight: 600;
     letter-spacing: 0.5px;
@@ -466,7 +428,6 @@ a:hover i {
     font-family: 'Montserrat';
     line-height: 1.5;
     border-radius: 2em;
-    font-family: "Montserrat";
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -484,7 +445,6 @@ a:hover i {
     color: #011a2a;
     font-size: 24px;
     font-weight: 800;
-    font-family: "Montserrat";
 }
 
 .category a {
@@ -520,7 +480,6 @@ a:hover i {
 
 .togglebtn h3 {
     color: white;
-    font-family: "Montserrat";
     font-size: 25px;
     font-weight: 800;
 }
@@ -528,7 +487,6 @@ a:hover i {
 .togglebtn a {
     color: white;
     font-size: 21px;
-    font-family: "Montserrat";
     font-weight: 800;
 }
 
