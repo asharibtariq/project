@@ -31,8 +31,14 @@
                                         <label for="fiscal_year" class="control-label label-paf">FY</label>
                                         {!! $fiscal_year_select !!}
                                     </div>
-
                                 </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="actual_expend" class="control-label label-paf">Actual Expenditure</label>
+                                            <input type="text" class="form-control input-paf "name="actual_expend" id="actual_expend" >
+                                        </div>
+                                </div>
+
                             </div>
                             <div class="row">
                             <div class="form-group">
