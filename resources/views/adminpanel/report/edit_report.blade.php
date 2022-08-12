@@ -205,17 +205,19 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="label-paf" for="comp_date_likely">Completion date/likely date of completion</label>
-                                        <input type="text" name="comp_date_likely" id="comp_date_likely" class="form-control input-paf" placeholder="Completion date"  value="{{ $report->comp_date_likely}}" />
+                                        <input type="text" name="comp_date_likely" id="comp_date_likely" class="form-control input-paf datepicker" placeholder="MM/DD/YYYY" value="{{ $report->comp_date_likely}}" required   />
+                                        {{--<input type="text" name="comp_date_likely" id="comp_date_likely" class="form-control input-paf" placeholder="Completion date"  value="{{ $report->comp_date_likely}}" />--}}
                                         @if ($errors->has('comp_date_likely'))
                                             <span class="text-danger">{{ $errors->first('comp_date_likely') }}</span>
                                         @endif
                                     </div>
                                 </div>
+                            </div>
                                 <div class="row">
                                     <div class="form-group">
                                         <h4>Reports/ Remarks</h4>
                                     </div>
-
+                                </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="label-paf" for="remarks">Remarks/ issues/Bottlenecks (if any)</label>
