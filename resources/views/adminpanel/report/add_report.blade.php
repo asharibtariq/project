@@ -275,7 +275,9 @@
                 data: {"_token": CSRF_TOKEN, "fiscal_year": $(this).val(), "project_id":project_id},
                 type: 'POST',
                 success: function (data) {
-                   alert(data);
+                    var jsonData = $.parseJSON(data);
+                    var status = jsonData.status;
+                    var util_total = jsonData.util_total;
                 }
             });
 
