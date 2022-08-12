@@ -7,7 +7,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Edit Report</h4>
+                        <h4>Edit Project Summary</h4>
                     </div>
                     <div class="card-body">
                         @if($errors->any())
