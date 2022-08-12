@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="csrf-token" content="{{ csrf_token() }}" />{{--Important for ajax request--}}
-    <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}"/>
+    <link rel="icon" type="image/x-icon" href="{{ asset('img/favicon.ico') }}"/>
     <title>Project Monitoring | {{ isset($title) ? $title : '' }} </title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/admin-style.css') }}" rel="stylesheet">

@@ -163,6 +163,8 @@ class AjaxController extends Controller{
                             ->paginate();
         $report = $report->items();
 
+        pre($report,1);
+
         if (!empty($report) && count($report) > 0) {
             $data['status'] = 1;
             $data['util_total'] = isset($report[0]->util_total) && $report[0]->util_total > 0 ? $report[0]->util_total : 0;
