@@ -113,7 +113,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="label-paf" for="release_total_actual">Total actual releases / disbursement</label>
-                                        <input type="text" name="release_total_actual" id="Total" class="form-control input-paf Total" placeholder="Total actual releases"  readonly />
+                                        <input type="text" name="release_total_actual" id="release_total_actual" class="form-control input-paf Total" placeholder="Total actual releases"  readonly />
                                         @if ($errors->has('release_total_actual'))
                                             <span class="text-danger">{{ $errors->first('release_total_actual') }}</span>
                                         @endif
@@ -148,7 +148,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="label-paf" for="util_total">Total Utilization</label>
-                                        <input type="text" name="util_total" id="Total1" class="form-control input-paf" placeholder="Total Utilization" readonly />
+                                        <input type="text" name="util_total" id="util_total" class="form-control input-paf" placeholder="Total Utilization" readonly />
                                         @if ($errors->has('util_total'))
                                             <span class="text-danger">{{ $errors->first('util_total') }}</span>
                                         @endif
@@ -254,25 +254,32 @@
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
         $(document).ready(function(){
             $('.InvQty').keyup(function(){
-
                 var val2 = 0;
                 $('.InvQty').each(function(){
                     val2+=(parseFloat($(this).val()) || 0);
                 });
-                $('#Total').val(val2);
-
+                $('#release_total_actual').val(val2);
             });
 
             $('.InvQty1').keyup(function(){
                 var val2 = 0;
+                var release_total_actual = $('#release_total_actual').val();
                 $('.InvQty1').each(function(){
                     val2+=(parseFloat($(this).val()) || 0);
                 });
-                $('#Total1').val(val2);
+                $('#util_total').val(val2);
+                if (val2 > release_total_actual){
+                    alert("Total Utilization cannot be greater than Total actual releases / disbursement...");
+                    $("#util_actual").val('');
+                    $("#util_foreign").val('');
+                    $("#util_total").val('');
+                    return false;
+                }
             });
 
-            $("#Total1").attr({
-                "max" : $("#Total").val()      // substitute your own
+            $('#release_total_actual').keyup(function(){
+                var release_total_actual = $(this).val();
+                $('#util_total').prop('max', release_total_actual);
             });
 
         //    $('#').prop('max', val);
