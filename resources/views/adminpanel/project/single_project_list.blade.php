@@ -29,10 +29,13 @@
     @endphp
     @if(is_array($result) && count($result) > 0)
         @foreach ($result as $r)
-
+        <?php
+            $fiscal_year_start = $r->fiscal_year - 1;
+            $fiscal_year = $fiscal_year_start." - ".$r->fiscal_year;
+        ?>
             <tr role="row">
                 <td> {{$i}} </td>
-                <td> {{$r->fiscal_year}} </td>
+                <td> {{$fiscal_year}} </td>
                 <td> {{$r->project}} </td>
                 <td> {{$r->alloc_rupee > 0 ? $r->alloc_rupee : '-'}} </td>
                 <td> {{$r->alloc_foreign > 0 ? $r->alloc_foreign : '-'}} </td>

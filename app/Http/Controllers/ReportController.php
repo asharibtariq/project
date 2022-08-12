@@ -8,15 +8,18 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ReportRequest;
 use Illuminate\Support\Facades\Auth;
 
-class ReportController extends Controller
-{
+class ReportController extends Controller{
+
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index(){
         $title = "Report";
         $data['project_select'] = get_project();
         $data['fiscal_year_select'] = get_fiscal_year();
@@ -28,8 +31,7 @@ class ReportController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
+    public function create(){
         $title = "Add Report";
         $data['fiscal_year_select'] = get_fiscal_year();
         $data['project_select'] = get_project();
@@ -42,8 +44,7 @@ class ReportController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ReportRequest $request)
-    {
+    public function store(ReportRequest $request){
         $userId = Auth::id();
         $insertData = $request->all();
             $insertData['created_by'] = $userId;
@@ -86,8 +87,7 @@ class ReportController extends Controller
      * @param  \App\Models\Report  $report
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show($id){
         $report = Report::findOrFail($id);
         $title = "Report Detail";
         $data['report'] = $report;
@@ -101,8 +101,7 @@ class ReportController extends Controller
      * @param  \App\Models\Report  $report
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
+    public function edit($id){
         $report = Report::findOrFail($id);
         $title = "Edit Report";
         $data['report'] = $report;
@@ -117,8 +116,7 @@ class ReportController extends Controller
      * @param  \App\Models\Report  $report
      * @return \Illuminate\Http\Response
      */
-    public function update(ReportRequest $request, $id)
-    {
+    public function update(ReportRequest $request, $id){
         $userId = Auth::id();
         $report = Report::findOrFail($id);
         $updateData = $request->all();
@@ -135,8 +133,7 @@ class ReportController extends Controller
      * @param  \App\Models\Report  $report
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id){
         $report= Report::findOrFail($id);
         $report->delete();
         return redirect('report')->with('success', 'Report Successfully Deleted');

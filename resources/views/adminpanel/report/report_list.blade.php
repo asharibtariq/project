@@ -35,12 +35,15 @@
     @endphp
     @if(is_array($result) && count($result) > 0)
         @foreach ($result as $r)
-
+        <?php
+            $fiscal_year_start = $r->fiscal_year - 1;
+            $fiscal_year = $fiscal_year_start." - ".$r->fiscal_year;
+        ?>
             <tr role="row">
                 <td> {{$i}} </td>
                 <td> {{$r->psdp}} </td>
                 <td> {{$r->psid}} </td>
-                <td> {{$r->fiscal_year}} </td>
+                <td> {{$fiscal_year}} </td>
                 <td> {{$r->project}} </td>
                 <td> {{$r->cost}} </td>
                 <td> {{$r->actual_expend}} </td>

@@ -9,15 +9,18 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ProjectRequest;
 use Illuminate\Support\Facades\Auth;
 
-class ProjectController extends Controller
-{
+class ProjectController extends Controller{
+
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index(){
         $title = "Project";
         return view('adminpanel.project.project')->with('title', $title);
     }
@@ -27,8 +30,7 @@ class ProjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
+    public function create(){
         $title = "Add Project";
         return view('adminpanel.project.add_project')->with('title', $title);
     }
@@ -39,8 +41,7 @@ class ProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProjectRequest $request)
-    {
+    public function store(ProjectRequest $request){
         $userId = Auth::id();
         $insertData = $request->all();
     //    $insertData['slug'] = strtolower(str_replace(' ','_',$insertData['title']));
@@ -76,8 +77,7 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show($id){
         $project = Project::findOrFail($id);
         $title = "Project Detail";
         $data['project'] = $project;
@@ -91,8 +91,7 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
+    public function edit($id){
         $project = Project::findOrFail($id);
         $title = "Edit Project";
         $data['project'] = $project;
@@ -106,8 +105,7 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function update(ProjectRequest $request,$id)
-    {
+    public function update(ProjectRequest $request,$id){
         $userId = Auth::id();
         $project = Project::findOrFail($id);
         $updateData = $request->all();
@@ -124,8 +122,7 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id){
         $project = Project::findOrFail($id);
         $project->delete();
         return redirect('project')->with('success', 'Project Successfully Deleted');
