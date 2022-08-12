@@ -32,12 +32,15 @@
 
     @php
         $i = 1;
+        $cost = 0;
     @endphp
     @if(is_array($result) && count($result) > 0)
         @foreach ($result as $r)
         <?php
             $fiscal_year_start = $r->fiscal_year - 1;
             $fiscal_year = $fiscal_year_start." - ".$r->fiscal_year;
+
+            $cost = $cost + $r->cost;
         ?>
             <tr role="row">
                 <td> {{$i}} </td>
@@ -70,6 +73,26 @@
                 $i++;
             @endphp
         @endforeach
+        <tr>
+            <td colspan="5" class="text-center">Total</td>
+            <td>{{$cost}}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td colspan="4"></td>
+        </tr>
     @else
         <tr>
             <th scope="row" colspan="25">
