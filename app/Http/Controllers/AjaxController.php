@@ -144,18 +144,20 @@ class AjaxController extends Controller{
     }
 
     public function getFiscalYearList(Request $request){
-        $html = "";
+        $result = "";
         $where = array();
         $data = array();
         $project_id = $request->project_id != '' ? $request->project_id : '';
         $fiscal_year = $request->fiscal_year != '' ? $request->fiscal_year : '';
-        if ($request->project_id != '')
+        if ($project_id != '')
             $where['tbl_report.project_id'] = $request->project_id;
+
+        /*
         if ($request->fiscal_year != '')
             $where['tbl_report.fiscal_year'] = $request->fiscal_year;
+        */
 
     //    $report = Report::all()->where($where);
-
         $report = DB::table('tbl_report')
                             ->select('tbl_report.fiscal_year','tbl_report.util_total')
                             ->where($where)
@@ -163,14 +165,18 @@ class AjaxController extends Controller{
                             ->paginate();
         $report = $report->items();
 
-    //    pre($report,1);
-
         if (!empty($report) && count($report) > 0) {
-            $data['status'] = 1;
-            $data['util_total'] = isset($report[0]->util_total) && $report[0]->util_total > 0 ? $report[0]->util_total : 0;
+            $data['status'] = 0;
+            foreach ($report as $rep){
+                if ($rep->fiscal_year == $fiscal_year) {
+                    $data['status'] = 1;
+                }
+            }
+            $data['util_total'] = $report[0]->util_total;
+        //    $data['util_total'] = isset($report[0]->util_total) && $report[0]->util_total > 0 ? $report[0]->util_total : 0;
         } else {
             $data['status'] = 0;
-            $data['util_total'] = isset($report[0]->util_total) && $report[0]->util_total > 0 ? $report[0]->util_total : 0;
+            $data['util_total'] = 0;
         }
         $result = json_encode($data);
         return $result;
