@@ -71,7 +71,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="label-paf" for="cost">Total Cost</label>
-                                        <input type="text"
+                                        <input type="number"
                                                name="cost"
                                                id="cost"
                                                class="form-control input-paf"

@@ -124,7 +124,7 @@ class ReportController extends Controller{
         $updateData['updated_by'] = $userId;
     //    pre($request->all(),1);
         $report->update($updateData);
-        return redirect('reprot')->with('success', 'Report Updated Successfully');
+        return redirect('report')->with('success', 'Report Updated Successfully');
     }
 
     /**

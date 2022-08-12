@@ -49,7 +49,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="label-paf" for="cost">Total Cost</label>
-                                        <input type="text" name="cost" id="cost" class="form-control input-paf" placeholder="Cost" minlength="3" required />
+                                        <input type="number" name="cost" id="cost" class="form-control input-paf" placeholder="Cost" minlength="3" required />
                                         @if ($errors->has('cost'))
                                             <span class="text-danger">{{ $errors->first('cost') }}</span>
                                         @endif
