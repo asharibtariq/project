@@ -201,7 +201,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="label-paf" for="comp_date_likely">Completion date/likely date of completion</label>
-                                        <input type="text" name="comp_date_likely" id="comp_date_likely" class="form-control input-paf datepicker" placeholder="MM/DD/YYYY" readonly required   />
+
                                         @if ($errors->has('comp_date_likely'))
                                             <span class="text-danger">{{ $errors->first('comp_date_likely') }}</span>
                                         @endif
