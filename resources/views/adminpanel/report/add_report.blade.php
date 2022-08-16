@@ -33,13 +33,22 @@
                                         {!!  $fiscal_year_select !!}
                                     </div>
                                 </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="actual_expend" class="control-label label-paf">Actual Expenditure</label>
-                                            <input type="number" id="actual_expend" class="form-control input-paf "name="actual_expend" >
-                                        </div>
-                                </div>
 
+
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="form-group">
+                                    <h4>Actual Expenditure</h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        {{--<label for="actual_expend" class="control-label label-paf">Actual Expenditure</label>--}}
+                                        <input type="number" id="actual_expend" step="any" class="form-control input-paf "placeholder="Actual Expenditure" name="actual_expend" >
+                                    </div>
+                                </div>
                             </div>
                             <div class="row">
                             <div class="form-group">
@@ -182,7 +191,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="label-paf" for="financial_prog">Financial Progress (%)n</label>
+                                        <label class="label-paf" for="financial_prog">Financial Progress (%)</label>
                                         <input type="number" name="financial_prog" id="financial_prog"step="any" class="form-control input-paf" placeholder="Financial Progress (%)"   />
                                         @if ($errors->has('financial_prog'))
                                             <span class="text-danger">{{ $errors->first('financial_prog') }}</span>

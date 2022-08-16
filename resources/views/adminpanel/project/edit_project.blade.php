@@ -73,7 +73,7 @@
                                         <label class="label-paf" for="cost">Total Cost</label>
                                         <input type="number"
                                                name="cost"
-                                               id="cost"
+                                               id="cost"  step="any"
                                                class="form-control input-paf"
                                                value="{{ $project->cost }}"
                                                placeholder="Cost"
