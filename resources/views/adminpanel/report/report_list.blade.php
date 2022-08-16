@@ -51,9 +51,7 @@
         $physical_prog =0;
     @endphp
     @if(is_array($result) && count($result) > 0)
-        <?php
-        pre($result)
-        ?>
+       
         @foreach ($result as $r)
         <?php
 
