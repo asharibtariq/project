@@ -32,6 +32,7 @@
 
     @php
         $i = 1;
+        $arr_index = 0;
         $cost = 0;
         $actual_expend =0;
         $alloc_rupee =0;
@@ -50,28 +51,38 @@
         $physical_prog =0;
     @endphp
     @if(is_array($result) && count($result) > 0)
+        <?php
+        pre($result)
+        ?>
         @foreach ($result as $r)
         <?php
+
+            if ($arr_index > 0){
+            $arr_index_minus_1 = $arr_index - 1;
+            $xp = $xp + $result[$arr_index_minus_1]->util_total;
+            } else {
+            $xp = 0;
+            }
+
             $fiscal_year_start = $r->fiscal_year - 1;
             $fiscal_year = $fiscal_year_start." - ".$r->fiscal_year;
 
             $cost = $cost + $r->cost;
-        $actual_expend = $actual_expend + $r->actual_expend;
-        $alloc_rupee = $alloc_rupee + $r->alloc_rupee;
-        $alloc_foreign = $alloc_foreign + $r->alloc_foreign;
-        $alloc_revised = $alloc_revised + $r->alloc_revised;
-        $release_fund_auth = $release_fund_auth + $r->release_fund_auth;
-        $release_fund_actual = $release_fund_actual + $r->release_fund_actual;
-        $release_foreign = $release_foreign + $r->release_foreign;
-        $release_total_actual = $release_total_actual + $r->release_total_actual;
-        $util_actual = $util_actual + $r->util_actual;
-        $util_foreign = $util_foreign + $r->util_foreign;
-        $util_total = $util_total + $r->util_total;
-        $amt_surrender = $amt_surrender + $r->amt_surrender;
-        $amt_lapsed = $amt_lapsed + $r->amt_lapsed;
-        $financial_prog = $financial_prog + $r->financial_prog;
-        $physical_prog = $physical_prog + $r->physical_prog;
-
+            $actual_expend = $actual_expend + $r->actual_expend;
+            $alloc_rupee = $alloc_rupee + $r->alloc_rupee;
+            $alloc_foreign = $alloc_foreign + $r->alloc_foreign;
+            $alloc_revised = $alloc_revised + $r->alloc_revised;
+            $release_fund_auth = $release_fund_auth + $r->release_fund_auth;
+            $release_fund_actual = $release_fund_actual + $r->release_fund_actual;
+            $release_foreign = $release_foreign + $r->release_foreign;
+            $release_total_actual = $release_total_actual + $r->release_total_actual;
+            $util_actual = $util_actual + $r->util_actual;
+            $util_foreign = $util_foreign + $r->util_foreign;
+            $util_total = $util_total + $r->util_total;
+            $amt_surrender = $amt_surrender + $r->amt_surrender;
+            $amt_lapsed = $amt_lapsed + $r->amt_lapsed;
+            $financial_prog = $financial_prog + $r->financial_prog;
+            $physical_prog = $physical_prog + $r->physical_prog;
         ?>
             <tr role="row">
                 <td> {{$i}} </td>
@@ -80,7 +91,7 @@
                 <td> {{$fiscal_year}} </td>
                 <td> {{$r->project}} </td>
                 <td> {{$r->cost}} </td>
-                <td> {{$r->actual_expend}} </td>
+                <td> {{--$r->actual_expend--}} {{$xp}}</td>
                 <td> {{$r->alloc_rupee}} </td>
                 <td> {{$r->alloc_foreign}} </td>
                 <td> {{$r->alloc_revised}} </td>
@@ -102,6 +113,7 @@
             </tr>
             @php
                 $i++;
+                $arr_index++;
             @endphp
         @endforeach
         <tr>

@@ -131,7 +131,9 @@ class AjaxController extends Controller{
                         'tbl_project.complete_date')
                     ->where($where)
                 //    ->groupBy('tbl_report.id')
-                    ->orderBy('tbl_report.id', 'DESC')
+                //    ->orderBy('tbl_report.id', 'DESC')
+                    ->orderBy('tbl_report.project', 'ASC')
+                    ->orderBy('tbl_report.fiscal_year', 'ASC')
                     ->paginate($per_page);
 
                 $data['result'] = $project->items();
