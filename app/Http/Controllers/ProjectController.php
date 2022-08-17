@@ -68,7 +68,7 @@ class ProjectController extends Controller{
         $report->save();
         */
 
-        return redirect('project')->with('success', 'Project Added Successfully');
+        return redirect('add_report')->with('success', 'Project Added Successfully');
     }
 
     /**

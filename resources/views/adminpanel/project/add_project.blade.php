@@ -14,6 +14,11 @@
                             @foreach($errors->all() as $error)
                                 <div class="alert alert-danger" style="margin: 6px; padding: 10px" role="alert">{{ $error }}</div>
                             @endforeach
+                                @if(Session::has('success'))
+                                    <div class="col-md-12">
+                                        <div class="alert alert-success">{{Session::get('success')}}</div>
+                                    </div>
+                                @endif
                         @endif
 
                         <form name="" method="post" action="{{url('add_project')}}" enctype="multipart/form-data">

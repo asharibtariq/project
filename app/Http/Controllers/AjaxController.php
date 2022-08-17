@@ -183,4 +183,32 @@ class AjaxController extends Controller{
         return $result;
     }
 
+    public function getActualExpenditure(Request $request)
+    {
+        $result = "";
+        $where = array();
+
+        $data = array();
+        $project_id = $request->project_id != '' ? $request->project_id : '';
+        if (!empty($project_id))
+            $where['tbl_report.project_id'] = $project_id;
+        if ($project_id != '') {
+            $project = DB::table('tbl_report')
+                ->select('tbl_report.fiscal_year',
+                    'tbl_report.actual_expend')
+                ->where($where)
+                ->paginate();
+
+//        $data = $project->items();
+            $data['result'] = $project->items();
+            $data['links'] = $project;
+        }
+        else{
+            $data['result'] = array();
+        }
+//        pre($data['result'],1);
+        return view('adminpanel.report.actual_expenditure_list')->with($data);
+
+    }
+
 }

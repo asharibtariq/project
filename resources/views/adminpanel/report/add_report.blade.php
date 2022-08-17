@@ -43,13 +43,18 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group">
+
+                                <div class="col-md-5 table-responsive" id='my_data'></div>
+
+                                {{--<div class="col-md-4">--}}
+                                    {{--<div class="form-group">--}}
+
                                         {{--<label for="actual_expend" class="control-label label-paf">Actual Expenditure</label>--}}
-                                        <input type="number" id="actual_expend" step="any" class="form-control input-paf "placeholder="Actual Expenditure" name="actual_expend" >
-                                    </div>
-                                </div>
+                                        {{--<input type="number" id="actual_expend" step="any" class="form-control input-paf "placeholder="Actual Expenditure" name="actual_expend" >--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
                             </div>
+                            <br>
                             <div class="row">
                             <div class="form-group">
                             <h4>Allocation</h4>
@@ -261,6 +266,9 @@
     </div>
 
     <script>
+
+
+
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
         $(document).ready(function(){
             $('.InvQty').keyup(function(){
@@ -297,6 +305,16 @@
         });
         $(document).on('change', '#project_id', function () {
             var project_id = $(this).val();
+            $.ajax({
+                url: '{{url('ajax_expenditure_list')}}',
+                data: {"_token": CSRF_TOKEN, "project_id": project_id},
+                type: 'POST',
+                success: function (data) {
+
+                    $('#my_data').html(data);
+                }
+            });
+
             if (project_id > 0){
             //    $('#actual_expend').prop('readonly', true);
                 var project = $("#project_id option:selected").text();
@@ -306,6 +324,9 @@
             }
             $('#fiscal_year').val('').change();
         //    $('#actual_expend').val('');
+
+
+
         });
         $(document).on('change', '#fiscal_year', function () {
             var project_id = $("#project_id").val();
@@ -336,6 +357,8 @@
                 });
             }
         });
+
+
 
     </script>
 @endsection
