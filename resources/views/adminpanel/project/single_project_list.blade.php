@@ -3,7 +3,8 @@
     <thead>
     <tr role="row">
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="0"> Sr#</th>
-        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="1"> FY</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="1"> Operation</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> FY</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Project</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Allocation - Rupee Allocation</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Allocation - Foreign Aid</th>
@@ -20,7 +21,6 @@
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Financial Progress (%)</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Physical Progress (%)</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Completion on date/likely date of Completion</th>
-        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Operation</th>
     </thead>
     <tbody>
 
@@ -35,6 +35,12 @@
         ?>
             <tr role="row">
                 <td> {{$i}} </td>
+                <td>
+                    <div class="btn-group">
+                        <a onClick="return confirm('Are you sure you want to update?');" href="{{url('edit_report', $r->id)}}" title="Edit" class="btn btn-info" id="btn-view"><i class="fa fa-edit"></i></a>
+                        <a onClick="return confirm('Are you sure you want to delete?');" href="{{url('delete_report', $r->id)}}" title="Delete" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                    </div>
+                </td>
                 <td> {{$fiscal_year}} </td>
                 <td> {{$r->project}} </td>
                 <td> {{$r->alloc_rupee > 0 ? $r->alloc_rupee : '-'}} </td>
@@ -52,10 +58,6 @@
                 <td> {{$r->financial_prog > 0 ? $r->financial_prog : '-'}} </td>
                 <td> {{$r->physical_prog > 0 ? $r->physical_prog : '-'}} </td>
                 <td> {{$r->comp_date_likely > 0 ? $r->comp_date_likely : '-'}} </td>
-                <td>
-                    <a onClick="return confirm('Are you sure you want to update?');" href="{{url('edit_report', $r->id)}}" class="btn btn-info" id="btn-view"><i class="fa fa-edit"></i> Edit</a>
-                    <a onClick="return confirm('Are you sure you want to delete?');" href="{{url('delete_report', $r->id)}}" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
-                </td>
             </tr>
             @php
                 $i++;

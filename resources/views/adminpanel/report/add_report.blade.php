@@ -298,14 +298,14 @@
         $(document).on('change', '#project_id', function () {
             var project_id = $(this).val();
             if (project_id > 0){
-                $('#actual_expend').prop('readonly', true);
+            //    $('#actual_expend').prop('readonly', true);
                 var project = $("#project_id option:selected").text();
                 $("#project").val(project);
             }else{
-                $('#actual_expend').prop('readonly', false);
+            //    $('#actual_expend').prop('readonly', false);
             }
             $('#fiscal_year').val('').change();
-            $('#actual_expend').val('');
+        //    $('#actual_expend').val('');
         });
         $(document).on('change', '#fiscal_year', function () {
             var project_id = $("#project_id").val();
@@ -320,18 +320,17 @@
                         var util_total = jsonData.util_total;
 
                         if (util_total > 0) {
-                            $('#actual_expend').prop('readonly', true);
+                        //    $('#actual_expend').prop('readonly', true);
                         } else {
-                            $('#actual_expend').prop('readonly', false);
+                        //    $('#actual_expend').prop('readonly', false);
                         }
 
                         if (status == 1) {
                             alert("Fiscal Year Already Added...");
                             $('#fiscal_year').val('').change();
-                            //    $('#actual_expend').val('');
                             return false;
                         } else {
-                            $('#actual_expend').val(util_total);
+                        //    $('#actual_expend').val(util_total);
                         }
                     }
                 });
