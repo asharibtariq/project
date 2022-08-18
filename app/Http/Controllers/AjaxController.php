@@ -197,7 +197,8 @@ class AjaxController extends Controller{
                 ->select('tbl_report.fiscal_year',
                     'tbl_report.actual_expend')
                 ->where($where)
-                ->paginate();
+                ->orderBy('tbl_report.fiscal_year', 'DESC')
+                ->paginate(1);
 
 //        $data = $project->items();
             $data['result'] = $project->items();

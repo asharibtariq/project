@@ -28,6 +28,9 @@
                                                readonly="">Project</label>
                                         <input type="text" class="form-control input-paf "
                                                value="{{ $report->project}}" readonly> <input type="hidden" name="project_id" id="project_id" value="{{ $report->project_id}}"  >
+                                        <input type="hidden" name="project" id="project" value="{{ $report->project}}" >
+                                        <input type="hidden" name="report_id" id="report_id" value="{{ $report->id}}" >
+                                        <input type="hidden" name="fiscal_year  " id="fiscal_year" value="{{ $report->fiscal_year}}" >
                                     </div>
 
                                 </div>
@@ -39,7 +42,7 @@
                                         $fiscal_year_start = $report->fiscal_year - 1;
                                         $fiscal_year = $fiscal_year_start . " - " . $report->fiscal_year;
                                         ?>
-                                        <input type="text" class="form-control input-paf " id="fiscal_year "
+                                        <input type="text" class="form-control input-paf" id="fiscal_year "
                                                value="{{ $fiscal_year}}" readonly>
                                     </div>
                                 </div>
@@ -181,7 +184,7 @@
                                         <input type="number" name="util_foreign" id="util_foreign"
                                                class="form-control input-paf InvQty1" step="any"
                                                placeholder="Foreign Aid utilization"
-                                               value="{{ $report->util_foreign}}"/>
+                                               value="{{$report->util_foreign}}"/>
                                         @if ($errors->has('util_foreign'))
                                             <span class="text-danger">{{ $errors->first('util_foreign') }}</span>
                                         @endif

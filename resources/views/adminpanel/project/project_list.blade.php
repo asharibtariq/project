@@ -34,7 +34,7 @@
                     @endif
                 </td>
                 <td>
-                    <a href="{{url('project', $r->id)}}" target="_blank" class="btn btn-success" id="btn-view"><i class="fa fa-list"></i> Details</a>
+                    <a href="{{url('project', $r->id)}}" class="btn btn-success" id="btn-view"><i class="fa fa-list"></i> Details</a>
                     <a onClick="return confirm('Are you sure you want to update?');" href="{{url('edit_project', $r->id)}}" class="btn btn-info" id="btn-view"><i class="fa fa-edit"></i> Edit</a>
                     <a onClick="return confirm('Are you sure you want to delete?');" href="{{url('delete_project', $r->id)}}" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
                 </td>

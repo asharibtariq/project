@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Log;
 use App\Models\Report;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -47,9 +48,47 @@ class ReportController extends Controller{
     public function store(ReportRequest $request){
         $userId = Auth::id();
         $insertData = $request->all();
-            $insertData['created_by'] = $userId;
-            $insertData['updated_by'] = $userId;
-            Report::create($insertData);
+        $insertData['created_by'] = $userId;
+        $insertData['updated_by'] = $userId;
+        $insertData['status'] = 'Y';
+        $report = new Report();
+        $report->fiscal_year = $insertData['fiscal_year'];
+        $report->project_id = $insertData['project_id'];
+        $report->project = $insertData['project'];
+        $report->alloc_rupee = $insertData['alloc_rupee'];
+        $report->alloc_foreign = $insertData['alloc_foreign'];
+        $report->alloc_revised = $insertData['alloc_revised'];
+        $report->release_fund_auth = $insertData['release_fund_auth'];
+        $report->release_fund_actual = $insertData['release_fund_actual'];
+        $report->release_foreign = $insertData['release_foreign'];
+        $report->release_total_actual = $insertData['release_total_actual'];
+        $report->util_actual = $insertData['util_actual'];
+        $report->util_foreign = $insertData['util_foreign'];
+        $report->util_total = $insertData['util_total'];
+        $report->amt_surrender = $insertData['amt_surrender'];
+        $report->amt_lapsed = $insertData['amt_lapsed'];
+        $report->financial_prog = $insertData['financial_prog'];
+        $report->physical_prog = $insertData['physical_prog'];
+        $report->comp_date_likely = $insertData['comp_date_likely'];
+        $report->remarks = $insertData['remarks'];
+        $report->note = $insertData['note'];
+        $report->status = 'Y';
+        $report->created_by = $userId;
+        $report->updated_by = $userId;
+        $report->save();
+        $report_id = $report->id;
+
+
+
+        $log = new Log();
+        $log->report_id = $report_id;
+        $log->project_id = $insertData['project_id'];
+        $log->project = $insertData['project'];
+        $log->data = json_encode($insertData);
+        $log->user_id = $userId;
+        $log->action = 'add';
+        $log->save();
+        $id = $log->id;
 
 
         return redirect('report')->with('success', 'Report Added Successfully');
@@ -94,10 +133,21 @@ class ReportController extends Controller{
         $userId = Auth::id();
         $report = Report::findOrFail($id);
         $updateData = $request->all();
+
+        $log = new Log();
+        $log->report_id = $updateData['report_id'];
+        $log->project_id = $updateData['project_id'];
+        $log->project = $updateData['project'];
+        $log->data = json_encode($updateData);
+        $log->user_id = $userId;
+        $log->action = 'edit';
+        $log->save();
+
     //    $updateData['slug'] = strtolower(str_replace(' ','_',$updateData['title']));
         $updateData['updated_by'] = $userId;
     //    pre($request->all(),1);
         $report->update($updateData);
+
         return redirect('report')->with('success', 'Report Updated Successfully');
     }
 
@@ -108,7 +158,19 @@ class ReportController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function destroy($id){
+        $userId = Auth::id();
+
         $report= Report::findOrFail($id);
+
+        $log = new Log();
+        $log->report_id = $report['id'];
+        $log->project_id = $report['project_id'];
+        $log->project = $report['project'];
+        $log->data = json_encode($report);
+        $log->user_id = $userId;
+        $log->action = 'delete';
+        $log->save();
+
         $report->delete();
         return redirect('report')->with('success', 'Report Successfully Deleted');
     }
