@@ -54,7 +54,6 @@
 
         @foreach ($result as $r)
         <?php
-
             if ($arr_index > 0){
             $arr_index_minus_1 = $arr_index - 1;
             $xp = $xp + $result[$arr_index_minus_1]->util_total;
@@ -66,7 +65,7 @@
             $fiscal_year = $fiscal_year_start." - ".$r->fiscal_year;
 
             $cost = $cost + $r->cost;
-            $actual_expend = $actual_expend + $r->actual_expend;
+            $actual_expend = $actual_expend + $xp;
             $alloc_rupee = $alloc_rupee + $r->alloc_rupee;
             $alloc_foreign = $alloc_foreign + $r->alloc_foreign;
             $alloc_revised = $alloc_revised + $r->alloc_revised;
