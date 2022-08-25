@@ -133,7 +133,8 @@ class AjaxController extends Controller{
                 //    ->groupBy('tbl_report.id')
                 //    ->orderBy('tbl_report.id', 'DESC')
                     ->orderBy('tbl_report.project', 'ASC')
-                    ->orderBy('tbl_report.fiscal_year', 'ASC')
+                //    ->orderBy('tbl_report.fiscal_year', 'ASC')
+                    ->orderBy('tbl_report.date', 'ASC')
                     ->paginate($per_page);
 
                 $data['result'] = $project->items();
@@ -145,46 +146,63 @@ class AjaxController extends Controller{
         }
     }
 
-    public function getFiscalYearList(Request $request){
+    public function getDateRecord(Request $request){
         $result = "";
         $where = array();
         $data = array();
         $project_id = $request->project_id != '' ? $request->project_id : '';
-        $fiscal_year = $request->fiscal_year != '' ? $request->fiscal_year : '';
         if ($project_id != '')
             $where['tbl_report.project_id'] = $request->project_id;
 
-        /*
-        if ($request->fiscal_year != '')
-            $where['tbl_report.fiscal_year'] = $request->fiscal_year;
-        */
-
-    //    $report = Report::all()->where($where);
         $report = DB::table('tbl_report')
-                            ->select('tbl_report.fiscal_year','tbl_report.util_total')
+                            ->select('tbl_report.alloc_rupee', 'tbl_report.alloc_foreign')
                             ->where($where)
-                            ->orderBy('tbl_report.id', 'DESC')
-                            ->paginate();
+                            ->orderBy('tbl_report.date', 'DESC')
+                            ->paginate(1);
         $report = $report->items();
 
         if (!empty($report) && count($report) > 0) {
-            $data['status'] = 0;
-            foreach ($report as $rep){
-                if ($rep->fiscal_year == $fiscal_year) {
-                    $data['status'] = 1;
-                }
-            }
-            $data['util_total'] = $report[0]->util_total > 0 ? $report[0]->util_total : 0;
+            $data['status'] = 1;
+            $data['alloc_rupee'] = $report[0]->alloc_rupee;
+            $data['alloc_foreign'] = $report[0]->alloc_foreign;
         } else {
             $data['status'] = 0;
-            $data['util_total'] = 0;
+            $data['alloc_rupee'] = 0;
+            $data['alloc_foreign'] = 0;
         }
         $result = json_encode($data);
         return $result;
     }
 
-    public function getActualExpenditure(Request $request)
-    {
+    public function checkDateRecord(Request $request){
+        $result = "";
+        $where = array();
+        $data = array();
+        $project_id = $request->project_id != '' ? $request->project_id : '';
+        $date = $request->date != '' ? $request->date : '';
+        if ($project_id != '')
+            $where['tbl_report.project_id'] = $request->project_id;
+        if ($date != '')
+            $where['tbl_report.date'] = $request->date;
+
+    //    $report = Report::all()->where($where);
+        $report = DB::table('tbl_report')
+                            ->select('tbl_report.date')
+                            ->where($where)
+                            ->orderBy('tbl_report.id', 'DESC')
+                            ->paginate(1);
+        $report = $report->items();
+
+        if (!empty($report) && count($report) > 0) {
+            $data = 1;
+        } else {
+            $data = 0;
+        }
+        $result = json_encode($data);
+        return $result;
+    }
+
+    public function getActualExpenditure(Request $request){
         $result = "";
         $where = array();
         $data = array();
@@ -194,9 +212,11 @@ class AjaxController extends Controller{
         if ($project_id != '') {
             $project = DB::table('tbl_report')
                 ->select('tbl_report.fiscal_year',
+                    'tbl_report.date',
                     'tbl_report.actual_expend')
                 ->where($where)
-                ->orderBy('tbl_report.fiscal_year', 'DESC')
+            //    ->orderBy('tbl_report.fiscal_year', 'DESC')
+                ->orderBy('tbl_report.date', 'DESC')
                 ->paginate(1);
 
 //        $data = $project->items();
@@ -208,38 +228,6 @@ class AjaxController extends Controller{
         }
 //        pre($data['result'],1);
         return view('adminpanel.report.actual_expenditure_list')->with($data);
-    }
-
-    public function getAllocationFields(Request $request){
-        $result = "";
-        $where = array();
-        $data = array();
-
-        $date = $request->date != '' ? $request->date : '';
-        $project_id = $request->project_id != '' ? $request->project_id : '';
-        if (!empty($date))
-            $where['tbl_report.date'] = $date;
-        if (!empty($project_id))
-            $where['tbl_report.project_id'] = $project_id;
-        $report = DB::table('tbl_report')
-            ->select('tbl_report.alloc_rupee','tbl_report.alloc_foreign')
-            ->where($where)
-            ->orderBy('tbl_report.fiscal_year', 'DESC')
-            ->paginate(1);
-        $report = $report->items();
-
-        if (!empty($report) && count($report) > 0) {
-            $data['status'] = 0;
-            $data['alloc_rupee'] = $report[0]->alloc_rupee;
-            $data['alloc_foreign'] = $report[0]->alloc_foreign;
-        } else {
-            $data['status'] = 0;
-            $data['alloc_rupee'] = 0;
-            $data['alloc_foreign'] = 0;
-        }
-        $result = json_encode($data);
-        return $result;
-
     }
 
 }

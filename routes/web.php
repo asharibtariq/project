@@ -19,8 +19,8 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 Route::post('ajax_content', [\App\Http\Controllers\AjaxController::class, 'content']);
-Route::post('ajax_list', [\App\Http\Controllers\AjaxController::class, 'getFiscalYearList']);
-Route::post('getAllocationFields', [\App\Http\Controllers\AjaxController::class, 'getAllocationFields']);
+Route::post('ajax_date_rec', [\App\Http\Controllers\AjaxController::class, 'getDateRecord']);
+Route::post('ajax_check_date_rec', [\App\Http\Controllers\AjaxController::class, 'checkDateRecord']);
 Route::post('ajax_expenditure_list', [\App\Http\Controllers\AjaxController::class, 'getActualExpenditure']);
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

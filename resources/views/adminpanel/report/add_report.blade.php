@@ -74,7 +74,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="label-paf" for="alloc_rupee">Allocation (Rupee)</label>
-                                        <input type="number" name="alloc_rupee" id="alloc_rupee"  step="any" class="form-control input-paf total-alloc-fields"  placeholder="Allocation (Rupee)"  required />
+                                        <input type="number" name="alloc_rupee" id="alloc_rupee" step="any" class="form-control input-paf total-alloc-fields" placeholder="Allocation (Rupee)" required />
                                         @if ($errors->has('alloc_rupee'))
                                             <span class="text-danger">{{ $errors->first('alloc_rupee') }}</span>
                                         @endif
@@ -335,38 +335,29 @@
                 }
             });
             $('.financial-progress-formula').keyup(function(){
-                var financial_progress_precent  = 0;
-                financial_progress_precent = (util_total/alloc_total) * 100;
-            //    console.log(financial_progress_precent);
-                $('#financial_prog').val(financial_progress_precent);
+                var financial_progress_precent = (util_total/alloc_total) * 100;
+                $('#financial_prog').val(financial_progress_precent.toFixed(2));
             });
             $('#release_total_actual').keyup(function(){
                 var release_total_actual = $(this).val();
                 $('#util_total').prop('max', release_total_actual);
             });
-        //    $('#').prop('max', val);
         });
 
         $(document).on('change', '#project_id', function () {
             var project_id = $(this).val();
-            $.ajax({
-                url: '{{url('ajax_expenditure_list')}}',
-                data: {"_token": CSRF_TOKEN, "project_id": project_id},
-                type: 'POST',
-                success: function (data) {
-
-                    $('#my_data').html(data);
-                }
-            });
             if (project_id > 0){
-            //    $('#actual_expend').prop('readonly', true);
                 var project = $("#project_id option:selected").text();
                 $("#project").val(project);
-            }else{
-            //    $('#actual_expend').prop('readonly', false);
+                ajax_expenditure_list(project_id);
+                ajax_date_rec(project_id);
             }
-            $('#fiscal_year').val('').change();
-        //    $('#actual_expend').val('');
+            $('#date').val('');
+            $('#alloc_rupee').val('');
+            $('#alloc_foreign').val('');
+            $('#alloc_rupee').prop('readonly', false);
+            $('#alloc_foreign').prop('readonly', false);
+            $('#alloc_total').val('');
         });
 
         $(document).on('change', '#fiscal_year', function () {
@@ -374,63 +365,101 @@
             var fiscal_year = $(this).val();
             var fiscal_year_minus_1 = parseInt(fiscal_year) - 1;
             var startDate = "07/01/"+fiscal_year_minus_1;
-            var endDate = "06/01/"+fiscal_year_minus_1;
-
-            if (project_id > 0) {
-                $.ajax({
-                    url: '{{url('ajax_list')}}',
-                    data: {"_token": CSRF_TOKEN, "fiscal_year": fiscal_year, "project_id": project_id},
-                    type: 'POST',
-                    success: function (data) {
-                        var jsonData = $.parseJSON(data);
-                        var status = jsonData.status;
-                        var util_total = jsonData.util_total;
-
-                        if (util_total > 0) {
-                        //    $('#actual_expend').prop('readonly', true);
-                        } else {
-                        //    $('#actual_expend').prop('readonly', false);
-                        }
-
-                        if (status == 1) {
-                            alert("Fiscal Year Already Added...");
-                            $('#fiscal_year').val('').change();
-                            return false;
-                        } else {
-                        //    $('#actual_expend').val(util_total);
-                        }
-                    }
-                });
-            }
+            var endDate = "06/01/"+fiscal_year;
         });
 
         $(document).on('change', '#date', function () {
-            var date = $(this).val();
             var project_id = $("#project_id").val();
+            var date = $(this).val();
+            var fiscal_year = $("#fiscal_year").val();
+            var fiscal_year_minus_1 = parseInt(fiscal_year) - 1;
+            var startDate = "07/01/"+fiscal_year_minus_1;
+            var endDate = "06/01/"+fiscal_year;
 
-            if (date != '' && project_id > 0) {
-                $.ajax({
-                    url: '{{url('getAllocationFields')}}',
-                    data: {"_token": CSRF_TOKEN, "date": date, "project_id": project_id},
-                    type: 'POST',
-                    success: function (data) {
-                        var jsonData = $.parseJSON(data);
-                        var status = jsonData.status;
-                        if (status > 0){
-                            $("#alloc_rupee").val(jsonData.alloc_rupee);
-                            $("#alloc_foreign").val(jsonData.alloc_foreign);
-                            $("#alloc_rupee").prop('readonly', true);
-                            $("#alloc_foreign").prop('readonly', true);
-                        }else{
-                            $("#alloc_rupee").val('');
-                            $("#alloc_foreign").val('');
-                            $("#alloc_rupee").prop('readonly', false);
-                            $("#alloc_foreign").prop('readonly', false);
-                        }
-                    }
-                });
+        //    var date_year = date.substr(date.length - 4);
+
+        //    var startDate = new Date($('#startDate').val());
+        //    var endDate = new Date($('#endDate').val());
+            var date = new Date(date);
+            var startDate = new Date(startDate);
+            var endDate = new Date(endDate);
+
+            if (date < startDate){
+                alert("Date is out of Fiscal Year Range...");
+                $(this).val('');
+                return false;
+            }
+            if (date > endDate){
+                alert("Date is out of Fiscal Year Range...");
+                $(this).val('');
+                return false;
+            }
+
+            if (project_id > 0 && date != '') {
+                ajax_check_date_rec(project_id, date)
+            }else{
+                alert("Please Select Project");
+                return false;
             }
         });
+        
+        function ajax_expenditure_list(project_id) {
+            $.ajax({
+                url: '{{url('ajax_expenditure_list')}}',
+                data: {"_token": CSRF_TOKEN, "project_id": project_id},
+                type: 'POST',
+                success: function (data) {
+                    $('#my_data').html(data);
+                }
+            });
+        }
+        
+        function ajax_date_rec(project_id) {
+            $.ajax({
+                url: '{{url('ajax_date_rec')}}',
+                data: {"_token": CSRF_TOKEN, "project_id": project_id},
+                type: 'POST',
+                success: function (data) {
+                    var jsonData = $.parseJSON(data);
+                    var status = jsonData.status;
+                    if (status > 0){
+                        var alloc_rupee = jsonData.alloc_rupee;
+                        var alloc_foreign = jsonData.alloc_foreign;
+                        var alloc_total = parseFloat(alloc_rupee) + parseFloat(alloc_foreign);
+                        $("#alloc_rupee").val(alloc_rupee);
+                        $("#alloc_foreign").val(alloc_foreign);
+                        $("#alloc_total").val(alloc_total);
+
+                        $("#alloc_rupee").prop('readonly', true);
+                        $("#alloc_foreign").prop('readonly', true);
+                    } else {
+                        $("#alloc_rupee").val('');
+                        $("#alloc_foreign").val('');
+                        $("#alloc_total").val('');
+                        $("#alloc_rupee").prop('readonly', false);
+                        $("#alloc_foreign").prop('readonly', false);
+                    }
+                }
+            });
+        }
+
+        function ajax_check_date_rec(project_id, date) {
+            $.ajax({
+                url: '{{url('ajax_check_date_rec')}}',
+                data: {"_token": CSRF_TOKEN, "date": date, "project_id": project_id},
+                type: 'POST',
+                success: function (data) {
+                    var jsonData = $.parseJSON(data);
+                    var status = jsonData.status;
+                    if (status > 0){
+                        alert("Date already added...");
+                        return false;
+                    } else {
+
+                    }
+                }
+            });
+        }
 
     </script>
 

@@ -3,7 +3,8 @@
     <thead>
     <tr role="row">
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="0"> Sr#</th>
-        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> FY</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="1"> FY</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="1"> Date</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Actual Expenditure</th>
     </thead>
     <tbody>
@@ -20,6 +21,7 @@
             <tr role="row">
                 <td> {{$i}}</td>
                 <td> {{$fiscal_year}} </td>
+                <td> {{$r->date}}</td>
                 <td> {{$r->actual_expend}}</td>
             </tr>
             <?php
@@ -28,7 +30,7 @@
         @endforeach
     @else
         <tr>
-            <th scope="row" colspan="3">
+            <th scope="row" colspan="4">
                 <div style="color:black;text-align: center; " class="alert " role="alert">
                     <strong>NO DATA FOUND</strong>
                 </div>
