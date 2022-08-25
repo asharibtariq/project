@@ -24,7 +24,9 @@ class ProjectRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=> 'required'
+            'name'=> 'required',
+            'cost'=> 'required',
+            'complete_date'=> 'required'
         ];
     }
 }

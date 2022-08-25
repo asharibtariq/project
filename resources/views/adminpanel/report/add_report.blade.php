@@ -33,7 +33,16 @@
                                         {!!  $fiscal_year_select !!}
                                     </div>
                                 </div>
-
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="label-paf" for="date">Date</label>
+                                        <input type="text" name="date" id="date"
+                                               class="form-control input-paf datepicker" placeholder="MM/DD/YYYY" readonly/>
+                                        @if ($errors->has('date'))
+                                            <span class="text-danger">{{ $errors->first('date') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
 
                             </div>
                             <hr>
@@ -65,7 +74,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="label-paf" for="alloc_rupee">Allocation (Rupee)</label>
-                                        <input type="number" name="alloc_rupee" id="alloc_rupee"  step="any" class="form-control input-paf"  placeholder="Allocation (Rupee)"  required />
+                                        <input type="number" name="alloc_rupee" id="alloc_rupee"  step="any" class="form-control input-paf total-alloc-fields"  placeholder="Allocation (Rupee)"  required />
                                         @if ($errors->has('alloc_rupee'))
                                             <span class="text-danger">{{ $errors->first('alloc_rupee') }}</span>
                                         @endif
@@ -74,9 +83,18 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="label-paf" for="alloc_foreign">Foreign Aid</label>
-                                        <input type="number" step="any" name="alloc_foreign" id="alloc_foreign" class="form-control input-paf" placeholder="Foreign Aid" />
+                                        <input type="number" step="any" name="alloc_foreign" id="alloc_foreign" class="form-control input-paf total-alloc-fields" placeholder="Foreign Aid" />
                                         @if ($errors->has('alloc_foreign'))
                                             <span class="text-danger">{{ $errors->first('alloc_foreign') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="label-paf" for="alloc_total">Total Allocation</label>
+                                        <input type="number" step="any" name="alloc_total" id="alloc_total" class="form-control input-paf financial-progress-formula" placeholder="Total Allocation" readonly required />
+                                        @if ($errors->has('alloc_total'))
+                                            <span class="text-danger">{{ $errors->first('alloc_total') }}</span>
                                         @endif
                                     </div>
                                 </div>
@@ -162,7 +180,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="label-paf" for="util_total">Total Utilization</label>
-                                        <input type="number" name="util_total" id="util_total"step="any" class="form-control input-paf" placeholder="Total Utilization" readonly />
+                                        <input type="number" name="util_total" id="util_total"step="any" class="form-control input-paf financial-progress-formula" placeholder="Total Utilization" readonly />
                                         @if ($errors->has('util_total'))
                                             <span class="text-danger">{{ $errors->first('util_total') }}</span>
                                         @endif
@@ -197,7 +215,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="label-paf" for="financial_prog">Financial Progress (%)</label>
-                                        <input type="number" name="financial_prog" id="financial_prog"step="any" class="form-control input-paf" placeholder="Financial Progress (%)"   />
+                                        <input type="number" name="financial_prog" id="financial_prog" class="form-control input-paf" placeholder="Financial Progress (%)" readonly/>
                                         @if ($errors->has('financial_prog'))
                                             <span class="text-danger">{{ $errors->first('financial_prog') }}</span>
                                         @endif
@@ -212,6 +230,15 @@
                                         @endif
                                     </div>
                                 </div>
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label class="label-paf" for="physical_prog_desc">Physical Progress Description</label>
+                                        <textarea name="physical_prog_desc" id="physical_prog_desc" class="form-control input-paf" placeholder="Description" ></textarea>
+                                        @if ($errors->has('physical_prog_desc'))
+                                            <span class="text-danger">{{ $errors->first('physical_prog_desc') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="label-paf" for="comp_date_likely">Completion date/likely date of completion</label>
@@ -221,7 +248,6 @@
                                             <span class="text-danger">{{ $errors->first('comp_date_likely') }}</span>
                                         @endif
                                     </div>
-
                                 </div>
                             </div>
                                 <div class="row">
@@ -236,7 +262,6 @@
                                        @if ($errors->has('remarks'))
                                             <span class="text-danger">{{ $errors->first('remarks') }}</span>
                                         @endif
-
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -271,6 +296,9 @@
 
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
         $(document).ready(function(){
+            var alloc_total = $("#alloc_total").val();
+            var util_total = $("#util_total").val();
+
             $('.InvQty').keyup(function(){
                 var val2 = 0;
                 $('.InvQty').each(function(){
@@ -278,7 +306,15 @@
                 });
                 $('#release_total_actual').val(val2);
             });
-
+            $('.total-alloc-fields').keyup(function(){
+                var total = 0;
+                $('.total-alloc-fields').each(function(){
+                    total+=(parseFloat($(this).val()) || 0);
+                });
+                $('#alloc_total').val(total);
+                // Global Alloc Value
+                alloc_total = total;
+            });
             $('.InvQty1').keyup(function(){
                 var val2 = 0;
                 var release_total_actual = $('#release_total_actual').val();
@@ -286,6 +322,10 @@
                     val2+=(parseFloat($(this).val()) || 0);
                 });
                 $('#util_total').val(val2);
+
+                // Global Util Value
+                util_total = val2;
+
                 if (val2 > release_total_actual){
                     alert("Total Utilization cannot be greater than Total actual releases / disbursement...");
                     $("#util_actual").val('');
@@ -294,15 +334,19 @@
                     return false;
                 }
             });
-
+            $('.financial-progress-formula').keyup(function(){
+                var financial_progress_precent  = 0;
+                financial_progress_precent = (util_total/alloc_total) * 100;
+            //    console.log(financial_progress_precent);
+                $('#financial_prog').val(financial_progress_precent);
+            });
             $('#release_total_actual').keyup(function(){
                 var release_total_actual = $(this).val();
                 $('#util_total').prop('max', release_total_actual);
             });
-
         //    $('#').prop('max', val);
-
         });
+
         $(document).on('change', '#project_id', function () {
             var project_id = $(this).val();
             $.ajax({
@@ -314,7 +358,6 @@
                     $('#my_data').html(data);
                 }
             });
-
             if (project_id > 0){
             //    $('#actual_expend').prop('readonly', true);
                 var project = $("#project_id option:selected").text();
@@ -324,16 +367,19 @@
             }
             $('#fiscal_year').val('').change();
         //    $('#actual_expend').val('');
-
-
-
         });
+
         $(document).on('change', '#fiscal_year', function () {
             var project_id = $("#project_id").val();
+            var fiscal_year = $(this).val();
+            var fiscal_year_minus_1 = parseInt(fiscal_year) - 1;
+            var startDate = "07/01/"+fiscal_year_minus_1;
+            var endDate = "06/01/"+fiscal_year_minus_1;
+
             if (project_id > 0) {
                 $.ajax({
                     url: '{{url('ajax_list')}}',
-                    data: {"_token": CSRF_TOKEN, "fiscal_year": $(this).val(), "project_id": project_id},
+                    data: {"_token": CSRF_TOKEN, "fiscal_year": fiscal_year, "project_id": project_id},
                     type: 'POST',
                     success: function (data) {
                         var jsonData = $.parseJSON(data);
@@ -358,7 +404,34 @@
             }
         });
 
+        $(document).on('change', '#date', function () {
+            var date = $(this).val();
+            var project_id = $("#project_id").val();
 
+            if (date != '' && project_id > 0) {
+                $.ajax({
+                    url: '{{url('getAllocationFields')}}',
+                    data: {"_token": CSRF_TOKEN, "date": date, "project_id": project_id},
+                    type: 'POST',
+                    success: function (data) {
+                        var jsonData = $.parseJSON(data);
+                        var status = jsonData.status;
+                        if (status > 0){
+                            $("#alloc_rupee").val(jsonData.alloc_rupee);
+                            $("#alloc_foreign").val(jsonData.alloc_foreign);
+                            $("#alloc_rupee").prop('readonly', true);
+                            $("#alloc_foreign").prop('readonly', true);
+                        }else{
+                            $("#alloc_rupee").val('');
+                            $("#alloc_foreign").val('');
+                            $("#alloc_rupee").prop('readonly', false);
+                            $("#alloc_foreign").prop('readonly', false);
+                        }
+                    }
+                });
+            }
+        });
 
     </script>
+
 @endsection

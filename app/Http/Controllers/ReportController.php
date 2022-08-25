@@ -55,9 +55,11 @@ class ReportController extends Controller{
         $report->fiscal_year = $insertData['fiscal_year'];
         $report->project_id = $insertData['project_id'];
         $report->project = $insertData['project'];
+        $report->date = $insertData['date'];
         $report->alloc_rupee = $insertData['alloc_rupee'];
         $report->alloc_foreign = $insertData['alloc_foreign'];
         $report->alloc_revised = $insertData['alloc_revised'];
+        $report->alloc_total = $insertData['alloc_total'];
         $report->release_fund_auth = $insertData['release_fund_auth'];
         $report->release_fund_actual = $insertData['release_fund_actual'];
         $report->release_foreign = $insertData['release_foreign'];
@@ -69,6 +71,7 @@ class ReportController extends Controller{
         $report->amt_lapsed = $insertData['amt_lapsed'];
         $report->financial_prog = $insertData['financial_prog'];
         $report->physical_prog = $insertData['physical_prog'];
+        $report->physical_prog_desc = $insertData['physical_prog_desc'];
         $report->comp_date_likely = $insertData['comp_date_likely'];
         $report->remarks = $insertData['remarks'];
         $report->note = $insertData['note'];

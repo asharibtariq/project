@@ -32,7 +32,6 @@
                                         <input type="hidden" name="report_id" id="report_id" value="{{ $report->id}}" >
                                         <input type="hidden" name="fiscal_year  " id="fiscal_year" value="{{ $report->fiscal_year}}" >
                                     </div>
-
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
@@ -46,22 +45,24 @@
                                                value="{{ $fiscal_year}}" readonly>
                                     </div>
                                 </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="label-paf" for="date">Date</label>
+                                        <input type="text"
+                                               name="date"
+                                               id="date"
+                                               class="form-control input-paf datepicker"
+                                               placeholder="MM/DD/YYYY"
+                                               value="{{ $report->date}}"
+                                               readonly/>
+                                        @if ($errors->has('date'))
+                                            <span class="text-danger">{{ $errors->first('date') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
 
                             </div>
                             <hr>
-                            <div class="row">
-                                <div class="form-group">
-                                    <h4>Actual Expenditure</h4>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        {{--<label for="actual_expend" class="control-label label-paf">Actual Expenditure</label>--}}
-                                        <input type="number" id="actual_expend" step="any"  value="{{ $report->actual_expend}}" class="form-control input-paf"placeholder="Actual Expenditure" name="actual_expend" >
-                                    </div>
-                                </div>
-                            </div>
                             <div class="row">
                                 <div class="form-group">
                                     <h4>Allocation</h4>
@@ -88,6 +89,21 @@
                                                value="{{ $report->alloc_foreign}}"/>
                                         @if ($errors->has('alloc_foreign'))
                                             <span class="text-danger">{{ $errors->first('alloc_foreign') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="label-paf" for="alloc_total">Total Allocation</label>
+                                        <input type="number"
+                                               name="alloc_total"
+                                               id="alloc_total"
+                                               class="form-control input-paf"
+                                               placeholder="Total Allocation"
+                                               value="{{ $report->alloc_total}}"
+                                               readonly/>
+                                        @if ($errors->has('alloc_total'))
+                                            <span class="text-danger">{{ $errors->first('alloc_total') }}</span>
                                         @endif
                                     </div>
                                 </div>
@@ -234,9 +250,13 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="label-paf" for="financial_prog">Financial Progress (%)</label>
-                                        <input type="number" name="financial_prog" id="financial_prog"
-                                               class="form-control input-paf" step="any" placeholder="Financial Progress (%)"
-                                               value="{{ $report->financial_prog}}"/>
+                                        <input type="number"
+                                               name="financial_prog"
+                                               id="financial_prog"
+                                               class="form-control input-paf"
+                                               placeholder="Financial Progress (%)"
+                                               value="{{ $report->financial_prog}}"
+                                               readonly/>
                                         @if ($errors->has('financial_prog'))
                                             <span class="text-danger">{{ $errors->first('financial_prog') }}</span>
                                         @endif
@@ -253,13 +273,28 @@
                                         @endif
                                     </div>
                                 </div>
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label class="label-paf" for="physical_prog_desc">Physical Progress Description</label>
+                                        <textarea name="physical_prog_desc"
+                                                  id="physical_prog_desc"
+                                                  class="form-control input-paf"
+                                                  placeholder="Description">{{ $report->physical_prog_desc}}</textarea>
+                                        @if ($errors->has('physical_prog_desc'))
+                                            <span class="text-danger">{{ $errors->first('physical_prog_desc') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="label-paf" for="comp_date_likely">Completion date/likely date of
-                                            completion</label>
-                                        <input type="text" name="comp_date_likely" id="comp_date_likely"
-                                               class="form-control input-paf datepicker" placeholder="MM/DD/YYYY"
-                                               value="{{ $report->comp_date_likely}}" required/>
+                                        <label class="label-paf" for="comp_date_likely">Completion date/likely date of Completion</label>
+                                        <input type="text"
+                                               name="comp_date_likely"
+                                               id="comp_date_likely"
+                                               class="form-control input-paf datepicker"
+                                               placeholder="MM/DD/YYYY"
+                                               value="{{ $report->comp_date_likely}}"
+                                               readonly/>
                                         {{--<input type="text" name="comp_date_likely" id="comp_date_likely" class="form-control input-paf" placeholder="Completion date"  value="{{ $report->comp_date_likely}}" />--}}
                                         @if ($errors->has('comp_date_likely'))
                                             <span class="text-danger">{{ $errors->first('comp_date_likely') }}</span>
@@ -275,21 +310,22 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="label-paf" for="remarks">Remarks/ issues/Bottlenecks (if
-                                            any)</label>
-                                        <textarea name="remarks" id="remarks" class="form-control input-paf"
+                                        <label class="label-paf" for="remarks">Remarks/ issues/Bottlenecks (if any)</label>
+                                        <textarea name="remarks"
+                                                  id="remarks"
+                                                  class="form-control input-paf"
                                                   placeholder="Remarks">{{ $report->remarks}}</textarea>
                                         @if ($errors->has('remarks'))
                                             <span class="text-danger">{{ $errors->first('remarks') }}</span>
                                         @endif
-
                                     </div>
                                 </div>
-
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="label-paf" for="note">Note for our use</label>
-                                        <textarea name="note" id="note" class="form-control input-paf"
+                                        <textarea name="note"
+                                                  id="note"
+                                                  class="form-control input-paf"
                                                   placeholder="Notes">{{ $report->note}}</textarea>
                                         @if ($errors->has('note'))
                                             <span class="text-danger">{{ $errors->first('note') }}</span>

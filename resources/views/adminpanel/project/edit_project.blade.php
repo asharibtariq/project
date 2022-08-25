@@ -70,13 +70,47 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
+                                        <label class="label-paf" for="local_fund">Local Fund</label>
+                                        <input type="number"
+                                               name="local_fund"
+                                               id="local_fund"
+                                               step="any"
+                                               class="form-control input-paf total-cost-fields"
+                                               value="{{ $project->local_fund }}"
+                                               placeholder="Local Fund"
+                                               required />
+                                        @if ($errors->has('local_fund'))
+                                            <span class="text-danger">{{ $errors->first('local_fund') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="label-paf" for="foreign_fund">Foreign Fund</label>
+                                        <input type="number"
+                                               name="foreign_fund"
+                                               id="foreign_fund"
+                                               step="any"
+                                               class="form-control input-paf total-cost-fields"
+                                               value="{{ $project->foreign_fund }}"
+                                               placeholder="Local Fund"
+                                               required />
+                                        @if ($errors->has('foreign_fund'))
+                                            <span class="text-danger">{{ $errors->first('foreign_fund') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
                                         <label class="label-paf" for="cost">Total Cost</label>
                                         <input type="number"
                                                name="cost"
-                                               id="cost"  step="any"
+                                               id="cost"
+                                               step="any"
                                                class="form-control input-paf"
                                                value="{{ $project->cost }}"
                                                placeholder="Cost"
+                                               readonly
                                                required />
                                         @if ($errors->has('cost'))
                                             <span class="text-danger">{{ $errors->first('cost') }}</span>
@@ -85,7 +119,39 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="label-paf" for="complete_date">Completion Date (<small class="text-muted">As per PC-I</small>)</label>
+                                        <label class="label-paf" for="start_date">Start Date (<small class="text-muted">As per PC-I</small>)</label>
+                                        <input type="text"
+                                               name="start_date"
+                                               id="start_date"
+                                               class="form-control input-paf datepicker"
+                                               value="{{ $project->start_date }}"
+                                               placeholder="MM/DD/YYYY"
+                                               readonly
+                                               required />
+                                        @if ($errors->has('start_date'))
+                                            <span class="text-danger">{{ $errors->first('start_date') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="label-paf" for="end_date">End Date (<small class="text-muted">As per PC-I</small>)</label>
+                                        <input type="text"
+                                               name="end_date"
+                                               id="end_date"
+                                               class="form-control input-paf datepicker"
+                                               value="{{ $project->end_date }}"
+                                               placeholder="MM/DD/YYYY"
+                                               readonly
+                                               required />
+                                        @if ($errors->has('end_date'))
+                                            <span class="text-danger">{{ $errors->first('end_date') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="label-paf" for="complete_date">Likely Completion Date (<small class="text-muted">As per PC-I</small>)</label>
                                         <input type="text"
                                                name="complete_date"
                                                id="complete_date"
@@ -126,7 +192,13 @@
 
     <script>
         $(document).ready(function () {
-        //    $("#complete_date").datepicker();
+            $('.total-cost-fields').keyup(function(){
+                var total = 0;
+                $('.total-cost-fields').each(function(){
+                    total+=(parseFloat($(this).val()) || 0);
+                });
+                $('#cost').val(total);
+            });
         });
     </script>
 @endsection

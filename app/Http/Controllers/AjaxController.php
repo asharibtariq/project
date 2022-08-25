@@ -187,7 +187,6 @@ class AjaxController extends Controller{
     {
         $result = "";
         $where = array();
-
         $data = array();
         $project_id = $request->project_id != '' ? $request->project_id : '';
         if (!empty($project_id))
@@ -209,6 +208,37 @@ class AjaxController extends Controller{
         }
 //        pre($data['result'],1);
         return view('adminpanel.report.actual_expenditure_list')->with($data);
+    }
+
+    public function getAllocationFields(Request $request){
+        $result = "";
+        $where = array();
+        $data = array();
+
+        $date = $request->date != '' ? $request->date : '';
+        $project_id = $request->project_id != '' ? $request->project_id : '';
+        if (!empty($date))
+            $where['tbl_report.date'] = $date;
+        if (!empty($project_id))
+            $where['tbl_report.project_id'] = $project_id;
+        $report = DB::table('tbl_report')
+            ->select('tbl_report.alloc_rupee','tbl_report.alloc_foreign')
+            ->where($where)
+            ->orderBy('tbl_report.fiscal_year', 'DESC')
+            ->paginate(1);
+        $report = $report->items();
+
+        if (!empty($report) && count($report) > 0) {
+            $data['status'] = 0;
+            $data['alloc_rupee'] = $report[0]->alloc_rupee;
+            $data['alloc_foreign'] = $report[0]->alloc_foreign;
+        } else {
+            $data['status'] = 0;
+            $data['alloc_rupee'] = 0;
+            $data['alloc_foreign'] = 0;
+        }
+        $result = json_encode($data);
+        return $result;
 
     }
 
