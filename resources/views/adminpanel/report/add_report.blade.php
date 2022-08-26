@@ -374,7 +374,7 @@
             var fiscal_year = $("#fiscal_year").val();
             var fiscal_year_minus_1 = parseInt(fiscal_year) - 1;
             var startDate = "07/01/"+fiscal_year_minus_1;
-            var endDate = "06/01/"+fiscal_year;
+            var endDate = "06/30/"+fiscal_year;
 
         //    var date_year = date.substr(date.length - 4);
 

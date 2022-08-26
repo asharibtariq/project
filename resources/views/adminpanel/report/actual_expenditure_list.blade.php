@@ -31,8 +31,8 @@
     @else
         <tr>
             <th scope="row" colspan="4">
-                <div style="color:black;text-align: center; " class="alert " role="alert">
-                    <strong>NO DATA FOUND</strong>
+                <div style="color: black; text-align: center;">
+                    No Data Found
                 </div>
             </th>
         </tr>
