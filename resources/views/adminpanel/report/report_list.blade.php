@@ -138,9 +138,9 @@
             <td>{{$util_total}}</td>
             <td>{{$amt_surrender}}</td>
             <td>{{$amt_lapsed}}</td>
-            <td>{{$financial_prog}}</td>
-            <td>{{$physical_prog}}</td>
-            <td colspan="4"></td>
+            {{--<td>{{$financial_prog}}</td>--}}
+            {{--<td>{{$physical_prog}}</td>--}}
+            <td colspan="7"></td>
         </tr>
     @else
         <tr>
