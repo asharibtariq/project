@@ -32,7 +32,12 @@ class DashboardController extends Controller{
         $total_releases = Report::where('status', 'Y')->sum('release_total_actual');
         $total_utilization = Report::where('status', 'Y')->sum('util_total');
 
-        $financial_percentage = ($total_utilization/$total_allocations) * 100;
+        if ($total_utilization > 0 && $total_allocations > 0) {
+            $financial_percentage = ($total_utilization / $total_allocations) * 100;
+        }else{
+            $financial_percentage = 0;
+        }
+
         $data['total_projects'] = $total_projects;
         $data['total_allocations'] = $total_allocations;
         $data['total_releases'] = $total_releases;
@@ -73,7 +78,12 @@ class DashboardController extends Controller{
         $total_releases = Report::where('date','>=',$start_date)->where('date','<=', $end_date)->where('status','=', 'Y')->sum('release_total_actual');
         $total_utilization = Report::where('date','>=',$start_date)->where('date','<=', $end_date)->where('status','=', 'Y')->sum('util_total');
 
-        $financial_percentage = ($total_utilization/$total_allocations) * 100;
+        if ($total_utilization > 0 && $total_allocations > 0) {
+            $financial_percentage = ($total_utilization / $total_allocations) * 100;
+        }else{
+            $financial_percentage = 0;
+        }
+        
         $data['total_projects'] = $total_projects;
         $data['total_allocations'] = $total_allocations;
         $data['total_releases'] = $total_releases;
