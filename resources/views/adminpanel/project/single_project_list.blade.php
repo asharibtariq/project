@@ -6,8 +6,10 @@
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="1"> Operation</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> FY</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Project</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Date</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Allocation - Rupee Allocation</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Allocation - Foreign Aid</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Allocation - Total</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Allocation - Revised Rupee Allocation</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Release - Funds authorized by M/o PD&SI (Rupee)</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Release - Actual released/sanctioned by Ministry/Division Rupee</th>
@@ -20,6 +22,7 @@
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Amount Lapsed</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Financial Progress (%)</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Physical Progress (%)</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Physical Progress Description</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Completion on date/likely date of Completion</th>
     </thead>
     <tbody>
@@ -43,8 +46,10 @@
                 </td>
                 <td> {{$fiscal_year}} </td>
                 <td> {{$r->project}} </td>
+                <td> {{$r->date}} </td>
                 <td> {{$r->alloc_rupee > 0 ? $r->alloc_rupee : '-'}} </td>
                 <td> {{$r->alloc_foreign > 0 ? $r->alloc_foreign : '-'}} </td>
+                <td> {{$r->alloc_total > 0 ? $r->alloc_total : '-'}} </td>
                 <td> {{$r->alloc_revised > 0 ? $r->alloc_revised : '-'}} </td>
                 <td> {{$r->release_fund_auth > 0 ? $r->release_fund_auth : '-'}} </td>
                 <td> {{$r->release_fund_actual > 0 ? $r->release_fund_actual : '-'}} </td>
@@ -57,6 +62,7 @@
                 <td> {{$r->amt_lapsed > 0 ? $r->amt_lapsed : '-'}} </td>
                 <td> {{$r->financial_prog > 0 ? $r->financial_prog : '-'}} </td>
                 <td> {{$r->physical_prog > 0 ? $r->physical_prog : '-'}} </td>
+                <td> {{$r->physical_prog_desc > 0 ? $r->physical_prog_desc : '-'}} </td>
                 <td> {{$r->comp_date_likely > 0 ? $r->comp_date_likely : '-'}} </td>
             </tr>
             @php

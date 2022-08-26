@@ -109,6 +109,24 @@
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     });
+
+    $(document).on('change', '#end_date', function () {
+        // var project_id = $("#project_id").val();
+        var startdate = $("#start_date").val();
+        var enddate = $(this).val();
+
+        var startdate = new Date(startdate);
+        var enddate = new Date(enddate);
+
+
+        if (startdate > enddate){
+            alert("End Date must be greater than Start Date...");
+            $(this).val('');
+            // $("#start_date").val('');
+            return false;
+        }
+
+    });
 </script>
 
 @endsection

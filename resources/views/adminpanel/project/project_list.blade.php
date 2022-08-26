@@ -7,10 +7,10 @@
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> ID</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Name</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Cost</th>
-        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> local_fund</th>
-        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> foreign_fund</th>
-        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> start_date</th>
-        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> end_date</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Local Fund</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Foreign Fund</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Start Date</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> End Date</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Complete Date</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Status</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Operation</th>
@@ -42,9 +42,11 @@
                     @endif
                 </td>
                 <td>
-                    <a href="{{url('project', $r->id)}}" class="btn btn-success" id="btn-view"><i class="fa fa-list"></i> Details</a>
-                    <a onClick="return confirm('Are you sure you want to update?');" href="{{url('edit_project', $r->id)}}" class="btn btn-info" id="btn-view"><i class="fa fa-edit"></i> Edit</a>
-                    <a onClick="return confirm('Are you sure you want to delete?');" href="{{url('delete_project', $r->id)}}" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
+                    <div class="btn-group">
+                    <a href="{{url('project', $r->id)}}" class="btn btn-success" title="Details" id="btn-view"><i class="fa fa-list"></i> </a>
+                    <a onClick="return confirm('Are you sure you want to update?');" title="Edit" href="{{url('edit_project', $r->id)}}" class="btn btn-info" id="btn-view"><i class="fa fa-edit"></i> </a>
+                    <a onClick="return confirm('Are you sure you want to delete?');" title="Delete" href="{{url('delete_project', $r->id)}}" class="btn btn-danger"><i class="fa fa-trash"></i> </a>
+               </div>
                 </td>
             </tr>
             @php

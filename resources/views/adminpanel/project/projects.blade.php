@@ -32,6 +32,18 @@
                                 <p><b>Total Cost:</b> {{$project->cost}}</p>
                             </div>
                             <div class="col-md-4">
+                                <p><b>Local Fund:</b> {{$project->local_fund}}</p>
+                            </div>
+                            <div class="col-md-4">
+                                <p><b>Foreign Fund:</b> {{$project->foreign_fund}}</p>
+                            </div>
+                            <div class="col-md-4">
+                                <p><b>Start Date:</b> {{$project->start_date}}</p>
+                            </div>
+                            <div class="col-md-4">
+                                <p><b>End Date:</b> {{$project->end_date}}</p>
+                            </div>
+                            <div class="col-md-4">
                                 <p><b>Completion Date (<small class="text-muted">As per PC-I</small>):</b> {{$project->complete_date}}</p>
                             </div>
                         </div>
