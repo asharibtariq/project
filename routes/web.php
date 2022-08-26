@@ -26,6 +26,9 @@ Route::post('ajax_expenditure_list', [\App\Http\Controllers\AjaxController::clas
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('dashboard', [App\Http\Controllers\DashboardController::class, 'index']);
+Route::post('dashboard', [App\Http\Controllers\DashboardController::class, 'dashboard']);
+
 // Project Routes
 Route::get('project', [\App\Http\Controllers\ProjectController::class, 'index']);
 Route::get('add_project', [\App\Http\Controllers\ProjectController::class, 'create']);
