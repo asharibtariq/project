@@ -5,6 +5,13 @@
     <div class="container">
 
         <div class="row">
+            @if(Session::has('success'))
+                <div class="col-md-12">
+                    <div class="alert alert-success">{{Session::get('success')}}</div>
+                </div>
+            @endif
+        </div>
+        <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
@@ -335,6 +342,9 @@
                 }
             });
             $('.financial-progress-formula').keyup(function(){
+               // var util_total = $("#util_total").val('');
+               // var alloc_total = $("#alloc_total").val('');
+               //
                 var financial_progress_precent = (util_total/alloc_total) * 100;
                 $('#financial_prog').val(financial_progress_precent.toFixed(2));
             });

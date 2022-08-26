@@ -6,11 +6,13 @@
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="1"> PSPD</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> ID</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> FY</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Date</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Project</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Total Cost</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Actual Expenditure</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Rupee Allocation</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Foreign Aid</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Actual Total</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Revised Rupee Allocation</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Funds authorized by M/o PD&SI (Rupee)</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Actual released/ sanctioned by Ministry/Division Rupee</th>
@@ -23,6 +25,7 @@
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Amount lapsed (if any)</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Financial Progress (%)</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Physical Progress (%)</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Physical Progress Description</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Completion Date as per PC-I</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Completion date/likely date of completion</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Remarks/issues/Bottlenecks (if any)</th>
@@ -37,6 +40,7 @@
         $actual_expend =0;
         $alloc_rupee =0;
         $alloc_foreign =0;
+        $alloc_total =0;
         $alloc_revised =0;
         $release_fund_auth =0;
         $release_fund_actual =0;
@@ -68,6 +72,7 @@
             $actual_expend = $actual_expend + $xp;
             $alloc_rupee = $alloc_rupee + $r->alloc_rupee;
             $alloc_foreign = $alloc_foreign + $r->alloc_foreign;
+             $alloc_total = $alloc_total + $r->alloc_total;
             $alloc_revised = $alloc_revised + $r->alloc_revised;
             $release_fund_auth = $release_fund_auth + $r->release_fund_auth;
             $release_fund_actual = $release_fund_actual + $r->release_fund_actual;
@@ -86,11 +91,13 @@
                 <td> {{$r->psdp}} </td>
                 <td> {{$r->psid}} </td>
                 <td> {{$fiscal_year}} </td>
+                <td> {{$r->date}} </td>
                 <td> {{$r->project}} </td>
                 <td> {{$r->cost}} </td>
                 <td> {{--$r->actual_expend--}} {{$xp}}</td>
                 <td> {{$r->alloc_rupee}} </td>
                 <td> {{$r->alloc_foreign}} </td>
+                <td> {{$r->alloc_total}} </td>
                 <td> {{$r->alloc_revised}} </td>
                 <td> {{$r->release_fund_auth}} </td>
                 <td> {{$r->release_fund_actual}} </td>
@@ -103,6 +110,7 @@
                 <td> {{$r->amt_lapsed}} </td>
                 <td> {{$r->financial_prog}} </td>
                 <td> {{$r->physical_prog}} </td>
+                <td> {{$r->physical_prog_desc}} </td>
                 <td> {{$r->complete_date}} </td>
                 <td> {{$r->comp_date_likely}} </td>
                 <td> {{$r->remarks}} </td>
@@ -114,11 +122,12 @@
             @endphp
         @endforeach
         <tr>
-            <th colspan="5" class="text-center">Total</th>
+            <th colspan="6" class="text-center">Total</th>
             <td>{{$cost}}</td>
             <td>{{$actual_expend}}</td>
             <td>{{$alloc_rupee}}</td>
             <td>{{$alloc_foreign}}</td>
+            <td>{{$alloc_total}}</td>
             <td>{{$alloc_revised}}</td>
             <td>{{$release_fund_auth}}</td>
             <td>{{$release_fund_actual}}</td>
