@@ -105,10 +105,10 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4" id="alloc_revised_div" style="display: none;">
                                     <div class="form-group">
                                         <label class="label-paf" for="alloc_revised">Revised Rupee Allocation</label>
-                                        <input type="number" name="alloc_revised" id="alloc_revised" step="any" class="form-control input-paf" placeholder="Revised Rupee"  />
+                                        <input type="number" name="alloc_revised" id="alloc_revised" step="any" class="form-control input-paf" placeholder="Revised Rupee" />
                                         @if ($errors->has('alloc_revised'))
                                             <span class="text-danger">{{ $errors->first('alloc_revised') }}</span>
                                         @endif
@@ -134,7 +134,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="label-paf" for="release_fund_actual">Actual released by Ministry/Division Rupee </label>
-                                        <input type="number" name="release_fund_actual" id="release_fund_actual" step="any" class="form-control input-paf InvQty" placeholder="Actual released/ sanctioned by Ministry"   />
+                                        <input type="number" name="release_fund_actual" id="release_fund_actual" step="any" class="form-control input-paf total-release-fields" placeholder="Actual released/ sanctioned by Ministry"   />
                                         @if ($errors->has('release_fund_actual'))
                                             <span class="text-danger">{{ $errors->first('release_fund_actual') }}</span>
                                         @endif
@@ -143,7 +143,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="label-paf" for="release_foreign">Foreign Aid Disbursed</label>
-                                        <input type="number" name="release_foreign" id="release_foreign" step="any" class="form-control input-paf InvQty" placeholder="Foreign Aid Disbursed"   />
+                                        <input type="number" name="release_foreign" id="release_foreign" step="any" class="form-control input-paf total-release-fields" placeholder="Foreign Aid Disbursed"   />
                                         @if ($errors->has('release_foreign'))
                                             <span class="text-danger">{{ $errors->first('release_foreign') }}</span>
                                         @endif
@@ -169,7 +169,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="label-paf" for="util_actual">Actual Rupee Utilization</label>
-                                        <input type="number" name="util_actual" id="util_actual"step="any" class="form-control input-paf InvQty1" placeholder="Actual Rupee Utilization"   />
+                                        <input type="number" name="util_actual" id="util_actual"step="any" class="form-control input-paf total-util-fields" placeholder="Actual Rupee Utilization"   />
                                         @if ($errors->has('util_actual'))
                                             <span class="text-danger">{{ $errors->first('util_actual') }}</span>
                                         @endif
@@ -178,7 +178,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="label-paf" for="util_foreign">Foreign Aid utilization</label>
-                                        <input type="number" name="util_foreign" id="util_foreign"step="any" class="form-control input-paf InvQty1" placeholder="Foreign Aid utilization"   />
+                                        <input type="number" name="util_foreign" id="util_foreign"step="any" class="form-control input-paf total-util-fields" placeholder="Foreign Aid utilization"   />
                                         @if ($errors->has('util_foreign'))
                                             <span class="text-danger">{{ $errors->first('util_foreign') }}</span>
                                         @endif
@@ -306,14 +306,8 @@
             var alloc_total = $("#alloc_total").val();
             var util_total = $("#util_total").val();
 
-            $('.InvQty').keyup(function(){
-                var val2 = 0;
-                $('.InvQty').each(function(){
-                    val2+=(parseFloat($(this).val()) || 0);
-                });
-                $('#release_total_actual').val(val2);
-            });
             $('.total-alloc-fields').keyup(function(){
+
                 var total = 0;
                 $('.total-alloc-fields').each(function(){
                     total+=(parseFloat($(this).val()) || 0);
@@ -321,19 +315,45 @@
                 $('#alloc_total').val(total);
                 // Global Alloc Value
                 alloc_total = total;
+
+            //    alloc_total = getTotalOfFields('.total-alloc-fields', '#alloc_total', $(this).val());
+                console.log("Allocation Total: "+alloc_total);
             });
-            $('.InvQty1').keyup(function(){
-                var val2 = 0;
-                var release_total_actual = $('#release_total_actual').val();
-                $('.InvQty1').each(function(){
-                    val2+=(parseFloat($(this).val()) || 0);
+            $('#alloc_revised').keyup(function(){
+                var total = 0;
+                var alloc_revised = $(this).val();
+                $("#alloc_rupee").val(alloc_revised);
+                $('.total-alloc-fields').each(function(){
+                    total+=(parseFloat($(this).val()) || 0);
                 });
-                $('#util_total').val(val2);
+                $('#alloc_total').val(total);
+            });
+            $('.total-release-fields').keyup(function(){
+                var total = 0;
+                $('.total-release-fields').each(function(){
+                    total+=(parseFloat($(this).val()) || 0);
+                });
+                $('#release_total_actual').val(total);
 
+            //    getTotalOfFields('.total-release-fields', '#release_total_actual', $(this).val());
+                console.log("Release Total: "+total);
+            });
+            $('.total-util-fields').keyup(function(){
+                var release_total_actual = $('#release_total_actual').val();
+
+                var total = 0;
+                $('.total-util-fields').each(function(){
+                    total+=(parseFloat($(this).val()) || 0);
+                });
+                $('#util_total').val(total);
                 // Global Util Value
-                util_total = val2;
+                util_total = total;
 
-                if (val2 > release_total_actual){
+            //    util_total = getTotalOfFields('.total-util-fields', '#util_total', $(this).val());
+                console.log("Release Total: "+util_total);
+
+            //    if (total > release_total_actual){
+                if (util_total > release_total_actual){
                     alert("Total Utilization cannot be greater than Total actual releases / disbursement...");
                     $("#util_actual").val('');
                     $("#util_foreign").val('');
@@ -442,12 +462,15 @@
                         $("#alloc_foreign").val(alloc_foreign);
                         $("#alloc_total").val(alloc_total);
 
+                        $("#alloc_revised_div").show();
                         $("#alloc_rupee").prop('readonly', true);
                         $("#alloc_foreign").prop('readonly', true);
                     } else {
                         $("#alloc_rupee").val('');
                         $("#alloc_foreign").val('');
                         $("#alloc_total").val('');
+
+                        $("#alloc_revised_div").hide();
                         $("#alloc_rupee").prop('readonly', false);
                         $("#alloc_foreign").prop('readonly', false);
                     }

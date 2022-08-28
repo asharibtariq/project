@@ -74,7 +74,7 @@
                                     <div class="form-group">
                                         <label class="label-paf" for="alloc_rupee">Allocation (Rupee)</label>
                                         <input type="number" name="alloc_rupee" id="alloc_rupee"
-                                               class="form-control input-paf " placeholder="Allocation (Rupee"
+                                               class="form-control input-paf total-alloc-fields" placeholder="Allocation (Rupee"
                                                value="{{ $report->alloc_rupee}}" step="any" required/>
                                         @if ($errors->has('alloc_rupee'))
                                             <span class="text-danger">{{ $errors->first('alloc_rupee') }}</span>
@@ -85,7 +85,7 @@
                                     <div class="form-group">
                                         <label class="label-paf" for="alloc_foreign">Foreign Aid</label>
                                         <input type="number" name="alloc_foreign" id="alloc_foreign"
-                                               class="form-control input-paf" step="any" placeholder="Foreign Aid"
+                                               class="form-control input-paf total-alloc-fields" step="any" placeholder="Foreign Aid"
                                                value="{{ $report->alloc_foreign}}"/>
                                         @if ($errors->has('alloc_foreign'))
                                             <span class="text-danger">{{ $errors->first('alloc_foreign') }}</span>
@@ -143,7 +143,7 @@
                                         <label class="label-paf" for="release_fund_actual">Actual released by
                                             Ministry/Division Rupee </label>
                                         <input type="number" name="release_fund_actual" id="release_fund_actual"
-                                               class="form-control input-paf InvQty" step="any"
+                                               class="form-control input-paf total-release-fields" step="any"
                                                placeholder="Actual released/ sanctioned by Ministry"
                                                value="{{ $report->release_fund_actual}}"/>
                                         @if ($errors->has('release_fund_actual'))
@@ -155,7 +155,7 @@
                                     <div class="form-group">
                                         <label class="label-paf" for="release_foreign">Foreign Aid Disbursed</label>
                                         <input type="number" name="alloc_revised" id="release_foreign"
-                                               class="form-control input-paf InvQty" step="any" placeholder="Foreign Aid Disbursed"
+                                               class="form-control input-paf total-release-fields" step="any" placeholder="Foreign Aid Disbursed"
                                                value="{{ $report->release_foreign}}"/>
                                         @if ($errors->has('release_foreign'))
                                             <span class="text-danger">{{ $errors->first('release_foreign') }}</span>
@@ -166,7 +166,7 @@
                                     <div class="form-group">
                                         <label class="label-paf" for="release_total_actual">Total actual releases /
                                             disbursement</label>
-                                        <input type="number" name="release_total_actual" id="Total"
+                                        <input type="number" name="release_total_actual" id="release_total_actual"
                                                class="form-control input-paf" step="any" placeholder="Total actual releases"
                                                value="{{ $report->release_total_actual}}" readonly/>
                                         @if ($errors->has('release_total_actual'))
@@ -186,7 +186,7 @@
                                     <div class="form-group">
                                         <label class="label-paf" for="util_actual">Actual Rupee Utilization</label>
                                         <input type="number" name="util_actual" id="util_actual"
-                                               class="form-control input-paf InvQty1" step="any"
+                                               class="form-control input-paf total-util-fields" step="any"
                                                placeholder="Actual Rupee Utilization"
                                                value="{{ $report->util_actual}}"/>
                                         @if ($errors->has('util_actual'))
@@ -198,7 +198,7 @@
                                     <div class="form-group">
                                         <label class="label-paf" for="util_foreign">Foreign Aid utilization</label>
                                         <input type="number" name="util_foreign" id="util_foreign"
-                                               class="form-control input-paf InvQty1" step="any"
+                                               class="form-control input-paf total-util-fields" step="any"
                                                placeholder="Foreign Aid utilization"
                                                value="{{$report->util_foreign}}"/>
                                         @if ($errors->has('util_foreign'))
@@ -209,7 +209,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="label-paf" for="util_total">Total Utilization</label>
-                                        <input type="number" name="util_total" id="Total1" step="any" class="form-control input-paf"
+                                        <input type="number" name="util_total" id="util_total" step="any" class="form-control input-paf"
                                                placeholder="Total Utilization" value="{{ $report->util_total}}"
                                                readonly/>
                                         @if ($errors->has('util_total'))
@@ -360,23 +360,40 @@
     </div>
     <script>
         $(document).ready(function () {
-            $('.InvQty').keyup(function () {
+            var alloc_total = $("#alloc_total").val();
+            var util_total = $("#util_total").val();
 
-                var val2 = 0;
-                $('.InvQty').each(function () {
-                    val2 += (parseFloat($(this).val()) || 0);
+            $('.total-release-fields').keyup(function () {
+                var total = 0;
+                $('.total-release-fields').each(function () {
+                    total += (parseFloat($(this).val()) || 0);
                 });
-                $('#Total').val(val2);
+                $('#release_total_actual').val(total);
             });
-        });
-        $(document).ready(function () {
-            $('.InvQty1').keyup(function () {
-
-                var val2 = 0;
-                $('.InvQty1').each(function () {
-                    val2 += (parseFloat($(this).val()) || 0);
+            $('.total-util-fields').keyup(function () {
+                var total = 0;
+                $('.total-util-fields').each(function () {
+                    total += (parseFloat($(this).val()) || 0);
                 });
-                $('#Total1').val(val2);
+                $('#util_total').val(total);
+            });
+            $('.total-alloc-fields').keyup(function(){
+                var total = 0;
+                $('.total-alloc-fields').each(function(){
+                    total+=(parseFloat($(this).val()) || 0);
+                });
+                $('#alloc_total').val(total);
+                // Global Alloc Value
+                alloc_total = total;
+            });
+            $('#alloc_revised').keyup(function(){
+                var total = 0;
+                var alloc_revised = $(this).val();
+                $("#alloc_rupee").val(alloc_revised);
+                $('.total-alloc-fields').each(function(){
+                    total+=(parseFloat($(this).val()) || 0);
+                });
+                $('#alloc_total').val(total);
             });
         });
     </script>

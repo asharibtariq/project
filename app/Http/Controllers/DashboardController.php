@@ -27,9 +27,19 @@ class DashboardController extends Controller{
      */
     public function index(){
         $data = array();
-        $total_projects = DB::table('tbl_project')->distinct('name')->count('name');
+    //    $total_projects = DB::table('tbl_project')->distinct('name')->count('name');
+        $total_projects = Report::where('status', 'Y')->distinct('project_id')->count('project_id');
         $total_allocations = Report::where('status', 'Y')->sum('alloc_total');
         $total_releases = Report::where('status', 'Y')->sum('release_total_actual');
+
+        //disable ONLY_FULL_GROUP_BY
+        DB::statement("SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));");
+
+        $total_utilization = DB::select('SELECT max(util_total) as total FROM tbl_report GROUP BY project_id ORDER BY project_id DESC');
+
+        //re-enable ONLY_FULL_GROUP_BY
+        DB::statement("SET sql_mode=(SELECT CONCAT(@@sql_mode, ',ONLY_FULL_GROUP_BY'));");
+
         $total_utilization = Report::where('status', 'Y')->sum('util_total');
 
         if ($total_utilization > 0 && $total_allocations > 0) {
@@ -58,8 +68,7 @@ class DashboardController extends Controller{
         $postData = $request->all();
         $start_date = isset($postData['start_date']) && $postData['start_date'] != '' ? $postData['start_date'] : '';
         $end_date = isset($postData['end_date']) && $postData['end_date'] != '' ? $postData['end_date'] : '';
-
-        $total_projects = DB::table('tbl_project')->distinct('name')->count('name');
+    //    $total_projects = DB::table('tbl_project')->distinct('name')->count('name');
 
         /*
         if ($start_date != '' || $end_date != '') {
@@ -73,7 +82,7 @@ class DashboardController extends Controller{
             $total_utilization = Report::where('status', 'Y')->sum('util_total');
         }
         */
-
+        $total_projects = Report::where('date','>=',$start_date)->where('date','<=', $end_date)->where('status','=', 'Y')->distinct('project_id')->count('project_id');
         $total_allocations = Report::where('date','>=',$start_date)->where('date','<=', $end_date)->where('status','=', 'Y')->sum('alloc_total');
         $total_releases = Report::where('date','>=',$start_date)->where('date','<=', $end_date)->where('status','=', 'Y')->sum('release_total_actual');
         $total_utilization = Report::where('date','>=',$start_date)->where('date','<=', $end_date)->where('status','=', 'Y')->sum('util_total');
@@ -83,7 +92,7 @@ class DashboardController extends Controller{
         }else{
             $financial_percentage = 0;
         }
-        
+
         $data['total_projects'] = $total_projects;
         $data['total_allocations'] = $total_allocations;
         $data['total_releases'] = $total_releases;
