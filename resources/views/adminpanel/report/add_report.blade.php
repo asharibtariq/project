@@ -299,8 +299,6 @@
 
     <script>
 
-
-
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
         $(document).ready(function(){
             var alloc_total = $("#alloc_total").val();
@@ -312,7 +310,7 @@
                 $('.total-alloc-fields').each(function(){
                     total+=(parseFloat($(this).val()) || 0);
                 });
-                $('#alloc_total').val(total);
+                $('#alloc_total').val(total).trigger('keyup');
                 // Global Alloc Value
                 alloc_total = total;
 
@@ -326,14 +324,14 @@
                 $('.total-alloc-fields').each(function(){
                     total+=(parseFloat($(this).val()) || 0);
                 });
-                $('#alloc_total').val(total);
+                $('#alloc_total').val(total).trigger('keyup');
             });
             $('.total-release-fields').keyup(function(){
                 var total = 0;
                 $('.total-release-fields').each(function(){
                     total+=(parseFloat($(this).val()) || 0);
                 });
-                $('#release_total_actual').val(total);
+                $('#release_total_actual').val(total).trigger('keyup');
 
             //    getTotalOfFields('.total-release-fields', '#release_total_actual', $(this).val());
                 console.log("Release Total: "+total);
@@ -345,7 +343,7 @@
                 $('.total-util-fields').each(function(){
                     total+=(parseFloat($(this).val()) || 0);
                 });
-                $('#util_total').val(total);
+                $('#util_total').val(total).trigger('keyup');
                 // Global Util Value
                 util_total = total;
 
@@ -458,9 +456,9 @@
                         var alloc_rupee = jsonData.alloc_rupee;
                         var alloc_foreign = jsonData.alloc_foreign;
                         var alloc_total = parseFloat(alloc_rupee) + parseFloat(alloc_foreign);
-                        $("#alloc_rupee").val(alloc_rupee);
-                        $("#alloc_foreign").val(alloc_foreign);
-                        $("#alloc_total").val(alloc_total);
+                        $("#alloc_rupee").val(alloc_rupee).trigger('keyup');
+                        $("#alloc_foreign").val(alloc_foreign).trigger('keyup');
+                        $("#alloc_total").val(alloc_total).trigger('keyup');
 
                         $("#alloc_revised_div").show();
                         $("#alloc_rupee").prop('readonly', true);
