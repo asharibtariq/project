@@ -40,7 +40,8 @@ class DashboardController extends Controller{
         //re-enable ONLY_FULL_GROUP_BY
         DB::statement("SET sql_mode=(SELECT CONCAT(@@sql_mode, ',ONLY_FULL_GROUP_BY'));");
 
-        $total_utilization = Report::where('status', 'Y')->sum('util_total');
+    //    $total_utilization = Report::where('status', 'Y')->sum('util_total');
+        $total_utilization = $this->util_total();
 
         if ($total_utilization > 0 && $total_allocations > 0) {
             $financial_percentage = ($total_utilization / $total_allocations) * 100;
@@ -58,11 +59,6 @@ class DashboardController extends Controller{
         return view('adminpanel/dashboard', $data);
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
     public function dashboard(Request $request){
         $data = array();
         $postData = $request->all();
@@ -85,7 +81,9 @@ class DashboardController extends Controller{
         $total_projects = Report::where('date','>=',$start_date)->where('date','<=', $end_date)->where('status','=', 'Y')->distinct('project_id')->count('project_id');
         $total_allocations = Report::where('date','>=',$start_date)->where('date','<=', $end_date)->where('status','=', 'Y')->sum('alloc_total');
         $total_releases = Report::where('date','>=',$start_date)->where('date','<=', $end_date)->where('status','=', 'Y')->sum('release_total_actual');
-        $total_utilization = Report::where('date','>=',$start_date)->where('date','<=', $end_date)->where('status','=', 'Y')->sum('util_total');
+
+    //    $total_utilization = Report::where('date','>=',$start_date)->where('date','<=', $end_date)->where('status','=', 'Y')->sum('util_total');
+        $total_utilization = $this->util_total('date >= "'.$start_date.'" AND date <= "'.$end_date.'"');
 
         if ($total_utilization > 0 && $total_allocations > 0) {
             $financial_percentage = ($total_utilization / $total_allocations) * 100;
@@ -101,6 +99,30 @@ class DashboardController extends Controller{
         $data['start_date'] = $start_date;
         $data['end_date'] = $end_date;
         return view('adminpanel/dashboard', $data);
+    }
+
+    public function util_total($where = ''){
+        $util_totals = array();
+        $condition = '';
+        $total = 0;
+        if ($where != ''){
+            $condition = ' AND '.$where;
+        }
+        $project_ids = DB::select('Select DISTINCT(project_id) from tbl_report WHERE status = "Y"');
+        if (!empty($project_ids) && count($project_ids) > 0) {
+            foreach ($project_ids as $project_id) {
+                $result = DB::select('Select util_total from tbl_report WHERE project_id = "' . $project_id->project_id . '" ' . $condition . ' ORDER BY date DESC LIMIT 1');
+                $util_totals[] = array_shift($result);
+            }
+        }
+        if (!empty($util_totals) && count($util_totals) > 0){
+            foreach ($util_totals as $util_total){
+                $total = $total + $util_total->util_total;
+            }
+        }
+    //    pre($util_totals);
+    //    pre($total,1);
+        return $total;
     }
 
 }
