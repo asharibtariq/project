@@ -117,7 +117,8 @@ class DashboardController extends Controller{
         }
         if (!empty($util_totals) && count($util_totals) > 0){
             foreach ($util_totals as $util_total){
-                $total = $total + $util_total->util_total;
+                $ut = isset($util_total->util_total) && $util_total->util_total > 0 ? $util_total->util_total : 0;
+                $total = $total + $ut;
             }
         }
     //    pre($util_totals);
