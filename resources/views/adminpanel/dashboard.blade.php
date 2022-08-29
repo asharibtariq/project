@@ -18,7 +18,7 @@
                    name="start_date"
                    id="start_date"
                    placeholder="MM/DD/YYYY"
-                   class="form-control input-paf datepicker"
+                   class="form-control input-paf date-filter-fields datepicker"
                    value="{{$start_date}}"
                    readonly
                    required />
@@ -31,7 +31,7 @@
                    name="end_date"
                    id="end_date"
                    placeholder="MM/DD/YYYY"
-                   class="form-control input-paf datepicker"
+                   class="form-control input-paf date-filter-fields datepicker"
                    value="{{$end_date}}"
                    readonly
                    required />
@@ -109,7 +109,14 @@
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     });
-
+    $(document).on("click", "#submit_btn", function () {
+        var startdate = $("#start_date").val();
+        var enddate = $("#end_date").val();
+        if ($("#start_date").val() == '' && $("#start_date").val() == ''){
+            alert("Please Select Start Date");
+            return false;
+        }
+    });
     $(document).on('change', '#end_date, #start_date', function () {
         var startdate = $("#start_date").val();
         var enddate = $("#end_date").val();
