@@ -38,7 +38,7 @@
 
     @else
         <tr>
-            <th scope="row" colspan="4">
+            <th scope="row" colspan="3">
                 <div style="color: black; text-align: center;">
                     No Data Found
                 </div>

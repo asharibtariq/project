@@ -60,7 +60,26 @@
                             </div>
                             <div class="row">
 
-                                <div class="col-md-5 table-responsive" id='my_data'></div>
+                                <div class="col-md-5 table-responsive" id='my_data'>
+                                    <table class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline" id="sample_1" role="grid"
+                                           aria-describedby="sample_1_info">
+                                        <thead>
+                                        <tr role="row">
+                                            <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="0"> FY</th>
+                                            <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="1"> Date</th>
+                                            <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Actual Expenditure</th>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <th scope="row" colspan="3">
+                                                <div style="color: black; text-align: center;">
+                                                    No Project Selected
+                                                </div>
+                                            </th>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
 
                                 {{--<div class="col-md-4">--}}
                                     {{--<div class="form-group">--}}
