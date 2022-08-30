@@ -303,7 +303,7 @@
         $(document).ready(function(){
             var alloc_total = $("#alloc_total").val();
             var util_total = $("#util_total").val();
-            var local_allocation=0;
+            var local_allocation = 0;
             $(document).on('change', '#project_id', function () {
                 var project_id = $(this).val();
                 if (project_id > 0){
@@ -312,7 +312,7 @@
                     ajax_expenditure_list(project_id);
                     ajax_date_rec(project_id);
                 }
-                window.var1 =  $('#alloc_rupee').val();
+               local_allocation =  $('#alloc_rupee').val();
                 $('#date').val('');
                 $('#alloc_rupee').val('');
                 $('#alloc_foreign').val('');
@@ -337,6 +337,7 @@
             $('#alloc_revised').keyup(function(){
                 var total = 0;
                 var alloc_revised = $(this).val();
+
                 if (alloc_revised > 0) {
                     $("#alloc_rupee").val(alloc_revised);
                     $('.total-alloc-fields').each(function () {
@@ -344,12 +345,11 @@
                     });
                     $('#alloc_total').val(total).trigger('keyup');
                 }
-                // else {
-                //     if ( $('#alloc_revised').val().length === 0){
-                //         $('#alloc_rupee').val();
-                //     }
-
-                {{--}--}}
+                else {
+                    if ( $('#alloc_revised').val().length === 0){
+                        $('#alloc_rupee').val(6666);
+                    }
+                }
                 // else ($('#alloc_revised').isEmpty())
                 // $('#alloc_total').val(local_allocation);
             });
