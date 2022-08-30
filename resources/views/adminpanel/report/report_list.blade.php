@@ -12,8 +12,8 @@
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Actual Expenditure</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Rupee Allocation</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Foreign Aid</th>
-        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Actual Total</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Revised Rupee Allocation</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Allocation Total</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Funds authorized by M/o PD&SI (Rupee)</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Actual released/ sanctioned by Ministry/Division Rupee</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Foreign Aid Disbursed</th>
@@ -97,8 +97,8 @@
                 <td> {{--$r->actual_expend--}} {{$xp}}</td>
                 <td> {{$r->alloc_rupee}} </td>
                 <td> {{$r->alloc_foreign}} </td>
-                <td> {{$r->alloc_total}} </td>
                 <td> {{$r->alloc_revised}} </td>
+                <td> {{$r->alloc_total}} </td>
                 <td> {{$r->release_fund_auth}} </td>
                 <td> {{$r->release_fund_actual}} </td>
                 <td> {{$r->release_foreign}} </td>

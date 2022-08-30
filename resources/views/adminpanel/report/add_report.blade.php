@@ -303,6 +303,23 @@
         $(document).ready(function(){
             var alloc_total = $("#alloc_total").val();
             var util_total = $("#util_total").val();
+            var local_allocation=0;
+            $(document).on('change', '#project_id', function () {
+                var project_id = $(this).val();
+                if (project_id > 0){
+                    var project = $("#project_id option:selected").text();
+                    $("#project").val(project);
+                    ajax_expenditure_list(project_id);
+                    ajax_date_rec(project_id);
+                }
+                window.var1 =  $('#alloc_rupee').val();
+                $('#date').val('');
+                $('#alloc_rupee').val('');
+                $('#alloc_foreign').val('');
+                $('#alloc_rupee').prop('readonly', false);
+                $('#alloc_foreign').prop('readonly', false);
+                $('#alloc_total').val('');
+            });
 
             $('.total-alloc-fields').keyup(function(){
 
@@ -327,6 +344,14 @@
                     });
                     $('#alloc_total').val(total).trigger('keyup');
                 }
+                // else {
+                //     if ( $('#alloc_revised').val().length === 0){
+                //         $('#alloc_rupee').val();
+                //     }
+
+                {{--}--}}
+                // else ($('#alloc_revised').isEmpty())
+                // $('#alloc_total').val(local_allocation);
             });
             $('.total-release-fields').keyup(function(){
                 var total = 0;
@@ -374,21 +399,7 @@
             });
         });
 
-        $(document).on('change', '#project_id', function () {
-            var project_id = $(this).val();
-            if (project_id > 0){
-                var project = $("#project_id option:selected").text();
-                $("#project").val(project);
-                ajax_expenditure_list(project_id);
-                ajax_date_rec(project_id);
-            }
-            $('#date').val('');
-            $('#alloc_rupee').val('');
-            $('#alloc_foreign').val('');
-            $('#alloc_rupee').prop('readonly', false);
-            $('#alloc_foreign').prop('readonly', false);
-            $('#alloc_total').val('');
-        });
+
 
         $(document).on('change', '#fiscal_year', function () {
             var project_id = $("#project_id").val();
@@ -461,6 +472,7 @@
                         $("#alloc_rupee").val(alloc_rupee).trigger('keyup');
                         $("#alloc_foreign").val(alloc_foreign).trigger('keyup');
                         $("#alloc_total").val(alloc_total).trigger('keyup');
+
 
                         $("#alloc_revised_div").show();
                         $("#alloc_rupee").prop('readonly', true);
