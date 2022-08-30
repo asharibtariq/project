@@ -54,18 +54,25 @@
         $amt_lapsed =0;
         $financial_prog =0;
         $physical_prog =0;
+        $temp_project_id ='';
     @endphp
     @if(is_array($result) && count($result) > 0)
 
         @foreach ($result as $r)
         <?php
-            $project_id = $r->project_id;
-
             if ($arr_index > 0){
             $arr_index_minus_1 = $arr_index - 1;
             $xp = $xp + $result[$arr_index_minus_1]->util_total;
             } else {
             $xp = 0;
+            }
+
+            if ($temp_project_id == ''){
+                $temp_project_id = $r->project_id;
+            }
+            if ($temp_project_id != $r->project_id){
+                $xp = 0;
+                $temp_project_id = $r->project_id;
             }
 
             $fiscal_year_start = $r->fiscal_year - 1;
