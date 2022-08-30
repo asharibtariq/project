@@ -223,13 +223,15 @@ class AjaxController extends Controller{
             $project = DB::table('tbl_report')
                 ->select('tbl_report.fiscal_year',
                     'tbl_report.date',
-                    'tbl_report.actual_expend')
+                    'tbl_report.actual_expend',
+                    'tbl_report.util_total')
                 ->where($where)
             //    ->orderBy('tbl_report.fiscal_year', 'DESC')
                 ->orderBy('tbl_report.date', 'DESC')
-                ->paginate(1);
+                ->paginate();
 
 //        $data = $project->items();
+        //    pre($project->items(),1);
             $data['result'] = $project->items();
             $data['links'] = $project;
         }

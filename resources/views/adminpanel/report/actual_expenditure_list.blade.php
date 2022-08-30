@@ -2,8 +2,7 @@
        aria-describedby="sample_1_info">
     <thead>
     <tr role="row">
-        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="0"> Sr#</th>
-        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="1"> FY</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="0"> FY</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="1"> Date</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Actual Expenditure</th>
     </thead>
@@ -11,23 +10,32 @@
 
     @if(is_array($result) && count($result) > 0)
             <?php
-            $i = 1;
+            $arr_index = 0;
+            $xp = 0;
             ?>
             @foreach ($result as $r)
                 <?php
-                $fiscal_year_start = $r->fiscal_year - 1;
-                $fiscal_year = $fiscal_year_start." - ".$r->fiscal_year;
+                if ($arr_index > 0){
+                    $arr_index_minus_1 = $arr_index - 1;
+                    $xp = $xp + $result[$arr_index_minus_1]->util_total;
+                } else {
+                    $xp = 0;
+                }
+                $arr_index++;
                 ?>
-            <tr role="row">
-                <td> {{$i}}</td>
-                <td> {{$fiscal_year}} </td>
-                <td> {{$r->date}}</td>
-                <td> {{$r->actual_expend}}</td>
-            </tr>
+            @endforeach
+
             <?php
-            $i++;
+            $fiscal_year_start = $result[0]->fiscal_year - 1;
+            $fiscal_year = $fiscal_year_start." - ".$result[0]->fiscal_year;
             ?>
-        @endforeach
+
+            <tr role="row">
+                <td> {{$fiscal_year}} </td>
+                <td> {{$result[0]->date}}</td>
+                <td> {{--$r->actual_expend--}}{{$xp}}</td>
+            </tr>
+
     @else
         <tr>
             <th scope="row" colspan="4">
