@@ -36,6 +36,7 @@
     @php
         $i = 1;
         $arr_index = 0;
+        $xp = 0;
         $cost = 0;
         $actual_expend =0;
         $alloc_rupee =0;
@@ -58,6 +59,8 @@
 
         @foreach ($result as $r)
         <?php
+            $project_id = $r->project_id;
+
             if ($arr_index > 0){
             $arr_index_minus_1 = $arr_index - 1;
             $xp = $xp + $result[$arr_index_minus_1]->util_total;

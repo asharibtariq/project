@@ -300,10 +300,10 @@
     <script>
 
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+        var local_allocation;
         $(document).ready(function(){
             var alloc_total = $("#alloc_total").val();
             var util_total = $("#util_total").val();
-            var local_allocation = 0;
             $(document).on('change', '#project_id', function () {
                 var project_id = $(this).val();
                 if (project_id > 0){
@@ -312,7 +312,6 @@
                     ajax_expenditure_list(project_id);
                     ajax_date_rec(project_id);
                 }
-               local_allocation =  $('#alloc_rupee').val();
                 $('#date').val('');
                 $('#alloc_rupee').val('');
                 $('#alloc_foreign').val('');
@@ -335,6 +334,7 @@
                 console.log("Allocation Total: "+alloc_total);
             });
             $('#alloc_revised').keyup(function(){
+                console.log(local_allocation);
                 var total = 0;
                 var alloc_revised = $(this).val();
 
@@ -347,7 +347,7 @@
                 }
                 else {
                     if ( $('#alloc_revised').val().length === 0){
-                        $('#alloc_rupee').val(6666);
+                        $('#alloc_rupee').val(local_allocation).trigger('keyup');
                     }
                 }
                 // else ($('#alloc_revised').isEmpty())
@@ -472,7 +472,8 @@
                         $("#alloc_rupee").val(alloc_rupee).trigger('keyup');
                         $("#alloc_foreign").val(alloc_foreign).trigger('keyup');
                         $("#alloc_total").val(alloc_total).trigger('keyup');
-
+                        local_allocation =  $('#alloc_rupee').val();
+                        console.log(local_allocation);
 
                         $("#alloc_revised_div").show();
                         $("#alloc_rupee").prop('readonly', true);
