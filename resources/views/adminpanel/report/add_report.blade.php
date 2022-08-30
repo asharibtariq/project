@@ -320,11 +320,13 @@
             $('#alloc_revised').keyup(function(){
                 var total = 0;
                 var alloc_revised = $(this).val();
-                $("#alloc_rupee").val(alloc_revised);
-                $('.total-alloc-fields').each(function(){
-                    total+=(parseFloat($(this).val()) || 0);
-                });
-                $('#alloc_total').val(total).trigger('keyup');
+                if (alloc_revised > 0) {
+                    $("#alloc_rupee").val(alloc_revised);
+                    $('.total-alloc-fields').each(function () {
+                        total += (parseFloat($(this).val()) || 0);
+                    });
+                    $('#alloc_total').val(total).trigger('keyup');
+                }
             });
             $('.total-release-fields').keyup(function(){
                 var total = 0;
