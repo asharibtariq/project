@@ -350,10 +350,8 @@
                 alloc_total = total;
 
             //    alloc_total = getTotalOfFields('.total-alloc-fields', '#alloc_total', $(this).val());
-                console.log("Allocation Total: "+alloc_total);
             });
             $('#alloc_revised').keyup(function(){
-                console.log(local_allocation);
                 var total = 0;
                 var alloc_revised = $(this).val();
 
@@ -379,8 +377,13 @@
                 });
                 $('#release_total_actual').val(total).trigger('keyup');
 
+                if ($("#release_fund_actual").val() == '' && $("#release_fund_actual").val() == '') {
+                    $("#util_actual").val('').trigger('keyup');
+                    $("#util_foreign").val('').trigger('keyup');
+                    $("#util_total").val('').trigger('keyup');
+                }
+
             //    getTotalOfFields('.total-release-fields', '#release_total_actual', $(this).val());
-                console.log("Release Total: "+total);
             });
             $('.total-util-fields').keyup(function(){
                 var release_total_actual = $('#release_total_actual').val();
@@ -392,25 +395,35 @@
                 $('#util_total').val(total).trigger('keyup');
                 // Global Util Value
                 util_total = total;
-
-            //    util_total = getTotalOfFields('.total-util-fields', '#util_total', $(this).val());
-                console.log("Release Total: "+util_total);
-
-            //    if (total > release_total_actual){
+                
                 if (util_total > release_total_actual){
                     alert("Total Utilization cannot be greater than Total actual releases / disbursement...");
                     $("#util_actual").val('');
                     $("#util_foreign").val('');
                     $("#util_total").val('');
+                    $("#financial_prog").val('');
                     return false;
                 }
             });
+            /*
             $('.financial-progress-formula').keyup(function(){
                // var util_total = $("#util_total").val('');
                // var alloc_total = $("#alloc_total").val('');
-               //
-                var financial_progress_precent = (util_total/alloc_total) * 100;
-                $('#financial_prog').val(financial_progress_precent.toFixed(2));
+                if ($("#util_total").val() != '' && $("#alloc_total").val() != '') {
+                    var financial_progress_precent = (util_total / alloc_total) * 100;
+                    $('#financial_prog').val(financial_progress_precent.toFixed(2));
+                }else{
+                    $('#financial_prog').val('');
+                }
+            });
+            */
+            $('.financial-progress-formula').on("keyup", function(){
+                if ($("#util_total").val() != '' && $("#alloc_total").val() != '') {
+                    var financial_progress_precent = (parseFloat($("#util_total").val()) / parseFloat($("#alloc_total").val())) * 100;
+                    $('#financial_prog').val(financial_progress_precent.toFixed(2));
+                }else{
+                    $('#financial_prog').val('');
+                }
             });
             $('#release_total_actual').keyup(function(){
                 var release_total_actual = $(this).val();
@@ -492,7 +505,6 @@
                         $("#alloc_foreign").val(alloc_foreign).trigger('keyup');
                         $("#alloc_total").val(alloc_total).trigger('keyup');
                         local_allocation =  $('#alloc_rupee').val();
-                        console.log(local_allocation);
 
                         $("#alloc_revised_div").show();
                         $("#alloc_rupee").prop('readonly', true);

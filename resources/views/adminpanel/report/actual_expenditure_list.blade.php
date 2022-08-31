@@ -9,32 +9,32 @@
     <tbody>
 
     @if(is_array($result) && count($result) > 0)
-            <?php
-            $arr_index = 0;
-            $xp = 0;
-            ?>
-            @foreach ($result as $r)
-                <?php
-                if ($arr_index > 0){
-                    $arr_index_minus_1 = $arr_index - 1;
-                    $xp = $xp + $result[$arr_index_minus_1]->util_total;
-                } else {
-                    $xp = 0;
-                }
-                $arr_index++;
-                ?>
-            @endforeach
+    <?php
+        $arr_index = 0;
+        $xp = 0;
+    ?>
+        @foreach ($result as $r)
+        <?php
+            if ($arr_index > 0){
+                $arr_index_minus_1 = $arr_index - 1;
+                $xp = $xp + $result[$arr_index_minus_1]->util_total;
+            } else {
+                $xp = 0;
+            }
+            $arr_index++;
+        ?>
+        @endforeach
 
-            <?php
-            $fiscal_year_start = $result[0]->fiscal_year - 1;
-            $fiscal_year = $fiscal_year_start." - ".$result[0]->fiscal_year;
-            ?>
+    <?php
+        $fiscal_year_start = $result[0]->fiscal_year - 1;
+        $fiscal_year = $fiscal_year_start." - ".$result[0]->fiscal_year;
+    ?>
 
-            <tr role="row">
-                <td> {{$fiscal_year}} </td>
-                <td> {{$result[0]->date}}</td>
-                <td> {{--$r->actual_expend--}}{{$xp}}</td>
-            </tr>
+        <tr role="row">
+            <td> {{$fiscal_year}} </td>
+            <td> {{$result[0]->date}}</td>
+            <td> {{--$r->actual_expend--}}{{$xp}}</td>
+        </tr>
 
     @else
         <tr>
