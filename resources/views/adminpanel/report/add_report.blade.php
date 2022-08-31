@@ -320,9 +320,9 @@
 
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
         var local_allocation;
+        var alloc_total = $("#alloc_total").val();
+        var util_total = $("#util_total").val();
         $(document).ready(function(){
-            var alloc_total = $("#alloc_total").val();
-            var util_total = $("#util_total").val();
             $(document).on('change', '#project_id', function () {
                 var project_id = $(this).val();
                 if (project_id > 0){
