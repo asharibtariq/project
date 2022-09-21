@@ -29,6 +29,15 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('dashboard', [App\Http\Controllers\DashboardController::class, 'index']);
 Route::post('dashboard', [App\Http\Controllers\DashboardController::class, 'dashboard']);
 
+// User Routes
+Route::get('user', [\App\Http\Controllers\UserController::class, 'index']);
+Route::get('add_user', [\App\Http\Controllers\UserController::class, 'create']);
+Route::post('add_user', [\App\Http\Controllers\UserController::class, 'store']);
+Route::get('user/{id}', [\App\Http\Controllers\UserController::class, 'show']);
+Route::get('edit_user/{id}', [\App\Http\Controllers\UserController::class, 'edit']);
+Route::post('update_user/{id}', [\App\Http\Controllers\UserController::class, 'update']);
+Route::get('delete_user/{id}', [\App\Http\Controllers\UserController::class, 'destroy']);
+
 // Project Routes
 Route::get('project', [\App\Http\Controllers\ProjectController::class, 'index']);
 Route::get('add_project', [\App\Http\Controllers\ProjectController::class, 'create']);
@@ -46,3 +55,6 @@ Route::get('report/{id}', [\App\Http\Controllers\ReportController::class, 'show'
 Route::get('edit_report/{id}', [\App\Http\Controllers\ReportController::class, 'edit']);
 Route::post('update_report/{id}', [\App\Http\Controllers\ReportController::class, 'update']);
 Route::get('delete_report/{id}', [\App\Http\Controllers\ReportController::class, 'destroy']);
+
+// Report Log Routes
+Route::get('report_log', [\App\Http\Controllers\LogController::class, 'index']);

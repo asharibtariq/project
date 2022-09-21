@@ -6,16 +6,23 @@ use App\Models\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class LogController extends Controller
-{
+class LogController extends Controller{
+
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index(){
+        $title = "Log";
+        $data['start_date'] = '';
+        $data['end_date'] = '';
+        $data['project_select'] = get_project();
+        return view('adminpanel.log.log', $data)->with('title', $title);
     }
 
     /**
@@ -23,8 +30,7 @@ class LogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
+    public function create(){
         //
     }
 
@@ -34,8 +40,7 @@ class LogController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request){
         //
     }
 
@@ -45,8 +50,7 @@ class LogController extends Controller
      * @param  \App\Models\Log  $log
      * @return \Illuminate\Http\Response
      */
-    public function show(Log $log)
-    {
+    public function show($id){
         //
     }
 
@@ -56,8 +60,7 @@ class LogController extends Controller
      * @param  \App\Models\Log  $log
      * @return \Illuminate\Http\Response
      */
-    public function edit(Log $log)
-    {
+    public function edit($id){
         //
     }
 
@@ -68,8 +71,7 @@ class LogController extends Controller
      * @param  \App\Models\Log  $log
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Log $log)
-    {
+    public function update(Request $request, $id){
         //
     }
 
@@ -79,8 +81,7 @@ class LogController extends Controller
      * @param  \App\Models\Log  $log
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Log $log)
-    {
+    public function destroy($id){
         //
     }
 }

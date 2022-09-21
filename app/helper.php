@@ -1,6 +1,7 @@
 <?php
 // Run command "composer dump-autoload"
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 if(!function_exists('show_dropdown')) {
     function show_dropdown($table_name, $s_name, $o_name, $o_id = "id", $selected = 0, $default_select = '', $attr = '', $where = '', $sort_order = '', $group_by = '') {
@@ -81,6 +82,22 @@ if(!function_exists('pre')) {
 if(!function_exists('contact_send_email')) {
     function contact_send_email($data = array()) {
         app('App\Http\Controllers\MailController')->html_email('contact_mail', $data);
+    }
+}
+
+if(!function_exists('loggedIn')) {
+    function loggedIn($data = array()) {
+        $data['user_id'] = Auth::id();
+        $data['role_id'] = Auth::user()->role_id;
+        return $data;
+    }
+}
+
+if(!function_exists('tbl_role')) {
+    function get_role($default = 0, $where = '', $name = 'role_id') {
+        if (empty($where)){$where = array('status' => 'Y');}
+        $html = show_dropdown('tbl_role', $name, 'name', 'id', $default, "Select Role", "class='form-control input-paf select2' required", $where);
+        return $html;
     }
 }
 

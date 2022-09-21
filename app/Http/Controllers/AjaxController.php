@@ -20,6 +20,31 @@ class AjaxController extends Controller{
         $data ['action'] = $action;
         $output = [];
         switch ($action) {
+            case 'user_content':
+                $where = array();
+                $name = $request->name != '' ? $request->name : '';
+                $per_page = $request->select_limit != '' ? $request->select_limit : 10;
+                /*
+                    if (!empty($name))
+                        $where['users.name'] = $name;
+                */
+                $project = DB::table('users')
+                    ->select('users.id',
+                        'users.name',
+                        'users.username',
+                        'users.role_id',
+                        'users.role',
+                        'users.status',
+                        'users.email')
+                    ->where('name', 'LIKE', '%' . $name . '%')
+                    //    ->groupBy('users.id')
+                    ->orderBy('users.id', 'DESC')
+                    ->paginate($per_page);
+
+                $data['result'] = $project->items();
+                $data['links'] = $project;
+                return view('adminpanel.user.user_list')->with($data);
+                break;
             case 'project_content':
                 $where = array();
                 $name = $request->name != '' ? $request->name : '';
@@ -150,6 +175,58 @@ class AjaxController extends Controller{
                 $data['result'] = $project->items();
                 $data['links'] = $project;
                 return view('adminpanel.report.report_list')->with($data);
+                break;
+            case 'log_content':
+                $where = array();
+                $project_id = $request->project_id != '' ? $request->project_id : '';
+                $start_date = $request->start_date != '' ? $request->start_date : '';
+                $end_date = $request->end_date != '' ? $request->end_date : '';
+                $per_page = $request->select_limit != '' ? $request->select_limit : 10;
+
+                if (!empty($project_id))
+                    $where[] = ['tbl_report_log.project_id', ' = ', $project_id];
+                //    $where['tbl_report_log.project_id'] = $project_id;
+
+                if (!empty($start_date)) {
+                    $s_date = date('Y-m-d', strtotime($start_date . ' 00:00:00'));
+                    $where[] = ['tbl_report_log.created_at', ' >= ', ''.$s_date . ' 00:00:00'];
+                //    $where['tbl_report_log.created_at'] = ' >= '.$start_date.' 00:00:00';
+                //    pre($s_date);
+                }
+
+                if (!empty($end_date)) {
+                    $e_date = date('Y-m-d', strtotime($end_date . ' 23:59:59'));
+                    $where[] = ['tbl_report_log.created_at', ' <= ', ''.$e_date . ' 23:59:59'];
+                //    $where['tbl_report_log.created_at'] = ' <= '.$end_date.' 23:59:59';
+                //    pre($e_date);
+                }
+
+                $log = DB::table('tbl_report_log')
+                    ->leftJoin('tbl_project', 'tbl_report_log.project_id', '=', 'tbl_project.id')
+                    ->leftJoin('users', 'tbl_report_log.user_id', '=', 'users.id')
+                    ->select('tbl_report_log.id',
+                        'tbl_report_log.report_id',
+                        'tbl_report_log.project_id',
+                        'tbl_report_log.project',
+                        'tbl_report_log.data',
+                        'tbl_report_log.created_at',
+                        'tbl_report_log.updated_at',
+                        'tbl_project.psdp',
+                        'tbl_project.psid',
+                        'tbl_project.cost',
+                        'tbl_project.complete_date',
+                        'users.name AS user_name')
+                    ->where($where)
+                //    ->groupBy('tbl_report_log.id')
+                //    ->orderBy('tbl_report_log.id', 'DESC')
+                //    ->orderBy('tbl_report_log.project', 'ASC')->toSql();
+                    ->orderBy('tbl_report_log.project', 'ASC')
+                    ->paginate($per_page);
+        //    pre($log,1);
+
+                $data['result'] = $log->items();
+                $data['links'] = $log;
+                return view('adminpanel.log.log_list')->with($data);
                 break;
             default:
                 break;
