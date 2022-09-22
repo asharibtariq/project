@@ -34,8 +34,17 @@ class ReportController extends Controller{
      */
     public function create(){
         $title = "Add Report";
+        $projects_where = '';
+        $userData = loggedIn();
+        $user_id = $userData['user_id'];
+        $user_role = $userData['role_id'];
+        if ($user_role == 2) {
+            $projects_array = getUserProjects($user_id);
+            $projects_string = implode(',',$projects_array);
+            $projects_where = "id IN (".$projects_string.")";
+        }
         $data['fiscal_year_select'] = get_fiscal_year();
-        $data['project_select'] = get_project();
+        $data['project_select'] = get_project($projects_where);
         return view('adminpanel.report.add_report', $data)->with('title', $title);
     }
 

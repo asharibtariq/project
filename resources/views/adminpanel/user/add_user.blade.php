@@ -70,6 +70,13 @@
                                         @endif
                                     </div>
                                 </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="label-paf" for="project_id">Project(s)</label>
+                                        {!! $multiple_project_select !!}
+                                        <input type="hidden" name="project" id="project" >
+                                    </div>
+                                </div>
                                 <div class="col-md-12">
                                     <div class="form-group"><br/>
                                         <button type="submit" class="btn btn-info pull-right">

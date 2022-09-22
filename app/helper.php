@@ -2,6 +2,7 @@
 // Run command "composer dump-autoload"
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Models\UsersProject;
 
 if(!function_exists('show_dropdown')) {
     function show_dropdown($table_name, $s_name, $o_name, $o_id = "id", $selected = 0, $default_select = '', $attr = '', $where = '', $sort_order = '', $group_by = '') {
@@ -93,6 +94,23 @@ if(!function_exists('loggedIn')) {
     }
 }
 
+if(!function_exists('getUserProjects')) {
+    function getUserProjects($user_id) {
+        $data = array();
+    //    $projects = UsersProject::where('user_id', $user_id);
+        $projects = DB::table('tbl_users_project')
+            ->select(DB::raw('project_id'))
+            ->where('user_id', $user_id)
+            ->get();
+        if (!empty($projects) && count($projects) > 0){
+            foreach ($projects as $project){
+                $data[] = $project->project_id;
+            }
+        }
+        return $data;
+    }
+}
+
 if(!function_exists('tbl_role')) {
     function get_role($default = 0, $where = '', $name = 'role_id') {
         if (empty($where)){$where = array('status' => 'Y');}
@@ -105,6 +123,14 @@ if(!function_exists('get_project')) {
     function get_project($default = 0, $where = '', $name = 'project_id') {
         if (empty($where)){$where = array('status' => 'Y');}
         $html = show_dropdown('tbl_project', $name, 'name', 'id', $default, "Select Project", "class='form-control input-paf select2' required", $where);
+        return $html;
+    }
+}
+
+if(!function_exists('get_multiple_project')) {
+    function get_multiple_project($default = 0, $where = '', $name = 'project_id[]') {
+        if (empty($where)){$where = array('status' => 'Y');}
+        $html = show_dropdown('tbl_project', $name, 'name', 'id', $default, "Select Project(s)", "class='form-control input-paf select2' multiple required", $where);
         return $html;
     }
 }
