@@ -126,6 +126,9 @@ class AjaxController extends Controller{
                 break;
             case 'report_content':
                 $where = array();
+                $userData = loggedIn();
+                $user_id = $userData['user_id'];
+                $user_role = $userData['role_id'];
                 $project_id = $request->project_id != '' ? $request->project_id : '';
                 $fiscal_year = $request->fiscal_year != '' ? $request->fiscal_year : '';
                 $per_page = $request->select_limit != '' ? $request->select_limit : 10;
@@ -133,6 +136,9 @@ class AjaxController extends Controller{
                     $where['tbl_report.project_id'] = $project_id;
                 if (!empty($fiscal_year))
                     $where['tbl_report.fiscal_year'] = $fiscal_year;
+                if ($user_role == 2){
+                    $where['tbl_report.created_by'] = $user_id;
+                }
                 $project = DB::table('tbl_report')
                     ->leftJoin('tbl_project', 'tbl_report.project_id', '=', 'tbl_project.id')
                     ->select('tbl_report.id',

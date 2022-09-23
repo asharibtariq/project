@@ -42,7 +42,9 @@ class ReportController extends Controller{
             $projects_array = getUserProjects($user_id);
             $projects_string = implode(',',$projects_array);
             $projects_where = "id IN (".$projects_string.")";
+        //    $projects_where = ["id", "IN" ,"(".$projects_string.")"];
         }
+    //    pre($projects_where,1);
         $data['fiscal_year_select'] = get_fiscal_year();
         $data['project_select'] = get_project($projects_where);
         return view('adminpanel.report.add_report', $data)->with('title', $title);
