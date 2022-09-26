@@ -7,7 +7,7 @@
 $userData = loggedIn();
 $user_role = $userData['role_id'];
 @endphp
-<a href="{{ url('dashboard') }}" class="list-group-item-action-main"><i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard <!-- <i class="fa fa-angle-down" aria-hidden="true"></i> --></a>
+<a href="{{ url('') }}" class="list-group-item-action-main"><i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard <!-- <i class="fa fa-angle-down" aria-hidden="true"></i> --></a>
 <a href="javascript:;" data-toggle="collapse" data-target="#report-menu" class="list-group-item-action-main"><i class="fa fa-database" aria-hidden="true"></i> Summary <i style="float: right;margin-right: 0;" class="fa fa-angle-down" aria-hidden="true"></i></a>
 <div id="report-menu" class="collapse left-bar-main-collapse">
     <a class="left-bar-submenu" href="{{ url('report') }}"><i class="fa fa-file" aria-hidden="true"></i> List</a>

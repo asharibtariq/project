@@ -23,11 +23,11 @@ Route::post('ajax_date_rec', [\App\Http\Controllers\AjaxController::class, 'getD
 Route::post('ajax_check_date_rec', [\App\Http\Controllers\AjaxController::class, 'checkDateRecord']);
 Route::post('ajax_expenditure_list', [\App\Http\Controllers\AjaxController::class, 'getActualExpenditure']);
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('dashboard', [App\Http\Controllers\DashboardController::class, 'index']);
-Route::post('dashboard', [App\Http\Controllers\DashboardController::class, 'dashboard']);
+Route::get('/', [App\Http\Controllers\DashboardController::class, 'index']);
+Route::post('/', [App\Http\Controllers\DashboardController::class, 'dashboard']);
 
 // User Routes
 Route::get('user', [\App\Http\Controllers\UserController::class, 'index']);

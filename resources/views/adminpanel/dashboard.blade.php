@@ -8,7 +8,7 @@
     </div>
 </div>
 
-<form name="dashboard_post" method="post" action="{{url('dashboard')}}">
+<form name="dashboard_post" method="post" action="{{url('')}}">
 @csrf
 <div class="row">
     <div class="col-md-4 offset-1">
