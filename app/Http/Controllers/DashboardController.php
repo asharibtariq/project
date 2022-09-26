@@ -114,7 +114,7 @@ class DashboardController extends Controller{
 
         $get_user_projects_where = '';
         if ($user_role == 2){
-            $get_user_projects_where = 'created_by = "'.$user_id.'"';
+            $get_user_projects_where =  'AND created_by = "'.$user_id.'"';
         }
 
         $util_totals = array();
@@ -123,7 +123,7 @@ class DashboardController extends Controller{
         if ($where != ''){
             $condition = ' AND '.$where;
         }
-        $project_ids = DB::select('Select DISTINCT(project_id) from tbl_report WHERE status = "Y" AND '.$get_user_projects_where.'');
+        $project_ids = DB::select('Select DISTINCT(project_id) from tbl_report WHERE status = "Y"'.$get_user_projects_where.'');
         if (!empty($project_ids) && count($project_ids) > 0) {
             foreach ($project_ids as $project_id) {
                 $result = DB::select('Select util_total from tbl_report WHERE project_id = "' . $project_id->project_id . '" ' . $condition . ' ORDER BY date DESC LIMIT 1');
