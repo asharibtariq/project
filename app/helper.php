@@ -2,7 +2,6 @@
 // Run command "composer dump-autoload"
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use App\Models\UsersProject;
 
 if(!function_exists('show_dropdown')) {
     function show_dropdown($table_name, $s_name, $o_name, $o_id = "id", $selected = 0, $default_select = '', $attr = '', $where = '', $sort_order = '', $group_by = '') {
@@ -97,7 +96,6 @@ if(!function_exists('loggedIn')) {
 if(!function_exists('getUserProjects')) {
     function getUserProjects($user_id) {
         $data = array();
-    //    $projects = UsersProject::where('user_id', $user_id);
         $projects = DB::table('tbl_users_project')
             ->select(DB::raw('project_id'))
             ->where('user_id', $user_id)
