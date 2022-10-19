@@ -194,15 +194,15 @@ class AjaxController extends Controller{
                 //    $where['tbl_report_log.project_id'] = $project_id;
 
                 if (!empty($start_date)) {
-                    $s_date = date('Y-m-d', strtotime($start_date . ' 00:00:00'));
-                    $where[] = ['tbl_report_log.created_at', ' >= ', ''.$s_date . ' 00:00:00'];
+                    $s_date = date('m/d/Y ', strtotime($start_date));
+                    $where[] = ['tbl_report_log.date', ' >= ', ''.$s_date];
                 //    $where['tbl_report_log.created_at'] = ' >= '.$start_date.' 00:00:00';
                 //    pre($s_date);
                 }
 
                 if (!empty($end_date)) {
-                    $e_date = date('Y-m-d', strtotime($end_date . ' 23:59:59'));
-                    $where[] = ['tbl_report_log.created_at', ' <= ', ''.$e_date . ' 23:59:59'];
+                    $e_date = date('m/d/Y', strtotime($end_date));
+                    $where[] = ['tbl_report_log.date', ' <= ', ''.$e_date];
                 //    $where['tbl_report_log.created_at'] = ' <= '.$end_date.' 23:59:59';
                 //    pre($e_date);
                 }
@@ -215,6 +215,7 @@ class AjaxController extends Controller{
                         'tbl_report_log.project_id',
                         'tbl_report_log.project',
                         'tbl_report_log.data',
+                        'tbl_report_log.date',
                         'tbl_report_log.created_at',
                         'tbl_report_log.updated_at',
                         'tbl_project.psdp',

@@ -99,6 +99,7 @@ class ReportController extends Controller{
         $log->project_id = $insertData['project_id'];
         $log->project = $insertData['project'];
         $log->data = json_encode($insertData);
+        $log->date = now ()->format ('m/d/Y');
         $log->user_id = $userId;
         $log->action = 'add';
         $log->save();
@@ -153,6 +154,7 @@ class ReportController extends Controller{
         $log->project_id = $updateData['project_id'];
         $log->project = $updateData['project'];
         $log->data = json_encode($updateData);
+        $log->date = now ()->format ('m/d/Y');
         $log->user_id = $userId;
         $log->action = 'edit';
         $log->save();
@@ -181,6 +183,7 @@ class ReportController extends Controller{
         $log->project_id = $report['project_id'];
         $log->project = $report['project'];
         $log->data = json_encode($report);
+        $log->date = now ()->format ('m/d/Y');
         $log->user_id = $userId;
         $log->action = 'delete';
         $log->save();

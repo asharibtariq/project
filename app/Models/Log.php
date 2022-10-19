@@ -15,6 +15,7 @@ class Log extends Model
         'project_id',
         'project',
         'data',
+        'date',
         'user_id',
         'action'
     ];

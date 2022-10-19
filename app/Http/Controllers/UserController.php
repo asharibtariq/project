@@ -98,6 +98,8 @@ class UserController extends Controller{
         $title = "Edit User";
         $data['user'] = $user;
         $data['role_select'] = get_role($user->role_id);
+        $data2 = [1,2,3,4];
+        $data['multiple_project_select'] = get_multiple_project($data2);
         return view('adminpanel.user.edit_user', $data)->with('title', $title);
     }
 
@@ -108,6 +110,7 @@ class UserController extends Controller{
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function update(UserRequest $request, $id){
         $userId = Auth::id();
         $user = User::findOrFail($id);
@@ -126,6 +129,7 @@ class UserController extends Controller{
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function destroy($id){
         $user = User::findOrFail($id);
         $user->delete();

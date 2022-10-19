@@ -94,6 +94,13 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
+                                        <label class="label-paf" for="project_id">Project(s)</label>
+                                        {!! $multiple_project_select !!}
+                                        <input type="hidden" name="project" id="project" >
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
                                         <label class="label-paf" for="status">Status</label>
                                         <select class="form-control input-paf" name="status" id="status">
                                             <option value="Y" {{$user->status == "Y" ? "selected" : ""}}>Active</option>
