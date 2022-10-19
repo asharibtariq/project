@@ -60,6 +60,7 @@ class DashboardController extends Controller{
             $financial_percentage = 0;
         }
 
+        $data['range_data'] = $this->_rangeData();
         $data['total_projects'] = $total_projects;
         $data['total_allocations'] = $total_allocations;
         $data['total_releases'] = $total_releases;
@@ -137,6 +138,74 @@ class DashboardController extends Controller{
             }
         }
         return $total;
+    }
+
+    function _rangeData(){
+        $record = array();
+
+        $record[0]['project'] = 'Backup';
+        $record[0]['start_date'] = '21/11/2014';
+        $record[0]['end_date'] = '02/12/2014';
+        $record[0]['status_precent'] = 25;
+
+        $record[1]['project'] = 'Recovery';
+        $record[1]['start_date'] = '02/12/2014';
+        $record[1]['end_date'] = '19/12/2014';
+        $record[1]['status_precent'] = 75;
+
+        $record[2]['project'] = 'Elementor';
+        $record[2]['start_date'] = '10/12/2014';
+        $record[2]['end_date'] = '23/12/2014';
+        $record[2]['status_precent'] = 80;
+
+        $record[3]['project'] = 'VPN';
+        $record[3]['start_date'] = '02/12/2014';
+        $record[3]['end_date'] = '10/12/2014';
+        $record[3]['status_precent'] = 100;
+
+    //    $range_graph_data_categories = ['Backup', 'Recovery', 'Elementor Issue', 'VPN Issue'];
+
+        $range_graph_data = array();
+        $string_raw = "";
+        foreach ($record as $key => $value){
+            $start_date_array = array();
+            $end_date_array = array();
+            $start_date_day = "";
+            $start_date_month = "";
+            $start_date_year = "";
+            $end_date_day = "";
+            $end_date_month = "";
+            $end_date_year = "";
+
+            $percentage = $value['status_precent']/100;
+
+            $start_date_array = explode('/',$value['start_date']);
+            $end_date_array = explode('/',$value['end_date']);
+
+            $start_date_day = $start_date_array[0];
+            $start_date_month = $start_date_array[1];
+            $start_date_year = $start_date_array[2];
+
+            $end_date_day = $end_date_array[0];
+            $end_date_month = $end_date_array[1];
+            $end_date_year = $end_date_array[2];
+
+            $string_raw .= "{x: Date.UTC(".$start_date_year.", ".$start_date_month.", ".$start_date_day."), x2: Date.UTC(".$end_date_year.", ".$end_date_month.", ".$end_date_day."), y: ".$key.", partialFill: ".$percentage."},";
+            $range_graph_data_categories[] = $value['project'];
+        }
+        $data_string = rtrim($string_raw,',');
+    //    $category_string = "'".implode($range_graph_data_categories,"','")."'";
+        $category_string = "";
+
+        foreach ($range_graph_data_categories as $category){
+            $category_string .= "'".$category."',";
+        }
+        $category_string = rtrim($category_string, ',');
+
+        $rangeData['graph_data'] = $data_string;
+        $rangeData['categories'] = $category_string;
+    //    pre($rangeData,1);
+        return $rangeData;
     }
 
 }
