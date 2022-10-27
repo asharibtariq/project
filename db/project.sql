@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : Talha
-Source Server Version : 50724
+Source Server         : Asharib
+Source Server Version : 50733
 Source Host           : localhost:3306
 Source Database       : project
 
 Target Server Type    : MYSQL
-Target Server Version : 50724
+Target Server Version : 50733
 File Encoding         : 65001
 
-Date: 2022-08-31 11:37:34
+Date: 2022-10-26 21:46:38
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -27,12 +27,11 @@ CREATE TABLE `email_template` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of email_template
 -- ----------------------------
-INSERT INTO `email_template` VALUES ('1', 'otp_email', '<div style=\"font-family: Helvetica,Arial,sans-serif;min-width:1000px;overflow:auto;line-height:2\">\n  <div style=\"margin:50px auto;width:70%;padding:20px 0\">\n    <div style=\"border-bottom:1px solid #eee\">\n      <a href=\"\" style=\"font-size:1.4em;color: #00466a;text-decoration:none;font-weight:600\">Ministry of National Health Services Regulations & Coordination</a>\n    </div>\n    <p style=\"font-size:1.1em\">Hi User,</p>\n    <p>Use the following OTP to complete your Sign Up procedures.</p>\n    <h2 style=\"background: #00466a;margin: 0 auto;width: max-content;padding: 0 10px;color: #fff;border-radius: 4px;\">{otp_number}</h2>\n    <p style=\"font-size:0.9em;\">Regards,<br />MoNHSRC</p>\n    <hr style=\"border:none;border-top:1px solid #eee\" />\n    <div style=\"float:right;padding:8px 0;color:#aaa;font-size:0.8em;line-height:1;font-weight:300\">\n      <p>Ministry of Heatlh</p>\n      <p>3rd Floor, Koshar Block</p>\n      <p>Pak Secretariat, Islamabad</p>\n    </div>\n  </div>\n</div>', 'Y', null, null);
 
 -- ----------------------------
 -- Table structure for failed_jobs
@@ -78,7 +77,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of migrations
@@ -87,27 +86,32 @@ INSERT INTO `migrations` VALUES ('1', '2014_10_12_000000_create_users_table', '1
 INSERT INTO `migrations` VALUES ('2', '2014_10_12_100000_create_password_resets_table', '1');
 INSERT INTO `migrations` VALUES ('3', '2019_08_19_000000_create_failed_jobs_table', '1');
 INSERT INTO `migrations` VALUES ('4', '2019_12_14_000001_create_personal_access_tokens_table', '1');
-INSERT INTO `migrations` VALUES ('5', '2022_08_04_045659_alter_username_field_users', '2');
-INSERT INTO `migrations` VALUES ('6', '2022_08_04_050225_add_username_users', '3');
-INSERT INTO `migrations` VALUES ('7', '2022_08_04_071321_create_projects_table', '4');
-INSERT INTO `migrations` VALUES ('8', '2022_08_04_074708_create_reports_table', '4');
-INSERT INTO `migrations` VALUES ('9', '2022_08_10_071416_add_multiple_fields_tbl_project', '5');
-INSERT INTO `migrations` VALUES ('10', '2022_08_11_055626_alter_fields_tbl_report', '6');
-INSERT INTO `migrations` VALUES ('11', '2022_08_11_092213_drop_tbl_report', '7');
-INSERT INTO `migrations` VALUES ('12', '2022_08_11_092515_create_new_tbl_report', '7');
-INSERT INTO `migrations` VALUES ('13', '2022_08_11_093125_drop_tbl_report1', '7');
-INSERT INTO `migrations` VALUES ('14', '2022_08_11_093213_create_new_tbl_report1', '7');
-INSERT INTO `migrations` VALUES ('15', '2022_08_17_073502_create_tbl_email_template', '8');
-INSERT INTO `migrations` VALUES ('16', '2022_08_17_084745_drop_tbl_project', '8');
-INSERT INTO `migrations` VALUES ('17', '2022_08_17_085251_new_tbl_project', '8');
-INSERT INTO `migrations` VALUES ('18', '2022_08_18_044649_tbl_log', '8');
-INSERT INTO `migrations` VALUES ('19', '2022_08_18_051649_create_logs_table', '8');
-INSERT INTO `migrations` VALUES ('20', '2022_08_25_075912_add_fields_tbl_project', '9');
-INSERT INTO `migrations` VALUES ('21', '2022_08_25_082458_delete_start_end_date_fields_tbl_project', '10');
-INSERT INTO `migrations` VALUES ('22', '2022_08_25_082646_add_start_end_date_fields_tbl_project', '11');
-INSERT INTO `migrations` VALUES ('23', '2022_08_25_085955_add_fields_tbl_report', '12');
-INSERT INTO `migrations` VALUES ('24', '2022_08_25_091201_delete_fields_tbl_report', '13');
-INSERT INTO `migrations` VALUES ('25', '2022_08_25_091251_add_fields_total_alloc_desc_tbl_report', '14');
+INSERT INTO `migrations` VALUES ('5', '2022_08_04_045659_alter_username_field_users', '1');
+INSERT INTO `migrations` VALUES ('6', '2022_08_04_050225_add_username_users', '1');
+INSERT INTO `migrations` VALUES ('7', '2022_08_04_071321_create_projects_table', '1');
+INSERT INTO `migrations` VALUES ('8', '2022_08_04_074708_create_reports_table', '1');
+INSERT INTO `migrations` VALUES ('9', '2022_08_10_071416_add_multiple_fields_tbl_project', '1');
+INSERT INTO `migrations` VALUES ('10', '2022_08_11_055626_alter_fields_tbl_report', '1');
+INSERT INTO `migrations` VALUES ('11', '2022_08_11_092213_drop_tbl_report', '1');
+INSERT INTO `migrations` VALUES ('12', '2022_08_11_092515_create_new_tbl_report', '1');
+INSERT INTO `migrations` VALUES ('13', '2022_08_11_093125_drop_tbl_report1', '1');
+INSERT INTO `migrations` VALUES ('14', '2022_08_11_093213_create_new_tbl_report1', '1');
+INSERT INTO `migrations` VALUES ('15', '2022_08_17_073502_create_tbl_email_template', '1');
+INSERT INTO `migrations` VALUES ('16', '2022_08_17_084745_drop_tbl_project', '1');
+INSERT INTO `migrations` VALUES ('17', '2022_08_17_085251_new_tbl_project', '1');
+INSERT INTO `migrations` VALUES ('18', '2022_08_18_044649_tbl_log', '1');
+INSERT INTO `migrations` VALUES ('19', '2022_08_18_051649_create_logs_table', '1');
+INSERT INTO `migrations` VALUES ('20', '2022_08_25_075912_add_fields_tbl_project', '1');
+INSERT INTO `migrations` VALUES ('21', '2022_08_25_082458_delete_start_end_date_fields_tbl_project', '1');
+INSERT INTO `migrations` VALUES ('22', '2022_08_25_082646_add_start_end_date_fields_tbl_project', '1');
+INSERT INTO `migrations` VALUES ('23', '2022_08_25_085955_add_fields_tbl_report', '1');
+INSERT INTO `migrations` VALUES ('24', '2022_08_25_091201_delete_fields_tbl_report', '1');
+INSERT INTO `migrations` VALUES ('25', '2022_08_25_091251_add_fields_total_alloc_desc_tbl_report', '1');
+INSERT INTO `migrations` VALUES ('26', '2022_09_21_055639_create_tbl_role', '1');
+INSERT INTO `migrations` VALUES ('27', '2022_09_21_060145_add_role_users', '1');
+INSERT INTO `migrations` VALUES ('28', '2022_09_21_083830_add_fields_users', '1');
+INSERT INTO `migrations` VALUES ('29', '2022_09_22_044302_create_table_tbl_users_project', '1');
+INSERT INTO `migrations` VALUES ('30', '2022_10_18_043724_add_date_tbl_log', '2');
 
 -- ----------------------------
 -- Table structure for password_resets
@@ -168,16 +172,15 @@ CREATE TABLE `tbl_project` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of tbl_project
 -- ----------------------------
-INSERT INTO `tbl_project` VALUES ('1', '123', 'KM123', 'Malachi Barry Project', '490.00', '300.00', '790.00', '08/01/2022', '08/15/2022', '08/31/2022', 'Y', '1', '1', '2022-08-28 06:36:10', '2022-08-28 06:36:10');
-INSERT INTO `tbl_project` VALUES ('2', '456', 'DM456', 'Delgado Macon Project', '160.00', '550.00', '710.00', '08/01/2022', '08/15/2022', '08/30/2022', 'Y', '1', '1', '2022-08-28 11:25:12', '2022-08-28 11:25:12');
-INSERT INTO `tbl_project` VALUES ('3', '789', 'GH789', 'Sloane Hinton Project', '870.00', '590.00', '1460.00', '07/01/2022', '08/01/2022', '09/01/2022', 'Y', '1', '1', '2022-08-29 09:38:17', '2022-08-29 09:38:17');
-INSERT INTO `tbl_project` VALUES ('4', '159', 'SK159', 'Nina Todd Project', '690.00', '740.00', '1430.00', '08/01/2022', '08/15/2022', '08/31/2022', 'Y', '1', '1', '2022-08-30 07:39:30', '2022-08-30 07:39:30');
-INSERT INTO `tbl_project` VALUES ('5', '4567', 'KM4567', 'Project Name', '521.00', '420.00', '941.00', '08/01/2022', '08/15/2022', '08/31/2022', 'Y', '1', '1', '2022-08-30 09:45:41', '2022-08-30 09:45:41');
+INSERT INTO `tbl_project` VALUES ('1', 'PSDP', '12345', 'Projectx', '2134.00', '4214.00', '6348.00', '10/17/2022', '10/31/2022', '10/30/2022', 'Y', '1', '1', '2022-10-18 05:02:33', '2022-10-18 05:02:33');
+INSERT INTO `tbl_project` VALUES ('2', 'PSD', '1122', 'Second', '222222.00', '2223.00', '224445.00', '10/19/2022', '11/03/2022', '10/27/2022', 'Y', '1', '1', '2022-10-25 07:20:11', '2022-10-25 07:20:11');
+INSERT INTO `tbl_project` VALUES ('3', 'PSDP', '111', 'Third', '4444.00', '4444.00', '8888.00', '10/26/2022', '10/28/2022', '10/27/2022', 'Y', '1', '1', '2022-10-26 06:57:18', '2022-10-26 06:57:18');
+INSERT INTO `tbl_project` VALUES ('4', 'PSDPP', '999', 'Forth', '213123.00', '3232.00', '216355.00', '10/27/2022', '10/29/2022', '10/28/2022', 'Y', '1', '1', '2022-10-26 07:47:09', '2022-10-26 07:47:09');
 
 -- ----------------------------
 -- Table structure for tbl_report
@@ -215,19 +218,19 @@ CREATE TABLE `tbl_report` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of tbl_report
 -- ----------------------------
-INSERT INTO `tbl_report` VALUES ('1', '2022', '1', 'Malachi Barry Project', '06/01/2022', '0.00', '450.00', '50.00', null, '500.00', '23.00', '72.00', '76.00', '148.00', '31.00', '63.00', '94.00', '27.00', '57.00', '18.80', '18.00', 'Animi qui ea elit', '08/01/2022', 'Quod fuga Est facer', 'Neque nihil odit aut', 'Y', '1', '1', '2022-08-28 11:27:03', '2022-08-28 11:27:03');
-INSERT INTO `tbl_report` VALUES ('2', '2022', '1', 'Malachi Barry Project', '06/02/2022', '0.00', '500.00', '50.00', '500.00', '550.00', '90.00', '33.00', '21.00', '54.00', '40.00', '10.00', '50.00', '80.00', '45.00', '9.09', '11.00', 'Eos possimus volup', '08/31/2022', 'Eos voluptates moles', 'Aut veritatis quis e', 'Y', '1', '1', '2022-08-28 11:27:58', '2022-08-28 11:27:58');
-INSERT INTO `tbl_report` VALUES ('3', '2022', '2', 'Delgado Macon Project', '06/01/2022', '0.00', '500.00', '455.00', null, '955.00', '69.00', '545.00', '545.00', '1090.00', '54.00', '545.00', '599.00', '29.00', '36.00', '62.72', '3.00', 'Eaque nostrum dolore', '08/01/2022', 'Pariatur Facilis qu', 'Non eligendi autem t', 'Y', '1', '1', '2022-08-28 20:46:03', '2022-08-28 20:46:03');
-INSERT INTO `tbl_report` VALUES ('4', '2022', '2', 'Delgado Macon Project', '06/02/2022', '0.00', '500.00', '455.00', null, '955.00', '500.00', '450.00', '654.00', '1104.00', '54.00', '54.00', '108.00', '50.00', '50.00', '11.31', '50.00', 'Some description', '08/31/2022', 'Some Remarks', 'Some Notes', 'Y', '1', '1', '2022-08-29 06:19:17', '2022-08-29 06:19:17');
-INSERT INTO `tbl_report` VALUES ('5', '2021', '2', 'Delgado Macon Project', '06/01/2021', '0.00', '500.00', '455.00', null, '955.00', '50.00', '50.00', '50.00', '100.00', '45.00', '50.00', '95.00', '455.00', '544.00', '9.95', '54.00', 'Some Description', '08/31/2022', 'Remarks', 'Some Notes', 'Y', '1', '1', '2022-08-29 07:34:05', '2022-08-29 07:34:05');
-INSERT INTO `tbl_report` VALUES ('6', '2022', '3', 'Sloane Hinton Project', '06/01/2022', '0.00', '50.00', '45.00', null, '95.00', '18.00', '31.00', '74.00', '105.00', '3.00', '2.00', '5.00', '90.00', '48.00', '5.26', '21.00', 'Ipsum dolore consequ', '08/01/2022', 'Laboriosam officiis', 'Qui quia voluptatum', 'Y', '1', '1', '2022-08-29 09:38:53', '2022-08-29 09:38:53');
-INSERT INTO `tbl_report` VALUES ('7', '2022', '3', 'Sloane Hinton Project', '06/02/2022', '0.00', '100.00', '45.00', '100.00', '145.00', '50.00', '100.00', '500.00', '600.00', '50.00', '45.00', '95.00', '50.00', '45.00', '65.52', '54.00', 'Some description', '08/01/2022', 'Some remarks', 'Some notes', 'Y', '1', '1', '2022-08-29 09:40:58', '2022-08-29 09:40:58');
-INSERT INTO `tbl_report` VALUES ('8', '2022', '5', 'Project Name', '06/01/2022', '0.00', '100.00', '50.00', null, '150.00', '45.00', '520.00', '45.00', '565.00', '50.00', null, '50.00', '50.00', null, '3.33', '45.00', 'Description', '08/01/2022', 'Remarks', 'Notes', 'Y', '1', '1', '2022-08-30 09:49:31', '2022-08-30 09:49:31');
+INSERT INTO `tbl_report` VALUES ('1', '2023', '1', 'Projectx', '10/17/2022', '0.00', '1233.00', '3333.00', null, '4566.00', '3123.00', '12342.00', '34343.00', '46685.00', '2332.00', '2323.00', '4655.00', '3232.00', '2323.00', '101.95', '2323.00', 'abcdd', '10/30/2022', 'None', 'None', 'Y', '1', '1', '2022-10-18 05:18:22', '2022-10-18 05:18:22');
+INSERT INTO `tbl_report` VALUES ('2', '2021', '1', 'Projectx', '06/10/2021', '0.00', '333.00', '3333.00', '333.00', '3666.00', '24124.00', '21412.00', '2142.00', '23554.00', '222.00', '2424.00', '2646.00', '242.00', '232.00', '72.18', '444.00', 'asdasd', '03/10/2021', 'sadasd', 'sadasdas', 'Y', '1', '1', '2022-10-19 04:38:11', '2022-10-19 04:38:11');
+INSERT INTO `tbl_report` VALUES ('4', '2020', '1', 'Projectx', '01/10/2020', '0.00', '222.00', '3333.00', '222.00', '3555.00', '343.00', '2322.00', '23232.00', '25554.00', '2323.00', '233.00', '2556.00', '3232.00', '2323.00', '71.90', '23424.00', 'wwww', '05/05/2020', 'ewrew', 'efewr', 'Y', '1', '1', '2022-10-19 05:03:20', '2022-10-19 05:03:20');
+INSERT INTO `tbl_report` VALUES ('5', '2022', '1', 'Projectx', '11/10/2021', '0.00', '33424.00', '3333.00', '33424.00', '36757.00', '42242.00', '422.00', '4242.00', '4664.00', '222.00', '222.00', '444.00', '244.00', '444.00', '1.21', '42424.00', 'dfsdf', '01/12/2022', 'dwww', 'dsdsd', 'Y', '1', '1', '2022-10-19 05:11:16', '2022-10-19 05:11:16');
+INSERT INTO `tbl_report` VALUES ('6', '2023', '2', 'Second', '10/13/2022', '0.00', '1232.00', '3444.00', null, '4676.00', '33232.00', '23232.00', '3232.00', '26464.00', '2323.00', '232.00', '2555.00', '2.00', '3.00', '54.64', '444.00', 'NPPP', '10/28/2022', 'SDFDSF', 'DFESDF', 'Y', '1', '1', '2022-10-25 07:21:00', '2022-10-25 07:21:00');
+INSERT INTO `tbl_report` VALUES ('7', '2023', '2', 'Second', '10/13/2022', '0.00', '1232.00', '3444.00', null, '4676.00', '33232.00', '23232.00', '3232.00', '26464.00', '2323.00', '232.00', '2555.00', '2.00', '3.00', '54.64', '444.00', 'NPPP', '10/28/2022', 'SDFDSF', 'DFESDF', 'Y', '1', '1', '2022-10-25 07:21:00', '2022-10-25 07:21:00');
+INSERT INTO `tbl_report` VALUES ('8', '2023', '3', 'Third', '10/05/2022', '0.00', '2323.00', '3.00', null, '2326.00', '4.00', '3.00', '2.00', '5.00', '2.00', '3.00', '5.00', '4.00', '4.00', '0.21', '33.00', 'dsfds', '10/26/2022', 'asdas', 'sadasd', 'Y', '1', '1', '2022-10-26 06:57:51', '2022-10-26 06:57:51');
+INSERT INTO `tbl_report` VALUES ('9', '2023', '4', 'Forth', '10/27/2022', '0.00', '78978.00', '687676.00', null, '766654.00', '6767.00', '767.00', '676.00', '1443.00', '666.00', '66.00', '732.00', '66.00', '666.00', '0.10', '6666.00', 'sadjsa', '10/28/2022', 'sadasd', 'dasdas', 'Y', '1', '1', '2022-10-26 07:47:39', '2022-10-26 07:47:39');
 
 -- ----------------------------
 -- Table structure for tbl_report_log
@@ -239,6 +242,7 @@ CREATE TABLE `tbl_report_log` (
   `project_id` int(11) DEFAULT '0',
   `project` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `data` text COLLATE utf8mb4_unicode_ci,
+  `date` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `user_id` int(11) DEFAULT '0',
   `action` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -249,14 +253,55 @@ CREATE TABLE `tbl_report_log` (
 -- ----------------------------
 -- Records of tbl_report_log
 -- ----------------------------
-INSERT INTO `tbl_report_log` VALUES ('1', '1', '1', 'Malachi Barry Project', '{\"_token\":\"rl3UzZdlo8WDe93uXd6oi8SB6FwKcaSipPlprEDG\",\"project_id\":\"1\",\"project\":\"Malachi Barry Project\",\"fiscal_year\":\"2022\",\"date\":\"06\\/01\\/2022\",\"alloc_rupee\":\"450\",\"alloc_foreign\":\"50\",\"alloc_total\":\"500\",\"alloc_revised\":null,\"release_fund_auth\":\"23\",\"release_fund_actual\":\"72\",\"release_foreign\":\"76\",\"release_total_actual\":\"148\",\"util_actual\":\"31\",\"util_foreign\":\"63\",\"util_total\":\"94\",\"amt_surrender\":\"27\",\"amt_lapsed\":\"57\",\"financial_prog\":\"18.80\",\"physical_prog\":\"18\",\"physical_prog_desc\":\"Animi qui ea elit\",\"comp_date_likely\":\"08\\/01\\/2022\",\"remarks\":\"Quod fuga Est facer\",\"note\":\"Neque nihil odit aut\",\"created_by\":1,\"updated_by\":1,\"status\":\"Y\"}', '1', 'add', '2022-08-28 11:27:03', '2022-08-28 11:27:03');
-INSERT INTO `tbl_report_log` VALUES ('2', '2', '1', 'Malachi Barry Project', '{\"_token\":\"rl3UzZdlo8WDe93uXd6oi8SB6FwKcaSipPlprEDG\",\"project_id\":\"1\",\"project\":\"Malachi Barry Project\",\"fiscal_year\":\"2022\",\"date\":\"06\\/02\\/2022\",\"alloc_rupee\":\"500\",\"alloc_foreign\":\"50\",\"alloc_total\":\"550\",\"alloc_revised\":\"500\",\"release_fund_auth\":\"90\",\"release_fund_actual\":\"33\",\"release_foreign\":\"21\",\"release_total_actual\":\"54\",\"util_actual\":\"40\",\"util_foreign\":\"10\",\"util_total\":\"50\",\"amt_surrender\":\"80\",\"amt_lapsed\":\"45\",\"financial_prog\":\"9.09\",\"physical_prog\":\"11\",\"physical_prog_desc\":\"Eos possimus volup\",\"comp_date_likely\":\"08\\/31\\/2022\",\"remarks\":\"Eos voluptates moles\",\"note\":\"Aut veritatis quis e\",\"created_by\":1,\"updated_by\":1,\"status\":\"Y\"}', '1', 'add', '2022-08-28 11:27:58', '2022-08-28 11:27:58');
-INSERT INTO `tbl_report_log` VALUES ('3', '3', '2', 'Delgado Macon Project', '{\"_token\":\"oGBHGZ0IH9yJBRia9hJSU0DnDSZtqcDMrhTnqEOk\",\"project_id\":\"2\",\"project\":\"Delgado Macon Project\",\"fiscal_year\":\"2022\",\"date\":\"06\\/01\\/2022\",\"alloc_rupee\":\"500\",\"alloc_foreign\":\"455\",\"alloc_total\":\"955\",\"alloc_revised\":null,\"release_fund_auth\":\"69\",\"release_fund_actual\":\"545\",\"release_foreign\":\"545\",\"release_total_actual\":\"1090\",\"util_actual\":\"54\",\"util_foreign\":\"545\",\"util_total\":\"599\",\"amt_surrender\":\"29\",\"amt_lapsed\":\"36\",\"financial_prog\":\"62.72\",\"physical_prog\":\"3\",\"physical_prog_desc\":\"Eaque nostrum dolore\",\"comp_date_likely\":\"08\\/01\\/2022\",\"remarks\":\"Pariatur Facilis qu\",\"note\":\"Non eligendi autem t\",\"created_by\":1,\"updated_by\":1,\"status\":\"Y\"}', '1', 'add', '2022-08-28 20:46:03', '2022-08-28 20:46:03');
-INSERT INTO `tbl_report_log` VALUES ('4', '4', '2', 'Delgado Macon Project', '{\"_token\":\"11eG8Aoo7uxl2g6OwbLaoKqP6PZEf0oEsKZBBXHj\",\"project_id\":\"2\",\"project\":\"Delgado Macon Project\",\"fiscal_year\":\"2022\",\"date\":\"06\\/02\\/2022\",\"alloc_rupee\":\"500\",\"alloc_foreign\":\"455\",\"alloc_total\":\"955\",\"alloc_revised\":null,\"release_fund_auth\":\"500\",\"release_fund_actual\":\"450\",\"release_foreign\":\"654\",\"release_total_actual\":\"1104\",\"util_actual\":\"54\",\"util_foreign\":\"54\",\"util_total\":\"108\",\"amt_surrender\":\"50\",\"amt_lapsed\":\"50\",\"financial_prog\":\"11.31\",\"physical_prog\":\"50\",\"physical_prog_desc\":\"Some description\",\"comp_date_likely\":\"08\\/31\\/2022\",\"remarks\":\"Some Remarks\",\"note\":\"Some Notes\",\"created_by\":1,\"updated_by\":1,\"status\":\"Y\"}', '1', 'add', '2022-08-29 06:19:17', '2022-08-29 06:19:17');
-INSERT INTO `tbl_report_log` VALUES ('5', '5', '2', 'Delgado Macon Project', '{\"_token\":\"11eG8Aoo7uxl2g6OwbLaoKqP6PZEf0oEsKZBBXHj\",\"project_id\":\"2\",\"project\":\"Delgado Macon Project\",\"fiscal_year\":\"2021\",\"date\":\"06\\/01\\/2021\",\"alloc_rupee\":\"500\",\"alloc_foreign\":\"455\",\"alloc_total\":\"955\",\"alloc_revised\":null,\"release_fund_auth\":\"50\",\"release_fund_actual\":\"50\",\"release_foreign\":\"50\",\"release_total_actual\":\"100\",\"util_actual\":\"45\",\"util_foreign\":\"50\",\"util_total\":\"95\",\"amt_surrender\":\"455\",\"amt_lapsed\":\"544\",\"financial_prog\":\"9.95\",\"physical_prog\":\"54\",\"physical_prog_desc\":\"Some Description\",\"comp_date_likely\":\"08\\/31\\/2022\",\"remarks\":\"Remarks\",\"note\":\"Some Notes\",\"created_by\":1,\"updated_by\":1,\"status\":\"Y\"}', '1', 'add', '2022-08-29 07:34:06', '2022-08-29 07:34:06');
-INSERT INTO `tbl_report_log` VALUES ('6', '6', '3', 'Sloane Hinton Project', '{\"_token\":\"11eG8Aoo7uxl2g6OwbLaoKqP6PZEf0oEsKZBBXHj\",\"project_id\":\"3\",\"project\":\"Sloane Hinton Project\",\"fiscal_year\":\"2022\",\"date\":\"06\\/01\\/2022\",\"alloc_rupee\":\"50\",\"alloc_foreign\":\"45\",\"alloc_total\":\"95\",\"alloc_revised\":null,\"release_fund_auth\":\"18\",\"release_fund_actual\":\"31\",\"release_foreign\":\"74\",\"release_total_actual\":\"105\",\"util_actual\":\"3\",\"util_foreign\":\"2\",\"util_total\":\"5\",\"amt_surrender\":\"90\",\"amt_lapsed\":\"48\",\"financial_prog\":\"5.26\",\"physical_prog\":\"21\",\"physical_prog_desc\":\"Ipsum dolore consequ\",\"comp_date_likely\":\"08\\/01\\/2022\",\"remarks\":\"Laboriosam officiis\",\"note\":\"Qui quia voluptatum\",\"created_by\":1,\"updated_by\":1,\"status\":\"Y\"}', '1', 'add', '2022-08-29 09:38:53', '2022-08-29 09:38:53');
-INSERT INTO `tbl_report_log` VALUES ('7', '7', '3', 'Sloane Hinton Project', '{\"_token\":\"11eG8Aoo7uxl2g6OwbLaoKqP6PZEf0oEsKZBBXHj\",\"project_id\":\"3\",\"project\":\"Sloane Hinton Project\",\"fiscal_year\":\"2022\",\"date\":\"06\\/02\\/2022\",\"alloc_rupee\":\"100\",\"alloc_foreign\":\"45\",\"alloc_total\":\"145\",\"alloc_revised\":\"100\",\"release_fund_auth\":\"50\",\"release_fund_actual\":\"100\",\"release_foreign\":\"500\",\"release_total_actual\":\"600\",\"util_actual\":\"50\",\"util_foreign\":\"45\",\"util_total\":\"95\",\"amt_surrender\":\"50\",\"amt_lapsed\":\"45\",\"financial_prog\":\"65.52\",\"physical_prog\":\"54\",\"physical_prog_desc\":\"Some description\",\"comp_date_likely\":\"08\\/01\\/2022\",\"remarks\":\"Some remarks\",\"note\":\"Some notes\",\"created_by\":1,\"updated_by\":1,\"status\":\"Y\"}', '1', 'add', '2022-08-29 09:40:59', '2022-08-29 09:40:59');
-INSERT INTO `tbl_report_log` VALUES ('8', '8', '5', 'Project Name', '{\"_token\":\"Nbwqoe2Uw1KiizhiuWoikhgTJp4GFu6IzvWTpJmY\",\"project_id\":\"5\",\"project\":\"Project Name\",\"fiscal_year\":\"2022\",\"date\":\"06\\/01\\/2022\",\"alloc_rupee\":\"100\",\"alloc_foreign\":\"50\",\"alloc_total\":\"150\",\"alloc_revised\":null,\"release_fund_auth\":\"45\",\"release_fund_actual\":\"520\",\"release_foreign\":\"45\",\"release_total_actual\":\"565\",\"util_actual\":\"50\",\"util_foreign\":null,\"util_total\":\"50\",\"amt_surrender\":\"50\",\"amt_lapsed\":null,\"financial_prog\":\"3.33\",\"physical_prog\":\"45\",\"physical_prog_desc\":\"Description\",\"comp_date_likely\":\"08\\/01\\/2022\",\"remarks\":\"Remarks\",\"note\":\"Notes\",\"created_by\":1,\"updated_by\":1,\"status\":\"Y\"}', '1', 'add', '2022-08-30 09:49:31', '2022-08-30 09:49:31');
+INSERT INTO `tbl_report_log` VALUES ('1', '3', '1', 'Projectx', '{\"_token\":\"nDigvIPl0tOabmeLNB7RqoKrwSlE31l2BbAfiqNk\",\"project_id\":\"1\",\"project\":\"Projectx\",\"fiscal_year\":\"2022\",\"date\":\"12\\/30\\/2021\",\"alloc_rupee\":\"21332\",\"alloc_foreign\":\"3333\",\"alloc_total\":\"24665\",\"alloc_revised\":\"21332\",\"release_fund_auth\":\"3232\",\"release_fund_actual\":\"444\",\"release_foreign\":\"2132\",\"release_total_actual\":\"2576\",\"util_actual\":\"131\",\"util_foreign\":\"313\",\"util_total\":\"444\",\"amt_surrender\":\"1311\",\"amt_lapsed\":\"3131\",\"financial_prog\":\"1.80\",\"physical_prog\":\"1313\",\"physical_prog_desc\":\"asdasd\",\"comp_date_likely\":\"02\\/01\\/2022\",\"remarks\":\"asdasd\",\"note\":\"weewe\",\"created_by\":1,\"updated_by\":1,\"status\":\"Y\"}', '2022-10-19 04:41:54', '1', 'add', '2022-10-19 04:41:54', '2022-10-19 04:41:54');
+INSERT INTO `tbl_report_log` VALUES ('2', '4', '1', 'Projectx', '{\"_token\":\"nDigvIPl0tOabmeLNB7RqoKrwSlE31l2BbAfiqNk\",\"project_id\":\"1\",\"project\":\"Projectx\",\"fiscal_year\":\"2020\",\"date\":\"01\\/10\\/2020\",\"alloc_rupee\":\"222\",\"alloc_foreign\":\"3333\",\"alloc_total\":\"3555\",\"alloc_revised\":\"222\",\"release_fund_auth\":\"343\",\"release_fund_actual\":\"2322\",\"release_foreign\":\"23232\",\"release_total_actual\":\"25554\",\"util_actual\":\"2323\",\"util_foreign\":\"233\",\"util_total\":\"2556\",\"amt_surrender\":\"3232\",\"amt_lapsed\":\"2323\",\"financial_prog\":\"71.90\",\"physical_prog\":\"23424\",\"physical_prog_desc\":\"wwww\",\"comp_date_likely\":\"05\\/05\\/2020\",\"remarks\":\"ewrew\",\"note\":\"efewr\",\"created_by\":1,\"updated_by\":1,\"status\":\"Y\"}', '10-19-2022', '1', 'add', '2022-10-19 05:03:20', '2022-10-19 05:03:20');
+INSERT INTO `tbl_report_log` VALUES ('3', '5', '1', 'Projectx', '{\"_token\":\"nDigvIPl0tOabmeLNB7RqoKrwSlE31l2BbAfiqNk\",\"project_id\":\"1\",\"project\":\"Projectx\",\"fiscal_year\":\"2022\",\"date\":\"11\\/10\\/2021\",\"alloc_rupee\":\"33424\",\"alloc_foreign\":\"3333\",\"alloc_total\":\"36757\",\"alloc_revised\":\"33424\",\"release_fund_auth\":\"42242\",\"release_fund_actual\":\"422\",\"release_foreign\":\"4242\",\"release_total_actual\":\"4664\",\"util_actual\":\"222\",\"util_foreign\":\"222\",\"util_total\":\"444\",\"amt_surrender\":\"244\",\"amt_lapsed\":\"444\",\"financial_prog\":\"1.21\",\"physical_prog\":\"42424\",\"physical_prog_desc\":\"dfsdf\",\"comp_date_likely\":\"01\\/12\\/2022\",\"remarks\":\"dwww\",\"note\":\"dsdsd\",\"created_by\":1,\"updated_by\":1,\"status\":\"Y\"}', '10/19/2022', '1', 'add', '2022-10-19 05:11:16', '2022-10-19 05:11:16');
+INSERT INTO `tbl_report_log` VALUES ('4', '3', '1', 'Projectx', '{\"id\":3,\"fiscal_year\":\"2022\",\"project_id\":1,\"project\":\"Projectx\",\"date\":\"12\\/30\\/2021\",\"actual_expend\":0,\"alloc_rupee\":21332,\"alloc_foreign\":3333,\"alloc_revised\":21332,\"alloc_total\":24665,\"release_fund_auth\":3232,\"release_fund_actual\":444,\"release_foreign\":2132,\"release_total_actual\":2576,\"util_actual\":131,\"util_foreign\":313,\"util_total\":444,\"amt_surrender\":1311,\"amt_lapsed\":3131,\"financial_prog\":1.8,\"physical_prog\":1313,\"physical_prog_desc\":\"asdasd\",\"comp_date_likely\":\"02\\/01\\/2022\",\"remarks\":\"asdasd\",\"note\":\"weewe\",\"status\":\"Y\",\"created_by\":1,\"updated_by\":1,\"created_at\":\"2022-10-19T04:41:54.000000Z\",\"updated_at\":\"2022-10-19T04:41:54.000000Z\"}', '10/19/2022', '1', 'delete', '2022-10-19 05:15:52', '2022-10-19 05:15:52');
+INSERT INTO `tbl_report_log` VALUES ('5', '6', '2', 'Second', '{\"_token\":\"Uusg52afGPrYo4McMJE3NmppRW9UMJPE1SNnfg2a\",\"project_id\":\"2\",\"project\":\"Second\",\"fiscal_year\":\"2023\",\"date\":\"10\\/13\\/2022\",\"alloc_rupee\":\"1232\",\"alloc_foreign\":\"3444\",\"alloc_total\":\"4676\",\"alloc_revised\":null,\"release_fund_auth\":\"33232\",\"release_fund_actual\":\"23232\",\"release_foreign\":\"3232\",\"release_total_actual\":\"26464\",\"util_actual\":\"2323\",\"util_foreign\":\"232\",\"util_total\":\"2555\",\"amt_surrender\":\"2\",\"amt_lapsed\":\"3\",\"financial_prog\":\"54.64\",\"physical_prog\":\"444\",\"physical_prog_desc\":\"NPPP\",\"comp_date_likely\":\"10\\/28\\/2022\",\"remarks\":\"SDFDSF\",\"note\":\"DFESDF\",\"created_by\":1,\"updated_by\":1,\"status\":\"Y\"}', '10/25/2022', '1', 'add', '2022-10-25 07:21:00', '2022-10-25 07:21:00');
+INSERT INTO `tbl_report_log` VALUES ('6', '7', '2', 'Second', '{\"_token\":\"Uusg52afGPrYo4McMJE3NmppRW9UMJPE1SNnfg2a\",\"project_id\":\"2\",\"project\":\"Second\",\"fiscal_year\":\"2023\",\"date\":\"10\\/13\\/2022\",\"alloc_rupee\":\"1232\",\"alloc_foreign\":\"3444\",\"alloc_total\":\"4676\",\"alloc_revised\":null,\"release_fund_auth\":\"33232\",\"release_fund_actual\":\"23232\",\"release_foreign\":\"3232\",\"release_total_actual\":\"26464\",\"util_actual\":\"2323\",\"util_foreign\":\"232\",\"util_total\":\"2555\",\"amt_surrender\":\"2\",\"amt_lapsed\":\"3\",\"financial_prog\":\"54.64\",\"physical_prog\":\"444\",\"physical_prog_desc\":\"NPPP\",\"comp_date_likely\":\"10\\/28\\/2022\",\"remarks\":\"SDFDSF\",\"note\":\"DFESDF\",\"created_by\":1,\"updated_by\":1,\"status\":\"Y\"}', '10/25/2022', '1', 'add', '2022-10-25 07:21:00', '2022-10-25 07:21:00');
+INSERT INTO `tbl_report_log` VALUES ('7', '8', '3', 'Third', '{\"_token\":\"rNgD0T2dk5VhnhHhv6lwjJzgILp2sLU1lqyZkr9i\",\"project_id\":\"3\",\"project\":\"Third\",\"fiscal_year\":\"2023\",\"date\":\"10\\/05\\/2022\",\"alloc_rupee\":\"2323\",\"alloc_foreign\":\"3\",\"alloc_total\":\"2326\",\"alloc_revised\":null,\"release_fund_auth\":\"4\",\"release_fund_actual\":\"3\",\"release_foreign\":\"2\",\"release_total_actual\":\"5\",\"util_actual\":\"2\",\"util_foreign\":\"3\",\"util_total\":\"5\",\"amt_surrender\":\"4\",\"amt_lapsed\":\"4\",\"financial_prog\":\"0.21\",\"physical_prog\":\"33\",\"physical_prog_desc\":\"dsfds\",\"comp_date_likely\":\"10\\/26\\/2022\",\"remarks\":\"asdas\",\"note\":\"sadasd\",\"created_by\":1,\"updated_by\":1,\"status\":\"Y\"}', '10/26/2022', '1', 'add', '2022-10-26 06:57:51', '2022-10-26 06:57:51');
+INSERT INTO `tbl_report_log` VALUES ('8', '9', '4', 'Forth', '{\"_token\":\"rNgD0T2dk5VhnhHhv6lwjJzgILp2sLU1lqyZkr9i\",\"project_id\":\"4\",\"project\":\"Forth\",\"fiscal_year\":\"2023\",\"date\":\"10\\/27\\/2022\",\"alloc_rupee\":\"78978\",\"alloc_foreign\":\"687676\",\"alloc_total\":\"766654\",\"alloc_revised\":null,\"release_fund_auth\":\"6767\",\"release_fund_actual\":\"767\",\"release_foreign\":\"676\",\"release_total_actual\":\"1443\",\"util_actual\":\"666\",\"util_foreign\":\"66\",\"util_total\":\"732\",\"amt_surrender\":\"66\",\"amt_lapsed\":\"666\",\"financial_prog\":\"0.10\",\"physical_prog\":\"6666\",\"physical_prog_desc\":\"sadjsa\",\"comp_date_likely\":\"10\\/28\\/2022\",\"remarks\":\"sadasd\",\"note\":\"dasdas\",\"created_by\":1,\"updated_by\":1,\"status\":\"Y\"}', '10/26/2022', '1', 'add', '2022-10-26 07:47:39', '2022-10-26 07:47:39');
+
+-- ----------------------------
+-- Table structure for tbl_role
+-- ----------------------------
+DROP TABLE IF EXISTS `tbl_role`;
+CREATE TABLE `tbl_role` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` enum('Y','N') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Y',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ----------------------------
+-- Records of tbl_role
+-- ----------------------------
+INSERT INTO `tbl_role` VALUES ('1', 'Admin', 'N', '2000-01-01 00:00:01', '2000-01-01 00:00:01');
+INSERT INTO `tbl_role` VALUES ('2', 'PD', 'Y', '2000-01-01 00:00:01', '2000-01-01 00:00:01');
+
+-- ----------------------------
+-- Table structure for tbl_users_project
+-- ----------------------------
+DROP TABLE IF EXISTS `tbl_users_project`;
+CREATE TABLE `tbl_users_project` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL DEFAULT '0',
+  `project_id` int(11) NOT NULL DEFAULT '0',
+  `project` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ----------------------------
+-- Records of tbl_users_project
+-- ----------------------------
+INSERT INTO `tbl_users_project` VALUES ('1', '7', '1', null);
+INSERT INTO `tbl_users_project` VALUES ('2', '8', '1', null);
+INSERT INTO `tbl_users_project` VALUES ('3', '8', '2', null);
+INSERT INTO `tbl_users_project` VALUES ('4', '9', '1', null);
+INSERT INTO `tbl_users_project` VALUES ('5', '9', '3', null);
+INSERT INTO `tbl_users_project` VALUES ('6', '9', '4', null);
 
 -- ----------------------------
 -- Table structure for users
@@ -266,18 +311,25 @@ CREATE TABLE `users` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `username` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `role_id` int(11) DEFAULT NULL,
+  `role` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` enum('Y','N') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Y',
+  `created_by` int(11) NOT NULL DEFAULT '0',
+  `updated_by` int(11) NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES ('1', 'Idola Hoffman', 'admin', 'idola@mailinator.com', null, '$2y$10$RVRgNTL0k/0gq2PkisK96..2/hGNvRL4G0vQl2odeob30Bkov0Cbq', 'q7eCHySpSaA58d4RcB2TKEO9WUawzfUwO9Ky79enlrUn70YkFUhNozFoqf6u', '2022-08-04 05:04:29', '2022-08-04 05:04:29');
-INSERT INTO `users` VALUES ('2', 'Patrick Bartlett', 'pat', 'pibuqosu@mailinator.com', null, '$2y$10$RVRgNTL0k/0gq2PkisK96..2/hGNvRL4G0vQl2odeob30Bkov0Cbq', null, '2022-08-04 07:02:08', '2022-08-04 07:02:08');
+INSERT INTO `users` VALUES ('1', 'Admin', 'admin', '1', 'Admin', 'idola@mailinator.com', null, '$2y$10$A6tpVXwbDfXDPGq62wG3BOof7xkPhOeiXlI11cjckCqSGFJznLfnq', 'ZbSm2A8iY5YusrDyKluet3rTjcWmK5jHLFZIBq8pwVidn1AWRxGU9iW8ScXD', 'Y', '0', '0', '2000-01-01 00:00:01', '2000-01-01 00:00:01');
+INSERT INTO `users` VALUES ('7', 'Mubashir', 'mubay', '2', 'PD', 'mubay@gmail.com', null, '$2y$10$yB.cy8TIzgK1HkohqJOPrOLW1uPQjLb7ewPsbsHawI/kxpWTeeHQq', null, 'Y', '1', '1', '2022-10-25 07:30:58', '2022-10-25 07:30:58');
+INSERT INTO `users` VALUES ('8', 'Talha', 'talha', '2', 'PD', 'talha@gmail.com', null, '$2y$10$J.bRsUwtOZQL2n.9zsMTDOMy9A6GZrB0ID1KddUP0VEnmJBM3x.Fm', null, 'Y', '1', '1', '2022-10-26 06:55:59', '2022-10-26 06:55:59');
+INSERT INTO `users` VALUES ('9', 'Test', 'test', '2', 'PD', 'test@gmail.com', null, '$2y$10$eQXXVOvsw2oQPIMMWvDdtutZNoCF3PryfGGgA.ArteMG0QkLRJxSi', null, 'Y', '1', '1', '2022-10-26 07:48:10', '2022-10-26 08:02:30');

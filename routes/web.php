@@ -25,7 +25,7 @@ Route::post('ajax_check_date_rec', [\App\Http\Controllers\AjaxController::class,
 Route::post('ajax_expenditure_list', [\App\Http\Controllers\AjaxController::class, 'getActualExpenditure']);
 
 // Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/', [App\Http\Controllers\DashboardController::class, 'index']);
 Route::post('/', [App\Http\Controllers\DashboardController::class, 'dashboard']);
