@@ -98,8 +98,9 @@ class UserController extends Controller{
         $title = "Edit User";
         $data['user'] = $user;
         $data['role_select'] = get_role($user->role_id);
-        $data2 = [1,2,3,4];
-        $data['multiple_project_select'] = get_multiple_project($data2);
+        $project = getUserProjects($id);
+//        pre($project ,1);
+        $data['multiple_project_select'] = get_multiple_project($project);
         return view('adminpanel.user.edit_user', $data)->with('title', $title);
     }
 
@@ -111,7 +112,7 @@ class UserController extends Controller{
      * @return \Illuminate\Http\Response
      */
 
-    public function update(UserRequest $request, $id){
+      public function update(UserRequest $request, $id){
         $userId = Auth::id();
         $user = User::findOrFail($id);
         $updateData = $request->all();

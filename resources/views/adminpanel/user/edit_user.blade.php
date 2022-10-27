@@ -60,7 +60,7 @@
                                                id="password"
                                                class="form-control input-paf"
                                                placeholder="Password"
-                                               minlength="8" />
+                                               minlength="8" required/>
                                         @if ($errors->has('password'))
                                             <span class="text-danger">{{ $errors->first('password') }}</span>
                                         @endif
