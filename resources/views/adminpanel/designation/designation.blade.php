@@ -70,8 +70,8 @@
                         <td> <a href="" type="button" class="btn btn-success btn-sm">Active</a> </td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-sm btn-success">Edit</button>
-                                <button type="button" class="btn btn-sm btn-info">Delete</button>
+                                <a href="edit_designation" type="button" class="btn btn-sm btn-success">Edit</a>
+                                <a href="delete_designation" type="button" class="btn btn-sm btn-info">Delete</a>
                             </div>
                         </td>
 
