@@ -68,7 +68,7 @@
                           {{--{{ __('Forgot Your Password?') }}--}}
                         {{--</a>--}}
                       {{--@endif--}}
-                      <br>
+                      {{--<br>--}}
 
                     {{--</form>--}}
 
@@ -161,10 +161,11 @@
 
             <div class="form-group text-left mt-2">
               <div class="checkbox checkbox-info d-inline">
-                <input type="checkbox" name="checkbox-fill-1" id="checkbox-fill-a1" checked="">
-                <label for="checkbox-fill-a1" class="cr"> Save credentials</label>
+                <input type="checkbox" name="remember" id="checkbox-fill-a1" checked="" {{ old('remember') ? 'checked' : '' }}>
+                <label for="checkbox-fill-a1" class="cr"> Remember Me</label>
               </div>
             </div>
+
             <button class="btn btn-info mb-4">Login</button>
               @if (Route::has('password.request'))
                 <a class="small text-muted" href="{{ route('password.request') }}">

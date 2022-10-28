@@ -33,30 +33,20 @@
 
                 <div class="row">
                     <div class="col-md-4">
-                            <div class="form-group">
-                                <label>Id</label>
-                                <input type="text" class="form-control"
-                                       placeholder="Enter Id">
-                            </div>
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" class="form-control"
+                                   placeholder="Enter Name">
+                        </div>
                     </div>
-                    <div class="col-md-4">
-                            <div class="form-group">
-                                <label>Name</label>
-                                <input type="text" class="form-control"
-                                       placeholder="Enter Name">
-                            </div>
 
-
-                    </div>
                 </div>
-
-
 
                 <br>
 
                 <!-- Reports Remarks ends -->
 
-                <div class="text-center">
+                <div class="">
                     <button type="button" class="btn btn-info "><i class="feather icon-check"></i>Enter</button>
                 </div>
 

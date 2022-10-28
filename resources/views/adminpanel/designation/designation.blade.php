@@ -56,7 +56,6 @@
                     <thead>
                     <tr>
                         <th>Sr#</th>
-                        <th>ID</th>
                         <th>Name</th>
                         <th>Status</th>
                         <th>Operation</th>
@@ -65,7 +64,6 @@
                     <tbody>
                     <tr>
                         <td>1</td>
-                        <td>0101</td>
                         <td>Name</td>
                         <td> <a href="" type="button" class="btn btn-success btn-sm">Active</a> </td>
                         <td>
