@@ -37,8 +37,9 @@
 <a class="mobile-menu" id="mobile-collapse1" href="#!"><span></span></a>
 <a href="/" class="b-brand">
 {{--<img src="../assets/images/logo.svg" alt="" class="logo images">--}}
-<img src="{{ asset('images/logo.svg') }}" alt="" class="logo images">
-<img src="{{ asset('images/logo-icon.svg') }}" alt="" class="logo images">
+{{--<img src="{{ asset('images/logo.svg') }}" alt="" class="logo images">--}}
+    <h4>Project Monitoring</h4>
+<img src="{{ asset('images/pm.png') }}" alt="" class="logo-thumb images">
 {{--<img src="../assets/images/logo-icon.svg" alt="" class="logo-thumb images">--}}
 </a>
 </div>

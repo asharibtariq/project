@@ -48,14 +48,38 @@ Route::get('edit_project/{id}', [\App\Http\Controllers\ProjectController::class,
 Route::post('update_project/{id}', [\App\Http\Controllers\ProjectController::class, 'update']);
 Route::get('delete_project/{id}', [\App\Http\Controllers\ProjectController::class, 'destroy']);
 
-// Report Routes
-Route::get('report', [\App\Http\Controllers\ReportController::class, 'index']);
-Route::get('add_report', [\App\Http\Controllers\ReportController::class, 'create']);
-Route::post('add_report', [\App\Http\Controllers\ReportController::class, 'store']);
-Route::get('report/{id}', [\App\Http\Controllers\ReportController::class, 'show']);
-Route::get('edit_report/{id}', [\App\Http\Controllers\ReportController::class, 'edit']);
-Route::post('update_report/{id}', [\App\Http\Controllers\ReportController::class, 'update']);
-Route::get('delete_report/{id}', [\App\Http\Controllers\ReportController::class, 'destroy']);
+// Designation Routes
+Route::get('designation', [\App\Http\Controllers\DesignationController::class, 'index']);
+Route::get('add_designation', [\App\Http\Controllers\DesignationController::class, 'create']);
+Route::post('add_designation', [\App\Http\Controllers\DesignationController::class, 'store']);
+Route::get('designation/{id}', [\App\Http\Controllers\DesignationController::class, 'show']);
+Route::get('edit_designation/{id}', [\App\Http\Controllers\DesignationController::class, 'edit']);
+Route::post('update_designation/{id}', [\App\Http\Controllers\DesignationController::class, 'update']);
+Route::get('delete_designation/{id}', [\App\Http\Controllers\DesignationController::class, 'destroy']);
 
-// Report Log Routes
-Route::get('report_log', [\App\Http\Controllers\LogController::class, 'index']);
+// Executive Agency Routes
+Route::get('executiveagency', [\App\Http\Controllers\ExecutiveAgencyController::class, 'index']);
+Route::get('add_executiveagency', [\App\Http\Controllers\ExecutiveAgencyController::class, 'create']);
+Route::post('add_executiveagency', [\App\Http\Controllers\ExecutiveAgencyController::class, 'store']);
+Route::get('executiveagency/{id}', [\App\Http\Controllers\ExecutiveAgencyController::class, 'show']);
+Route::get('edit_executiveagency/{id}', [\App\Http\Controllers\ExecutiveAgencyController::class, 'edit']);
+Route::post('update_executiveagency/{id}', [\App\Http\Controllers\ExecutiveAgencyController::class, 'update']);
+Route::get('delete_executiveagency/{id}', [\App\Http\Controllers\ExecutiveAgencyController::class, 'destroy']);
+
+// Component Routes
+Route::get('component', [\App\Http\Controllers\ComponentController::class, 'index']);
+Route::get('add_component', [\App\Http\Controllers\ComponentController::class, 'create']);
+Route::post('add_component', [\App\Http\Controllers\ComponentController::class, 'store']);
+Route::get('component/{id}', [\App\Http\Controllers\ComponentController::class, 'show']);
+Route::get('edit_component/{id}', [\App\Http\Controllers\ComponentController::class, 'edit']);
+Route::post('update_component/{id}', [\App\Http\Controllers\ComponentController::class, 'update']);
+Route::get('delete_component/{id}', [\App\Http\Controllers\ComponentController::class, 'destroy']);
+
+// Organization Routes
+Route::get('organization', [\App\Http\Controllers\OrganizationController::class, 'index']);
+Route::get('add_organization', [\App\Http\Controllers\OrganizationController::class, 'create']);
+Route::post('add_organization', [\App\Http\Controllers\OrganizationController::class, 'store']);
+Route::get('organization/{id}', [\App\Http\Controllers\OrganizationController::class, 'show']);
+Route::get('edit_organization/{id}', [\App\Http\Controllers\OrganizationController::class, 'edit']);
+Route::post('update_organization/{id}', [\App\Http\Controllers\OrganizationController::class, 'update']);
+Route::get('delete_organization/{id}', [\App\Http\Controllers\OrganizationController::class, 'destroy']);

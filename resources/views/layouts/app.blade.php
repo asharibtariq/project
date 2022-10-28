@@ -22,7 +22,7 @@
 
     <!-- Favicon icon -->
     {{--<link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">--}}
-    <link rel="icon" href="{{ asset('images/favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('images/R.png') }}" type="image/x-icon">
     <!-- fontawesome icon -->
     {{--<link rel="stylesheet" href="../assets/fonts/fontawesome/css/fontawesome-all.min.css">--}}
     <link rel="stylesheet" href="{{ asset('fonts/fontawesome/css/fontawesome-all.min.css') }}">

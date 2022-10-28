@@ -12,7 +12,7 @@
 <nav class="pcoded-navbar menupos-fixed menu-light brand-blue ">
     <div class="navbar-wrapper ">
         <div class="navbar-brand header-logo">
-            <a href="dashboard.html" class="b-brand">
+            <a href="/" class="b-brand">
                 <img src="" alt="" class="logo images">
 
             </a>
@@ -22,7 +22,7 @@
             <ul class="nav pcoded-inner-navbar">
 
                 <li class="nav-item">
-                    <a href="dashboard.html" class="nav-link"><span class="pcoded-micon"><i
+                    <a href="/" class="nav-link"><span class="pcoded-micon"><i
                                     class="feather icon-home"></i></span><span class="pcoded-mtext">Dashboard</span></a>
                 </li>
 
