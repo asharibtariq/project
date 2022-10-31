@@ -15,7 +15,8 @@ class ComponentController extends Controller
      */
     public function index()
     {
-        //
+        $title = "Component";
+        return view('adminpanel.component.component')->with('title', $title);
     }
 
     /**
@@ -25,7 +26,8 @@ class ComponentController extends Controller
      */
     public function create()
     {
-        //
+        $title = "Add Component ";
+        return view('adminpanel.component.add_component')->with('title', $title);
     }
 
     /**
@@ -36,7 +38,11 @@ class ComponentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $insertData = $request->all();
+//        $insertData['created_by'] = $userId;
+        ////--This Method would need mass assignment--////
+        Component::create($insertData);
+        return redirect('component')->with('success', 'Component Added Successfully');
     }
 
     /**
@@ -56,9 +62,12 @@ class ComponentController extends Controller
      * @param  \App\Models\Component  $component
      * @return \Illuminate\Http\Response
      */
-    public function edit(Component $component)
+    public function edit($id)
     {
-        //
+        $component = Component::findOrFail($id);
+        $title = "Edit Component";
+        $data['component'] = $component;
+        return view('adminpanel.component.component', $data)->with('title', $title);
     }
 
     /**
@@ -68,9 +77,12 @@ class ComponentController extends Controller
      * @param  \App\Models\Component  $component
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Component $component)
+    public function update(Request $request, $id)
     {
-        //
+        $component = Component::findOrFail($id);
+        $updateData = $request->all();
+        $component->update($updateData);
+        return redirect('component')->with('success', 'Record Successfully Updated');
     }
 
     /**
@@ -79,8 +91,10 @@ class ComponentController extends Controller
      * @param  \App\Models\Component  $component
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Component $component)
+    public function destroy($id)
     {
-        //
+        $component = Component::findOrFail($id);
+        $component->delete();
+        return redirect('component')->with('success','Component Successfully deleted');
     }
 }

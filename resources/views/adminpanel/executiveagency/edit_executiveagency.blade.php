@@ -35,7 +35,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Name</label>
-                                <input type="text" name="name" id="name" value="{{ $executive->name}}" class="form-control"
+                                <input type="text" name="name" id="name" value="{{ $executiveagency->name}}" class="form-control"
                                        placeholder="Enter Name">
                             </div>
                         </div>

@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Component extends Model
 {
     use HasFactory;
+
+    protected $table = 'tbl_components';
+
+    protected $fillable = [
+        'name',
+
+    ];
 }

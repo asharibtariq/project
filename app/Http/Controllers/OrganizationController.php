@@ -15,7 +15,8 @@ class OrganizationController extends Controller
      */
     public function index()
     {
-        //
+        $title = "Organization";
+        return view('adminpanel.organization.organization')->with('title', $title);
     }
 
     /**
@@ -25,7 +26,8 @@ class OrganizationController extends Controller
      */
     public function create()
     {
-        //
+        $title = "Add Organization ";
+        return view('adminpanel.organization.add_organization')->with('title', $title);
     }
 
     /**
@@ -36,7 +38,11 @@ class OrganizationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $insertData = $request->all();
+//        $insertData['created_by'] = $userId;
+        ////--This Method would need mass assignment--////
+        Organization::create($insertData);
+        return redirect('organization')->with('success', 'Organization Added Successfully');
     }
 
     /**
@@ -56,9 +62,12 @@ class OrganizationController extends Controller
      * @param  \App\Models\Organization  $organization
      * @return \Illuminate\Http\Response
      */
-    public function edit(Organization $organization)
+    public function edit($id)
     {
-        //
+        $organization = Organization::findOrFail($id);
+        $title = "Edit Organization";
+        $data['organization'] = $organization;
+        return view('adminpanel.organization.organization', $data)->with('title', $title);
     }
 
     /**
@@ -68,9 +77,12 @@ class OrganizationController extends Controller
      * @param  \App\Models\Organization  $organization
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Organization $organization)
+    public function update(Request $request, $id)
     {
-        //
+        $organization = Organization::findOrFail($id);
+        $updateData = $request->all();
+        $organization->update($updateData);
+        return redirect('organization')->with('success', 'Record Successfully Updated');
     }
 
     /**
@@ -79,8 +91,10 @@ class OrganizationController extends Controller
      * @param  \App\Models\Organization  $organization
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Organization $organization)
+    public function destroy($id)
     {
-        //
+        $organization = Organization::findOrFail($id);
+        $organization->delete();
+        return redirect('organization')->with('success','Organization Successfully deleted');
     }
 }

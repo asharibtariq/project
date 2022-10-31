@@ -10,8 +10,8 @@
                     </div>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
-                        <li class="breadcrumb-item"><a href="designation">Designation List</a></li>
-                        <li class="breadcrumb-item"><a href="edit_designation">Edit Designation</a></li>
+                        <li class="breadcrumb-item"><a href="component">Component List</a></li>
+                        <li class="breadcrumb-item"><a href="edit_component">Edit Component</a></li>
                     </ul>
                 </div>
             </div>
@@ -27,15 +27,15 @@
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-header">
-                    <h5>Edit Designation</h5>
+                    <h5>Edit Component</h5>
                 </div>
-                <form class="card-body" method="post" action="{{url('edit_designation', $desgination->id)}}" enctype="multipart/form-data">
+                <form class="card-body" method="post" action="{{url('edit_component', $component->id)}}" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Name</label>
-                                <input type="text" name="name" id="name" value="{{ $designation->name}}" class="form-control"
+                                <input type="text" name="name" id="name" value="{{ $component->name}}" class="form-control"
                                        placeholder="Enter Name">
                             </div>
                         </div>
