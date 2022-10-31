@@ -26,11 +26,13 @@ class DashboardController extends Controller{
      */
     public function index(){
         $data = array();
+        $data['range_data'] = $this->_rangeData();
         return view('adminpanel/dashboard', $data);
     }
 
     public function dashboard(Request $request){
        $data =array();
+        $data['range_data'] = $this->_rangeData();
         return view('adminpanel/dashboard', $data);
     }
 

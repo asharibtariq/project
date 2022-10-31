@@ -94,7 +94,7 @@
             if (page != ''){baseurl = '{{url('/ajax_content?page=')}}'+ page;}
 
             var post_data = {
-                "_token": CSRF_TOKEN,
+                "_token": "{{ csrf_token() }}",
                 "name": $("#name").val(),
                 "select_limit": $("#select_limit").val(),
                 'action': "user_content"
