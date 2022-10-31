@@ -81,10 +81,10 @@ class DesignationController extends Controller
      */
     public function update(Request $request,$id)
     {
-        $userId = Auth::id();
+//        $userId = Auth::id();
         $designation = Designation::findOrFail($id);
         $updateData = $request->all();
-        $updateData['updated_by'] = $userId;
+//        $updateData['updated_by'] = $userId;
         $designation->update($updateData);
         return redirect('designation')->with('success', 'Record Successfully Updated');
     }

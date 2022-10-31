@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class ExecutiveAgency extends Model
 {
     use HasFactory;
+
+    protected $table = 'tbl_executive_agencies';
+
+    protected $fillable = [
+        'name',
+
+    ];
 }

@@ -15,7 +15,8 @@ class ExecutiveAgencyController extends Controller
      */
     public function index()
     {
-        //
+        $title = "Executive Agency";
+        return view('adminpanel.executiveagency.executiveagency')->with('title', $title);
     }
 
     /**
@@ -25,7 +26,8 @@ class ExecutiveAgencyController extends Controller
      */
     public function create()
     {
-        //
+        $title = "Add Executive Agency ";
+        return view('adminpanel.executiveagency.add_executiveagency')->with('title', $title);
     }
 
     /**
@@ -36,7 +38,12 @@ class ExecutiveAgencyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+   
+        $insertData = $request->all();
+//        $insertData['created_by'] = $userId;
+        ////--This Method would need mass assignment--////
+        ExecutiveAgency::create($insertData);
+        return redirect('executiveagency')->with('success', 'Executive Agency Added Successfully');
     }
 
     /**
@@ -56,9 +63,12 @@ class ExecutiveAgencyController extends Controller
      * @param  \App\Models\ExecutiveAgency  $executiveAgency
      * @return \Illuminate\Http\Response
      */
-    public function edit(ExecutiveAgency $executiveAgency)
+    public function edit($id)
     {
-        //
+        $executive = ExecutiveAgency::findOrFail($id);
+        $title = "Edit Executive Agency";
+        $data['executiveagency'] = $executive;
+        return view('adminpanel.executiveagency.executiveagency', $data)->with('title', $title);
     }
 
     /**
@@ -68,9 +78,12 @@ class ExecutiveAgencyController extends Controller
      * @param  \App\Models\ExecutiveAgency  $executiveAgency
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ExecutiveAgency $executiveAgency)
+    public function update(Request $request, $id)
     {
-        //
+        $executive = ExecutiveAgency::findOrFail($id);
+        $updateData = $request->all();
+        $executive->update($updateData);
+        return redirect('executiveagency')->with('success', 'Record Successfully Updated');
     }
 
     /**
@@ -79,8 +92,10 @@ class ExecutiveAgencyController extends Controller
      * @param  \App\Models\ExecutiveAgency  $executiveAgency
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ExecutiveAgency $executiveAgency)
+    public function destroy($id)
     {
-        //
+        $execuive = ExecutiveAgency::findOrFail($id);
+        $execuive->delete();
+        return redirect('executiveagency')->with('success','Executive Agency Successfully deleted');
     }
 }
