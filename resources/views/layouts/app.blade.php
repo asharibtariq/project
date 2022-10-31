@@ -38,17 +38,34 @@
 
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/jquery.min.js') }}"></script>
-    <script src="{{ asset('js/jquery.mask.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
-    <script src="{{ asset('js/select2.full.min.js') }}"></script>
-    <script src="{{ asset('js/jquery.table2excel.js') }}"></script>
-    <script src="{{ asset('js/jquery.print.js') }}"></script>
+
 
     <script src="https://code.highcharts.com/highcharts.js"></script>
 
 </head>
 
 <body class="">
+
+<script>
+    $(document).ready(function () {
+        $("form").attr("autocomplete", 'off');
+        $(".select2").select2();
+        $(".mobile_no").mask("0000-0000000");
+        $(".year_mask").mask("0000");
+        $(".cnic").mask("0000000000000");
+        //    $(".datepicker").datepicker({dateFormat: "mm/dd/yy"});
+        $(".datepicker").datepicker({dateFormat: "dd-mm-yy"});
+    });
+    //for only alphabets
+    $(document).on("input", ".only_alpha", function () {
+        $(this).val($(this).val().replace(/[^A-Z a-z]/g, ''));
+    });
+    //for only number
+    $(document).on("input", ".only_numeric", function () {
+        $(this).val($(this).val().replace(/[^0-9]/g, ''));
+    });
+</script>
+
 <!-- [ Pre-loader ] start -->
 <div class="loader-bg">
     <div class="loader-track">
@@ -80,6 +97,14 @@
 <!-- Required Js -->
 {{--<script src="../assets/js/vendor-all.min.js"></script>--}}
 <script src="{{ asset('js/vendor-all.min.js') }}"></script>
+
+<!-- Some Other Useful Scripts -->
+<script src="{{ asset('js/jquery.mask.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
+<script src="{{ asset('js/select2.full.min.js') }}"></script>
+<script src="{{ asset('js/jquery.table2excel.js') }}"></script>
+<script src="{{ asset('js/jquery.print.js') }}"></script>
+
 <script src="{{ asset('plugins/bootstrap/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/pcoded.min.js') }}"></script>
 {{--<script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>--}}
