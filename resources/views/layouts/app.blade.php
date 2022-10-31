@@ -178,6 +178,8 @@
 
 <!-- Required Js -->
 {{--<script src="../assets/js/vendor-all.min.js"></script>--}}
+
+<script src="{{ asset('js/jquery.min.js') }}"></script>
 <script src="{{ asset('js/vendor-all.min.js') }}"></script>
 <script src="{{ asset('plugins/bootstrap/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/pcoded.min.js') }}"></script>
@@ -186,7 +188,7 @@
 
 
 <!-- chart-morris Js -->
-<script src="../assets/plugins/chart-morris/js/raphael.min.js"></script>
+{{--<script src="../assets/plugins/chart-morris/js/raphael.min.js"></script>--}}s
 <script src="{{ asset('plugins/chart-morris/js/raphael.min.js') }}"></script>
 <script src="{{ asset('plugins/chart-morris/js/morris.min.js') }}"></script>
 <script src="{{ asset('js/pages/chart-morris-custom.js') }}"></script>

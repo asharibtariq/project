@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Designation extends Model
 {
     use HasFactory;
+
+    protected $table = 'tbl_designations';
+
+    protected $fillable = [
+        'name',
+
+    ];
 }

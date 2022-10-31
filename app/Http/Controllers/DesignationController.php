@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DesignationRequest;
 use App\Models\Designation;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -36,14 +37,14 @@ class DesignationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DesignationRequest $request)
     {
         $userId = Auth::id();
         $insertData = $request->all();
-        $insertData['created_by'] = $userId;
+//        $insertData['created_by'] = $userId;
         ////--This Method would need mass assignment--////
         Designation::create($insertData);
-        return redirect('adminpanel.designation.designation')->with('success', 'Designation Added Successfully');
+        return redirect('designation')->with('success', 'Designation Added Successfully');
     }
 
     /**

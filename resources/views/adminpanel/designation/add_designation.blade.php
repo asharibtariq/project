@@ -29,13 +29,13 @@
             <div class="card-header">
                 <h5>Add Designation</h5>
             </div>
-            <form class="card-body">
+            <form class="card-body" method="post" action="{{url('add_designation')}}" enctype="multipart/form-data">
 
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Name</label>
-                            <input type="text" class="form-control"
+                            <input type="text" name="name" id="name" class="form-control"
                                    placeholder="Enter Name">
                         </div>
                     </div>
@@ -47,7 +47,7 @@
                 <!-- Reports Remarks ends -->
 
                 <div class="">
-                    <button type="button" class="btn btn-info "><i class="feather icon-check"></i>Enter</button>
+                    <button type="submit" class="btn btn-info "><i class="feather icon-check"></i>Enter</button>
                 </div>
 
             </form>
