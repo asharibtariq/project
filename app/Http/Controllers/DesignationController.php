@@ -39,7 +39,7 @@ class DesignationController extends Controller
      */
     public function store(DesignationRequest $request)
     {
-        $userId = Auth::id();
+//        $userId = Auth::id();
         $insertData = $request->all();
 //        $insertData['created_by'] = $userId;
         ////--This Method would need mass assignment--////

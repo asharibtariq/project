@@ -50,8 +50,8 @@
                                     <div class="dataTables_length" id="sample_1_length">
                                         <label>
                                             <select id="select_limit" name="sample_1_length" aria-controls="sample_1" class="form-control input-sm input-xsmall input-inline">
-                                                <option value="10">10</option>
-                                                <option value="20">20</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
                                                 <option value="50">50</option>
                                                 <option value="100">100</option>
                                                 <!--<option value="">All</option>-->
@@ -94,7 +94,7 @@
             if (page != ''){baseurl = '{{url('/ajax_content?page=')}}'+ page;}
 
             var post_data = {
-                "_token": CSRF_TOKEN,
+                "_token": "{{ csrf_token() }}",
                 "name": $("#name").val(),
                 "select_limit": $("#select_limit").val(),
                 'action': "project_content"

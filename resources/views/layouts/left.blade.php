@@ -44,7 +44,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ url('user') }}" class="nav-link"><span class="pcoded-micon"><i
+                    <a href="{{ url('project') }}" class="nav-link"><span class="pcoded-micon"><i
                                     class="feather icon-file-text"></i></span><span class="pcoded-mtext">Project</span></a>
                 </li>
 

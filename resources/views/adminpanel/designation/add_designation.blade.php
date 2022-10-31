@@ -30,7 +30,7 @@
                 <h5>Add Designation</h5>
             </div>
             <form class="card-body" method="post" action="{{url('add_designation')}}" enctype="multipart/form-data">
-
+                @csrf
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
