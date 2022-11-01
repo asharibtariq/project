@@ -67,7 +67,7 @@ class OrganizationController extends Controller
         $organization = Organization::findOrFail($id);
         $title = "Edit Organization";
         $data['organization'] = $organization;
-        return view('adminpanel.organization.organization', $data)->with('title', $title);
+        return view('adminpanel.organization.edit_organization', $data)->with('title', $title);
     }
 
     /**

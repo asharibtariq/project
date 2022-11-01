@@ -20,66 +20,113 @@
 <!-- [ breadcrumb ] end -->
 <!-- [ Main Content ] start -->
 <!-- [ Hover-table ] start -->
-<div class="col-md-12">
-    <div class="card">
-        <div class="card-header">
-            <h5>Organization</h5>
-            <a href="add_organization" type="button" class="btn btn-lg btn-success btn-sm"> Add Organization</a>
-
+<div class="container">
+    <div class="row">
+        @if(Session::has('success'))
+            <div class="col-md-12">
+                <div class="alert alert-success">{{Session::get('success')}}</div>
+            </div>
+        @endif
+        <div class="col-md-12">
+            <a href="{{url('add_organization')}}" class="btn btn-success"><i class="fa fa-plus-circle"></i> Add Organization</a>
         </div>
-        <div class="card-body table-border-style">
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <br/>
+            <div class="card">
+                <div class="card-header">
+                    <h4>Organization</h4>
+                </div>
+                <div class="card-body">
 
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="input-group md-form form-sm form-2 pl-0">
-                        <input class="form-control my-0 py-1 amber-border" type="text" placeholder="Name" aria-label="Search">
-                        <div class="input-group-append">
-                                              <span class="input-group-text amber lighten-3" id="basic-text1"> <i class="fas fa-search text-grey"
-                                                                                                                  aria-hidden="true"></i></span>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="name" class="control-label label-paf">Name</label>
+                                <input type="text" placeholder="Name" class="form-control input-paf" id="name" />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label">&nbsp;</label>
+                                <div id="div_btn">
+                                    <button type="button" id='b_search' class="btn btn-info">
+                                        <i class="fa fa-check"></i> Search</button>
+                                    {{--
+                                    <button type="button" id='btn-excel' class="btn btn-success">
+                                        <i class="fa fa-file-excel-o"></i> Export</button>
+                                    --}}
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <br>
 
-            <div class="btn-group mb-2 mr-2">
-                <button class="btn btn-sm btn-outline-info dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Entries</button>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#!">10</a>
-                    <a class="dropdown-item" href="#!">20</a>
-                    <a class="dropdown-item" href="#!">50</a>
-                </div>
-            </div>
-
-            <div class="table-responsive">
-                <table class="table table-hover">
-                    <thead>
-                    <tr>
-                        <th>Sr#</th>
-                        <th>Name</th>
-                        <th>Status</th>
-                        <th>Operation</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Name</td>
-                        <td> <a href="" type="button" class="btn btn-success btn-sm">Active</a> </td>
-                        <td>
-                            <div class="btn-group" role="group" aria-label="Basic example">
-                                <a href="edit_organization" type="button" class="btn btn-sm btn-success">Edit</a>
-                                <a href="delete_organization" type="button" class="btn btn-sm btn-info">Delete</a>
+                    <div id="sample_1_wrapper" class="dataTables_wrapper no-footer">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="dataTables_length" id="sample_1_length">
+                                    <label>
+                                        <select id="select_limit" name="sample_1_length" aria-controls="sample_1" class="form-control input-sm input-xsmall input-inline">
+                                            <option value="10">10</option>
+                                            <option value="20">20</option>
+                                            <option value="50">50</option>
+                                            <option value="100">100</option>
+                                            <!--<option value="">All</option>-->
+                                        </select> entries
+                                    </label>
+                                </div>
+                                <br/>
                             </div>
-                        </td>
-
-                    </tr>
-
-                    </tbody>
-                </table>
+                            <div class="col-md-2">
+                                <div class="table-group-actions pull-right"></div>
+                            </div>
+                        </div>
+                        <div class="table-responsive" id='my_data'></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+<script>
+    var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+    $(document).ready(function () {
+        $(document).on('click', '#b_search', function () {
+            show_ajax_cards('');
+        });
+        $(document).on('change', '#select_limit', function () {
+            show_ajax_cards('');
+        });
+        //load page for fitrs time
+        show_ajax_cards('');
+    });
+    $(document).on('click','.pagination a', function(e){
+        e.preventDefault();
+        var page = $(this).attr('href').split('page=')[1];
+        show_ajax_cards(page);
+    });
+    function show_ajax_cards(page='') {
+
+        var baseurl = '{{url('/ajax_content')}}';
+        if (page != ''){baseurl = '{{url('/ajax_content?page=')}}'+ page;}
+
+        var post_data = {
+            "_token": "{{ csrf_token() }}",
+            "name": $("#name").val(),
+            "select_limit": $("#select_limit").val(),
+            'action': "organization_content"
+        };
+
+        $.ajax({
+            url: baseurl,
+            data: post_data,
+            type: 'POST',
+            success: function (data) {
+                $('#my_data').html(data);
+            }
+        });
+    }
+</script>
 
 @endsection

@@ -67,7 +67,7 @@ class ComponentController extends Controller
         $component = Component::findOrFail($id);
         $title = "Edit Component";
         $data['component'] = $component;
-        return view('adminpanel.component.component', $data)->with('title', $title);
+        return view('adminpanel.component.edit_component', $data)->with('title', $title);
     }
 
     /**
