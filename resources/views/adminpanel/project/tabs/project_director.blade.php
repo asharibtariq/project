@@ -30,9 +30,65 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Input Text</label>
+                                        <label>Name</label>
                                         <input type="text" class="form-control" placeholder="Input Text">
                                     </div>
+                                    <div class="form-group">
+                                        <label>Address</label>
+                                        <input type="text" class="form-control"
+                                               placeholder="Address">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input type="text" class="form-control"
+                                               placeholder="Email">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label
+                                            for="exampleFormControlSelect1">Designation</label>
+                                        <select class="form-control"
+                                                id="exampleFormControlSelect1">
+                                            <option>First Name</option>
+                                            <option>Second Name</option>
+                                            <option>Third Name</option>
+                                            <option>Fourth Name</option>
+                                            <option>Fifth Name</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Office Phone No</label>
+                                        <input type="text" class="form-control"
+                                               placeholder="Office Phone No">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Calendar</label>
+                                        <input type="text" name="alloc_date" id="alloc_date" class="form-control datepicker" placeholder="MM/DD/YYYY" readonly>
+                                        @if ($errors->has('alloc_date'))
+                                            <span class="text-danger">{{ $errors->first('alloc_date') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label
+                                            for="exampleFormControlSelect1">Organization</label>
+                                        <select class="form-control"
+                                                id="exampleFormControlSelect1">
+                                            <option>First Name</option>
+                                            <option>Second Name</option>
+                                            <option>Third Name</option>
+                                            <option>Fourth Name</option>
+                                            <option>Fifth Name</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Cell Number</label>
+                                        <input type="text" class="form-control"
+                                               placeholder="Cell Number">
+                                    </div>
+
                                 </div>
                             </div>
 
