@@ -94,3 +94,20 @@ Route::post('add_project_allocation', [\App\Http\Controllers\ProjectController::
 Route::get('add_release', [\App\Http\Controllers\ProjectController::class, 'release']);
 Route::post('add_release', [\App\Http\Controllers\ProjectController::class, 'add_release']);
 
+Route::get('add_component_pc1', [\App\Http\Controllers\ProjectController::class, 'component_pc1']);
+Route::post('add_component_pc1', [\App\Http\Controllers\ProjectController::class, 'add_component_pc1']);
+
+Route::get('add_component_nis', [\App\Http\Controllers\ProjectController::class, 'component_nis']);
+Route::post('add_component_nis', [\App\Http\Controllers\ProjectController::class, 'add_component_nis']);
+
+Route::get('add_fy_util', [\App\Http\Controllers\ProjectController::class, 'fy_util']);
+Route::post('add_fy_util', [\App\Http\Controllers\ProjectController::class, 'add_fy_util']);
+
+Route::get('add_physical_target', [\App\Http\Controllers\ProjectController::class, 'physical_target']);
+Route::post('add_physical_target', [\App\Http\Controllers\ProjectController::class, 'add_physical_target']);
+
+Route::get('add_pc4', [\App\Http\Controllers\ProjectController::class, 'pc4']);
+Route::post('add_pc4', [\App\Http\Controllers\ProjectController::class, 'add_pc4']);
+
+Route::get('add_end_of_fy', [\App\Http\Controllers\ProjectController::class, 'end_of_fy']);
+Route::post('add_end_of_fy', [\App\Http\Controllers\ProjectController::class, 'add_end_of_fy']);

@@ -1,63 +1,31 @@
-{{--
-<ul class="nav nav-pills mb-3" role="tablist">
-    <li class="nav-item">
-        <a class="nav-link" href="#" role="tab" aria-selected="true">Project Director</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link active" href="#" role="tab" aria-selected="false">Allocation</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#" role="tab" aria-selected="false">Release</a>
-    </li>
-</ul>
---}}
-
 <div class="row">
 <ul class="nav nav-pills mb-3" role="tablist">
     <li class="nav-item">
-        <a class="nav-link " href="project_director.html" role="tab"
-           aria-controls="pills-Project-Director"
-           aria-selected="true">Project Director</a>
+        <a class="nav-link @php echo $current_page == 'add_project_director' ? 'active' : '' @endphp" href="{{url('add_project_director')}}" role="tab" aria-selected="true">PD</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="allocation.html" role="tab"
-           aria-controls="pills-allocation"
-           aria-selected="false">Allocation</a>
+        <a class="nav-link @php echo $current_page == 'add_project_allocation' ? 'active' : '' @endphp" href="{{url('add_project_allocation')}}" role="tab" aria-selected="false">Allocation</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link " href="release.html" role="tab"
-           aria-controls="pills-release"
-           aria-selected="false">Release</a>
+        <a class="nav-link @php echo $current_page == 'add_release' ? 'active' : '' @endphp" href="{{url('add_release')}}" role="tab" aria-selected="false">Release</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link " href="comp_pc_1.html" role="tab"
-           aria-controls="pills-comp_pc_1"
-           aria-selected="false">Component as per PC-1</a>
+        <a class="nav-link @php echo $current_page == 'add_component_pc1' ? 'active' : '' @endphp" href="{{url('add_component_pc1')}}" role="tab" aria-selected="false">Components (PC-1)</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link " href="comp_nis.html" role="tab"
-           aria-controls="pills-comp_nis"
-           aria-selected="false">Component as per NIS</a>
+        <a class="nav-link @php echo $current_page == 'add_component_nis' ? 'active' : '' @endphp" href="{{url('add_component_nis')}}" role="tab" aria-selected="false">Components (NIS)</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link " href="fy_wise_utilization.html" role="tab"
-           aria-controls="pills-fy_wise_utilization"
-           aria-selected="false">FY wise Utilization</a>
+        <a class="nav-link @php echo $current_page == 'add_fy_util' ? 'active' : '' @endphp" href="{{url('add_fy_util')}}" role="tab" aria-selected="false">FY Utilization</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link " href="pp_tests.html" role="tab"
-           aria-controls="pills-pp_tests" aria-selected="false">Project
-            Physical Tests</a>
+        <a class="nav-link @php echo $current_page == 'add_physical_target' ? 'active' : '' @endphp" href="{{url('add_physical_target')}}" role="tab" aria-selected="false">Physical Targets</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link " href="pc4_details.html" role="tab"
-           aria-controls="pills-pc4_details" aria-selected="false">PC-4
-            Details</a>
+        <a class="nav-link @php echo $current_page == 'add_pc4' ? 'active' : '' @endphp" href="{{url('add_pc4')}}" role="tab" aria-selected="false">PC-4</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link active " href="end_of_fy.html" role="tab"
-           aria-controls="pills-end_of_fy" aria-selected="false">End of
-            FY</a>
+        <a class="nav-link @php echo $current_page == 'add_end_of_fy' ? 'active' : '' @endphp" href="{{url('add_end_of_fy')}}" role="tab" aria-selected="false">End of FY</a>
     </li>
 </ul>
 </div>
