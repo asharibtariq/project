@@ -144,12 +144,18 @@
                                             <button type="button"
                                                     class="btn btn-sm btn-info">Delete
                                             </button>
-
                                         </div>
                                     </td>
-
                                 </tr>
-
+                                <tr>
+                                    <th colspan="3" class="text-center">Total</th>
+                                    <td>5000</td>
+                                    <td>50$</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6"></td>
+                                </tr>
                                 </tbody>
                             </table>
                         </div>
