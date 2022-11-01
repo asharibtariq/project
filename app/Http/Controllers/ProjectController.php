@@ -142,6 +142,7 @@ class ProjectController extends Controller{
         $title = "Release";
         $data['current_page'] = request()->segment(1);
         $data['fiscal_year_select'] = get_fiscal_year();
+        $data['currency_select'] = get_currency();
         return view('adminpanel.project.tabs.release', $data)->with('title', $title);
     }
 
@@ -149,6 +150,7 @@ class ProjectController extends Controller{
         $title = "Component as per PC-1";
         $data['current_page'] = request()->segment(1);
         $data['fiscal_year_select'] = get_fiscal_year();
+        $data['currency_select'] = get_currency();
         return view('adminpanel.project.tabs.component_pc1', $data)->with('title', $title);
     }
 
@@ -156,6 +158,7 @@ class ProjectController extends Controller{
         $title = "Component as per NIS";
         $data['current_page'] = request()->segment(1);
         $data['fiscal_year_select'] = get_fiscal_year();
+        $data['currency_select'] = get_currency();
         return view('adminpanel.project.tabs.component_nis', $data)->with('title', $title);
     }
 
@@ -163,6 +166,7 @@ class ProjectController extends Controller{
         $title = "FY wise Utilization";
         $data['current_page'] = request()->segment(1);
         $data['fiscal_year_select'] = get_fiscal_year();
+        $data['currency_select'] = get_currency();
         return view('adminpanel.project.tabs.fy_util', $data)->with('title', $title);
     }
 
@@ -170,13 +174,13 @@ class ProjectController extends Controller{
         $title = "Physical Target";
         $data['current_page'] = request()->segment(1);
         $data['fiscal_year_select'] = get_fiscal_year();
+        $data['currency_select'] = get_currency();
         return view('adminpanel.project.tabs.physical_target', $data)->with('title', $title);
     }
 
     public function pc4(){
         $title = "PC-4 Details";
         $data['current_page'] = request()->segment(1);
-        $data['fiscal_year_select'] = get_fiscal_year();
         return view('adminpanel.project.tabs.pc4', $data)->with('title', $title);
     }
 
@@ -184,6 +188,7 @@ class ProjectController extends Controller{
         $title = "End of FY";
         $data['current_page'] = request()->segment(1);
         $data['fiscal_year_select'] = get_fiscal_year();
+        $data['currency_select'] = get_currency();
         return view('adminpanel.project.tabs.end_of_fy', $data)->with('title', $title);
     }
 
