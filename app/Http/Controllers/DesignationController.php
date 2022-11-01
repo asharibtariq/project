@@ -53,9 +53,9 @@ class DesignationController extends Controller
      * @param  \App\Models\Designation  $designation
      * @return \Illuminate\Http\Response
      */
-    public function show(Designation $designation)
+    public function show($id)
     {
-        //
+     //
     }
 
     /**

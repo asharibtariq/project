@@ -68,7 +68,7 @@ class ExecutiveAgencyController extends Controller
         $executive = ExecutiveAgency::findOrFail($id);
         $title = "Edit Executive Agency";
         $data['executiveagency'] = $executive;
-        return view('adminpanel.executiveagency.executiveagency', $data)->with('title', $title);
+        return view('adminpanel.executiveagency.edit_executiveagency', $data)->with('title', $title);
     }
 
     /**

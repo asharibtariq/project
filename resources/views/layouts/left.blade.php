@@ -27,7 +27,7 @@
                 </li>
 
                 <li class="nav-item pcoded-hasmenu">
-                    <a href="#!" class="nav-link"><span class="pcoded-micon"><i
+                    <a href="#" class="nav-link"><span class="pcoded-micon"><i
                                     class="feather icon-box"></i></span><span class="pcoded-mtext">Master Data</span></a>
                     <ul class="pcoded-submenu">
                         <li class=""><a href="{{ url('designation') }}" class="">Designation</a></li>

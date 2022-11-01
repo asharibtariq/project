@@ -76,6 +76,90 @@ class AjaxController extends Controller{
                 $data['links'] = $project;
                 return view('adminpanel.project.project_list')->with($data);
                 break;
+            case 'designation_content':
+                $where = array();
+                $name = $request->name != '' ? $request->name : '';
+                $per_page = $request->select_limit != '' ? $request->select_limit : 10;
+                /*
+                    if (!empty($name))
+                        $where['users.name'] = $name;
+                */
+                $project = DB::table('tbl_designations')
+                    ->select('tbl_designations.id',
+                        'tbl_designations.name',
+                        'tbl_designations.status')
+                    ->where('name', 'LIKE', '%' . $name . '%')
+                    //    ->groupBy('users.id')
+                    ->orderBy('tbl_designations.id', 'DESC')
+                    ->paginate($per_page);
+
+                $data['result'] = $project->items();
+                $data['links'] = $project;
+                return view('adminpanel.designation.designation_list')->with($data);
+                break;
+            case 'executiveagency_content':
+                $where = array();
+                $name = $request->name != '' ? $request->name : '';
+                $per_page = $request->select_limit != '' ? $request->select_limit : 10;
+                /*
+                    if (!empty($name))
+                        $where['users.name'] = $name;
+                */
+                $project = DB::table('tbl_executive_agencies')
+                    ->select('tbl_executive_agencies.id',
+                        'tbl_executive_agencies.name',
+                        'tbl_executive_agencies.status')
+                    ->where('name', 'LIKE', '%' . $name . '%')
+                    //    ->groupBy('users.id')
+                    ->orderBy('tbl_executive_agencies.id', 'DESC')
+                    ->paginate($per_page);
+
+                $data['result'] = $project->items();
+                $data['links'] = $project;
+                return view('adminpanel.executiveagency.executiveagency_list')->with($data);
+                break;
+            case 'component_content':
+                $where = array();
+                $name = $request->name != '' ? $request->name : '';
+                $per_page = $request->select_limit != '' ? $request->select_limit : 10;
+                /*
+                    if (!empty($name))
+                        $where['users.name'] = $name;
+                */
+                $project = DB::table('tbl_components')
+                    ->select('tbl_components.id',
+                        'tbl_components.name',
+                        'tbl_components.status')
+                    ->where('name', 'LIKE', '%' . $name . '%')
+                    //    ->groupBy('users.id')
+                    ->orderBy('tbl_components.id', 'DESC')
+                    ->paginate($per_page);
+
+                $data['result'] = $project->items();
+                $data['links'] = $project;
+                return view('adminpanel.component.component_list')->with($data);
+                break;
+            case 'organization_content':
+                $where = array();
+                $name = $request->name != '' ? $request->name : '';
+                $per_page = $request->select_limit != '' ? $request->select_limit : 10;
+                /*
+                    if (!empty($name))
+                        $where['users.name'] = $name;
+                */
+                $project = DB::table('tbl_organizations')
+                    ->select('tbl_organizations.id',
+                        'tbl_organizations.name',
+                        'tbl_organizations.status')
+                    ->where('name', 'LIKE', '%' . $name . '%')
+                    //    ->groupBy('users.id')
+                    ->orderBy('tbl_organizations.id', 'DESC')
+                    ->paginate($per_page);
+
+                $data['result'] = $project->items();
+                $data['links'] = $project;
+                return view('adminpanel.organization.organization_list')->with($data);
+                break;
             default:
                 break;
         }

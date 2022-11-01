@@ -29,13 +29,13 @@
                 <div class="card-header">
                     <h5>Edit Organization</h5>
                 </div>
-                <form class="card-body" method="post" action="{{url('edit_organization', $organization->id)}}" enctype="multipart/form-data">
+                <form class="card-body" method="post" action="{{url('update_organization', $organization->id)}}" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Name</label>
-                                <input type="text" name="name" id="name" value="{{ $organization->name}}" class="form-control"
+                                <input type="text" name="name" id="name" value="{{$organization->name}}" class="form-control"
                                        placeholder="Enter Name">
                             </div>
                         </div>
