@@ -85,5 +85,12 @@ Route::post('update_organization/{id}', [\App\Http\Controllers\OrganizationContr
 Route::get('delete_organization/{id}', [\App\Http\Controllers\OrganizationController::class, 'destroy']);
 
 // Tabs Routes
+Route::get('add_project_director', [\App\Http\Controllers\ProjectController::class, 'project_director']);
+Route::post('add_project_director', [\App\Http\Controllers\ProjectController::class, 'add_project_director']);
+
 Route::get('add_project_allocation', [\App\Http\Controllers\ProjectController::class, 'allocation']);
 Route::post('add_project_allocation', [\App\Http\Controllers\ProjectController::class, 'add_allocation']);
+
+Route::get('add_release', [\App\Http\Controllers\ProjectController::class, 'release']);
+Route::post('add_release', [\App\Http\Controllers\ProjectController::class, 'add_release']);
+

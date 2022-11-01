@@ -10,28 +10,8 @@
                         <h4>Project Details</h4>
                     </div>
                     <div class="card-body">
-
                         <!-- Project Forms Tabs -->
-                        <ul class="nav nav-pills mb-3" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                   href="project_director.html" role="tab"
-                                   aria-controls="pills-Project-Director"
-                                   aria-selected="true">Project Director</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" href="allocation.html"
-                                   role="tab" aria-controls="pills-allocation"
-                                   aria-selected="false">Allocation</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="release.html"
-                                   role="tab" aria-controls="pills-contact"
-                                   aria-selected="false">Release</a>
-                            </li>
-
-
-                        </ul>
+                        @include('adminpanel.project.detail_tabs')
 
                         @if($errors->any())
                             @foreach($errors->all() as $error)

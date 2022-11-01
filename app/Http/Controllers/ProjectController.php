@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
-use App\Models\Report;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProjectRequest;
@@ -63,14 +62,6 @@ class ProjectController extends Controller{
         $project->updated_by = $userId;
         $project->save();
         $id = $project->id;
-
-        /*
-        $report = new Report();
-        $report->project_id = $id;
-        $report->project = $insertData['name'];
-        $report->created_by = $userId;
-        $report->save();
-        */
 
         return redirect('project')->with('success', 'Project Added Successfully');
     }
@@ -134,6 +125,7 @@ class ProjectController extends Controller{
 
     public function allocation(){
         $title = "Allocation";
+        $data['current_page'] = request()->segment(1);
         $data['fiscal_year_select'] = get_fiscal_year();
         $data['currency_select'] = get_currency();
         return view('adminpanel.project.tabs.allocation', $data)->with('title', $title);
