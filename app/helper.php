@@ -140,6 +140,35 @@ if(!function_exists('get_currency')) {
         return $html;
     }
 }
+if(!function_exists('get_designation')) {
+    function get_designation($default = 0, $where = '', $name = 'designation_id') {
+        if (empty($where)){$where = array('status' => 'Y');}
+        $html = show_dropdown('tbl_designations', $name, 'name', 'id', $default, "Select Designation", "class='form-control input-paf select2' required", $where);
+        return $html;
+    }
+}
+
+if(!function_exists('get_executiveagency')) {
+    function get_executiveagency($default = 0, $where = '', $name = 'executiveagency_id') {
+        if (empty($where)){$where = array('status' => 'Y');}
+        $html = show_dropdown('tbl_executive_agencies', $name, 'name', 'id', $default, "Select Executive Agency", "class='form-control input-paf select2' required", $where);
+        return $html;
+    }
+}
+if(!function_exists('get_component')) {
+    function get_component($default = 0, $where = '', $name = 'component_id') {
+        if (empty($where)){$where = array('status' => 'Y');}
+        $html = show_dropdown('tbl_components', $name, 'name', 'id', $default, "Select Component", "class='form-control input-paf select2' required", $where);
+        return $html;
+    }
+}
+if(!function_exists('get_organization')) {
+    function get_organization($default = 0, $where = '', $name = 'organization_id') {
+        if (empty($where)){$where = array('status' => 'Y');}
+        $html = show_dropdown('tbl_organizations', $name, 'name', 'id', $default, "Select Organization", "class='form-control input-paf select2' required", $where);
+        return $html;
+    }
+}
 
 if(!function_exists('get_fiscal_year')) {
     function get_fiscal_year($default = 0, $where = '', $name = 'fiscal_year', $attr = '') {
