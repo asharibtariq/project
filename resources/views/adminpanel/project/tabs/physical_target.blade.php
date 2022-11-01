@@ -30,8 +30,62 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Input Text</label>
-                                        <input type="text" class="form-control" placeholder="Input Text">
+                                        <label for="fiscal_year">FY</label>
+                                        {!! $fiscal_year_select !!}
+                                        @if ($errors->has('fiscal_year'))
+                                            <span class="text-danger">{{ $errors->first('fiscal_year') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label
+                                            for="exampleFormControlSelect1">Component</label>
+                                        <select class="form-control"
+                                                id="exampleFormControlSelect1">
+                                            <option>First Name</option>
+                                            <option>Second Name</option>
+                                            <option>Third Name</option>
+                                            <option>Fourth Name</option>
+                                            <option>Fifth Name</option>
+                                        </select>
+                                    </div>
+                                </div>
+                               
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label> Physical Target Description </label>
+                                        <input type="text" class="form-control" placeholder="Physical Target Description">
+                                    </div>
+                                </div>
+
+
+
+
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <br/>
+                                    <h4 class="text-muted">Allocated Budget</h4>
+                                    <hr/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect1">Currency</label>
+                                        {!! $currency_select !!}
+                                        @if ($errors->has('currency'))
+                                            <span class="text-danger">{{ $errors->first('currency') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Amount </label>
+                                        <input type="number" class="form-control" placeholder="Amount">
                                     </div>
                                 </div>
                             </div>

@@ -31,13 +31,17 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Name</label>
-                                        <input type="text" class="form-control" placeholder="Input Text">
+                                        <input type="text" class="form-control" placeholder="Name">
                                     </div>
+                                </div>
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Address</label>
                                         <input type="text" class="form-control"
                                                placeholder="Address">
                                     </div>
+                                </div>
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Email</label>
                                         <input type="text" class="form-control"
@@ -57,11 +61,15 @@
                                             <option>Fifth Name</option>
                                         </select>
                                     </div>
+                                </div>
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Office Phone No</label>
-                                        <input type="text" class="form-control"
+                                        <input type="text" class="form-control mobile_no"
                                                placeholder="Office Phone No">
                                     </div>
+                                </div>
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Calendar</label>
                                         <input type="text" name="alloc_date" id="alloc_date" class="form-control datepicker" placeholder="MM/DD/YYYY" readonly>
@@ -70,6 +78,7 @@
                                         @endif
                                     </div>
                                 </div>
+
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label
@@ -83,9 +92,11 @@
                                             <option>Fifth Name</option>
                                         </select>
                                     </div>
+                                </div>
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Cell Number</label>
-                                        <input type="text" class="form-control"
+                                        <input type="text" class="form-control mobile_no"
                                                placeholder="Cell Number">
                                     </div>
 
