@@ -6304,6 +6304,7 @@ body.layout-1 .pcoded-navbar.active-dark .sidemenu li.active:after {
     padding: 10px 20px;
     font-size: 14px;
     height: auto;
+    /*height: 34px;*/
 }
 
 .custom-select:focus,

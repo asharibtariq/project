@@ -131,4 +131,11 @@ class ProjectController extends Controller{
         $project->delete();
         return redirect('project')->with('success', 'Project Successfully Deleted');
     }
+
+    public function allocation(){
+        $title = "Allocation";
+        $data['fiscal_year_select'] = get_fiscal_year();
+        $data['currency_select'] = get_currency();
+        return view('adminpanel.project.tabs.allocation', $data)->with('title', $title);
+    }
 }

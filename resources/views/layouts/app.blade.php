@@ -42,6 +42,12 @@
 
     <script src="https://code.highcharts.com/highcharts.js"></script>
 
+    <style>
+        .custom-select, .form-control{
+            height: 43px !important;
+        }
+    </style>
+
 </head>
 
 <body class="">

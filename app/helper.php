@@ -133,6 +133,14 @@ if(!function_exists('get_multiple_project')) {
     }
 }
 
+if(!function_exists('get_currency')) {
+    function get_currency($default = 0, $where = '', $name = 'currency_id') {
+        if (empty($where)){$where = array('status' => 'Y');}
+        $html = show_dropdown('tbl_currency', $name, 'name', 'id', $default, "Select Currency", "class='form-control input-paf select2' required", $where);
+        return $html;
+    }
+}
+
 if(!function_exists('get_fiscal_year')) {
     function get_fiscal_year($default = 0, $where = '', $name = 'fiscal_year', $attr = '') {
         $html = '';
