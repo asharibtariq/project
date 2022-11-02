@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 Route::post('ajax_content', [\App\Http\Controllers\AjaxController::class, 'content']);
+Route::post('ajax_project_content', [\App\Http\Controllers\AjaxController::class, 'project_details_content']);
 Route::post('ajax_date_rec', [\App\Http\Controllers\AjaxController::class, 'getDateRecord']);
 Route::post('ajax_check_date_rec', [\App\Http\Controllers\AjaxController::class, 'checkDateRecord']);
 Route::post('ajax_expenditure_list', [\App\Http\Controllers\AjaxController::class, 'getActualExpenditure']);

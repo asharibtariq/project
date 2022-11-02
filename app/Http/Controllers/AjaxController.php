@@ -165,6 +165,63 @@ class AjaxController extends Controller{
         }
     }
 
+    public function project_details_content(Request $request){
+        $action = $request->action;
+        $data ['action'] = $action;
+        $output = [];
+        switch ($action) {
+            case 'allocation_content':
+                $where = array();
+                $name = $request->name != '' ? $request->name : '';
+                $per_page = $request->select_limit != '' ? $request->select_limit : 10;
+                /*
+                    if (!empty($name))
+                        $where['tbl_project_allocation.name'] = $name;
+                */
+                $project = DB::table('tbl_project_allocation')
+                    ->select('tbl_project_allocation.id',
+                        'tbl_project_allocation.project_id',
+                        'tbl_project_allocation.fiscal_year',
+                        'tbl_project_allocation.alloc_date',
+                        'tbl_project_allocation.alloc_amount',
+                        'tbl_project_allocation.currency_id',
+                        'tbl_project_allocation.foreign_alloc_amount',
+                        'tbl_project_allocation.status')
+                    ->where('name', 'LIKE', '%' . $name . '%')
+                    //    ->groupBy('tbl_project_allocation.id')
+                    ->orderBy('tbl_project_allocation.id', 'DESC')
+                    ->paginate($per_page);
+
+                $data['result'] = $project->items();
+                $data['links'] = $project;
+                return view('adminpanel.project.tabs.allocation_list')->with($data);
+                break;
+            case 'release_content':
+                $where = array();
+                $name = $request->name != '' ? $request->name : '';
+                $per_page = $request->select_limit != '' ? $request->select_limit : 10;
+                /*
+                    if (!empty($title))
+                        $where['tbl_project.title'] = $title;
+                */
+                $project = DB::table('tbl_project')
+                    ->select('tbl_project.id',
+                        'tbl_project.created_at',
+                        'tbl_project.updated_at')
+                    ->where('name', 'LIKE', '%' . $name . '%')
+                    //    ->groupBy('tbl_project.id')
+                    ->orderBy('tbl_project.id', 'DESC')
+                    ->paginate($per_page);
+
+                $data['result'] = $project->items();
+                $data['links'] = $project;
+                return view('adminpanel.project.tabs.release_list')->with($data);
+                break;
+            default:
+                break;
+        }
+    }
+
     public function getDateRecord(Request $request){
         $result = "";
         $where = array();
