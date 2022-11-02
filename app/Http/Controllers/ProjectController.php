@@ -129,6 +129,8 @@ class ProjectController extends Controller{
         $title = "Project Director";
         $data['current_page'] = request()->segment(1);
         $data['fiscal_year_select'] = get_fiscal_year();
+        $data['designation_select'] = get_designation();
+        $data['organization_select'] = get_organization();
         return view('adminpanel.project.tabs.project_director', $data)->with('title', $title);
     }
 
