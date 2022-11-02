@@ -39,19 +39,14 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label
-                                            for="exampleFormControlSelect1">Component</label>
-                                        <select class="form-control"
-                                                id="exampleFormControlSelect1">
-                                            <option>First Name</option>
-                                            <option>Second Name</option>
-                                            <option>Third Name</option>
-                                            <option>Fourth Name</option>
-                                            <option>Fifth Name</option>
-                                        </select>
+                                        <label for="fiscal_year">Component</label>
+                                        {!! $component_select !!}
+                                        @if ($errors->has('component_select'))
+                                            <span class="text-danger">{{ $errors->first('component_select') }}</span>
+                                        @endif
                                     </div>
                                 </div>
-                               
+
 
                                 <div class="col-md-4">
                                     <div class="form-group">
@@ -88,6 +83,27 @@
                                         <input type="number" class="form-control" placeholder="Amount">
                                     </div>
                                 </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label> Start Date</label>
+                                        <input type="text"  class="form-control datepicker" placeholder="MM/DD/YYYY" readonly>
+                                        @if ($errors->has('alloc_date'))
+                                            <span class="text-danger">{{ $errors->first('alloc_date') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label> End Date</label>
+                                        <input type="text"  class="form-control datepicker" placeholder="MM/DD/YYYY" readonly>
+                                        @if ($errors->has('alloc_date'))
+                                            <span class="text-danger">{{ $errors->first('alloc_date') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="row">
@@ -100,7 +116,51 @@
                                 </div>
                             </div>
                         </form>
-                        <hr/>
+
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>Sr No</th>
+                                    <th>FY</th>
+                                    <th>Component</th>
+                                    <th>Amount  (<small class="text-muted">PKR</small>)</th>
+                                    <th>Currency</th>
+                                    <th>Action</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>2050</td>
+                                    <td>10-10-2022</td>
+                                    <td>5000</td>
+                                    <td>50$</td>
+                                    <td>
+                                        <div class="btn-group" role="group"
+                                             aria-label="Basic example">
+                                            <button type="button"
+                                                    class="btn btn-sm btn-success">Edit
+                                            </button>
+                                            <button type="button"
+                                                    class="btn btn-sm btn-info">Delete
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th colspan="3" class="text-center">Total</th>
+                                    <td>5000</td>
+                                    <td>50$</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
 
                         <!-- Table -->
                     </div>

@@ -50,18 +50,14 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label
-                                            for="exampleFormControlSelect1">Designation</label>
-                                        <select class="form-control"
-                                                id="exampleFormControlSelect1">
-                                            <option>First Name</option>
-                                            <option>Second Name</option>
-                                            <option>Third Name</option>
-                                            <option>Fourth Name</option>
-                                            <option>Fifth Name</option>
-                                        </select>
+                                        <label for="fiscal_year">Designation</label>
+                                        {!! $designation_select !!}
+                                        @if ($errors->has('designation_select'))
+                                            <span class="text-danger">{{ $errors->first('designation_select') }}</span>
+                                        @endif
                                     </div>
                                 </div>
+
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Office Phone No</label>
@@ -71,7 +67,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Calendar</label>
+                                        <label>Date</label>
                                         <input type="text" name="alloc_date" id="alloc_date" class="form-control datepicker" placeholder="MM/DD/YYYY" readonly>
                                         @if ($errors->has('alloc_date'))
                                             <span class="text-danger">{{ $errors->first('alloc_date') }}</span>
@@ -81,16 +77,11 @@
 
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label
-                                            for="exampleFormControlSelect1">Organization</label>
-                                        <select class="form-control"
-                                                id="exampleFormControlSelect1">
-                                            <option>First Name</option>
-                                            <option>Second Name</option>
-                                            <option>Third Name</option>
-                                            <option>Fourth Name</option>
-                                            <option>Fifth Name</option>
-                                        </select>
+                                        <label for="fiscal_year">Organization</label>
+                                        {!! $organization_select !!}
+                                        @if ($errors->has('organization_select'))
+                                            <span class="text-danger">{{ $errors->first('organization_select') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-md-4">

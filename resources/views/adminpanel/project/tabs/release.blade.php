@@ -43,11 +43,11 @@
                                         for="exampleFormControlSelect1">Quarter</label>
                                     <select class="form-control"
                                             id="exampleFormControlSelect1">
-                                        <option>First Name</option>
-                                        <option>Second Name</option>
-                                        <option>Third Name</option>
-                                        <option>Fourth Name</option>
-                                        <option>Fifth Name</option>
+                                        <option>First Quarter</option>
+                                        <option>Second Quarter</option>
+                                        <option>Third Quarter</option>
+                                        <option>Fourth Quarter</option>
+
                                     </select>
                                 </div>
                                 </div>

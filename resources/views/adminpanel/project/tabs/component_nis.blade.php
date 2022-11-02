@@ -39,16 +39,11 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label
-                                            for="exampleFormControlSelect1">Component</label>
-                                        <select class="form-control"
-                                                id="exampleFormControlSelect1">
-                                            <option>First Name</option>
-                                            <option>Second Name</option>
-                                            <option>Third Name</option>
-                                            <option>Fourth Name</option>
-                                            <option>Fifth Name</option>
-                                        </select>
+                                        <label for="fiscal_year">Component</label>
+                                        {!! $component_select !!}
+                                        @if ($errors->has('component_select'))
+                                            <span class="text-danger">{{ $errors->first('component_select') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-md-4">
