@@ -12,17 +12,13 @@
                     <div class="card-body">
                         <!-- Project Forms Tabs -->
                         @include('adminpanel.project.detail_tabs')
-
+                        @if(Session::has('success'))
+                             <div class="alert alert-success">{{Session::get('success')}}</div><br/>
+                        @endif
                         @if($errors->any())
                             @foreach($errors->all() as $error)
-                                <div class="alert alert-danger" style="margin: 6px; padding: 10px"
-                                     role="alert">{{ $error }}</div>
+                                <div class="alert alert-danger" style="margin: 6px; padding: 10px" role="alert">{{ $error }}</div><br/>
                             @endforeach
-                            @if(Session::has('success'))
-                                <div class="col-md-12">
-                                    <div class="alert alert-success">{{Session::get('success')}}</div>
-                                </div>
-                            @endif
                         @endif
 
                         <form name="" method="post" action="{{url('add_project_allocation')}}">
@@ -31,6 +27,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="fiscal_year">FY</label>
+                                        <input type="hidden" name="project_id" value="1" />
                                         {!! $fiscal_year_select !!}
                                         @if ($errors->has('fiscal_year'))
                                             <span class="text-danger">{{ $errors->first('fiscal_year') }}</span>
@@ -78,7 +75,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Amount </label>
-                                        <input type="number" class="form-control" placeholder="Amount">
+                                        <input type="number" name="foreign_alloc_amount" id="foreign_alloc_amount" class="form-control" placeholder="Amount">
                                     </div>
                                 </div>
                             </div>
@@ -95,7 +92,7 @@
                         </form>
 
                         <hr/>
-                        <div class="table-responsive">
+                        <div class="table-responsive" id='my_data'>
                             <table class="table table-hover">
                                 <thead>
                                 <tr>
@@ -145,5 +142,45 @@
             </div>
         </div>
     </div>
+
+    <script>
+        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+        $(document).ready(function () {
+            $(document).on('click', '#b_search', function () {
+                show_ajax_cards('');
+            });
+            $(document).on('change', '#select_limit', function () {
+                show_ajax_cards('');
+            });
+            //load page for fitrs time
+            show_ajax_cards('');
+        });
+        $(document).on('click','.pagination a', function(e){
+            e.preventDefault();
+            var page = $(this).attr('href').split('page=')[1];
+            show_ajax_cards(page);
+        });
+        function show_ajax_cards(page='') {
+
+            var baseurl = '{{url('/ajax_content')}}';
+            if (page != ''){baseurl = '{{url('/ajax_content?page=')}}'+ page;}
+
+            var post_data = {
+                "_token": "{{ csrf_token() }}",
+                "name": $("#name").val(),
+                "select_limit": $("#select_limit").val(),
+                'action': "project_content"
+            };
+
+            $.ajax({
+                url: baseurl,
+                data: post_data,
+                type: 'POST',
+                success: function (data) {
+                    $('#my_data').html(data);
+                }
+            });
+        }
+    </script>
 
 @endsection

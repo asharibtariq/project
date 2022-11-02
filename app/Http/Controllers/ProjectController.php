@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
+use App\Models\ProjectAllocation;
+use Illuminate\Validation\Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProjectRequest;
@@ -136,6 +138,25 @@ class ProjectController extends Controller{
         $data['fiscal_year_select'] = get_fiscal_year();
         $data['currency_select'] = get_currency();
         return view('adminpanel.project.tabs.allocation', $data)->with('title', $title);
+    }
+
+    public function add_allocation(Request $request){
+        $userId = Auth::id();
+        $insertData = $request->all();
+        $rules = [
+            'project_id' => 'required',
+            'fiscal_year' => 'required',
+            'alloc_date' => 'required'
+        ];
+        $customMessages = [
+            'required' => 'The :attribute field is required.'
+        ];
+        $this->validate($request, $rules, $customMessages);
+        $insertData['created_by'] = $userId;
+        $insertData['updated_by'] = $userId;
+    //    pre($insertData,1);
+        ProjectAllocation::create($insertData);
+        return redirect('add_project_allocation')->with('success', 'Allocation Added Successfully');
     }
 
     public function release(){
