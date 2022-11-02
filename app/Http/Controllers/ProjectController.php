@@ -174,6 +174,7 @@ class ProjectController extends Controller{
         $data['current_page'] = request()->segment(1);
         $data['fiscal_year_select'] = get_fiscal_year();
         $data['currency_select'] = get_currency();
+        $data['component_select'] = get_component();
         return view('adminpanel.project.tabs.component_pc1', $data)->with('title', $title);
     }
 
@@ -182,6 +183,7 @@ class ProjectController extends Controller{
         $data['current_page'] = request()->segment(1);
         $data['fiscal_year_select'] = get_fiscal_year();
         $data['currency_select'] = get_currency();
+        $data['component_select'] = get_component();
         return view('adminpanel.project.tabs.component_nis', $data)->with('title', $title);
     }
 
@@ -190,6 +192,7 @@ class ProjectController extends Controller{
         $data['current_page'] = request()->segment(1);
         $data['fiscal_year_select'] = get_fiscal_year();
         $data['currency_select'] = get_currency();
+        $data['component_select'] = get_component();
         return view('adminpanel.project.tabs.fy_util', $data)->with('title', $title);
     }
 
@@ -198,6 +201,7 @@ class ProjectController extends Controller{
         $data['current_page'] = request()->segment(1);
         $data['fiscal_year_select'] = get_fiscal_year();
         $data['currency_select'] = get_currency();
+        $data['component_select'] = get_component();
         return view('adminpanel.project.tabs.physical_target', $data)->with('title', $title);
     }
 
