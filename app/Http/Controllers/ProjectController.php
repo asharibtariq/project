@@ -33,7 +33,10 @@ class ProjectController extends Controller{
      */
     public function create(){
         $title = "Add Project";
-        return view('adminpanel.project.add_project')->with('title', $title);
+        $data['fiscal_year_select'] = get_fiscal_year();
+        $data['executiveagency_select'] = get_executiveagency();
+        $data['currency_select'] = get_currency();
+        return view('adminpanel.project.add_project',$data)->with('title', $title);
     }
 
     /**
