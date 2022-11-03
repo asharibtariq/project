@@ -36,7 +36,7 @@
                 <td> {{$r->executiveagency_id}} </td>
                 <td> {{$r->approval_date}} </td>
                 <td> {{$r->cost}} </td>
-                <td> {{$r->currnecy_id}} </td>
+                <td> {{$r->currency_id}} </td>
                 <td> {{$r->forum}} </td>
                 <td> {{$r->start_date}} </td>
                 <td> {{$r->end_date}} </td>
