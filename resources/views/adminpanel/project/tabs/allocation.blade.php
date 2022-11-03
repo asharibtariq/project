@@ -123,9 +123,6 @@
     <script>
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
         $(document).ready(function () {
-            $(document).on('click', '#b_search', function () {
-                show_ajax_cards('');
-            });
             $(document).on('change', '#select_limit', function () {
                 show_ajax_cards('');
             });
@@ -144,7 +141,6 @@
 
             var post_data = {
                 "_token": "{{ csrf_token() }}",
-                "name": $("#name").val(),
                 "select_limit": $("#select_limit").val(),
                 'action': "allocation_content"
             };

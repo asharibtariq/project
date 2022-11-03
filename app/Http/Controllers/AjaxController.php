@@ -172,12 +172,7 @@ class AjaxController extends Controller{
         switch ($action) {
             case 'allocation_content':
                 $where = array();
-                $name = $request->name != '' ? $request->name : '';
                 $per_page = $request->select_limit != '' ? $request->select_limit : 10;
-                /*
-                    if (!empty($name))
-                        $where['tbl_project_allocation.name'] = $name;
-                */
                 $project = DB::table('tbl_project_allocation')
                     ->select('tbl_project_allocation.id',
                         'tbl_project_allocation.project_id',
@@ -187,7 +182,6 @@ class AjaxController extends Controller{
                         'tbl_project_allocation.currency_id',
                         'tbl_project_allocation.foreign_alloc_amount',
                         'tbl_project_allocation.status')
-                    ->where('name', 'LIKE', '%' . $name . '%')
                     //    ->groupBy('tbl_project_allocation.id')
                     ->orderBy('tbl_project_allocation.id', 'DESC')
                     ->paginate($per_page);

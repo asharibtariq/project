@@ -12,16 +12,26 @@
     <tbody>
     @php
         $i = 1;
+        $alloc_amount = 0;
+        $foreign_alloc_amount = 0;
     @endphp
     @if(is_array($result) && count($result) > 0)
         @foreach ($result as $r)
 
+            <?php
+            $fiscal_year_start = $r->fiscal_year - 1;
+            $fiscal_year = $fiscal_year_start." - ".$r->fiscal_year;
+
+            $alloc_amount = $alloc_amount + $r->alloc_amount;
+            $foreign_alloc_amount = $foreign_alloc_amount + $r->foreign_alloc_amount;
+            ?>
+
             <tr role="row">
                 <td> {{$i}} </td>
-                <td>2050</td>
-                <td>10-10-2022</td>
-                <td>5000</td>
-                <td>50$</td>
+                <td> {{$fiscal_year}} </td>
+                <td> {{$r->alloc_date}} </td>
+                <td> {{$r->alloc_amount}} </td>
+                <td> {{$r->foreign_alloc_amount}} </td>
                 <td>
                     <div class="btn-group">
                         <a onClick="return confirm('Are you sure you want to update?');" title="Edit" href="#" class="btn btn-info" id="btn-view"><i class="fa fa-edit"></i> </a>
@@ -35,8 +45,8 @@
         @endforeach
         <tr>
             <th colspan="3" class="text-center">Total</th>
-            <td>5000</td>
-            <td>50$</td>
+            <td>{{$alloc_amount}}</td>
+            <td>{{$foreign_alloc_amount}}</td>
             <td>-</td>
         </tr>
         <tr>
