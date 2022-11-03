@@ -16,6 +16,7 @@ class ProjectAllocation extends Model{
         'alloc_date',
         'alloc_amount',
         'currency_id',
+        'currency',
         'foreign_alloc_amount',
         'status',
         'created_by',

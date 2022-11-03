@@ -67,6 +67,7 @@
                                     <div class="form-group">
                                         <label for="exampleFormControlSelect1">Currency</label>
                                         {!! $currency_select !!}
+                                        <input type="hidden" name="currency" id="currency" />
                                         @if ($errors->has('currency'))
                                             <span class="text-danger">{{ $errors->first('currency') }}</span>
                                         @endif
@@ -123,6 +124,10 @@
     <script>
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
         $(document).ready(function () {
+            $(document).on("change", "#currency_id", function () {
+                var currency = $("#currency_id option:selected").text();
+                $("#currency").val(currency);
+            });
             $(document).on('change', '#select_limit', function () {
                 show_ajax_cards('');
             });

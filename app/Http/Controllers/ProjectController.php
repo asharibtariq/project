@@ -159,7 +159,6 @@ class ProjectController extends Controller{
         $this->validate($request, $rules, $customMessages);
         $insertData['created_by'] = $userId;
         $insertData['updated_by'] = $userId;
-    //    pre($insertData,1);
         ProjectAllocation::create($insertData);
         return redirect('add_project_allocation')->with('success', 'Allocation Added Successfully');
     }

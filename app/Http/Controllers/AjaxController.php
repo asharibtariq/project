@@ -180,6 +180,7 @@ class AjaxController extends Controller{
                         'tbl_project_allocation.alloc_date',
                         'tbl_project_allocation.alloc_amount',
                         'tbl_project_allocation.currency_id',
+                        'tbl_project_allocation.currency',
                         'tbl_project_allocation.foreign_alloc_amount',
                         'tbl_project_allocation.status')
                     //    ->groupBy('tbl_project_allocation.id')
