@@ -57,12 +57,15 @@ class ProjectController extends Controller{
         $project->psdp = $insertData['psdp'];
         $project->psid = $insertData['psid'];
         $project->name = $insertData['name'];
-        $project->local_fund = $insertData['local_fund'];
-        $project->foreign_fund = $insertData['foreign_fund'];
+        $project->approval_type = $insertData['approval_type'];
+        $project->fiscal_year = $insertData['fiscal_year'];
+        $project->executiveagency_id = $insertData['executiveagency_id'];
+        $project->approval_date = $insertData['approval_date'];
+        $project->forum = $insertData['forum'];
         $project->cost = $insertData['cost'];
+        $project->currency_id = $insertData['currency_id'];
         $project->start_date = $insertData['start_date'];
         $project->end_date = $insertData['end_date'];
-        $project->complete_date = $insertData['complete_date'];
         $project->created_by = $userId;
         $project->updated_by = $userId;
         $project->save();

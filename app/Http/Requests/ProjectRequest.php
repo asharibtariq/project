@@ -26,7 +26,7 @@ class ProjectRequest extends FormRequest
         return [
             'name'=> 'required',
             'cost'=> 'required',
-            'complete_date'=> 'required'
+            'approval_date'=> 'required'
         ];
     }
 }

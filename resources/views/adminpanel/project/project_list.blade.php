@@ -6,12 +6,15 @@
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="1"> PSDP</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> ID</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Name</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Approval Type</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Fiscal Year</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Executive Agency</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Approval Date</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Cost</th>
-        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Local Fund</th>
-        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Foreign Fund</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Currency</th>
+        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Forum</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Start Date</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> End Date</th>
-        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Complete Date</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Status</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Operation</th>
     </thead>
@@ -28,12 +31,15 @@
                 <td> {{$r->psdp}} </td>
                 <td> {{$r->psid}} </td>
                 <td> {{$r->name}} </td>
+                <td> {{$r->approval_type}} </td>
+                <td> {{$r->fiscal_year}} </td>
+                <td> {{$r->executiveagency_id}} </td>
+                <td> {{$r->approval_date}} </td>
                 <td> {{$r->cost}} </td>
-                <td> {{$r->local_fund}} </td>
-                <td> {{$r->foreign_fund}} </td>
+                <td> {{$r->currnecy_id}} </td>
+                <td> {{$r->forum}} </td>
                 <td> {{$r->start_date}} </td>
                 <td> {{$r->end_date}} </td>
-                <td> {{$r->complete_date}} </td>
                 <td>
                     @if($r->status == 'Y')
                         <button type="button" class="btn btn-primary">Active</button>
