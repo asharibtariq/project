@@ -11,7 +11,6 @@
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Executive Agency</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Approval Date</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Cost</th>
-        <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Currency</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Forum</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> Start Date</th>
         <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" data-column-index="3"> End Date</th>
@@ -33,10 +32,9 @@
                 <td> {{$r->name}} </td>
                 <td> {{$r->approval_type}} </td>
                 <td> {{$r->fiscal_year}} </td>
-                <td> {{$r->executiveagency_id}} </td>
+                <td> {{$r->executiveagency}} </td>
                 <td> {{$r->approval_date}} </td>
-                <td> {{$r->cost}} </td>
-                <td> {{$r->currency_id}} </td>
+                <td> {{$r->cost}} (<small class="text-muted">{{$r->currency}}</small>)</td>
                 <td> {{$r->forum}} </td>
                 <td> {{$r->start_date}} </td>
                 <td> {{$r->end_date}} </td>
@@ -49,7 +47,7 @@
                 </td>
                 <td>
                     <div class="btn-group">
-                    <a href="{{url('project', $r->id)}}" class="btn btn-success" title="Details" id="btn-view"><i class="fa fa-list"></i> </a>
+                    <a href="{{url('add_project_director', $r->id)}}" class="btn btn-success" title="Details" id="btn-view"><i class="fa fa-list"></i> </a>
                     <a onClick="return confirm('Are you sure you want to update?');" title="Edit" href="{{url('edit_project', $r->id)}}" class="btn btn-info" id="btn-view"><i class="fa fa-edit"></i> </a>
                     <a onClick="return confirm('Are you sure you want to delete?');" title="Delete" href="{{url('delete_project', $r->id)}}" class="btn btn-danger"><i class="fa fa-trash"></i> </a>
                </div>

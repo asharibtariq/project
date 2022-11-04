@@ -73,8 +73,9 @@
                                     <div class="form-group">
                                         <label for="executive_agency">Executive Agency</label>
                                         {!! $executiveagency_select!!}
-                                        @if ($errors->has('executiveagency_select'))
-                                            <span class="text-danger">{{ $errors->first('executiveagency_select') }}</span>
+                                        <input type="hidden" name="executiveagency" id="executiveagency" />
+                                        @if ($errors->has('executiveagency'))
+                                            <span class="text-danger">{{ $errors->first('executiveagency') }}</span>
                                         @endif
                                     </div>
                                 </div>
@@ -109,8 +110,9 @@
                                     <div class="form-group">
                                         <label for="currency">Currency</label>
                                         {!! $currency_select!!}
-                                        @if ($errors->has('currency_select'))
-                                            <span class="text-danger">{{ $errors->first('currency_select ') }}</span>
+                                        <input type="hidden" name="currency" id="currency" />
+                                        @if ($errors->has('currency'))
+                                            <span class="text-danger">{{ $errors->first('currency') }}</span>
                                         @endif
                                     </div>
                                 </div>
@@ -148,7 +150,19 @@
     </div>
 
     <script>
+        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+
+
         $(document).ready(function () {
+
+                $(document).on("change", "#executiveagency_id", function () {
+                    var executiveagency = $("#executiveagency_id option:selected").text();
+                    $("#executiveagency").val(executiveagency);
+                });
+                    $(document).on("change", "#currency_id", function () {
+                        var currency = $("#currency_id option:selected").text();
+                        $("#currency").val(currency);
+                    });
             $('.total-cost-fields').keyup(function(){
                 var total = 0;
                 $('.total-cost-fields').each(function(){

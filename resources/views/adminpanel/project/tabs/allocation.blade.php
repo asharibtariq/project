@@ -27,7 +27,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="fiscal_year">FY</label>
-                                        <input type="hidden" name="project_id" value="1" />
+                                        <input type="hidden" name="project_id" value="{{$project_id}}" />
                                         {!! $fiscal_year_select !!}
                                         @if ($errors->has('fiscal_year'))
                                             <span class="text-danger">{{ $errors->first('fiscal_year') }}</span>
