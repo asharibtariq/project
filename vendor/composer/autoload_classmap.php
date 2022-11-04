@@ -45,6 +45,7 @@ return array(
     'App\\Models\\Organization' => $baseDir . '/app/Models/Organization.php',
     'App\\Models\\Project' => $baseDir . '/app/Models/Project.php',
     'App\\Models\\ProjectAllocation' => $baseDir . '/app/Models/ProjectAllocation.php',
+    'App\\Models\\ProjectDirector' => $baseDir . '/app/Models/ProjectDirector.php',
     'App\\Models\\Roles' => $baseDir . '/app/Models/Roles.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Models\\UsersProject' => $baseDir . '/app/Models/UsersProject.php',

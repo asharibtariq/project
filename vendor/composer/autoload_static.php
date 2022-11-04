@@ -566,6 +566,7 @@ class ComposerStaticInit7d168628b301479f35af957a18da04f9
         'App\\Models\\Organization' => __DIR__ . '/../..' . '/app/Models/Organization.php',
         'App\\Models\\Project' => __DIR__ . '/../..' . '/app/Models/Project.php',
         'App\\Models\\ProjectAllocation' => __DIR__ . '/../..' . '/app/Models/ProjectAllocation.php',
+        'App\\Models\\ProjectDirector' => __DIR__ . '/../..' . '/app/Models/ProjectDirector.php',
         'App\\Models\\Roles' => __DIR__ . '/../..' . '/app/Models/Roles.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Models\\UsersProject' => __DIR__ . '/../..' . '/app/Models/UsersProject.php',

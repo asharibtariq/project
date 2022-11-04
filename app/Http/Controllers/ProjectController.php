@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Project;
 use App\Models\ProjectAllocation;
 use App\Models\ProjectDirector;
+use App\Models\ProjectRelease;
 use Illuminate\Validation\Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -158,7 +159,7 @@ class ProjectController extends Controller{
         $insertData['created_by'] = $userId;
         $insertData['updated_by'] = $userId;
         ProjectDirector::create($insertData);
-        return redirect('add_project_director')->with('success', 'Project Director Added Successfully');
+        return redirect('add_project_director'.$request['project_id'])->with('success', 'Project Director Added Successfully');
     }
 
     public function allocation($id){
@@ -195,6 +196,24 @@ class ProjectController extends Controller{
         $data['currency_select'] = get_currency();
         $data['project_id'] = $id;
         return view('adminpanel.project.tabs.release', $data)->with('title', $title);
+    }
+
+    public function add_release(Request $request){
+        $userId = Auth::id();
+        $insertData = $request->all();
+        $rules = [
+            'project_id' => 'required',
+            'fiscal_year' => 'required',
+            'release_date' => 'required'
+        ];
+        $customMessages = [
+            'required' => 'The :attribute field is required.'
+        ];
+        $this->validate($request, $rules, $customMessages);
+        $insertData['created_by'] = $userId;
+        $insertData['updated_by'] = $userId;
+        ProjectRelease::create($insertData);
+        return redirect('add_release/'.$request['project_id'])->with('success', 'Project Release Added Successfully');
     }
 
     public function component_pc1($id){

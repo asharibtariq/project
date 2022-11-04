@@ -204,13 +204,18 @@ class AjaxController extends Controller{
                     if (!empty($title))
                         $where['tbl_project.title'] = $title;
                 */
-                $project = DB::table('tbl_project')
-                    ->select('tbl_project.id',
-                        'tbl_project.created_at',
-                        'tbl_project.updated_at')
-                    ->where('name', 'LIKE', '%' . $name . '%')
-                    //    ->groupBy('tbl_project.id')
-                    ->orderBy('tbl_project.id', 'DESC')
+                $project = DB::table('tbl_release')
+                    ->select('tbl_release.id',
+                        'tbl_release.project_id',
+                        'tbl_release.fiscal_year',
+                        'tbl_release.release_date',
+                        'tbl_release.rel_amount',
+                        'tbl_release.currency_id',
+                        'tbl_release.currency',
+                        'tbl_release.foreign_rel_amount',
+                        'tbl_release.created_at',
+                        'tbl_release.updated_at')
+                    ->orderBy('tbl_release.id', 'DESC')
                     ->paginate($per_page);
 
                 $data['result'] = $project->items();

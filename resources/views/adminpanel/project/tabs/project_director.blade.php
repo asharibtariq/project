@@ -32,14 +32,14 @@
                                     <div class="form-group">
                                         <label>Name</label>
                                         <input type="text" name="name" id="name" class="form-control" placeholder="Name">
-                                        <input type="text" id="project_id" name="project_id" value="{{$project_id}}" />
+                                        <input type="hidden" id="project_id" name="project_id" value="{{$project_id}}" />
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Address</label>
-                                        <input type="text" name="address" id="address" class="form-control"
-                                               placeholder="Address">
+                                        <textarea type="text" name="address" id="address" class="form-control"
+                                                  placeholder="Address"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
