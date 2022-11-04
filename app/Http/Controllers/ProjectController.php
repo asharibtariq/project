@@ -172,7 +172,6 @@ class ProjectController extends Controller{
 
     public function add_allocation(Request $request){
         $userId = Auth::id();
-        $project_id =
         $insertData = $request->all();
         $rules = [
             'project_id' => 'required',
@@ -186,7 +185,7 @@ class ProjectController extends Controller{
         $insertData['created_by'] = $userId;
         $insertData['updated_by'] = $userId;
         ProjectAllocation::create($insertData);
-        return redirect('add_project_allocation')->with('success', 'Allocation Added Successfully');
+        return redirect('add_project_allocation/'.$request['project_id'])->with('success', 'Allocation Added Successfully');
     }
 
     public function release($id){
