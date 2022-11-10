@@ -173,6 +173,7 @@ class AjaxController extends Controller{
     public function project_details_content(Request $request){
         $action = $request->action;
         $data ['action'] = $action;
+        $id = $request->project_id != '' ? $request->project_id : '';
         $output = [];
         switch ($action) {
             case 'allocation_content':
@@ -221,6 +222,120 @@ class AjaxController extends Controller{
                 $data['result'] = $project->items();
                 $data['links'] = $project;
                 return view('adminpanel.project.tabs.release_list')->with($data);
+                break;
+            case 'component_content':
+                $where = array();
+                $name = $request->name != '' ? $request->name : '';
+                $per_page = $request->select_limit != '' ? $request->select_limit : 10;
+                /*
+                    if (!empty($title))
+                        $where['tbl_project.title'] = $title;
+                */
+                $project = DB::table('tbl_component')
+                    ->select('tbl_component.id',
+                        'tbl_component.project_id',
+                        'tbl_component.fiscal_year',
+                        'tbl_component.component_id',
+                        'tbl_component.component',
+                        'tbl_component.comp_amount',
+                        'tbl_component.currency_id',
+                        'tbl_component.currency',
+                        'tbl_component.created_at',
+                        'tbl_component.updated_at')
+                    ->orderBy('tbl_component.id', 'DESC')
+                    ->paginate($per_page);
+
+                $data['result'] = $project->items();
+                $data['links'] = $project;
+                return view('adminpanel.project.tabs.component_pc1_list')->with($data);
+                break;
+            case 'component_nis_content':
+                $where = array();
+                $name = $request->name != '' ? $request->name : '';
+                $per_page = $request->select_limit != '' ? $request->select_limit : 10;
+                /*
+                    if (!empty($title))
+                        $where['tbl_project.title'] = $title;
+                */
+                $project = DB::table('tbl_component_nis')
+                    ->select('tbl_component_nis.id',
+                        'tbl_component_nis.project_id',
+                        'tbl_component_nis.fiscal_year',
+                        'tbl_component_nis.component_id',
+                        'tbl_component_nis.component',
+                        'tbl_component_nis.comp_amount',
+                        'tbl_component_nis.currency_id',
+                        'tbl_component_nis.currency',
+                        'tbl_component_nis.created_at',
+                        'tbl_component_nis.updated_at')
+                    ->orderBy('tbl_component_nis.id', 'DESC')
+                    ->paginate($per_page);
+
+                $data['result'] = $project->items();
+                $data['links'] = $project;
+                return view('adminpanel.project.tabs.component_nis_list')->with($data);
+                break;
+            case 'fy_util_content':
+                $where = array();
+                $name = $request->name != '' ? $request->name : '';
+                $id = $request->project_id != '' ? $request->project_id : '';
+                $per_page = $request->select_limit != '' ? $request->select_limit : 10;
+                /*
+                    if (!empty($title))
+                        $where['tbl_project.title'] = $title;
+                */
+                $project = DB::table('tbl_fy_util')
+                    ->select('tbl_fy_util.id',
+                        'tbl_fy_util.project_id',
+                        'tbl_fy_util.fiscal_year',
+                        'tbl_fy_util.quarter',
+                        'tbl_fy_util.fy_date',
+                        'tbl_fy_util.component_id',
+                        'tbl_fy_util.component',
+                        'tbl_fy_util.fy_amount',
+                        'tbl_fy_util.currency_id',
+                        'tbl_fy_util.currency',
+                        'tbl_fy_util.foreign_fy_amount',
+                        'tbl_fy_util.created_at',
+                        'tbl_fy_util.updated_at')
+                    ->orderBy('tbl_fy_util.id', 'DESC')
+                    ->where('tbl_fy_util.project_id', 'LIKE', '%' . $id . '%')
+                    ->paginate($per_page);
+
+                $data['result'] = $project->items();
+                $data['links'] = $project;
+                return view('adminpanel.project.tabs.fy_util_list')->with($data);
+                break;
+            case 'physical_target_content':
+                $where = array();
+                $name = $request->name != '' ? $request->name : '';
+                $id = $request->project_id != '' ? $request->project_id : '';
+                $per_page = $request->select_limit != '' ? $request->select_limit : 10;
+                /*
+                    if (!empty($title))
+                        $where['tbl_project.title'] = $title;
+                */
+                $project = DB::table('tbl_physical_target')
+                    ->select('tbl_physical_target.id',
+                        'tbl_physical_target.project_id',
+                        'tbl_physical_target.fiscal_year',
+                        'tbl_physical_target.component_id',
+                        'tbl_physical_target.component',
+                        'tbl_physical_target.physical_description',
+                        'tbl_physical_target.currency_id',
+                        'tbl_physical_target.currency',
+                        'tbl_physical_target.amount',
+                        'tbl_physical_target.start_date',
+                        'tbl_physical_target.end_date',
+                        'tbl_physical_target.created_at',
+                        'tbl_physical_target.updated_at')
+                    ->orderBy('tbl_physical_target.id', 'DESC')
+                    ->where('tbl_physical_target.project_id', 'LIKE', '%' . $id . '%')
+                    ->paginate($per_page);
+
+                $data['result'] = $project->items();
+                $data['links'] = $project;
+                return view('adminpanel.project.tabs.physical_target_list')->with($data);
                 break;
             default:
                 break;

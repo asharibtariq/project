@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use App\Models\ProjectAllocation;
+use App\Models\ProjectComponent;
+use App\Models\ProjectComponentNis;
 use App\Models\ProjectDirector;
+use App\Models\ProjectFyUtilization;
+use App\Models\ProjectPhysicalTarget;
 use App\Models\ProjectRelease;
 use Illuminate\Validation\Validator;
 use App\Http\Controllers\Controller;
@@ -225,6 +229,24 @@ class ProjectController extends Controller{
         $data['component_select'] = get_component();
         return view('adminpanel.project.tabs.component_pc1', $data)->with('title', $title);
     }
+    public function add_component_pc1(Request $request){
+        $userId = Auth::id();
+        $insertData = $request->all();
+        $rules = [
+            'project_id' => 'required',
+            'fiscal_year' => 'required',
+            'comp_amount' => 'required'
+        ];
+        $customMessages = [
+            'required' => 'The :attribute field is required.'
+        ];
+        $this->validate($request, $rules, $customMessages);
+        $insertData['created_by'] = $userId;
+        $insertData['updated_by'] = $userId;
+        ProjectComponent::create($insertData);
+        return redirect('add_component_pc1/'.$request['project_id'])->with('success', 'Project Component Added Successfully');
+    }
+
 
     public function component_nis($id){
         $title = "Component as per NIS";
@@ -235,6 +257,24 @@ class ProjectController extends Controller{
         $data['component_select'] = get_component();
         return view('adminpanel.project.tabs.component_nis', $data)->with('title', $title);
     }
+    public function add_component_nis(Request $request){
+        $userId = Auth::id();
+        $insertData = $request->all();
+        $rules = [
+            'project_id' => 'required',
+            'fiscal_year' => 'required',
+            'comp_amount' => 'required'
+        ];
+        $customMessages = [
+            'required' => 'The :attribute field is required.'
+        ];
+        $this->validate($request, $rules, $customMessages);
+        $insertData['created_by'] = $userId;
+        $insertData['updated_by'] = $userId;
+        ProjectComponentNis::create($insertData);
+        return redirect('add_component_nis/'.$request['project_id'])->with('success', 'Project Component Nis Added Successfully');
+    }
+
 
     public function fy_util($id){
         $title = "FY wise Utilization";
@@ -244,6 +284,23 @@ class ProjectController extends Controller{
         $data['project_id'] = $id;
         $data['component_select'] = get_component();
         return view('adminpanel.project.tabs.fy_util', $data)->with('title', $title);
+    }
+    public function add_fy_util(Request $request){
+        $userId = Auth::id();
+        $insertData = $request->all();
+        $rules = [
+            'project_id' => 'required',
+            'fiscal_year' => 'required',
+            'fy_date' => 'required'
+        ];
+        $customMessages = [
+            'required' => 'The :attribute field is required.'
+        ];
+        $this->validate($request, $rules, $customMessages);
+        $insertData['created_by'] = $userId;
+        $insertData['updated_by'] = $userId;
+        ProjectFyUtilization::create($insertData);
+        return redirect('add_fy_util/'.$request['project_id'])->with('success', 'FY Utilization Added Successfully');
     }
 
     public function physical_target($id){
@@ -256,6 +313,23 @@ class ProjectController extends Controller{
         return view('adminpanel.project.tabs.physical_target', $data)->with('title', $title);
     }
 
+    public function add_physical_target(Request $request){
+        $userId = Auth::id();
+        $insertData = $request->all();
+        $rules = [
+            'project_id' => 'required',
+            'fiscal_year' => 'required',
+            'start_date' => 'required'
+        ];
+        $customMessages = [
+            'required' => 'The :attribute field is required.'
+        ];
+        $this->validate($request, $rules, $customMessages);
+        $insertData['created_by'] = $userId;
+        $insertData['updated_by'] = $userId;
+        ProjectPhysicalTarget::create($insertData);
+        return redirect('add_physical_target/'.$request['project_id'])->with('success', 'FY Utilization Added Successfully');
+    }
     public function pc4($id){
         $title = "PC-4 Details";
         $data['project_id'] = $id;
