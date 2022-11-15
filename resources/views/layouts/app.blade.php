@@ -36,7 +36,7 @@
     <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/datepicker.css') }}" rel="stylesheet">
 
-    <script src="{{ asset('js/app.js') }}"></script>
+    {{--<script src="{{ asset('js/app.js') }}"></script>--}}
     <script src="{{ asset('js/jquery.min.js') }}"></script>
 
 
