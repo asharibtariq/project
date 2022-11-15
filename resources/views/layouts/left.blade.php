@@ -37,9 +37,6 @@
                 <li class="nav-item">
                     <a href="{{ url('project') }}" class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Project</span></a>
                 </li>
-                <li class="nav-item">
-                    <a href="{{ url('add_project_allocation') }}" class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Allocation</span></a>
-                </li>
             </ul>
         </div>
     </div>
