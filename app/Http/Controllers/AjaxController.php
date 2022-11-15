@@ -178,6 +178,7 @@ class AjaxController extends Controller{
         switch ($action) {
             case 'allocation_content':
                 $where = array();
+                $id = $request->project_id != '' ? $request->project_id : '';
                 $per_page = $request->select_limit != '' ? $request->select_limit : 10;
                 $project = DB::table('tbl_project_allocation')
                     ->select('tbl_project_allocation.id',
@@ -191,6 +192,7 @@ class AjaxController extends Controller{
                         'tbl_project_allocation.status')
                     //    ->groupBy('tbl_project_allocation.id')
                     ->orderBy('tbl_project_allocation.id', 'DESC')
+                    ->where('tbl_project_allocation.project_id', '=',   $id )
                     ->paginate($per_page);
 
                 $data['result'] = $project->items();
@@ -200,6 +202,7 @@ class AjaxController extends Controller{
             case 'release_content':
                 $where = array();
                 $name = $request->name != '' ? $request->name : '';
+                $id = $request->project_id != '' ? $request->project_id : '';
                 $per_page = $request->select_limit != '' ? $request->select_limit : 10;
                 /*
                     if (!empty($title))
@@ -217,6 +220,7 @@ class AjaxController extends Controller{
                         'tbl_release.created_at',
                         'tbl_release.updated_at')
                     ->orderBy('tbl_release.id', 'DESC')
+                    ->where('tbl_release.project_id', '=',   $id )
                     ->paginate($per_page);
 
                 $data['result'] = $project->items();
@@ -226,6 +230,7 @@ class AjaxController extends Controller{
             case 'component_content':
                 $where = array();
                 $name = $request->name != '' ? $request->name : '';
+                $id = $request->project_id != '' ? $request->project_id : '';
                 $per_page = $request->select_limit != '' ? $request->select_limit : 10;
                 /*
                     if (!empty($title))
@@ -243,6 +248,7 @@ class AjaxController extends Controller{
                         'tbl_component.created_at',
                         'tbl_component.updated_at')
                     ->orderBy('tbl_component.id', 'DESC')
+                    ->where('tbl_component.project_id', '=',   $id )
                     ->paginate($per_page);
 
                 $data['result'] = $project->items();
@@ -252,6 +258,7 @@ class AjaxController extends Controller{
             case 'component_nis_content':
                 $where = array();
                 $name = $request->name != '' ? $request->name : '';
+                $id = $request->project_id != '' ? $request->project_id : '';
                 $per_page = $request->select_limit != '' ? $request->select_limit : 10;
                 /*
                     if (!empty($title))
@@ -269,6 +276,7 @@ class AjaxController extends Controller{
                         'tbl_component_nis.created_at',
                         'tbl_component_nis.updated_at')
                     ->orderBy('tbl_component_nis.id', 'DESC')
+                    ->where('tbl_component_nis.project_id', '=',   $id )
                     ->paginate($per_page);
 
                 $data['result'] = $project->items();
@@ -299,7 +307,7 @@ class AjaxController extends Controller{
                         'tbl_fy_util.created_at',
                         'tbl_fy_util.updated_at')
                     ->orderBy('tbl_fy_util.id', 'DESC')
-                    ->where('tbl_fy_util.project_id', 'LIKE', '%' . $id . '%')
+                    ->where('tbl_fy_util.project_id', '=',   $id )
                     ->paginate($per_page);
 
                 $data['result'] = $project->items();
@@ -330,7 +338,7 @@ class AjaxController extends Controller{
                         'tbl_physical_target.created_at',
                         'tbl_physical_target.updated_at')
                     ->orderBy('tbl_physical_target.id', 'DESC')
-                    ->where('tbl_physical_target.project_id', 'LIKE', '%' . $id . '%')
+                    ->where('tbl_physical_target.project_id', '=',   $id )
                     ->paginate($per_page);
 
                 $data['result'] = $project->items();

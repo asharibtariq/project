@@ -174,7 +174,7 @@
 
             var post_data = {
                 "_token": "{{ csrf_token() }}",
-                "project_id": $("#project_id").val(),
+                "project_id": '{{$project_id}}',
                 "select_limit": $("#select_limit").val(),
                 'action': "physical_target_content"
             };
