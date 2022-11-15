@@ -5,7 +5,7 @@
         <th> FY </th>
         <th> Component </th>
         <th> Physical Target Description </th>
-        <th> Amount (<small class="text-muted">PKR</small>) </th>
+        <th> Amount </th>
         <th> Start Date</th>
         <th> Action </th>
     </tr>
@@ -24,7 +24,7 @@
             $fiscal_year = $fiscal_year_start." - ".$r->fiscal_year;
 
             $alloc_amount = $alloc_amount + $r->amount;
-            $foreign_alloc_amount = $foreign_alloc_amount + $r->foreign_fy_amount;
+             
             ?>
 
             <tr role="row">

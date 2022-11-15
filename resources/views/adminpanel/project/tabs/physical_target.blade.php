@@ -60,7 +60,7 @@
 
 
                             </div>
-                            <div class="row">end_date
+                            <div class="row">
                                 <div class="col-md-12">
                                     <br/>
                                     <h4 class="text-muted">Allocated Budget</h4>
