@@ -54,7 +54,13 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="label-paf" for="local_fund">Approval Type</label>
-                                        <input type="text" name="approval_type" id="approval_type" step="any" class="form-control input-paf total-cost-fields" placeholder="Approval Type" />
+                                        <select name="approval_type"  id="approval_type" class="form-control"
+                                                id="exampleFormControlSelect1"required>
+                                            <option value="New PC1">New PC1</option>
+                                            <option value="Revised PC1">Revised PC1</option>
+                                            <option value="Re-appropriation Budget">Re-appropriation Budget</option>
+
+                                        </select>
                                         @if ($errors->has('approval_type'))
                                             <span class="text-danger">{{ $errors->first('approval_type') }}</span>
                                         @endif
@@ -73,7 +79,8 @@
                                     <div class="form-group">
                                         <label for="executive_agency">Executive Agency</label>
                                         {!! $executiveagency_select!!}
-                                        <input type="hidden" name="executiveagency" id="executiveagency" />
+                                        <input type="hidden" name="executiveagency" id="executiveagency" required />
+                                        <a href="../add_executiveagency" type="button" class="btn btn-info btn-sm float-right m-1"><i class="feather icon-plus"></i>Add</a>
                                         @if ($errors->has('executiveagency'))
                                             <span class="text-danger">{{ $errors->first('executiveagency') }}</span>
                                         @endif
@@ -81,8 +88,8 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="label-paf" for="foreign_fund">Forum</label>
-                                        <input type="text" name="forum" id="forum" step="any" class="form-control input-paf total-cost-fields" placeholder="Forum" />
+                                        <label class="label-paf" for="foreign_fund" >Forum</label>
+                                        <input type="text" name="forum" id="forum" step="any" class="form-control input-paf total-cost-fields" placeholder="Forum"required />
                                         @if ($errors->has('forum'))
                                             <span class="text-danger">{{ $errors->first('forum') }}</span>
                                         @endif
@@ -91,7 +98,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="label-paf" for="foreign_fund">Approval Date</label>
-                                        <input type="text" name="approval_date" id="approval_date" step="any" class="form-control input-paf total-cost-fields datepicker" placeholder="Approval Date" />
+                                        <input type="text" name="approval_date" id="approval_date"  class="form-control input-paf total-cost-fields datepicker" placeholder="Approval Date" required readonly/>
                                         @if ($errors->has('approval_date'))
                                             <span class="text-danger">{{ $errors->first('approval_date') }}</span>
                                         @endif
@@ -110,7 +117,7 @@
                                     <div class="form-group">
                                         <label for="currency">Currency</label>
                                         {!! $currency_select!!}
-                                        <input type="hidden" name="currency" id="currency" />
+                                        <input type="hidden" name="currency" id="currency" required/>
                                         @if ($errors->has('currency'))
                                             <span class="text-danger">{{ $errors->first('currency') }}</span>
                                         @endif

@@ -32,20 +32,20 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Start Date</label>
-                        <input type="text" class="form-control datepicker" placeholder="DD/MM/YY">
+                        <input type="text" class="form-control datepicker" placeholder="DD/MM/YY" readonly>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>End Date </label>
-                        <input type="text" class="form-control datepicker" placeholder="DD/MM/YY">
+                        <input type="text" class="form-control datepicker" placeholder="DD/MM/YY" readonly>
                     </div>
                 </div>
 
                 <div class="col-md-4">
                     <div class="form-group">
                         <label> &nbsp; </label><br/>
-                        <button type="button" class="btn btn-info btn-sm"><i class="feather icon-search"></i>Search</button>
+                        <button type="button" class="btn btn-info"><i class="feather icon-search"></i>Search</button>
                     </div>
                 </div>
             </div>

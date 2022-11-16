@@ -43,11 +43,11 @@
                                         <label
                                             for="exampleFormControlSelect1">Quarter</label>
                                         <select name="quarter" class="form-control"
-                                                id="exampleFormControlSelect1">
-                                            <option>First Quarter</option>
-                                            <option>Second Quarter</option>
-                                            <option>Third Quarter</option>
-                                            <option>Fourth Quarter</option>
+                                                id="exampleFsormControlSelect1">
+                                            <option value="1st">First Quarter</option>
+                                            <option value="2nd">Second Quarter</option>
+                                            <option value="3rd">Third Quarter</option>
+                                            <option value="4th">Fourth Quarter</option>
 
                                         </select>
                                     </div>
@@ -66,6 +66,7 @@
                                         <label for="fiscal_year">Component</label>
                                         {!! $component_select !!}
                                         <input type="hidden" name="component" id="component" />
+                                        <a href="../add_component" type="button" class="btn btn-info btn-sm float-right m-1"><i class="feather icon-plus"></i>Add</a>
                                         @if ($errors->has('component'))
                                             <span class="text-danger">{{ $errors->first('component') }}</span>
                                         @endif

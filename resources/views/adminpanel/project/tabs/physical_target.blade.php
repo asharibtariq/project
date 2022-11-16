@@ -43,6 +43,7 @@
                                         <label for="fiscal_year">Component</label>
                                         {!! $component_select !!}
                                         <input type="hidden" name="component" id="component" />
+                                        <a href="../add_component" type="button" class="btn btn-info btn-sm float-right m-1"><i class="feather icon-plus"></i>Add</a>
                                         @if ($errors->has('component'))
                                             <span class="text-danger">{{ $errors->first('component') }}</span>
                                         @endif
@@ -53,8 +54,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label> Physical Target Description </label>
-                                        <textarea type="text" name="physical_description" class="form-control" placeholder="Physical Target Description">
-                                        </textarea>
+                                        <textarea type="text" name="physical_description" class="form-control" placeholder="Physical Target Description"></textarea>
                                     </div>
                                 </div>
 

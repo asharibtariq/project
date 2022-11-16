@@ -24,7 +24,7 @@
             $fiscal_year = $fiscal_year_start." - ".$r->fiscal_year;
 
             $alloc_amount = $alloc_amount + $r->amount;
-             
+
             ?>
 
             <tr role="row">
