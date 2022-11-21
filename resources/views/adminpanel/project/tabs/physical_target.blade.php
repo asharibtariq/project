@@ -84,9 +84,17 @@
                                         <input type="number" name="amount" class="form-control" placeholder="Amount">
                                     </div>
                                 </div>
-
-                            </div>
-                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Status </label>
+                                        <select name="target_status" id="target_status" class="form-control select2">
+                                            <option value="">Select</option>
+                                            <option value="complete">Complete</option>
+                                            <option value="ongoing">On Going</option>
+                                            <option value="not_achieve">Not Achieved</option>
+                                        </select>
+                                    </div>
+                                </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label> Start Date</label>
