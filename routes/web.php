@@ -112,3 +112,6 @@ Route::post('add_pc4', [\App\Http\Controllers\ProjectController::class, 'add_pc4
 
 Route::get('add_end_of_fy/{id}', [\App\Http\Controllers\ProjectController::class, 'end_of_fy']);
 Route::post('add_end_of_fy', [\App\Http\Controllers\ProjectController::class, 'add_end_of_fy']);
+
+// Project Status
+Route::get('completed_physical_targets/{id}', [\App\Http\Controllers\ProjectController::class, 'completed_physical_targets']);
