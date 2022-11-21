@@ -8,6 +8,7 @@ use App\Models\ProjectComponent;
 use App\Models\ProjectComponentNis;
 use App\Models\ProjectDirector;
 use App\Models\ProjectFyUtilization;
+use App\Models\ProjectPc4;
 use App\Models\ProjectPhysicalTarget;
 use App\Models\ProjectRelease;
 use Illuminate\Validation\Validator;
@@ -336,6 +337,23 @@ class ProjectController extends Controller{
         $data['current_page'] = request()->segment(1);
         return view('adminpanel.project.tabs.pc4', $data)->with('title', $title);
     }
+    public function add_pc4(Request $request){
+        $userId = Auth::id();
+        $insertData = $request->all();
+        $rules = [
+            'project_id' => 'required',
+            'preparation_status' => 'required',
+            'ministry_status' => 'required'
+        ];
+        $customMessages = [
+            'required' => 'The :attribute field is required.'
+        ];
+        $insertData['created_by'] = $userId;
+        $insertData['updated_by'] = $userId;
+        ProjectPc4::create($insertData);
+        return redirect('add_pc4/'.$request['project_id'])->with('success', 'Pc4 Added Successfully');
+    }
+
 
     public function end_of_fy($id){
         $title = "End of FY";

@@ -49,6 +49,7 @@ return array(
     'App\\Models\\ProjectComponentNis' => $baseDir . '/app/Models/ProjectComponentNis.php',
     'App\\Models\\ProjectDirector' => $baseDir . '/app/Models/ProjectDirector.php',
     'App\\Models\\ProjectFyUtilization' => $baseDir . '/app/Models/ProjectFyUtilization.php',
+    'App\\Models\\ProjectPhysicalTarget' => $baseDir . '/app/Models/ProjectPhysicalTarget.php',
     'App\\Models\\ProjectRelease' => $baseDir . '/app/Models/ProjectRelease.php',
     'App\\Models\\Roles' => $baseDir . '/app/Models/Roles.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',

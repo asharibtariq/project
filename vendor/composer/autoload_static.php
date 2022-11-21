@@ -570,6 +570,7 @@ class ComposerStaticInit7d168628b301479f35af957a18da04f9
         'App\\Models\\ProjectComponentNis' => __DIR__ . '/../..' . '/app/Models/ProjectComponentNis.php',
         'App\\Models\\ProjectDirector' => __DIR__ . '/../..' . '/app/Models/ProjectDirector.php',
         'App\\Models\\ProjectFyUtilization' => __DIR__ . '/../..' . '/app/Models/ProjectFyUtilization.php',
+        'App\\Models\\ProjectPhysicalTarget' => __DIR__ . '/../..' . '/app/Models/ProjectPhysicalTarget.php',
         'App\\Models\\ProjectRelease' => __DIR__ . '/../..' . '/app/Models/ProjectRelease.php',
         'App\\Models\\Roles' => __DIR__ . '/../..' . '/app/Models/Roles.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',

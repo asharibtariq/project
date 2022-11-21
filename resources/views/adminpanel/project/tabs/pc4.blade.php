@@ -39,10 +39,11 @@
                                 <div class="form-group">
                                     <label
                                         for="exampleFormControlSelect1">Status</label>
-                                    <select class="form-control select2"
+                                    <input type="hidden" name="project_id" value="{{$project_id}}" />
+                                    <select name="preparation_status" class="form-control select2"
                                             id="exampleFormControlSelect1">
-                                        <option>Complete </option>
-                                        <option>Incomplete</option>
+                                        <option value="Complete">Complete</option>
+                                        <option value="Incomplete">Incomplete</option>
 
                                     </select>
                                 </div>
@@ -51,7 +52,7 @@
                                     <div class="form-group">
                                         <label for="exampleFormControlTextarea1">Remarks/
                                             issues/Bottlenecks (if any)</label>
-                                        <textarea class="form-control"
+                                        <textarea name="preparation_remarks" class="form-control"
                                                   id="exampleFormControlTextarea1" rows="3"
                                                   placeholder="Remarks"></textarea>
                                     </div>
@@ -71,10 +72,10 @@
                                     <div class="form-group">
                                         <label
                                             for="exampleFormControlSelect1">Status</label>
-                                        <select class="form-control select2"
+                                        <select name="ministry_status" class="form-control select2"
                                                 id="exampleFormControlSelect1">
-                                            <option>Complete </option>
-                                            <option>Incomplete</option>
+                                            <option  value="Complete">Complete </option>
+                                            <option value="Incomplete">Incomplete</option>
 
                                         </select>
                                     </div>
@@ -83,7 +84,7 @@
                                     <div class="form-group">
                                         <label for="exampleFormControlTextarea1">Remarks/
                                             issues/Bottlenecks (if any)</label>
-                                        <textarea class="form-control"
+                                        <textarea name="ministry_remarks" class="form-control"
                                                   id="exampleFormControlTextarea1" rows="3"
                                                   placeholder="Remarks"></textarea>
                                     </div>
@@ -103,10 +104,10 @@
                                     <div class="form-group">
                                         <label
                                             for="exampleFormControlSelect1">Status</label>
-                                        <select class="form-control select2"
+                                        <select name="planning_status" class="form-control select2"
                                                 id="exampleFormControlSelect1">
-                                            <option>Complete </option>
-                                            <option>Incomplete</option>
+                                            <option value="complete">Complete </option>
+                                            <option value="Incomplete">Incomplete</option>
 
                                         </select>
                                     </div>
@@ -115,7 +116,7 @@
                                     <div class="form-group">
                                         <label for="exampleFormControlTextarea1">Remarks/
                                             issues/Bottlenecks (if any)</label>
-                                        <textarea class="form-control"
+                                        <textarea name="planning_remarks" class="form-control"
                                                   id="exampleFormControlTextarea1" rows="3"
                                                   placeholder="Remarks"></textarea>
                                     </div>
@@ -135,10 +136,10 @@
                                     <div class="form-group">
                                         <label
                                             for="exampleFormControlSelect1">Status</label>
-                                        <select class="form-control select2"
+                                        <select name="finance_status" class="form-control select2"
                                                 id="exampleFormControlSelect1">
-                                            <option>Complete </option>
-                                            <option>Incomplete</option>
+                                            <option value="complete">Complete </option>
+                                            <option value="complete">Incomplete</option>
 
                                         </select>
                                     </div>
@@ -147,7 +148,7 @@
                                     <div class="form-group">
                                         <label for="exampleFormControlTextarea1">Remarks/
                                             issues/Bottlenecks (if any)</label>
-                                        <textarea class="form-control"
+                                        <textarea name="finance_remarks" class="form-control"
                                                   id="exampleFormControlTextarea1" rows="3"
                                                   placeholder="Remarks"></textarea>
                                     </div>
@@ -167,10 +168,10 @@
                                     <div class="form-group">
                                         <label
                                             for="exampleFormControlSelect1">Status</label>
-                                        <select class="form-control select2"
+                                        <select name="budget_status" class="form-control select2"
                                                 id="exampleFormControlSelect1">
-                                            <option>Complete </option>
-                                            <option>Incomplete</option>
+                                            <option value="complete">Complete </option>
+                                            <option value="Incomplete">Incomplete</option>
 
                                         </select>
                                     </div>
@@ -179,7 +180,7 @@
                                     <div class="form-group">
                                         <label for="exampleFormControlTextarea1">Remarks/
                                             issues/Bottlenecks (if any)</label>
-                                        <textarea class="form-control"
+                                        <textarea name="budget_remarks" class="form-control"
                                                   id="exampleFormControlTextarea1" rows="3"
                                                   placeholder="Remarks"></textarea>
                                     </div>
@@ -193,7 +194,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group"><br/>
                                         <button type="submit" class="btn btn-info pull-right">
-                                            <i class="fa fa-check"> Edit/Delete</i>
+                                            <i class="fa fa-check"> Add</i>
                                         </button>
                                     </div>
                                 </div>
