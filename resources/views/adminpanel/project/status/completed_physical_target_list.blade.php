@@ -4,9 +4,10 @@
         <th> Sr No </th>
         <th> FY </th>
         <th> Component </th>
-        <th> Physical Target Description </th>
-        <th> Amount </th>
-        <th> Start Date</th>
+        <th> Targets </th>
+        <th> Allocated Budget </th>
+        <th> Start Date </th>
+        <th> End Date </th>
         <th> Action </th>
     </tr>
     </thead>
@@ -14,6 +15,7 @@
     @php
         $i = 1;
         $alloc_amount = 0;
+        $foreign_alloc_amount = 0;
     @endphp
     @if(is_array($result) && count($result) > 0)
         @foreach ($result as $r)
@@ -21,22 +23,20 @@
             <?php
             $fiscal_year_start = $r->fiscal_year - 1;
             $fiscal_year = $fiscal_year_start." - ".$r->fiscal_year;
-
             $alloc_amount = $alloc_amount + $r->amount;
-
             ?>
 
             <tr role="row">
                 <td> {{$i}} </td>
-                <td> {{$fiscal_year}} </td>
-                <td> {{$r->component}} </td>
-                <td> {{$r->physical_description}} </td>
-                <td> {{$r->amount}} (<small class="text-muted">{{$r->currency}}</small>) </td>
-                <td> {{$r->start_date}} </td>
+                <td> {{$fiscal_year}}</td>
+                <td> {{$r->component}}</td>
+                <td> {{$r->physical_description}}</td>
+                <td> {{$r->amount}} (<small class="text-muted">{{$r->currency}}</small>)</td>
+                <td> {{$r->start_date}}</td>
+                <td> {{$r->end_date}}</td>
                 <td>
                     <div class="btn-group">
                         <a onClick="return confirm('Are you sure you want to update?');" title="Edit" href="#" class="btn btn-info" id="btn-view"><i class="fa fa-edit"></i> </a>
-                        <a onClick="return confirm('Are you sure you want to delete?');" title="Delete" href="#" class="btn btn-danger"><i class="fa fa-trash"></i> </a>
                     </div>
                 </td>
             </tr>
@@ -48,13 +48,14 @@
             <th colspan="4" class="text-center">Total</th>
             <td>{{$alloc_amount}}</td>
             <td>-</td>
+            <td>-</td>
         </tr>
         <tr>
             <td colspan="6"></td>
         </tr>
     @else
         <tr>
-            <th scope="row" colspan="7">
+            <th scope="row" colspan="6">
                 <div style="color:#FFFFFF;text-align: center; background-color: #ff0000;" class="alert alert-danger" role="alert">
                     <strong>No Data Found</strong>
                 </div>

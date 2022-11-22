@@ -114,4 +114,6 @@ Route::get('add_end_of_fy/{id}', [\App\Http\Controllers\ProjectController::class
 Route::post('add_end_of_fy', [\App\Http\Controllers\ProjectController::class, 'add_end_of_fy']);
 
 // Project Status
-Route::get('completed_physical_targets/{id}', [\App\Http\Controllers\ProjectController::class, 'completed_physical_targets']);
+Route::get('completed_physical_targets/{id}', [\App\Http\Controllers\ProjectStatusController::class, 'completed_physical_targets']);
+Route::get('not_achieved_physical_targets/{id}', [\App\Http\Controllers\ProjectStatusController::class, 'not_achieved_physical_targets']);
+Route::get('ongoing_physical_targets/{id}', [\App\Http\Controllers\ProjectStatusController::class, 'ongoing_physical_targets']);
