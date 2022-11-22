@@ -337,21 +337,23 @@ class ProjectController extends Controller{
         $data['current_page'] = request()->segment(1);
         return view('adminpanel.project.tabs.pc4', $data)->with('title', $title);
     }
-    public function add_pc4(Request $request){
+    public function add_pc4(Request $request)
+    {
         $userId = Auth::id();
         $insertData = $request->all();
         $rules = [
             'project_id' => 'required',
-            'preparation_status' => 'required',
-            'ministry_status' => 'required'
+            'ministry_status' => 'required',
+//            'start_date' => 'required'
         ];
         $customMessages = [
             'required' => 'The :attribute field is required.'
         ];
+        $this->validate($request, $rules, $customMessages);
         $insertData['created_by'] = $userId;
         $insertData['updated_by'] = $userId;
         ProjectPc4::create($insertData);
-        return redirect('add_pc4/'.$request['project_id'])->with('success', 'Pc4 Added Successfully');
+            return redirect('add_pc4/' . $request['project_id'])->with('success', 'Pc4 Added Successfully');
     }
 
 
@@ -362,6 +364,23 @@ class ProjectController extends Controller{
         $data['fiscal_year_select'] = get_fiscal_year();
         $data['currency_select'] = get_currency();
         return view('adminpanel.project.tabs.end_of_fy', $data)->with('title', $title);
+    }
+    public function add_end_of_fy(Request $request){
+        $userId = Auth::id();
+        $insertData = $request->all();
+        $rules = [
+            'project_id' => 'required',
+            'fiscal_year' => 'required',
+            'start_date' => 'required'
+        ];
+        $customMessages = [
+            'required' => 'The :attribute field is required.'
+        ];
+        $this->validate($request, $rules, $customMessages);
+        $insertData['created_by'] = $userId;
+        $insertData['updated_by'] = $userId;
+        ProjectEndOfFy::create($insertData);
+        return redirect('add_end_of_fy/'.$request['project_id'])->with('success', 'End of FY Added Successfully');
     }
 
 }

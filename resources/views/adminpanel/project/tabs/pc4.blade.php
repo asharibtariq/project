@@ -25,7 +25,7 @@
                             @endif
                         @endif
 
-                        <form name="" method="post" action="{{url('add_pc4')}}">
+                        <form name="" method="post" action="{{url('add_pc4')}}" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-md-12">
@@ -36,6 +36,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-4">
+
                                 <div class="form-group">
                                     <label
                                         for="exampleFormControlSelect1">Status</label>
@@ -52,7 +53,7 @@
                                     <div class="form-group">
                                         <label for="exampleFormControlTextarea1">Remarks/
                                             issues/Bottlenecks (if any)</label>
-                                        <textarea name="preparation_remarks" class="form-control"
+                                        <textarea  class="form-control"
                                                   id="exampleFormControlTextarea1" rows="3"
                                                   placeholder="Remarks"></textarea>
                                     </div>
