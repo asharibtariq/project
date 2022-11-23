@@ -11,8 +11,6 @@
                     </div>
                     <div class="card-body">
                         <!-- Project Forms Tabs -->
-                        @include('adminpanel.project.detail_tabs')
-
                         @if($errors->any())
                             @foreach($errors->all() as $error)
                                 <div class="alert alert-danger" style="margin: 6px; padding: 10px"
@@ -30,7 +28,7 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <input type="hidden" name="project_id" value="{{$project_id}}" />
+                                        <input type="hidden" name="project_id" value="{{$project->project_id}}" />
                                         <label for="fiscal_year">FY</label>
                                         {!! $fiscal_year_select !!}
                                         @if ($errors->has('fiscal_year'))
@@ -42,7 +40,7 @@
                                     <div class="form-group">
                                         <label for="fiscal_year">Component</label>
                                         {!! $component_select !!}
-                                        <input type="hidden" name="component" id="component"/>
+                                        <input type="hidden" name="component" value="{{$project->component}}" id="component"/>
                                         {{--<a href="../add_component" type="button" class="btn btn-info btn-sm float-right m-1"><i class="feather icon-plus"></i>Add</a>--}}
                                         @if ($errors->has('component'))
                                             <span class="text-danger">{{ $errors->first('component') }}</span>
@@ -54,7 +52,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label> Physical Target Description </label>
-                                        <textarea type="text" name="physical_description" value="{{ $project->physical_description}}" class="form-control" placeholder="Physical Target Description"></textarea>
+                                        <textarea type="text" name="physical_description" class="form-control"  >{{ $project->physical_description}}</textarea>
                                     </div>
                                 </div>
 
@@ -72,7 +70,7 @@
                                     <div class="form-group">
                                         <label for="exampleFormControlSelect1">Currency</label>
                                         {!! $currency_select !!}
-                                        <input type="hidden" name="currency" id="currency" />
+                                        <input type="hidden" name="currency" value="{{$project->currency}}" id="currency" />
                                         @if ($errors->has('currency'))
                                             <span class="text-danger">{{ $errors->first('currency') }}</span>
                                         @endif
@@ -81,14 +79,14 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Amount </label>
-                                        <input type="number" name="amount" class="form-control" value="{{ $project->amount}}" placeholder="Amount">
+                                        <input type="number" name="amount" class="form-control" value="{{$project->amount}}" placeholder="Amount">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Status </label>
-                                        <select name="target_status" id="target_status" value="{{ $project->target_status}}" class="form-control select2">
-                                            <option value="">Select</option>
+                                        <select name="target_status" id="target_status" class="form-control select2">
+                                            <option value="{{$project->target_status}}">{{$project->target_status}}</option>
                                             <option value="complete">Complete</option>
                                             <option value="ongoing">On Going</option>
                                             <option value="not_achieve">Not Achieved</option>
@@ -131,4 +129,18 @@
             </div>
         </div>
     </div>
+
+    <script>
+        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+        $(document).ready(function () {
+            $(document).on("change", "#currency_id", function () {
+                var currency = $("#currency_id option:selected").text();
+                $("#currency").val(currency);
+            });
+            $(document).on("change", "#component_id", function () {
+                var component = $("#component_id option:selected").text();
+                $("#component").val(component);
+            });
+        });
+    </script>
 @endsection

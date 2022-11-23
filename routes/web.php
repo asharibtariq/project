@@ -86,34 +86,34 @@ Route::post('update_organization/{id}', [\App\Http\Controllers\OrganizationContr
 Route::get('delete_organization/{id}', [\App\Http\Controllers\OrganizationController::class, 'destroy']);
 
 // Tabs Routes
-Route::get('add_project_director/{id}', [\App\Http\Controllers\ProjectController::class, 'project_director']);
-Route::post('add_project_director', [\App\Http\Controllers\ProjectController::class, 'add_project_director']);
+Route::get('add_project_director/{id}', [\App\Http\Controllers\ProjectProfileController::class, 'project_director']);
+Route::post('add_project_director', [\App\Http\Controllers\ProjectProfileController::class, 'add_project_director']);
 
-Route::get('add_project_allocation/{id}', [\App\Http\Controllers\ProjectController::class, 'allocation']);
-Route::post('add_project_allocation', [\App\Http\Controllers\ProjectController::class, 'add_allocation']);
+Route::get('add_project_allocation/{id}', [\App\Http\Controllers\ProjectProfileController::class, 'allocation']);
+Route::post('add_project_allocation', [\App\Http\Controllers\ProjectProfileController::class, 'add_allocation']);
 
-Route::get('add_release/{id}', [\App\Http\Controllers\ProjectController::class, 'release']);
-Route::post('add_release', [\App\Http\Controllers\ProjectController::class, 'add_release']);
+Route::get('add_release/{id}', [\App\Http\Controllers\ProjectProfileController::class, 'release']);
+Route::post('add_release', [\App\Http\Controllers\ProjectProfileController::class, 'add_release']);
 
-Route::get('add_component_pc1/{id}', [\App\Http\Controllers\ProjectController::class, 'component_pc1']);
-Route::post('add_component_pc1', [\App\Http\Controllers\ProjectController::class, 'add_component_pc1']);
+Route::get('add_component_pc1/{id}', [\App\Http\Controllers\ProjectProfileController::class, 'component_pc1']);
+Route::post('add_component_pc1', [\App\Http\Controllers\ProjectProfileController::class, 'add_component_pc1']);
 
-Route::get('add_component_nis/{id}', [\App\Http\Controllers\ProjectController::class, 'component_nis']);
-Route::post('add_component_nis', [\App\Http\Controllers\ProjectController::class, 'add_component_nis']);
+Route::get('add_component_nis/{id}', [\App\Http\Controllers\ProjectProfileController::class, 'component_nis']);
+Route::post('add_component_nis', [\App\Http\Controllers\ProjectProfileController::class, 'add_component_nis']);
 
-Route::get('add_fy_util/{id}', [\App\Http\Controllers\ProjectController::class, 'fy_util']);
-Route::post('add_fy_util', [\App\Http\Controllers\ProjectController::class, 'add_fy_util']);
+Route::get('add_fy_util/{id}', [\App\Http\Controllers\ProjectProfileController::class, 'fy_util']);
+Route::post('add_fy_util', [\App\Http\Controllers\ProjectProfileController::class, 'add_fy_util']);
 
-Route::get('add_physical_target/{id}', [\App\Http\Controllers\ProjectController::class, 'physical_target']);
-Route::post('add_physical_target', [\App\Http\Controllers\ProjectController::class, 'add_physical_target']);
-Route::get('edit_physical_target/{id}', [\App\Http\Controllers\ProjectController::class, 'edit_physical_target']);
-Route::post('update_physical_target/{id}', [\App\Http\Controllers\ProjectController::class, 'update_physical_target']);
+Route::get('add_physical_target/{id}', [\App\Http\Controllers\ProjectProfileController::class, 'physical_target']);
+Route::post('add_physical_target', [\App\Http\Controllers\ProjectProfileController::class, 'add_physical_target']);
+Route::get('edit_physical_target/{id}', [\App\Http\Controllers\ProjectProfileController::class, 'edit_physical_target']);
+Route::post('update_physical_target/{id}', [\App\Http\Controllers\ProjectProfileController::class, 'update_physical_target']);
 
-Route::get('add_pc4/{id}', [\App\Http\Controllers\ProjectController::class, 'pc4']);
-Route::post('add_pc4', [\App\Http\Controllers\ProjectController::class, 'add_pc4']);
+Route::get('add_pc4/{id}', [\App\Http\Controllers\ProjectProfileController::class, 'pc4']);
+Route::post('add_pc4', [\App\Http\Controllers\ProjectProfileController::class, 'add_pc4']);
 
-Route::get('add_end_of_fy/{id}', [\App\Http\Controllers\ProjectController::class, 'end_of_fy']);
-Route::post('add_end_of_fy', [\App\Http\Controllers\ProjectController::class, 'add_end_of_fy']);
+Route::get('add_end_of_fy/{id}', [\App\Http\Controllers\ProjectProfileController::class, 'end_of_fy']);
+Route::post('add_end_of_fy', [\App\Http\Controllers\ProjectProfileController::class, 'add_end_of_fy']);
 
 // Project Status
 Route::get('completed_physical_targets/{id}', [\App\Http\Controllers\ProjectStatusController::class, 'completed_physical_targets']);
