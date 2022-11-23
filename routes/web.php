@@ -135,3 +135,6 @@ Route::post('update_end_of_fy/{id}', [\App\Http\Controllers\ProjectProfileContro
 Route::get('completed_physical_targets/{id}', [\App\Http\Controllers\ProjectStatusController::class, 'completed_physical_targets']);
 Route::get('not_achieved_physical_targets/{id}', [\App\Http\Controllers\ProjectStatusController::class, 'not_achieved_physical_targets']);
 Route::get('ongoing_physical_targets/{id}', [\App\Http\Controllers\ProjectStatusController::class, 'ongoing_physical_targets']);
+
+// Project Summary
+Route::get('project_summary/{id}', [\App\Http\Controllers\ProjectController::class, 'summary']);

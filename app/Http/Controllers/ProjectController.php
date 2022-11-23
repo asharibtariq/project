@@ -140,6 +140,9 @@ class ProjectController extends Controller{
         return redirect('project')->with('success', 'Project Successfully Deleted');
     }
 
-
+    public function summary(){
+        $title = "Project Summary";
+        return view('adminpanel.project.project_summary')->with('title', $title);
+    }
 
 }
