@@ -86,10 +86,9 @@
                                     <div class="form-group">
                                         <label>Status </label>
                                         <select name="target_status" id="target_status" class="form-control select2">
-                                            <option value="{{$project->target_status}}">{{$project->target_status}}</option>
-                                            <option value="complete">Complete</option>
-                                            <option value="ongoing">On Going</option>
-                                            <option value="not_achieve">Not Achieved</option>
+                                            <option value="complete" @php echo $project->target_status == 'complete' ? 'selected' : ''; @endphp>Complete</option>
+                                            <option value="ongoing" @php echo $project->target_status == 'ongoing' ? 'selected' : ''; @endphp>On Going</option>
+                                            <option value="not_achieve" @php echo $project->target_status == 'not_achieve' ? 'selected' : ''; @endphp>Not Achieved</option>
                                         </select>
                                     </div>
                                 </div>
