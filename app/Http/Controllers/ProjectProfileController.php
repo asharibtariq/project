@@ -49,6 +49,26 @@ class ProjectProfileController extends Controller
         ProjectDirector::create($insertData);
         return redirect('add_project_director'.$request['project_id'])->with('success', 'Project Director Added Successfully');
     }
+    public function edit_project_director($id){
+        $project = ProjectDirector::findOrFail($id);
+        $title = "Edit Project Director";
+        $data['fiscal_year_select'] = get_fiscal_year($project->fiscal_year);
+        $data['currency_select'] = get_currency($project->currency_id);
+        $data['component_select'] = get_component($project->component_id);
+        $data['project'] = $project;
+        return view('adminpanel.project.tabs.edit_project_director', $data)->with('title', $title);
+    }
+
+    public function update_project_director(Request $request,$id){
+        $userId = Auth::id();
+        $project = ProjectDirector::findOrFail($id);
+        $updateData = $request->all();
+        //    $updateData['slug'] = strtolower(str_replace(' ','_',$updateData['title']));
+        $updateData['updated_by'] = $userId;
+        //    pre($request->all(),1);
+        $project->update($updateData);
+        return redirect('add_project_director/'.$request['project_id'])->with('success', 'Project Director Updated Successfully');
+    }
 
     public function allocation($id){
         $title = "Allocation";
@@ -75,6 +95,26 @@ class ProjectProfileController extends Controller
         $insertData['updated_by'] = $userId;
         ProjectAllocation::create($insertData);
         return redirect('add_project_allocation/'.$request['project_id'])->with('success', 'Allocation Added Successfully');
+    }
+    public function edit_allocation($id){
+        $project = ProjectAllocation::findOrFail($id);
+        $title = "Edit Project Allocation";
+        $data['fiscal_year_select'] = get_fiscal_year($project->fiscal_year);
+        $data['currency_select'] = get_currency($project->currency_id);
+        $data['component_select'] = get_component($project->component_id);
+        $data['project'] = $project;
+        return view('adminpanel.project.tabs.edit_project_allocation', $data)->with('title', $title);
+    }
+
+    public function update_allocation(Request $request,$id){
+        $userId = Auth::id();
+        $project = ProjectAllocation::findOrFail($id);
+        $updateData = $request->all();
+        //    $updateData['slug'] = strtolower(str_replace(' ','_',$updateData['title']));
+        $updateData['updated_by'] = $userId;
+        //    pre($request->all(),1);
+        $project->update($updateData);
+        return redirect('add_project_allocation/'.$request['project_id'])->with('success', 'Project Allocation Updated Successfully');
     }
 
     public function release($id){
@@ -103,6 +143,26 @@ class ProjectProfileController extends Controller
         ProjectRelease::create($insertData);
         return redirect('add_release/'.$request['project_id'])->with('success', 'Project Release Added Successfully');
     }
+    public function edit_release($id){
+        $project = ProjectRelease::findOrFail($id);
+        $title = "Edit Project Release";
+        $data['fiscal_year_select'] = get_fiscal_year($project->fiscal_year);
+        $data['currency_select'] = get_currency($project->currency_id);
+        $data['component_select'] = get_component($project->component_id);
+        $data['project'] = $project;
+        return view('adminpanel.project.tabs.edit_release', $data)->with('title', $title);
+    }
+
+    public function update_release(Request $request,$id){
+        $userId = Auth::id();
+        $project = ProjectRelease::findOrFail($id);
+        $updateData = $request->all();
+        //    $updateData['slug'] = strtolower(str_replace(' ','_',$updateData['title']));
+        $updateData['updated_by'] = $userId;
+        //    pre($request->all(),1);
+        $project->update($updateData);
+        return redirect('add_release/'.$request['project_id'])->with('success', 'Project Release Updated Successfully');
+    }
 
     public function component_pc1($id){
         $title = "Component as per PC-1";
@@ -130,7 +190,26 @@ class ProjectProfileController extends Controller
         ProjectComponent::create($insertData);
         return redirect('add_component_pc1/'.$request['project_id'])->with('success', 'Project Component Added Successfully');
     }
+    public function edit_component_pc1($id){
+        $project = ProjectComponent::findOrFail($id);
+        $title = "Edit Project Release";
+        $data['fiscal_year_select'] = get_fiscal_year($project->fiscal_year);
+        $data['currency_select'] = get_currency($project->currency_id);
+        $data['component_select'] = get_component($project->component_id);
+        $data['project'] = $project;
+        return view('adminpanel.project.tabs.edit_component_pc1', $data)->with('title', $title);
+    }
 
+    public function update_component_pc1(Request $request,$id){
+        $userId = Auth::id();
+        $project = ProjectComponent::findOrFail($id);
+        $updateData = $request->all();
+        //    $updateData['slug'] = strtolower(str_replace(' ','_',$updateData['title']));
+        $updateData['updated_by'] = $userId;
+        //    pre($request->all(),1);
+        $project->update($updateData);
+        return redirect('add_component_pc1/'.$request['project_id'])->with('success', 'Project ComponentPc1 Updated Successfully');
+    }
 
     public function component_nis($id){
         $title = "Component as per NIS";
@@ -158,6 +237,27 @@ class ProjectProfileController extends Controller
         ProjectComponentNis::create($insertData);
         return redirect('add_component_nis/'.$request['project_id'])->with('success', 'Project Component Nis Added Successfully');
     }
+    public function edit_component_nis($id){
+        $project = ProjectComponentNis::findOrFail($id);
+        $title = "Edit Project Release";
+        $data['fiscal_year_select'] = get_fiscal_year($project->fiscal_year);
+        $data['currency_select'] = get_currency($project->currency_id);
+        $data['component_select'] = get_component($project->component_id);
+        $data['project'] = $project;
+        return view('adminpanel.project.tabs.edit_component_nis', $data)->with('title', $title);
+    }
+
+    public function update_component_nis(Request $request,$id){
+        $userId = Auth::id();
+        $project = ProjectComponentNis::findOrFail($id);
+        $updateData = $request->all();
+        //    $updateData['slug'] = strtolower(str_replace(' ','_',$updateData['title']));
+        $updateData['updated_by'] = $userId;
+        //    pre($request->all(),1);
+        $project->update($updateData);
+        return redirect('add_component_nis/'.$request['project_id'])->with('success', 'Project ComponentNis Updated Successfully');
+    }
+
 
 
     public function fy_util($id){
@@ -185,6 +285,26 @@ class ProjectProfileController extends Controller
         $insertData['updated_by'] = $userId;
         ProjectFyUtilization::create($insertData);
         return redirect('add_fy_util/'.$request['project_id'])->with('success', 'FY Utilization Added Successfully');
+    }
+    public function edit_fy_util($id){
+        $project = ProjectFyUtilization::findOrFail($id);
+        $title = "Edit Project Release";
+        $data['fiscal_year_select'] = get_fiscal_year($project->fiscal_year);
+        $data['currency_select'] = get_currency($project->currency_id);
+        $data['component_select'] = get_component($project->component_id);
+        $data['project'] = $project;
+        return view('adminpanel.project.tabs.edit_fy_util', $data)->with('title', $title);
+    }
+
+    public function update_fy_util(Request $request,$id){
+        $userId = Auth::id();
+        $project = ProjectFyUtilization::findOrFail($id);
+        $updateData = $request->all();
+        //    $updateData['slug'] = strtolower(str_replace(' ','_',$updateData['title']));
+        $updateData['updated_by'] = $userId;
+        //    pre($request->all(),1);
+        $project->update($updateData);
+        return redirect('add_fy_util/'.$request['project_id'])->with('success', 'Project FY Util Updated Successfully');
     }
 
     public function physical_target($id){
