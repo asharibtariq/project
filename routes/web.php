@@ -106,6 +106,8 @@ Route::post('add_fy_util', [\App\Http\Controllers\ProjectController::class, 'add
 
 Route::get('add_physical_target/{id}', [\App\Http\Controllers\ProjectController::class, 'physical_target']);
 Route::post('add_physical_target', [\App\Http\Controllers\ProjectController::class, 'add_physical_target']);
+Route::get('edit_physical_target/{id}', [\App\Http\Controllers\ProjectController::class, 'edit_physical_target']);
+Route::post('update_physical_target/{id}', [\App\Http\Controllers\ProjectController::class, 'update_physical_target']);
 
 Route::get('add_pc4/{id}', [\App\Http\Controllers\ProjectController::class, 'pc4']);
 Route::post('add_pc4', [\App\Http\Controllers\ProjectController::class, 'add_pc4']);

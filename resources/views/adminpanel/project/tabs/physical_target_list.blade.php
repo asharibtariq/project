@@ -17,15 +17,11 @@
     @endphp
     @if(is_array($result) && count($result) > 0)
         @foreach ($result as $r)
-
             <?php
             $fiscal_year_start = $r->fiscal_year - 1;
             $fiscal_year = $fiscal_year_start." - ".$r->fiscal_year;
-
             $alloc_amount = $alloc_amount + $r->amount;
-
             ?>
-
             <tr role="row">
                 <td> {{$i}} </td>
                 <td> {{$fiscal_year}} </td>
@@ -35,7 +31,7 @@
                 <td> {{$r->start_date}} </td>
                 <td>
                     <div class="btn-group">
-                        <a onClick="return confirm('Are you sure you want to update?');" title="Edit" href="#" class="btn btn-info" id="btn-view"><i class="fa fa-edit"></i> </a>
+                        <a onClick="return confirm('Are you sure you want to update?');" title="Edit" href="{{url('edit_physical_target', $r->id)}}" class="btn btn-info" id="btn-view"><i class="fa fa-edit"></i> </a>
                         <a onClick="return confirm('Are you sure you want to delete?');" title="Delete" href="#" class="btn btn-danger"><i class="fa fa-trash"></i> </a>
                     </div>
                 </td>

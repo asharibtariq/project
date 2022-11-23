@@ -331,6 +331,25 @@ class ProjectController extends Controller{
         ProjectPhysicalTarget::create($insertData);
         return redirect('add_physical_target/'.$request['project_id'])->with('success', 'FY Utilization Added Successfully');
     }
+    public function edit_physical_target($id){
+        $project = ProjectPhysicalTarget::findOrFail($id);
+        $title = "Edit Physical Target";
+        $data['project'] = $project;
+        return view('adminpanel.project.tabs.edit_physical_target', $data)->with('title', $title);
+    }
+
+    public function update_physical_target(Request $request,$id){
+        $userId = Auth::id();
+        $project = ProjectPhysicalTarget::findOrFail($id);
+        $updateData = $request->all();
+        //    $updateData['slug'] = strtolower(str_replace(' ','_',$updateData['title']));
+        $updateData['updated_by'] = $userId;
+        //    pre($request->all(),1);
+        $project->update($updateData);
+        return redirect('physical_target')->with('success', 'Project Physical Target Updated Successfully');
+    }
+
+
     public function pc4($id){
         $title = "PC-4 Details";
         $data['project_id'] = $id;
