@@ -192,7 +192,7 @@ class ProjectProfileController extends Controller
     }
     public function edit_component_pc1($id){
         $project = ProjectComponent::findOrFail($id);
-        $title = "Edit Project Release";
+        $title = "Edit Project ComponentPc1";
         $data['fiscal_year_select'] = get_fiscal_year($project->fiscal_year);
         $data['currency_select'] = get_currency($project->currency_id);
         $data['component_select'] = get_component($project->component_id);
@@ -239,7 +239,7 @@ class ProjectProfileController extends Controller
     }
     public function edit_component_nis($id){
         $project = ProjectComponentNis::findOrFail($id);
-        $title = "Edit Project Release";
+        $title = "Edit Project Component Nis";
         $data['fiscal_year_select'] = get_fiscal_year($project->fiscal_year);
         $data['currency_select'] = get_currency($project->currency_id);
         $data['component_select'] = get_component($project->component_id);
@@ -288,7 +288,7 @@ class ProjectProfileController extends Controller
     }
     public function edit_fy_util($id){
         $project = ProjectFyUtilization::findOrFail($id);
-        $title = "Edit Project Release";
+        $title = "Edit Fy Utilization";
         $data['fiscal_year_select'] = get_fiscal_year($project->fiscal_year);
         $data['currency_select'] = get_currency($project->currency_id);
         $data['component_select'] = get_component($project->component_id);

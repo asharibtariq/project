@@ -11,22 +11,26 @@
                     </div>
                     <div class="card-body">
                         <!-- Project Forms Tabs -->
-                        @if(Session::has('success'))
-                            <div class="alert alert-success">{{Session::get('success')}}</div><br/>
-                        @endif
+
                         @if($errors->any())
                             @foreach($errors->all() as $error)
-                                <div class="alert alert-danger" style="margin: 6px; padding: 10px" role="alert">{{ $error }}</div><br/>
+                                <div class="alert alert-danger" style="margin: 6px; padding: 10px"
+                                     role="alert">{{ $error }}</div>
                             @endforeach
+                            @if(Session::has('success'))
+                                <div class="col-md-12">
+                                    <div class="alert alert-success">{{Session::get('success')}}</div>
+                                </div>
+                            @endif
                         @endif
 
-                        <form name="" method="post" action="{{url('update_allocation', $project->id)}}">
+                        <form name="" method="post" action="{{url('update_component_pc1', $project->id)}}">
                             @csrf
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="fiscal_year">FY</label>
                                         <input type="hidden" name="project_id" value="{{$project->project_id}}" />
+                                        <label for="fiscal_year">FY</label>
                                         {!! $fiscal_year_select !!}
                                         @if ($errors->has('fiscal_year'))
                                             <span class="text-danger">{{ $errors->first('fiscal_year') }}</span>
@@ -35,69 +39,56 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Allocation Date</label>
-                                        <input type="text" name="alloc_date" id="alloc_date" value="{{$project->alloc_date}}" class="form-control datepicker" placeholder="MM/DD/YYYY" readonly>
-                                        @if ($errors->has('alloc_date'))
-                                            <span class="text-danger">{{ $errors->first('alloc_date') }}</span>
+                                        <label for="fiscal_year">Component</label>
+                                        {!! $component_select !!}
+                                        <input type="hidden" name="component" id="component" value="{{$project->component}}"/>
+                                        {{--<a href="../add_component" type="button" class="btn btn-info btn-sm float-right m-1"><i class="feather icon-plus"></i>Add</a>--}}
+                                        @if ($errors->has('component'))
+                                            <span class="text-danger">{{ $errors->first('component') }}</span>
                                         @endif
                                     </div>
                                 </div>
+
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Amount Allocated (<small class="text-muted">PKR</small>)</label>
-                                        <input type="number" name="alloc_amount" id="alloc_amount"value="{{$project->alloc_amount}}" class="form-control" placeholder="Amount Allocated">
-                                        @if ($errors->has('alloc_amount'))
-                                            <span class="text-danger">{{ $errors->first('alloc_amount') }}</span>
+                                        <label>Amount  (<small class="text-muted">PKR</small>)</label>
+                                        <input type="number" name="comp_amount" id="comp_amount" value="{{$project->comp_amount}}" class="form-control" placeholder="Amount ">
+                                        @if ($errors->has('comp_amount'))
+                                            <span class="text-danger">{{ $errors->first('comp_amount') }}</span>
                                         @endif
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <br/>
-                                    <h4 class="text-muted">Foreign Aid</h4>
-                                    <hr/>
-                                </div>
-                            </div>
-
-                            <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="exampleFormControlSelect1">Currency</label>
                                         {!! $currency_select !!}
-                                        <input type="hidden" name="currency" id="currency" value="{{$project->currency}}" />
+                                        <input type="hidden" name="currency" id="currency"value="{{$project->currency}}" />
                                         @if ($errors->has('currency'))
                                             <span class="text-danger">{{ $errors->first('currency') }}</span>
                                         @endif
                                     </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label>Amount </label>
-                                        <input type="number" name="foreign_alloc_amount" value="{{$project->foreign_alloc_amount}}" id="foreign_alloc_amount" class="form-control" placeholder="Amount">
-                                    </div>
-                                </div>
+
                             </div>
 
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group"><br/>
                                         <button type="submit" class="btn btn-info pull-right">
-                                            <i class="fa fa-check"> Enter</i>
+                                            <i class="fa fa-check"> Update</i>
                                         </button>
                                     </div>
                                 </div>
                             </div>
                         </form>
-
                         <hr/>
-
+                        <!-- Table -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 
     <script>
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
@@ -106,7 +97,12 @@
                 var currency = $("#currency_id option:selected").text();
                 $("#currency").val(currency);
             });
-        });
-    </script>
+            $(document).on("change", "#component_id", function () {
+                var component = $("#component_id option:selected").text();
+                $("#component").val(component);
+            });
 
+        });
+
+    </script>
 @endsection

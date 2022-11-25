@@ -113,8 +113,8 @@ Route::post('update_component_nis/{id}', [\App\Http\Controllers\ProjectProfileCo
 
 Route::get('add_fy_util/{id}', [\App\Http\Controllers\ProjectProfileController::class, 'fy_util']);
 Route::post('add_fy_util', [\App\Http\Controllers\ProjectProfileController::class, 'add_fy_util']);
-Route::get('edit_physical_target/{id}', [\App\Http\Controllers\ProjectProfileController::class, 'edit_physical_target']);
-Route::post('update_physical_target/{id}', [\App\Http\Controllers\ProjectProfileController::class, 'update_physical_target']);
+Route::get('edit_fy_util/{id}', [\App\Http\Controllers\ProjectProfileController::class, 'edit_fy_util']);
+Route::post('update_fy_util/{id}', [\App\Http\Controllers\ProjectProfileController::class, 'update_fy_util']);
 
 Route::get('add_physical_target/{id}', [\App\Http\Controllers\ProjectProfileController::class, 'physical_target']);
 Route::post('add_physical_target', [\App\Http\Controllers\ProjectProfileController::class, 'add_physical_target']);

@@ -31,7 +31,7 @@
                 <td> {{$r->comp_amount}}(<small class="text-muted">{{$r->currency}}</small>) </td>
                 <td>
                     <div class="btn-group">
-                        <a onClick="return confirm('Are you sure you want to update?');" title="Edit" href="#" class="btn btn-info" id="btn-view"><i class="fa fa-edit"></i> </a>
+                        <a onClick="return confirm('Are you sure you want to update?');" title="Edit" href="{{url('edit_component_nis', $r->id)}}" class="btn btn-info" id="btn-view"><i class="fa fa-edit"></i> </a>
                         <a onClick="return confirm('Are you sure you want to delete?');" title="Delete" href="#" class="btn btn-danger"><i class="fa fa-trash"></i> </a>
                     </div>
                 </td>
