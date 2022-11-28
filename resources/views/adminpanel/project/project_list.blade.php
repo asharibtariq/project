@@ -50,6 +50,7 @@
                         <a href="{{url('add_project_director', $r->id)}}" class="btn btn-success" title="Project Profile" id="btn-view"><i class="fa fa-list"></i> </a>
                         <a href="{{url('completed_physical_targets', $r->id)}}" class="btn btn-info" title="Project Status" id="btn-view"><i class="fa fa-list"></i> </a>
                         <a href="#" class="btn btn-primary" title="Project Monitoring" id="btn-view"><i class="fa fa-list"></i> </a>
+                        <a href="{{url('action_items', $r->id)}}" class="btn btn-danger" title="Action Items" id="btn-view"><i class="fa fa-circle"></i> </a>
                         <a onClick="return confirm('Are you sure you want to update?');" title="Edit" href="{{url('edit_project', $r->id)}}" class="btn btn-warning" id="btn-view"><i class="fa fa-edit"></i> </a>
                         <a href="{{url('project_summary', $r->id)}}" title="Summary" class="btn btn-success"><i class="fa fa-file-archive"></i> </a>
                         <a onClick="return confirm('Are you sure you want to delete?');" title="Delete" href="{{url('delete_project', $r->id)}}" class="btn btn-danger"><i class="fa fa-trash"></i> </a>

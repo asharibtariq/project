@@ -345,6 +345,33 @@ class AjaxController extends Controller{
                 $data['links'] = $project;
                 return view('adminpanel.project.tabs.physical_target_list')->with($data);
                 break;
+            case 'action_items_content':
+                $where = array();
+                $name = $request->name != '' ? $request->name : '';
+                $id = $request->project_id != '' ? $request->project_id : '';
+                $per_page = $request->select_limit != '' ? $request->select_limit : 10;
+                /*
+                    if (!empty($title))
+                        $where['tbl_project.title'] = $title;
+                */
+                $project = DB::table('tbl_physical_target')
+                    ->select('tbl_physical_target.id',
+                        'tbl_physical_target.project_id',
+                        'tbl_physical_target.fiscal_year',
+                        'tbl_physical_target.component_id',
+                        'tbl_physical_target.component',
+                        'tbl_physical_target.physical_description',
+                        'tbl_physical_target.created_at',
+                        'tbl_physical_target.updated_at')
+                    ->orderBy('tbl_physical_target.id', 'DESC')
+                    ->where('tbl_physical_target.project_id', '=', $id)
+                    ->where('tbl_physical_target.target_status', '=', 'ongoing')
+                    ->paginate($per_page);
+
+                $data['result'] = $project->items();
+                $data['links'] = $project;
+                return view('adminpanel.project.action_items.action_items_list')->with($data);
+                break;
             default:
                 break;
         }

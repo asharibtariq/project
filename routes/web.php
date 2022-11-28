@@ -137,4 +137,5 @@ Route::get('not_achieved_physical_targets/{id}', [\App\Http\Controllers\ProjectS
 Route::get('ongoing_physical_targets/{id}', [\App\Http\Controllers\ProjectStatusController::class, 'ongoing_physical_targets']);
 
 // Project Summary
+Route::get('action_items/{id}', [\App\Http\Controllers\ProjectController::class, 'action_items']);
 Route::get('project_summary/{id}', [\App\Http\Controllers\ProjectController::class, 'summary']);

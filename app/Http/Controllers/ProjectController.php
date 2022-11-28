@@ -140,6 +140,14 @@ class ProjectController extends Controller{
         return redirect('project')->with('success', 'Project Successfully Deleted');
     }
 
+    public function action_items($id){
+        $title = "Action Items";
+        $data['project_id'] = $id;
+        $data['project'] = Project::findOrFail($id);
+        $data['currency_select'] = get_currency();
+        return view('adminpanel.project.action_items.action_items',$data)->with('title', $title);
+    }
+
     public function summary($id){
         $title = "Project Summary";
         $data['project_id'] = $id;
