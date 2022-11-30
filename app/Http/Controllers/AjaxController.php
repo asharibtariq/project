@@ -316,13 +316,15 @@ class AjaxController extends Controller{
                 break;
             case 'physical_target_content':
                 $where = array();
-                $name = $request->name != '' ? $request->name : '';
                 $id = $request->project_id != '' ? $request->project_id : '';
+                $status = $request->status != '' ? $request->status : '';
                 $per_page = $request->select_limit != '' ? $request->select_limit : 10;
-                /*
-                    if (!empty($title))
-                        $where['tbl_project.title'] = $title;
-                */
+
+                if (!empty($id))
+                    $where['tbl_physical_target.project_id'] = $id;
+                if (!empty($status))
+                    $where['tbl_physical_target.status'] = $status;
+
                 $project = DB::table('tbl_physical_target')
                     ->select('tbl_physical_target.id',
                         'tbl_physical_target.project_id',
@@ -338,12 +340,13 @@ class AjaxController extends Controller{
                         'tbl_physical_target.created_at',
                         'tbl_physical_target.updated_at')
                     ->orderBy('tbl_physical_target.id', 'DESC')
-                    ->where('tbl_physical_target.project_id', '=',   $id )
+                //    ->where('tbl_physical_target.project_id', '=',   $id )
+                    ->where($where)
                     ->paginate($per_page);
 
                 $data['result'] = $project->items();
                 $data['links'] = $project;
-                return view('adminpanel.project.tabs.physical_target_list')->with($data);
+                return view('adminpanel.project.monitoring.ongoing_physical_target_list')->with($data);
                 break;
             case 'action_items_content':
                 $where = array();
