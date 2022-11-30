@@ -7,6 +7,7 @@ use App\Models\ProjectAllocation;
 use App\Models\ProjectComponent;
 use App\Models\ProjectComponentNis;
 use App\Models\ProjectDirector;
+use App\Models\ProjectEndOfFy;
 use App\Models\ProjectFyUtilization;
 use App\Models\ProjectPc4;
 use App\Models\ProjectPhysicalTarget;
@@ -387,7 +388,8 @@ class ProjectProfileController extends Controller
         $data['project_id'] = $id;
         $data['current_page'] = request()->segment(1);
         $data['fiscal_year_select'] = get_fiscal_year();
-        $data['currency_select'] = get_currency();
+        $data['currency_select_surrender'] = get_currency(0,'','currency_id_surrender');
+        $data['currency_select_lapsed'] = get_currency(0,'','currency_id_lapsed');
         return view('adminpanel.project.tabs.end_of_fy', $data)->with('title', $title);
     }
     public function add_end_of_fy(Request $request){
@@ -396,7 +398,7 @@ class ProjectProfileController extends Controller
         $rules = [
             'project_id' => 'required',
             'fiscal_year' => 'required',
-            'start_date' => 'required'
+            'date' => 'required'
         ];
         $customMessages = [
             'required' => 'The :attribute field is required.'
