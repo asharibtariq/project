@@ -58,7 +58,7 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>PKR </label>
+                                        <label>Amount (<small class="text-muted">PKR</small>) </label>
                                         <input type="number" class="form-control" placeholder="PKR">
                                     </div>
                                 </div>
@@ -73,7 +73,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Amount </label>
+                                        <label>Foreign Aid </label>
                                         <input type="number" class="form-control" placeholder="Amount">
                                     </div>
                                 </div>
@@ -89,7 +89,7 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>PKR </label>
+                                        <label>Amount (<small class="text-muted">PKR</small>)  </label>
                                         <input type="number" class="form-control" placeholder="PKR">
                                     </div>
                                 </div>
@@ -104,7 +104,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Amount </label>
+                                        <label>Foreign Aid </label>
                                         <input type="number" class="form-control" placeholder="Amount">
                                     </div>
                                 </div>
