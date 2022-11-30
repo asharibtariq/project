@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Auth;
 Auth::routes();
 Route::post('ajax_content', [\App\Http\Controllers\AjaxController::class, 'content']);
 Route::post('ajax_project_content', [\App\Http\Controllers\AjaxController::class, 'project_details_content']);
+Route::post('ajax_physical_target_content', [\App\Http\Controllers\AjaxController::class, 'physical_target_content']);
 Route::post('ajax_date_rec', [\App\Http\Controllers\AjaxController::class, 'getDateRecord']);
 Route::post('ajax_check_date_rec', [\App\Http\Controllers\AjaxController::class, 'checkDateRecord']);
 Route::post('ajax_expenditure_list', [\App\Http\Controllers\AjaxController::class, 'getActualExpenditure']);
@@ -85,7 +86,7 @@ Route::get('edit_organization/{id}', [\App\Http\Controllers\OrganizationControll
 Route::post('update_organization/{id}', [\App\Http\Controllers\OrganizationController::class, 'update']);
 Route::get('delete_organization/{id}', [\App\Http\Controllers\OrganizationController::class, 'destroy']);
 
-// Tabs Routes
+// Project Profile Routes
 Route::get('add_project_director/{id}', [\App\Http\Controllers\ProjectProfileController::class, 'project_director']);
 Route::post('add_project_director', [\App\Http\Controllers\ProjectProfileController::class, 'add_project_director']);
 Route::get('edit_project_director/{id}', [\App\Http\Controllers\ProjectProfileController::class, 'edit_project_director']);
@@ -140,6 +141,9 @@ Route::get('ongoing_physical_targets_status/{id}', [\App\Http\Controllers\Projec
 Route::get('action_items/{id}', [\App\Http\Controllers\ProjectController::class, 'action_items']);
 Route::get('project_summary/{id}', [\App\Http\Controllers\ProjectController::class, 'summary']);
 
-// Project Summary
+// Project Monitoring
 Route::get('ongoing_physical_targets/{id}', [\App\Http\Controllers\ProjectMonitoringController::class, 'ongoing_physical_targets']);
+Route::get('physical_target_status_monitoring/{id}', [\App\Http\Controllers\ProjectMonitoringController::class, 'physical_target_status']);
+Route::post('add_physical_target_status_monitoring', [\App\Http\Controllers\ProjectMonitoringController::class, 'add_physical_target_status']);
+
 

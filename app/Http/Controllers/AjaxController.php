@@ -173,7 +173,6 @@ class AjaxController extends Controller{
     public function project_details_content(Request $request){
         $action = $request->action;
         $data ['action'] = $action;
-        $id = $request->project_id != '' ? $request->project_id : '';
         $output = [];
         switch ($action) {
             case 'allocation_content':
@@ -325,6 +324,8 @@ class AjaxController extends Controller{
                 if (!empty($status))
                     $where['tbl_physical_target.status'] = $status;
 
+            //    DB::enableQueryLog(); // Enable query log
+
                 $project = DB::table('tbl_physical_target')
                     ->select('tbl_physical_target.id',
                         'tbl_physical_target.project_id',
@@ -343,6 +344,8 @@ class AjaxController extends Controller{
                 //    ->where('tbl_physical_target.project_id', '=',   $id )
                     ->where($where)
                     ->paginate($per_page);
+
+            //    dd(DB::getQueryLog());
 
                 $data['result'] = $project->items();
                 $data['links'] = $project;
@@ -374,6 +377,84 @@ class AjaxController extends Controller{
                 $data['result'] = $project->items();
                 $data['links'] = $project;
                 return view('adminpanel.project.action_items.action_items_list')->with($data);
+                break;
+            default:
+                break;
+        }
+    }
+
+    public function physical_target_content(Request $request){
+        $action = $request->action;
+        $data ['action'] = $action;
+        $output = [];
+        switch ($action) {
+            case 'status_content':
+                $where = array();
+                $id = $request->physical_target_id != '' ? $request->physical_target_id : '';
+                $per_page = $request->select_limit != '' ? $request->select_limit : 10;
+                $project = DB::table('tbl_physical_target_status')
+                    ->select('tbl_physical_target_status.id',
+                        'tbl_physical_target_status.project_id',
+                        'tbl_physical_target_status.physical_target_id',
+                        'tbl_physical_target_status.date',
+                        'tbl_physical_target_status.pace',
+                        'tbl_physical_target_status.status')
+                //    ->groupBy('tbl_physical_target_status.id')
+                    ->orderBy('tbl_physical_target_status.id', 'DESC')
+                    ->where('tbl_physical_target_status.physical_target_id', '=',   $id )
+                    ->paginate($per_page);
+
+                $data['result'] = $project->items();
+                $data['links'] = $project;
+                return view('adminpanel.project.monitoring.physical_target_status_list')->with($data);
+                break;
+            case 'financial_progress_content':
+                $where = array();
+                $id = $request->physical_target_id != '' ? $request->physical_target_id : '';
+                $per_page = $request->select_limit != '' ? $request->select_limit : 10;
+                $project = DB::table('tbl_physical_target')
+                    ->select('tbl_physical_target.id',
+                        'tbl_physical_target.project_id',
+                        'tbl_physical_target.fiscal_year',
+                        'tbl_physical_target.component_id',
+                        'tbl_physical_target.component',
+                        'tbl_physical_target.physical_description',
+                        'tbl_physical_target.amount',
+                        'tbl_physical_target.start_date',
+                        'tbl_physical_target.end_date',
+                        'tbl_physical_target.status')
+                    //    ->groupBy('tbl_physical_target.id')
+                    ->orderBy('tbl_physical_target.id', 'DESC')
+                    ->where('tbl_physical_target.id', '=',   $id )
+                    ->paginate($per_page);
+
+                $data['result'] = $project->items();
+                $data['links'] = $project;
+                return view('adminpanel.project.monitoring.list')->with($data);
+                break;
+            case 'physical_progress_content':
+                $where = array();
+                $id = $request->physical_target_id != '' ? $request->physical_target_id : '';
+                $per_page = $request->select_limit != '' ? $request->select_limit : 10;
+                $project = DB::table('tbl_physical_target')
+                    ->select('tbl_physical_target.id',
+                        'tbl_physical_target.project_id',
+                        'tbl_physical_target.fiscal_year',
+                        'tbl_physical_target.component_id',
+                        'tbl_physical_target.component',
+                        'tbl_physical_target.physical_description',
+                        'tbl_physical_target.amount',
+                        'tbl_physical_target.start_date',
+                        'tbl_physical_target.end_date',
+                        'tbl_physical_target.status')
+                    //    ->groupBy('tbl_physical_target.id')
+                    ->orderBy('tbl_physical_target.id', 'DESC')
+                    ->where('tbl_physical_target.id', '=',   $id )
+                    ->paginate($per_page);
+
+                $data['result'] = $project->items();
+                $data['links'] = $project;
+                return view('adminpanel.project.monitoring.list')->with($data);
                 break;
             default:
                 break;

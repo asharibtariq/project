@@ -10,7 +10,7 @@
                         <h4>Project Details</h4>
                     </div>
                     <div class="card-body">
-                        @include('adminpanel.project.status.project_details')
+                        @include('adminpanel.project.monitoring.project_details')
                         @if(Session::has('success'))
                              <div class="alert alert-success">{{Session::get('success')}}</div><br/>
                         @endif
@@ -29,7 +29,7 @@
                                 <div class="dataTables_length" id="sample_1_length">
                                     <label>
                                         <select id="select_limit" name="sample_1_length" aria-controls="sample_1" class="form-control input-sm input-xsmall input-inline">
-                                            <option value="1">10</option>
+                                            <option value="10">10</option>
                                             <option value="20">20</option>
                                             <option value="50">50</option>
                                             <option value="100">100</option>
