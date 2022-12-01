@@ -12,6 +12,7 @@ class ProjectFyUtilization extends Model
     protected $fillable = [
         'id',
         'project_id',
+        'project_name',
         'fiscal_year',
         'quarter',
         'fy_date',

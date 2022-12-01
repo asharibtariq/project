@@ -13,6 +13,7 @@ class ProjectDirector extends Model
     protected $fillable = [
         'id',
         'project_id',
+        'project_name',
         'name',
         'address',
         'email',

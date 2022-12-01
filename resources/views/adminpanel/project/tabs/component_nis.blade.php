@@ -31,6 +31,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <input type="hidden" name="project_id" value="{{$project_id}}" />
+                                        <input type="hidden" name="project_name" value="{{$project->name}}" />
                                         <label for="fiscal_year">FY</label>
                                         {!! $fiscal_year_select !!}
                                         @if ($errors->has('fiscal_year'))

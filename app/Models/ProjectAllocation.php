@@ -12,6 +12,7 @@ class ProjectAllocation extends Model{
     protected $fillable = [
         'id',
         'project_id',
+        'project_name',
         'fiscal_year',
         'alloc_date',
         'alloc_amount',

@@ -12,6 +12,7 @@ class ProjectEndOfFy extends Model
     protected $fillable = [
         'id',
         'project_id',
+        'project_name',
         'fiscal_year',
         'date',
         'local_amount_surrender',

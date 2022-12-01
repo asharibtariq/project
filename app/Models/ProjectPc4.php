@@ -12,6 +12,7 @@ class ProjectPc4 extends Model
     protected $fillable = [
         'id',
         'project_id',
+        'project_name',
         'preparation_status',
         'preparation_remarks',
         'planning_status',

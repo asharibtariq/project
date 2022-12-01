@@ -41,6 +41,7 @@
                                     <label
                                         for="exampleFormControlSelect1">Status</label>
                                     <input type="hidden" name="project_id" value="{{$project_id}}" />
+                                    <input type="hidden" name="project_name" value="{{$project->name}}" />
                                     <select name="preparation_status" class="form-control select2"
                                             id="exampleFormControlSelect1">
                                         <option value="Complete">Complete</option>

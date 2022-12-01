@@ -33,6 +33,7 @@
                                         <label>Name</label>
                                         <input type="text" name="name" id="name" class="form-control" placeholder="Name" required>
                                         <input type="hidden" id="project_id" name="project_id" value="{{$project_id}}" />
+                                        <input type="hidden" id="project_name" name="project_name" value="{{$project->name}}" />
                                     </div>
                                 </div>
                                 <div class="col-md-4">

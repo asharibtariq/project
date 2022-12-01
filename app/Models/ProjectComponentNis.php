@@ -12,6 +12,7 @@ class ProjectComponentNis extends Model
     protected $fillable = [
         'id',
         'project_id',
+        'project_name',
         'fiscal_year',
         'component_id',
         'component',
