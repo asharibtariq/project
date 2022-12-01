@@ -139,6 +139,8 @@ Route::get('ongoing_physical_targets_status/{id}', [\App\Http\Controllers\Projec
 
 // Project Summary
 Route::get('action_items/{id}', [\App\Http\Controllers\ProjectController::class, 'action_items']);
+Route::get('add_action_item/{id}', [\App\Http\Controllers\ProjectProfileController::class, 'add_action_item']);
+Route::post('add_action_item', [\App\Http\Controllers\ProjectProfileController::class, 'store_action_item']);
 Route::get('project_summary/{id}', [\App\Http\Controllers\ProjectController::class, 'summary']);
 
 // Project Monitoring

@@ -148,6 +148,32 @@ class ProjectController extends Controller{
         return view('adminpanel.project.action_items.action_items',$data)->with('title', $title);
     }
 
+    public function add_action_item($id){
+        $title = "Action Items";
+        $data['physical_target_id'] = $id;
+        $data['physical_target'] = ProjectPhysicalTarget::findOrFail($id);
+        $data['project_id'] = $data['physical_target']['project_id'];
+        $data['project'] = Project::findOrFail($data['physical_target']['project_id']);
+        return view('adminpanel.project.action_items.add_action_item',$data)->with('title', $title);
+    }
+
+    public function store_action_item(Request $request){
+        $userId = Auth::id();
+        $insertData = $request->all();
+        $rules = [
+            'action_item' => 'required',
+            'assigned_to' => 'required'
+        ];
+        $customMessages = [
+            'required' => 'The :attribute field is required.'
+        ];
+        $this->validate($request, $rules, $customMessages);
+        $insertData['created_by'] = $userId;
+        $insertData['updated_by'] = $userId;
+        ProjectPhysicalTarget::create($insertData);
+        return redirect('action_items/'.$request['physical_target_id'])->with('success', 'Record Added Successfully');
+    }
+
     public function summary($id){
         $title = "Project Summary";
         $data['project_id'] = $id;
