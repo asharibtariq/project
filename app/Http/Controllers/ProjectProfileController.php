@@ -32,7 +32,7 @@ class ProjectProfileController extends Controller
         $data['project'] = Project::findOrFail($id);
         $data['designation_select'] = get_designation();
         $data['organization_select'] = get_organization();
-        return view('adminpanel.project.tabs.project_director', $data)->with('title', $title);
+        return view('adminpanel.project.profile.project_director', $data)->with('title', $title);
     }
     public function add_project_director(Request $request){
         $userId = Auth::id();
@@ -58,7 +58,7 @@ class ProjectProfileController extends Controller
         $data['currency_select'] = get_currency($project->currency_id);
         $data['component_select'] = get_component($project->component_id);
         $data['project'] = $project;
-        return view('adminpanel.project.tabs.edit_project_director', $data)->with('title', $title);
+        return view('adminpanel.project.profile.edit_project_director', $data)->with('title', $title);
     }
 
     public function update_project_director(Request $request,$id){
@@ -79,7 +79,7 @@ class ProjectProfileController extends Controller
         $data['project_id'] = $id;
         $data['project'] = Project::findOrFail($id);
         $data['currency_select'] = get_currency();
-        return view('adminpanel.project.tabs.allocation', $data)->with('title', $title);
+        return view('adminpanel.project.profile.allocation', $data)->with('title', $title);
     }
 
     public function add_allocation(Request $request){
@@ -106,7 +106,7 @@ class ProjectProfileController extends Controller
         $data['currency_select'] = get_currency($project->currency_id);
         $data['component_select'] = get_component($project->component_id);
         $data['project'] = $project;
-        return view('adminpanel.project.tabs.edit_project_allocation', $data)->with('title', $title);
+        return view('adminpanel.project.profile.edit_project_allocation', $data)->with('title', $title);
     }
 
     public function update_allocation(Request $request,$id){
@@ -127,7 +127,7 @@ class ProjectProfileController extends Controller
         $data['currency_select'] = get_currency();
         $data['project_id'] = $id;
         $data['project'] = Project::findOrFail($id);
-        return view('adminpanel.project.tabs.release', $data)->with('title', $title);
+        return view('adminpanel.project.profile.release', $data)->with('title', $title);
     }
 
     public function add_release(Request $request){
@@ -154,7 +154,7 @@ class ProjectProfileController extends Controller
         $data['currency_select'] = get_currency($project->currency_id);
         $data['component_select'] = get_component($project->component_id);
         $data['project'] = $project;
-        return view('adminpanel.project.tabs.edit_release', $data)->with('title', $title);
+        return view('adminpanel.project.profile.edit_release', $data)->with('title', $title);
     }
 
     public function update_release(Request $request,$id){
@@ -176,7 +176,7 @@ class ProjectProfileController extends Controller
         $data['project_id'] = $id;
         $data['project'] = Project::findOrFail($id);
         $data['component_select'] = get_component();
-        return view('adminpanel.project.tabs.component_pc1', $data)->with('title', $title);
+        return view('adminpanel.project.profile.component_pc1', $data)->with('title', $title);
     }
     public function add_component_pc1(Request $request){
         $userId = Auth::id();
@@ -202,7 +202,7 @@ class ProjectProfileController extends Controller
         $data['currency_select'] = get_currency($project->currency_id);
         $data['component_select'] = get_component($project->component_id);
         $data['project'] = $project;
-        return view('adminpanel.project.tabs.edit_component_pc1', $data)->with('title', $title);
+        return view('adminpanel.project.profile.edit_component_pc1', $data)->with('title', $title);
     }
 
     public function update_component_pc1(Request $request,$id){
@@ -224,7 +224,7 @@ class ProjectProfileController extends Controller
         $data['project_id'] = $id;
         $data['project'] = Project::findOrFail($id);
         $data['component_select'] = get_component();
-        return view('adminpanel.project.tabs.component_nis', $data)->with('title', $title);
+        return view('adminpanel.project.profile.component_nis', $data)->with('title', $title);
     }
     public function add_component_nis(Request $request){
         $userId = Auth::id();
@@ -250,7 +250,7 @@ class ProjectProfileController extends Controller
         $data['currency_select'] = get_currency($project->currency_id);
         $data['component_select'] = get_component($project->component_id);
         $data['project'] = $project;
-        return view('adminpanel.project.tabs.edit_component_nis', $data)->with('title', $title);
+        return view('adminpanel.project.profile.edit_component_nis', $data)->with('title', $title);
     }
 
     public function update_component_nis(Request $request,$id){
@@ -274,7 +274,7 @@ class ProjectProfileController extends Controller
         $data['project_id'] = $id;
         $data['project'] = Project::findOrFail($id);
         $data['component_select'] = get_component();
-        return view('adminpanel.project.tabs.fy_util', $data)->with('title', $title);
+        return view('adminpanel.project.profile.fy_util', $data)->with('title', $title);
     }
     public function add_fy_util(Request $request){
         $userId = Auth::id();
@@ -300,7 +300,7 @@ class ProjectProfileController extends Controller
         $data['currency_select'] = get_currency($project->currency_id);
         $data['component_select'] = get_component($project->component_id);
         $data['project'] = $project;
-        return view('adminpanel.project.tabs.edit_fy_util', $data)->with('title', $title);
+        return view('adminpanel.project.profile.edit_fy_util', $data)->with('title', $title);
     }
 
     public function update_fy_util(Request $request,$id){
@@ -322,7 +322,7 @@ class ProjectProfileController extends Controller
         $data['project_id'] = $id;
         $data['project'] = Project::findOrFail($id);
         $data['component_select'] = get_component();
-        return view('adminpanel.project.tabs.physical_target', $data)->with('title', $title);
+        return view('adminpanel.project.profile.physical_target', $data)->with('title', $title);
     }
 
     public function add_physical_target(Request $request){
@@ -349,7 +349,7 @@ class ProjectProfileController extends Controller
         $data['currency_select'] = get_currency($project->currency_id);
         $data['component_select'] = get_component($project->component_id);
         $data['project'] = $project;
-        return view('adminpanel.project.tabs.edit_physical_target', $data)->with('title', $title);
+        return view('adminpanel.project.profile.edit_physical_target', $data)->with('title', $title);
     }
 
     public function update_physical_target(Request $request,$id){
@@ -369,7 +369,7 @@ class ProjectProfileController extends Controller
         $data['project_id'] = $id;
         $data['project'] = Project::findOrFail($id);
         $data['current_page'] = request()->segment(1);
-        return view('adminpanel.project.tabs.pc4', $data)->with('title', $title);
+        return view('adminpanel.project.profile.pc4', $data)->with('title', $title);
     }
     public function add_pc4(Request $request)
     {
@@ -399,7 +399,7 @@ class ProjectProfileController extends Controller
         $data['fiscal_year_select'] = get_fiscal_year();
         $data['currency_select_surrender'] = get_currency(0,'','currency_id_surrender');
         $data['currency_select_lapsed'] = get_currency(0,'','currency_id_lapsed');
-        return view('adminpanel.project.tabs.end_of_fy', $data)->with('title', $title);
+        return view('adminpanel.project.profile.end_of_fy', $data)->with('title', $title);
     }
     public function add_end_of_fy(Request $request){
         $userId = Auth::id();

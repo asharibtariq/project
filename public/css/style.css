@@ -8379,7 +8379,7 @@ table.dataTable tbody > tr.selected td.select-checkbox:after, table.dataTable tb
     text-align: center;
 }
 
-/* Tabbable tabs */
+/* Tabbable profile */
 /* Hide tabbable panes to start, show them when .active */
 .tab-content {
     padding: 35px 30px;

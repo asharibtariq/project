@@ -196,7 +196,7 @@ class AjaxController extends Controller{
 
                 $data['result'] = $project->items();
                 $data['links'] = $project;
-                return view('adminpanel.project.tabs.allocation_list')->with($data);
+                return view('adminpanel.project.profile.allocation_list')->with($data);
                 break;
             case 'release_content':
                 $where = array();
@@ -224,7 +224,7 @@ class AjaxController extends Controller{
 
                 $data['result'] = $project->items();
                 $data['links'] = $project;
-                return view('adminpanel.project.tabs.release_list')->with($data);
+                return view('adminpanel.project.profile.release_list')->with($data);
                 break;
             case 'component_content':
                 $where = array();
@@ -252,7 +252,7 @@ class AjaxController extends Controller{
 
                 $data['result'] = $project->items();
                 $data['links'] = $project;
-                return view('adminpanel.project.tabs.component_pc1_list')->with($data);
+                return view('adminpanel.project.profile.component_pc1_list')->with($data);
                 break;
             case 'component_nis_content':
                 $where = array();
@@ -280,7 +280,7 @@ class AjaxController extends Controller{
 
                 $data['result'] = $project->items();
                 $data['links'] = $project;
-                return view('adminpanel.project.tabs.component_nis_list')->with($data);
+                return view('adminpanel.project.profile.component_nis_list')->with($data);
                 break;
             case 'fy_util_content':
                 $where = array();
@@ -311,7 +311,7 @@ class AjaxController extends Controller{
 
                 $data['result'] = $project->items();
                 $data['links'] = $project;
-                return view('adminpanel.project.tabs.fy_util_list')->with($data);
+                return view('adminpanel.project.profile.fy_util_list')->with($data);
                 break;
             case 'physical_target_content':
                 $where = array();

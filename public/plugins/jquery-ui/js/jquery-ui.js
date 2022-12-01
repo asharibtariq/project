@@ -1,6 +1,6 @@
 /*! jQuery UI - v1.11.0 - 2014-06-26
 * http://jqueryui.com
-* Includes: core.js, widget.js, mouse.js, position.js, accordion.js, autocomplete.js, button.js, datepicker.js, dialog.js, draggable.js, droppable.js, effect.js, effect-blind.js, effect-bounce.js, effect-clip.js, effect-drop.js, effect-explode.js, effect-fade.js, effect-fold.js, effect-highlight.js, effect-puff.js, effect-pulsate.js, effect-scale.js, effect-shake.js, effect-size.js, effect-slide.js, effect-transfer.js, menu.js, progressbar.js, resizable.js, selectable.js, selectmenu.js, slider.js, sortable.js, spinner.js, tabs.js, tooltip.js
+* Includes: core.js, widget.js, mouse.js, position.js, accordion.js, autocomplete.js, button.js, datepicker.js, dialog.js, draggable.js, droppable.js, effect.js, effect-blind.js, effect-bounce.js, effect-clip.js, effect-drop.js, effect-explode.js, effect-fade.js, effect-fold.js, effect-highlight.js, effect-puff.js, effect-pulsate.js, effect-scale.js, effect-shake.js, effect-size.js, effect-slide.js, effect-transfer.js, menu.js, progressbar.js, resizable.js, selectable.js, selectmenu.js, slider.js, sortable.js, spinner.js, profile.js, tooltip.js
 * Copyright 2014 jQuery Foundation and other contributors; Licensed MIT */
 
 (function( factory ) {
@@ -14927,10 +14927,10 @@ var tabs = $.widget( "ui.tabs", {
 		this.running = false;
 
 		this.element
-			.addClass( "ui-tabs ui-widget ui-widget-content ui-corner-all" )
-			.toggleClass( "ui-tabs-collapsible", options.collapsible )
-			// Prevent users from focusing disabled tabs via click
-			.delegate( ".ui-tabs-nav > li", "mousedown" + this.eventNamespace, function( event ) {
+			.addClass( "ui-profile ui-widget ui-widget-content ui-corner-all" )
+			.toggleClass( "ui-profile-collapsible", options.collapsible )
+			// Prevent users from focusing disabled profile via click
+			.delegate( ".ui-profile-nav > li", "mousedown" + this.eventNamespace, function( event ) {
 				if ( $( this ).is( ".ui-state-disabled" ) ) {
 					event.preventDefault();
 				}
@@ -14941,7 +14941,7 @@ var tabs = $.widget( "ui.tabs", {
 			// We don't have to worry about focusing the previously focused
 			// element since clicking on a non-focusable element should focus
 			// the body anyway.
-			.delegate( ".ui-tabs-anchor", "focus" + this.eventNamespace, function() {
+			.delegate( ".ui-profile-anchor", "focus" + this.eventNamespace, function() {
 				if ( $( this ).closest( "li" ).is( ".ui-state-disabled" ) ) {
 					this.blur();
 				}
@@ -14950,7 +14950,7 @@ var tabs = $.widget( "ui.tabs", {
 		this._processTabs();
 		options.active = this._initialActive();
 
-		// Take disabling tabs via class attribute from HTML
+		// Take disabling profile via class attribute from HTML
 		// into account and update option properly.
 		if ( $.isArray( options.disabled ) ) {
 			options.disabled = $.unique( options.disabled.concat(
@@ -15151,7 +15151,7 @@ var tabs = $.widget( "ui.tabs", {
 		this._super( key, value);
 
 		if ( key === "collapsible" ) {
-			this.element.toggleClass( "ui-tabs-collapsible", value );
+			this.element.toggleClass( "ui-profile-collapsible", value );
 			// Setting collapsible: false while collapsed; open first panel
 			if ( !value && this.options.active === false ) {
 				this._activate( 0 );
@@ -15175,7 +15175,7 @@ var tabs = $.widget( "ui.tabs", {
 		var options = this.options,
 			lis = this.tablist.children( ":has(a[href])" );
 
-		// get disabled tabs from class attribute from HTML
+		// get disabled profile from class attribute from HTML
 		// this will get converted to a boolean if needed in _refresh()
 		options.disabled = $.map( lis.filter( ".ui-state-disabled" ), function( tab ) {
 			return lis.index( tab );
@@ -15183,13 +15183,13 @@ var tabs = $.widget( "ui.tabs", {
 
 		this._processTabs();
 
-		// was collapsed or no tabs
+		// was collapsed or no profile
 		if ( options.active === false || !this.anchors.length ) {
 			options.active = false;
 			this.active = $();
 		// was active, but active tab is gone
 		} else if ( this.active.length && !$.contains( this.tablist[ 0 ], this.active[ 0 ] ) ) {
-			// all remaining tabs are disabled
+			// all remaining profile are disabled
 			if ( this.tabs.length === options.disabled.length ) {
 				options.active = false;
 				this.active = $();
@@ -15227,7 +15227,7 @@ var tabs = $.widget( "ui.tabs", {
 			this.tabs.eq( 0 ).attr( "tabIndex", 0 );
 		} else {
 			this.active
-				.addClass( "ui-tabs-active ui-state-active" )
+				.addClass( "ui-profile-active ui-state-active" )
 				.attr({
 					"aria-selected": "true",
 					"aria-expanded": "true",
@@ -15245,7 +15245,7 @@ var tabs = $.widget( "ui.tabs", {
 		var that = this;
 
 		this.tablist = this._getList()
-			.addClass( "ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all" )
+			.addClass( "ui-profile-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all" )
 			.attr( "role", "tablist" );
 
 		this.tabs = this.tablist.find( "> li:has(a[href])" )
@@ -15258,7 +15258,7 @@ var tabs = $.widget( "ui.tabs", {
 		this.anchors = this.tabs.map(function() {
 				return $( "a", this )[ 0 ];
 			})
-			.addClass( "ui-tabs-anchor" )
+			.addClass( "ui-profile-anchor" )
 			.attr({
 				role: "presentation",
 				tabIndex: -1
@@ -15295,7 +15295,7 @@ var tabs = $.widget( "ui.tabs", {
 				that.panels = that.panels.add( panel );
 			}
 			if ( originalAriaControls ) {
-				tab.data( "ui-tabs-aria-controls", originalAriaControls );
+				tab.data( "ui-profile-aria-controls", originalAriaControls );
 			}
 			tab.attr({
 				"aria-controls": panelId,
@@ -15305,7 +15305,7 @@ var tabs = $.widget( "ui.tabs", {
 		});
 
 		this.panels
-			.addClass( "ui-tabs-panel ui-widget-content ui-corner-bottom" )
+			.addClass( "ui-profile-panel ui-widget-content ui-corner-bottom" )
 			.attr( "role", "tabpanel" );
 	},
 
@@ -15318,7 +15318,7 @@ var tabs = $.widget( "ui.tabs", {
 		return $( "<div>" )
 			.attr( "id", id )
 			.addClass( "ui-tabs-panel ui-widget-content ui-corner-bottom" )
-			.data( "ui-tabs-destroy", true );
+			.data( "ui-profile-destroy", true );
 	},
 
 	_setupDisabled: function( disabled ) {
@@ -15330,7 +15330,7 @@ var tabs = $.widget( "ui.tabs", {
 			}
 		}
 
-		// disable tabs
+		// disable profile
 		for ( var i = 0, li; ( li = this.tabs[ i ] ); i++ ) {
 			if ( disabled === true || $.inArray( i, disabled ) !== -1 ) {
 				$( li )
@@ -15424,7 +15424,7 @@ var tabs = $.widget( "ui.tabs", {
 
 		if ( tab.hasClass( "ui-state-disabled" ) ||
 				// tab is already loading
-				tab.hasClass( "ui-tabs-loading" ) ||
+				tab.hasClass( "ui-profile-loading" ) ||
 				// can't switch durning an animation
 				this.running ||
 				// click on active header, but not collapsible
@@ -15451,7 +15451,7 @@ var tabs = $.widget( "ui.tabs", {
 		this._toggle( event, eventData );
 	},
 
-	// handles show/hide for selecting tabs
+	// handles show/hide for selecting profile
 	_toggle: function( event, eventData ) {
 		var that = this,
 			toShow = eventData.newPanel,
@@ -15465,7 +15465,7 @@ var tabs = $.widget( "ui.tabs", {
 		}
 
 		function show() {
-			eventData.newTab.closest( "li" ).addClass( "ui-tabs-active ui-state-active" );
+			eventData.newTab.closest( "li" ).addClass( "ui-profile-active ui-state-active" );
 
 			if ( toShow.length && that.options.show ) {
 				that._show( toShow, that.options.show, complete );
@@ -15478,11 +15478,11 @@ var tabs = $.widget( "ui.tabs", {
 		// start out by hiding, then showing, then completing
 		if ( toHide.length && this.options.hide ) {
 			this._hide( toHide, this.options.hide, function() {
-				eventData.oldTab.closest( "li" ).removeClass( "ui-tabs-active ui-state-active" );
+				eventData.oldTab.closest( "li" ).removeClass( "ui-profile-active ui-state-active" );
 				show();
 			});
 		} else {
-			eventData.oldTab.closest( "li" ).removeClass( "ui-tabs-active ui-state-active" );
+			eventData.oldTab.closest( "li" ).removeClass( "ui-profile-active ui-state-active" );
 			toHide.hide();
 			show();
 		}
@@ -15492,7 +15492,7 @@ var tabs = $.widget( "ui.tabs", {
 			"aria-selected": "false",
 			"aria-expanded": "false"
 		});
-		// If we're switching tabs, remove the old tab from the tab order.
+		// If we're switching profile, remove the old tab from the tab order.
 		// If we're opening from collapsed state, remove the previous tab from the tab order.
 		// If we're collapsing, then keep the collapsing tab in the tab order.
 		if ( toShow.length && toHide.length ) {
@@ -15526,7 +15526,7 @@ var tabs = $.widget( "ui.tabs", {
 			active = this.active;
 		}
 
-		anchor = active.find( ".ui-tabs-anchor" )[ 0 ];
+		anchor = active.find( ".ui-profile-anchor" )[ 0 ];
 		this._eventHandler({
 			target: anchor,
 			currentTarget: anchor,
@@ -15552,25 +15552,25 @@ var tabs = $.widget( "ui.tabs", {
 			this.xhr.abort();
 		}
 
-		this.element.removeClass( "ui-tabs ui-widget ui-widget-content ui-corner-all ui-tabs-collapsible" );
+		this.element.removeClass( "ui-profile ui-widget ui-widget-content ui-corner-all ui-profile-collapsible" );
 
 		this.tablist
-			.removeClass( "ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all" )
+			.removeClass( "ui-profile-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all" )
 			.removeAttr( "role" );
 
 		this.anchors
-			.removeClass( "ui-tabs-anchor" )
+			.removeClass( "ui-profile-anchor" )
 			.removeAttr( "role" )
 			.removeAttr( "tabIndex" )
 			.removeUniqueId();
 
 		this.tabs.add( this.panels ).each(function() {
-			if ( $.data( this, "ui-tabs-destroy" ) ) {
+			if ( $.data( this, "ui-profile-destroy" ) ) {
 				$( this ).remove();
 			} else {
 				$( this )
 					.removeClass( "ui-state-default ui-state-active ui-state-disabled " +
-						"ui-corner-top ui-corner-bottom ui-widget-content ui-tabs-active ui-tabs-panel" )
+						"ui-corner-top ui-corner-bottom ui-widget-content ui-profile-active ui-profile-panel" )
 					.removeAttr( "tabIndex" )
 					.removeAttr( "aria-live" )
 					.removeAttr( "aria-busy" )
@@ -15584,11 +15584,11 @@ var tabs = $.widget( "ui.tabs", {
 
 		this.tabs.each(function() {
 			var li = $( this ),
-				prev = li.data( "ui-tabs-aria-controls" );
+				prev = li.data( "ui-profile-aria-controls" );
 			if ( prev ) {
 				li
 					.attr( "aria-controls", prev )
-					.removeData( "ui-tabs-aria-controls" );
+					.removeData( "ui-profile-aria-controls" );
 			} else {
 				li.removeAttr( "aria-controls" );
 			}
@@ -15650,7 +15650,7 @@ var tabs = $.widget( "ui.tabs", {
 		index = this._getIndex( index );
 		var that = this,
 			tab = this.tabs.eq( index ),
-			anchor = tab.find( ".ui-tabs-anchor" ),
+			anchor = tab.find( ".ui-profile-anchor" ),
 			panel = this._getPanelForTab( tab ),
 			eventData = {
 				tab: tab,
@@ -15668,7 +15668,7 @@ var tabs = $.widget( "ui.tabs", {
 		// jQuery <1.8 returns false if the request is canceled in beforeSend,
 		// but as of 1.8, $.ajax() always returns a jqXHR object.
 		if ( this.xhr && this.xhr.statusText !== "canceled" ) {
-			tab.addClass( "ui-tabs-loading" );
+			tab.addClass( "ui-profile-loading" );
 			panel.attr( "aria-busy", "true" );
 
 			this.xhr
@@ -15688,7 +15688,7 @@ var tabs = $.widget( "ui.tabs", {
 							that.panels.stop( false, true );
 						}
 
-						tab.removeClass( "ui-tabs-loading" );
+						tab.removeClass( "ui-profile-loading" );
 						panel.removeAttr( "aria-busy" );
 
 						if ( jqXHR === that.xhr ) {
