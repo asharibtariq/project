@@ -177,10 +177,7 @@ class ProjectController extends Controller{
     public function summary($id){
         $title = "Project Summary";
         $data['project_id'] = $id;
-        $data['designation_select'] = get_designation();
-        $data['fiscal_year_select'] = get_fiscal_year();
-        $data['executiveagency_select'] = get_executiveagency();
-        $data['currency_select'] = get_currency();
+        $data['project'] = Project::findOrFail($id);
         return view('adminpanel.project.project_summary',$data)->with('title', $title);
     }
 
