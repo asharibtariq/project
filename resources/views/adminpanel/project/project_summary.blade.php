@@ -15,7 +15,7 @@
                 <br/>
                 <div class="card">
                     <div class="card-header">
-                        <h4>Project Profile</h4>
+                        <h4>Project Details</h4>
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -39,8 +39,31 @@
                                 <h4><strong class="text-muted">Forum:</strong> <span class="float-right">{{$project->forum}}</span></h4>
                                 <h4><strong class="text-muted">End Date:</strong> <span class="float-right">{{$project->end_date}}</span></h4>
                             </div>
-                            
-                            <h6> 10. Fiscal Year Wise Allocation (one row will be added for every change in amount allocated):</h6>
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> {{--Project Details--}}
+        <div class="row">
+            <div class="col-md-12">
+                <br/>
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Project Profile</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+
+                            @php
+                                $fiscal_year_start = $project->fiscal_year - 1;
+                                $fiscal_year = $fiscal_year_start." - ".$project->fiscal_year;
+                            @endphp
+
+
+                            <h6> {{--10.--}} Fiscal Year Wise Allocation </h6>
                             <div class="highcharts-description table-responsive">
                                 <table class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline"
                                        id="sample_1" role="grid"
@@ -78,7 +101,7 @@
                                 </table>
                             </div>
 
-                            <h6> 11. Fiscal Year Wise Release (one row will be added for every release):</h6>
+                            <h6> {{--11.--}} Fiscal Year Wise Release </h6>
                             <div class="highcharts-description table-responsive">
                                 <table class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline"
                                        id="sample_1" role="grid"
@@ -120,7 +143,7 @@
                                 </table>
                             </div>
 
-                            <h6> 12. Fiscal Year Wise Utilization (one row will be added for each amount utilized):</h6>
+                            <h6> {{--12.--}} Fiscal Year Wise Utilization </h6>
                             <div class="highcharts-description table-responsive">
                                 <table class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline"
                                        id="sample_1" role="grid"
@@ -166,7 +189,7 @@
                                 </table>
                             </div>
 
-                            <h6> 13. Component Wise Breakup of Approved Budget in PC1</h6>
+                            <h6> {{--13.--}} Component Wise Breakup of Approved Budget in PC1</h6>
                             <div class="highcharts-description table-responsive">
                                 <table class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline"
                                        id="sample_1" role="grid"
@@ -202,7 +225,7 @@
                                 </table>
                             </div>
 
-                            <h6> 14. Year wise breakup of budget as per NIS</h6>
+                            <h6> {{--14.--}} Year wise breakup of budget as per NIS</h6>
                             <div class="highcharts-description table-responsive">
                                 <table class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline"
                                        id="sample_1" role="grid"
@@ -238,7 +261,7 @@
                                 </table>
                             </div>
 
-                            <h6> 15. Project Physical Targets: </h6>
+                            <h6> {{--15.--}} Project Physical Targets </h6>
                             <div class="highcharts-description table-responsive">
                                 <table class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline"
                                        id="sample_1" role="grid"
@@ -284,7 +307,7 @@
                                 </table>
                             </div>
 
-                            <h6> 16. PC-4 Details:</h6>
+                            <h6> {{--16.--}} PC-4 Details</h6>
                             <div class="highcharts-description table-responsive">
                                 <table class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline"
                                        id="sample_1" role="grid"
@@ -342,7 +365,7 @@
                                 </table>
                             </div>
 
-                            <h6> 17. End of Fiscal Year (Only one row will be added at the end of fiscal year):</h6>
+                            <h6> {{--17. --}}End of Fiscal Year</h6>
                             <div class="highcharts-description table-responsive">
                                 <table class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline"
                                        id="sample_1" role="grid"
@@ -397,7 +420,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>{{--Project Profile--}}
         <div class="row">
             <div class="col-md-12">
                 <br/>
@@ -410,7 +433,7 @@
 
 
 
-                            <h6> 18. Completed Physical Targets: </h6>
+                            <h6> {{--18. --}}Completed Physical Targets </h6>
                             <div class="highcharts-description table-responsive">
                                 <table class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline"
                                        id="sample_1" role="grid"
@@ -461,7 +484,7 @@
                                 </table>
                             </div>
 
-                            <h6> 19. Previous Physical Targets not achieved till to date:</h6>
+                            <h6> {{--19. --}}Previous Physical Targets not achieved till to date</h6>
                             <div class="highcharts-description table-responsive">
                                 <table class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline"
                                        id="sample_1" role="grid"
@@ -512,7 +535,7 @@
                                 </table>
                             </div>
 
-                            <h6> 20. Ongoing Physical Targets:</h6>
+                            <h6> {{--20. --}}Ongoing Physical Targets</h6>
                             <div class="highcharts-description table-responsive">
                                 <table class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline"
                                        id="sample_1" role="grid"
@@ -561,7 +584,7 @@
                                 </table>
                             </div>
 
-                            <h6> 21. Financial Progress:</h6>
+                            <h6> {{--21.--}} Financial Progress</h6>
                             <div class="highcharts-description table-responsive">
                                 <table class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline"
                                        id="sample_1" role="grid"
@@ -606,7 +629,7 @@
                                 </table>
                             </div>
 
-                            <h6> 22. Physical Progress:</h6>
+                            <h6> {{--22. --}}Physical Progress</h6>
                             <div class="highcharts-description table-responsive">
                                 <table class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline"
                                        id="sample_1" role="grid"
@@ -660,7 +683,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>{{--Project Status--}}
         <div class="row">
             <div class="col-md-12">
                 <br/>
@@ -672,8 +695,8 @@
                         <div class="row">
 
 
-                            <h6> 23. Ongoing Physical Targets. Fill following segments (a to e) for each on going Physical Target:</h6>
-                            <h6> a. Physical Target description (only one Physical Target)  </h6>
+                            <h6> {{--23.--}} Ongoing Physical Targets.</h6>
+                            <h6> {{--a.--}} Physical Target description</h6>
                             <div class="highcharts-description table-responsive">
                                 <table class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline"
                                        id="sample_1" role="grid"
@@ -721,7 +744,7 @@
                             </div>
 
 
-                            <h6> b. Physical Target Status (one row will be added in every monitoring cycle) </h6>
+                            <h6> {{--b.--}} Physical Target Status </h6>
                             <div class="highcharts-description table-responsive">
                                 <table class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline"
                                        id="sample_1" role="grid"
@@ -759,7 +782,7 @@
                             </div>
 
 
-                            <h6> c. Financial Progress (one row will be added in every monitoring cycle) </h6>
+                            <h6> {{--c.--}} Financial Progress </h6>
                             <div class="highcharts-description table-responsive">
                                 <table class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline"
                                        id="sample_1" role="grid"
@@ -809,7 +832,7 @@
                             </div>
 
 
-                            <h6> d. Physical Progress (one row will be added in every monitoring cycle)</h6>
+                            <h6> {{--d. --}}Physical Progress</h6>
                             <div class="highcharts-description table-responsive">
                                 <table class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline"
                                        id="sample_1" role="grid"
@@ -853,7 +876,7 @@
                             </div>
 
 
-                            <h6> e. Issues and suggestions (multiple rows may be added in every monitoring cycle): </h6>
+                            <h6>{{-- e.--}} Issues and suggestions  </h6>
                             <div class="highcharts-description table-responsive">
                                 <table class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline"
                                        id="sample_1" role="grid"
@@ -891,7 +914,7 @@
                             </div>
 
 
-                            <h6> f. Action Items (This section will be filled by P&D M/o NHSR&C) </h6>
+                            <h6> {{--f. --}}Action Items  </h6>
                             <div class="highcharts-description table-responsive">
                                 <table class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline"
                                        id="sample_1" role="grid"
@@ -941,7 +964,23 @@
                             </div>
 
 
-                            <h6> 24. Issues </h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>{{--Project Monitoring--}}
+        <div class="row">
+            <div class="col-md-12">
+                <br/>
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Issues & Suggestions</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+
+
+                            <h6> {{--24.--}} Issues </h6>
                             <div class="highcharts-description table-responsive">
                                 <table class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline"
                                        id="sample_1" role="grid"
@@ -972,7 +1011,7 @@
                                 </table>
                             </div>
 
-                            <h6> 25. Suggestions </h6>
+                            <h6> {{--25.--}} Suggestions </h6>
                             <div class="highcharts-description table-responsive">
                                 <table class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline"
                                        id="sample_1" role="grid"
@@ -1015,6 +1054,6 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>{{--Issues/Suggestions--}}
     </div>
 @endsection
