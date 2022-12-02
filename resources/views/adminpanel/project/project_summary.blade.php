@@ -1,8 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
-
     <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div id="print-btn-div">
+                    <button id="print-btn" title="Print Summary" class="btn btn-sm btn-default float-right">
+                        <i class="fa fa-print"></i>
+                    </button>
+                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="print-summary">
         <div class="row">
             @if(Session::has('success'))
                 <div class="col-md-12">
@@ -26,30 +37,19 @@
                             @endphp
 
                             <div class="col-md-6">
-                                <h4><strong class="text-muted">Name:</strong> <span
-                                            class="float-right">{{$project->name}}</span></h4>
-                                <h4><strong class="text-muted">ID:</strong> <span
-                                            class="float-right">{{$project->psid}}</span></h4>
-                                <h4><strong class="text-muted">Approval Type:</strong> <span
-                                            class="float-right">{{$project->approval_type}}</span></h4>
-                                <h4><strong class="text-muted">Executive Agency:</strong> <span
-                                            class="float-right">{{$project->executiveagency}}</span></h4>
-                                <h4><strong class="text-muted">Start Date:</strong> <span
-                                            class="float-right">{{$project->start_date}}</span></h4>
+                                <h4><strong class="text-muted">Name:</strong> <span class="float-right">{{$project->name}}</span></h4>
+                                <h4><strong class="text-muted">ID:</strong> <span class="float-right">{{$project->psid}}</span></h4>
+                                <h4><strong class="text-muted">Approval Type:</strong> <span class="float-right">{{$project->approval_type}}</span></h4>
+                                <h4><strong class="text-muted">Executive Agency:</strong> <span class="float-right">{{$project->executiveagency}}</span></h4>
+                                <h4><strong class="text-muted">Start Date:</strong> <span class="float-right">{{$project->start_date}}</span></h4>
                             </div>
                             <div class="col-md-6">
-                                <h4><strong class="text-muted">PSDP:</strong> <span
-                                            class="float-right">{{$project->psdp}}</span></h4>
-                                <h4><strong class="text-muted">Fiscal Year:</strong> <span
-                                            class="float-right">{{$fiscal_year}}</span></h4>
-                                <h4><strong class="text-muted">Approval Date:</strong> <span
-                                            class="float-right">{{$project->approval_date}}</span></h4>
-                                <h4><strong class="text-muted">Forum:</strong> <span
-                                            class="float-right">{{$project->forum}}</span></h4>
-                                <h4><strong class="text-muted">End Date:</strong> <span
-                                            class="float-right">{{$project->end_date}}</span></h4>
+                                <h4><strong class="text-muted">PSDP:</strong> <span class="float-right">{{$project->psdp}}</span></h4>
+                                <h4><strong class="text-muted">Fiscal Year:</strong> <span class="float-right">{{$fiscal_year}}</span></h4>
+                                <h4><strong class="text-muted">Approval Date:</strong> <span class="float-right">{{$project->approval_date}}</span></h4>
+                                <h4><strong class="text-muted">Forum:</strong> <span class="float-right">{{$project->forum}}</span></h4>
+                                <h4><strong class="text-muted">End Date:</strong> <span class="float-right">{{$project->end_date}}</span></h4>
                             </div>
-
 
                         </div>
                     </div>
@@ -222,7 +222,7 @@
                                     <tr role="row">
                                         <th data-column-index="0"> Sr#</th>
                                         <th data-column-index="1"> Physcial Target Description</th>
-                                        <th data-column-index="3"> Status(Complete/incomplete)</th>
+                                        <th data-column-index="3"> Status</th>
                                         <th data-column-index="3"> Remarks</th>
                                     </thead>
                                     <tbody>
@@ -485,8 +485,8 @@
                                     <tr role="row">
                                         <th data-column-index="0"> Sr#</th>
                                         <th data-column-index="1"> Date</th>
-                                        <th data-column-index="3"> Pace (Slow/On track/Fast)</th>
-                                        <th data-column-index="3"> Status (In Process/Complete/Halted)</th>
+                                        <th data-column-index="3"> Pace</th>
+                                        <th data-column-index="3"> Status</th>
                                     </thead>
                                     <tbody>
                                     <tr role="row">
@@ -562,9 +562,9 @@
                                         <th data-column-index="1"> Date</th>
                                         <th data-column-index="3"> Component</th>
                                         <th data-column-index="3"> Action Item</th>
-                                        <th data-column-index="3"> Assigned to (if required)</th>
-                                        <th data-column-index="3"> Start Date (if required)</th>
-                                        <th data-column-index="3"> End Date (if required)</th>
+                                        <th data-column-index="3"> Assigned to</th>
+                                        <th data-column-index="3"> Start Date</th>
+                                        <th data-column-index="3"> End Date</th>
                                     </thead>
                                     <tbody>
                                     <tr role="row">
@@ -636,4 +636,13 @@
             </div>
         </div>{{--Issues/Suggestions--}}
     </div>
+
+    <script src="{{ asset('js/jquery.print.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            $('#print-btn').on('click', function () {
+                $.print("#print-summary");
+            });
+        });
+    </script>
 @endsection
