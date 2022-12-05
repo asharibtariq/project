@@ -10,6 +10,7 @@ use App\Models\ProjectDirector;
 use App\Models\ProjectFyUtilization;
 use App\Models\ProjectPc4;
 use App\Models\ProjectPhysicalTarget;
+use App\Models\ProjectPhysicalTargetActionItem;
 use App\Models\ProjectRelease;
 use Illuminate\Validation\Validator;
 use App\Http\Controllers\Controller;
@@ -154,6 +155,7 @@ class ProjectController extends Controller{
         $data['physical_target'] = ProjectPhysicalTarget::findOrFail($id);
         $data['project_id'] = $data['physical_target']['project_id'];
         $data['project'] = Project::findOrFail($data['physical_target']['project_id']);
+        $data['component_select'] = get_component();
         return view('adminpanel.project.action_items.add_action_item',$data)->with('title', $title);
     }
 
@@ -170,8 +172,15 @@ class ProjectController extends Controller{
         $this->validate($request, $rules, $customMessages);
         $insertData['created_by'] = $userId;
         $insertData['updated_by'] = $userId;
-        ProjectPhysicalTarget::create($insertData);
+        ProjectPhysicalTargetActionItem::create($insertData);
         return redirect('action_items/'.$request['physical_target_id'])->with('success', 'Record Added Successfully');
+    }
+
+    public function review_action_items($id){
+        $title = "Review Action Items";
+        $data['project_id'] = $id;
+        $data['project'] = Project::findOrFail($id);
+        return view('adminpanel.project.action_items.review_action_items',$data)->with('title', $title);
     }
 
     public function summary($id){

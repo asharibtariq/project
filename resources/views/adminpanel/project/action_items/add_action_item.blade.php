@@ -11,7 +11,7 @@
                     </div>
                     <div class="card-body">
                         <!-- Project Forms Tabs -->
-                        @include('adminpanel.project.detail_tabs')
+                        @include('adminpanel.project.action_items.project_details')
 
                         @if($errors->any())
                             @foreach($errors->all() as $error)
@@ -25,75 +25,30 @@
                             @endif
                         @endif
 
-                        <form name="" method="post" action="{{url('add_physical_target')}}">
+                        <form name="" method="post" action="{{url('add_action_item')}}">
                             @csrf
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <input type="hidden" name="project_id" value="{{$project_id}}" />
                                         <input type="hidden" name="project_name" value="{{$project->name}}" />
-                                        <label for="fiscal_year">FY</label>
-                                        {!! $fiscal_year_select !!}
-                                        @if ($errors->has('fiscal_year'))
-                                            <span class="text-danger">{{ $errors->first('fiscal_year') }}</span>
-                                        @endif
+                                        <input type="hidden" name="physical_target_id" value="{{$physical_target_id}}" />
+                                        <input type="hidden" name="component_id" value="{{$physical_target->component_id}}" />
+                                        <input type="hidden" name="component" value="{{$physical_target->component}}" />
+                                        <label>Component</label>
+                                        <label class="form-control">{{$physical_target->component}}</label>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="fiscal_year">Component</label>
-                                        {!! $component_select !!}
-                                        <input type="hidden" name="component" id="component" />
-                                        <a href="../add_component" type="button" class="btn btn-info btn-sm float-right m-1"><i class="feather icon-plus"></i>Add</a>
-                                        @if ($errors->has('component'))
-                                            <span class="text-danger">{{ $errors->first('component') }}</span>
-                                        @endif
-                                    </div>
-                                </div>
-
-
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label> Physical Target Description </label>
-                                        <textarea type="text" name="physical_description" class="form-control" placeholder="Physical Target Description"></textarea>
-                                    </div>
-                                </div>
-
-
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <br/>
-                                    <h4 class="text-muted">Allocated Budget</h4>
-                                    <hr/>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="exampleFormControlSelect1">Currency</label>
-                                        {!! $currency_select !!}
-                                        <input type="hidden" name="currency" id="currency" />
-                                        @if ($errors->has('currency'))
-                                            <span class="text-danger">{{ $errors->first('currency') }}</span>
-                                        @endif
+                                        <label for="action_item"> Action Item </label>
+                                        <input type="text" name="action_item" class="form-control" placeholder="Action Item">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Amount </label>
-                                        <input type="number" name="amount" class="form-control" placeholder="Amount">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label>Status </label>
-                                        <select name="target_status" id="target_status" class="form-control select2">
-                                            <option value="">Select</option>
-                                            <option value="complete">Complete</option>
-                                            <option value="ongoing">On Going</option>
-                                            <option value="not_achieve">Not Achieved</option>
-                                        </select>
+                                        <label for="assigned_to"> Assigned To </label>
+                                        <input type="text" name="assigned_to" class="form-control" placeholder="Assigned To">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
