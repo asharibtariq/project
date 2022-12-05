@@ -14,7 +14,7 @@
                         @include('adminpanel.project.status.project_details')
                         @include('adminpanel.project.status_tabs')
                         @if(Session::has('success'))
-                             <div class="alert alert-success">{{Session::get('success')}}</div><br/>
+                            <div class="alert alert-success">{{Session::get('success')}}</div><br/>
                         @endif
                         @if($errors->any())
                             @foreach($errors->all() as $error)
@@ -24,7 +24,7 @@
 
                         <div class="row">
                             <div class="col-md-12">
-                                <h4>Completed Targets</h4>
+                                <h4>On Going Physical Targets</h4>
                                 <br/>
                             </div>
                             <div class="col-md-2">

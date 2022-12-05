@@ -20,4 +20,20 @@ class ProjectStatusController extends Controller{
         return view('adminpanel.project.status.completed_physical_targets', $data)->with('title', $title);
     }
 
+    public function not_achieved_physical_targets($id){
+        $title = "Physical Targets";
+        $data['current_page'] = request()->segment(1);
+        $data['project_id'] = $id;
+        $data['project'] = Project::findOrFail($id);
+        return view('adminpanel.project.status.not_achieved_physical_targets', $data)->with('title', $title);
+    }
+
+    public function ongoing_physical_targets($id){
+        $title = "Physical Targets";
+        $data['current_page'] = request()->segment(1);
+        $data['project_id'] = $id;
+        $data['project'] = Project::findOrFail($id);
+        return view('adminpanel.project.status.ongoing_physical_targets', $data)->with('title', $title);
+    }
+
 }
