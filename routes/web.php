@@ -136,6 +136,11 @@ Route::post('update_end_of_fy/{id}', [\App\Http\Controllers\ProjectProfileContro
 Route::get('completed_physical_targets_status/{id}', [\App\Http\Controllers\ProjectStatusController::class, 'completed_physical_targets']);
 Route::get('not_achieved_physical_targets_status/{id}', [\App\Http\Controllers\ProjectStatusController::class, 'not_achieved_physical_targets']);
 Route::get('ongoing_physical_targets_status/{id}', [\App\Http\Controllers\ProjectStatusController::class, 'ongoing_physical_targets']);
+/* Issues & Suggestions */
+Route::get('add_issue_status/{id}', [\App\Http\Controllers\ProjectStatusController::class, 'create_issue']);
+Route::post('add_issue_status', [\App\Http\Controllers\ProjectStatusController::class, 'store_issue']);
+Route::get('add_suggestion_status/{id}', [\App\Http\Controllers\ProjectStatusController::class, 'create_suggestion']);
+Route::post('add_suggestion_status', [\App\Http\Controllers\ProjectStatusController::class, 'store_suggestion']);
 
 // Project Summary
 Route::get('action_items/{id}', [\App\Http\Controllers\ProjectController::class, 'action_items']);
