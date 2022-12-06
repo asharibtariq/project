@@ -27,20 +27,19 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
+                                        <label for="date">Date (<small class="text-mute">Optional</small>)</label>
+                                        <input type="text" name="date" class="form-control datepicker" placeholder="MM/DD/YYYY">
                                         <input type="hidden" name="project_id" value="{{$project_id}}" />
                                         <input type="hidden" name="project" value="{{$project->name}}" />
-                                        <label for="component_id">Component (<small class="text-mute">Optional</small>)</label>
-                                        {!! $component_select !!}
-                                        <input type="hidden" name="component" id="component" />
-                                        @if ($errors->has('component'))
-                                            <span class="text-danger">{{ $errors->first('component') }}</span>
-                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="description">Issue <span class="text-danger">*</span></label>
                                         <textarea name="description" class="form-control" placeholder="Issue"></textarea>
+                                        @if ($errors->has('description'))
+                                            <span class="text-danger">{{ $errors->first('description') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

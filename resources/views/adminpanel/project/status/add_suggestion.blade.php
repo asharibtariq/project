@@ -39,12 +39,6 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="date">Date (<small class="text-mute">Optional</small>)</label>
-                                        <input type="text" name="date" class="form-control datepicker" placeholder="MM/DD/YYYY">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
                                         <label for="description">Suggestion <span class="text-danger">*</span></label>
                                         <textarea name="description" class="form-control" placeholder="Suggestion"></textarea>
                                     </div>
