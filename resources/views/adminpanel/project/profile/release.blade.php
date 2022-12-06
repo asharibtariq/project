@@ -11,7 +11,7 @@
                     </div>
                     <div class="card-body">
                         <!-- Project Forms Tabs -->
-                        @include('adminpanel.project.detail_tabs')
+                        @include('adminpanel.project.profile_tabs')
 
                         @if($errors->any())
                             @foreach($errors->all() as $error)
