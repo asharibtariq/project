@@ -23,6 +23,10 @@ class ProjectPhysicalTarget extends Model
         'start_date',
         'end_date',
         'target_status',
+        'consumed_budget',
+        'act_start_date',
+        'act_end_date',
+        'reason',
         'status',
         'created_by',
         'updated_by'

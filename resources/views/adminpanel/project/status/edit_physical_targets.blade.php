@@ -24,7 +24,8 @@
                             @endif
                         @endif
 
-                        <form name="" method="post" action="{{url('update_physical_target', $project->id)}}">
+                        <h4>Physical Target Details</h4>
+                        <form name="" method="post" action="{{url('update_physical_targets', $project->id)}}">
                             @csrf
                             <div class="row">
                                 <div class="col-md-4">
@@ -90,9 +91,10 @@
                                     </div>
                                 </div>
                             </div>
-
+                        <h4> Edit Physical Target</h4>
+                            <div class="row">
                                 @if($project->target_status == 'complete')
-                                <div class="row">
+
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Consumed Budget</label>
@@ -143,8 +145,8 @@
                                             @endif
                                         </div>
                                     </div>
+                                    @endif
                                 </div>
-                                @endif
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group"><br/>
