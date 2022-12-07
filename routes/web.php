@@ -136,6 +136,8 @@ Route::post('update_end_of_fy/{id}', [\App\Http\Controllers\ProjectProfileContro
 Route::get('completed_physical_targets_status/{id}', [\App\Http\Controllers\ProjectStatusController::class, 'completed_physical_targets']);
 Route::get('not_achieved_physical_targets_status/{id}', [\App\Http\Controllers\ProjectStatusController::class, 'not_achieved_physical_targets']);
 Route::get('ongoing_physical_targets_status/{id}', [\App\Http\Controllers\ProjectStatusController::class, 'ongoing_physical_targets']);
+Route::get('financial_progress_status/{id}', [\App\Http\Controllers\ProjectStatusController::class, 'financial_progress']);
+Route::post('financial_progress_status', [\App\Http\Controllers\ProjectStatusController::class, 'add_financial_progress']);
 Route::get('edit_physical_targets/{id}', [\App\Http\Controllers\ProjectStatusController::class, 'edit_physical_targets']);
 Route::post('update_physical_targets/{id}', [\App\Http\Controllers\ProjectStatusController::class, 'update_physical_targets']);
 

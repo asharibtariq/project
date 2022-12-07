@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Project;
 use App\Models\ProjectIssues;
 use App\Models\ProjectPhysicalTarget;
+use App\Models\ProjectFinancialProgress;
+use App\Models\ProjectPhysicalProgress;
+use App\Models\ProjectPhysicalProgressMedia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -57,6 +60,34 @@ class ProjectStatusController extends Controller{
         //    pre($request->all(),1);
         $project->update($updateData);
         return redirect('completed_physical_target_status/'.$request['project_id'])->with('success', 'Project Physical Target Updated Successfully');
+    }
+
+    public function financial_progress($id){
+        $title = "Financial Progress";
+        $data['current_page'] = request()->segment(1);
+        $data['project_id'] = $id;
+        $data['project'] = Project::findOrFail($id);
+        $data['component_select'] = get_component();
+        return view('adminpanel.project.status.add_issue',$data)->with('title', $title);
+    }
+
+    public function add_financial_progress(Request $request){
+        $userId = Auth::id();
+        $insertData = $request->all();
+        $rules = [
+            'project' => 'required',
+            'description' => 'required'
+        ];
+        $customMessages = [
+            'required' => 'The :attribute field is required.'
+        ];
+        $this->validate($request, $rules, $customMessages);
+        $insertData['type'] = 'issue';
+        $insertData['created_by'] = $userId;
+        $insertData['updated_by'] = $userId;
+        ProjectIssues::create($insertData);
+    //    return redirect('add_issue_status')->with('success', 'Issue Added Successfully');
+        return redirect()->back()->with('success', 'Issue Added Successfully');
     }
 
     public function create_issue($id){
