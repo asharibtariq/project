@@ -36,7 +36,7 @@
                 <td> {{$r->end_date}}</td>
                 <td>
                     <div class="btn-group">
-                        <a onClick="return confirm('Are you sure you want to update?');" title="Edit" href="#" class="btn btn-info" id="btn-view"><i class="fa fa-edit"></i> </a>
+                        <a onClick="return confirm('Are you sure you want to update?');" title="Edit" href="{{url('edit_physical_targets', $r->id)}}" class="btn btn-info" id="btn-view"><i class="fa fa-edit"></i> </a>
                     </div>
                 </td>
             </tr>

@@ -91,7 +91,7 @@
                                 </div>
                             </div>
 
-                                @if($project->target_status == 'completed')
+                                @if($project->target_status == 'complete')
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
