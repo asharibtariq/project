@@ -342,14 +342,14 @@ class AjaxController extends Controller{
                         'tbl_physical_target.updated_at')
                     ->orderBy('tbl_physical_target.id', 'DESC')
                 //    ->where('tbl_physical_target.project_id', '=',   $id )
-                    ->where($where)
+//                    ->where($where)
                     ->paginate($per_page);
 
             //    dd(DB::getQueryLog());
 
                 $data['result'] = $project->items();
                 $data['links'] = $project;
-                return view('adminpanel.project.monitoring.ongoing_physical_target_list')->with($data);
+                return view('adminpanel.project.profile.physical_target_list')->with($data);
                 break;
             case 'physical_target_content_completed':
                 $where = array();
@@ -388,7 +388,7 @@ class AjaxController extends Controller{
 
                 $data['result'] = $project->items();
                 $data['links'] = $project;
-                return view('adminpanel.project.monitoring.ongoing_physical_target_list')->with($data);
+                return view('adminpanel.project.status.completed_physical_target_list')->with($data);
                 break;
             case 'physical_target_content_ongoing':
                 $where = array();
@@ -427,7 +427,7 @@ class AjaxController extends Controller{
 
                 $data['result'] = $project->items();
                 $data['links'] = $project;
-                return view('adminpanel.project.monitoring.ongoing_physical_target_list')->with($data);
+                return view('adminpanel.project.status.ongoing_physical_target_list')->with($data);
                 break;
             case 'physical_target_content_not_achieve':
                 $where = array();
@@ -466,7 +466,7 @@ class AjaxController extends Controller{
 
                 $data['result'] = $project->items();
                 $data['links'] = $project;
-                return view('adminpanel.project.monitoring.ongoing_physical_target_list')->with($data);
+                return view('adminpanel.project.status.not_achieved_physical_target_list')->with($data);
                 break;
             case 'action_items_content':
                 $where = array();

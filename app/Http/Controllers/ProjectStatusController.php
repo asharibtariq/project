@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use App\Models\ProjectIssues;
+use App\Models\ProjectPhysicalTarget;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -35,6 +36,27 @@ class ProjectStatusController extends Controller{
         $data['project_id'] = $id;
         $data['project'] = Project::findOrFail($id);
         return view('adminpanel.project.status.ongoing_physical_targets', $data)->with('title', $title);
+    }
+
+    public function edit_physical_targets($id){
+        $project = ProjectPhysicalTarget::findOrFail($id);
+        $title = "Edit Physical Target";
+        $data['fiscal_year_select'] = get_fiscal_year($project->fiscal_year);
+        $data['currency_select'] = get_currency($project->currency_id);
+        $data['component_select'] = get_component($project->component_id);
+        $data['project'] = $project;
+        return view('adminpanel.project.status.edit_physical_targets', $data)->with('title', $title);
+    }
+
+    public function update_physical_targets(Request $request,$id){
+        $userId = Auth::id();
+        $project = ProjectPhysicalTarget::findOrFail($id);
+        $updateData = $request->all();
+        //    $updateData['slug'] = strtolower(str_replace(' ','_',$updateData['title']));
+        $updateData['updated_by'] = $userId;
+        //    pre($request->all(),1);
+        $project->update($updateData);
+        return redirect('completed_physical_target_status/'.$request['project_id'])->with('success', 'Project Physical Target Updated Successfully');
     }
 
     public function create_issue($id){
