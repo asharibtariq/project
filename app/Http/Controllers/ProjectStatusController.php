@@ -67,27 +67,36 @@ class ProjectStatusController extends Controller{
         $data['current_page'] = request()->segment(1);
         $data['project_id'] = $id;
         $data['project'] = Project::findOrFail($id);
-        $data['component_select'] = get_component();
-        return view('adminpanel.project.status.add_issue',$data)->with('title', $title);
+        return view('adminpanel.project.status.financial_progress', $data)->with('title', $title);
     }
 
-    public function add_financial_progress(Request $request){
+    public function create_financial_progress($physical_target_id){
+        $title = "Financial Progress";
+        $data['current_page'] = request()->segment(1);
+        $data['physical_target_id'] = $physical_target_id;
+        $data['physical_target'] = ProjectPhysicalTarget::findOrFail($physical_target_id);
+        $data['project_id'] = $data['physical_target']['project_id'];
+        $data['project'] = Project::findOrFail($data['physical_target']['project_id']);
+        $data['fy_select'] = get_fiscal_year();
+        $data['component_select'] = get_component();
+        return view('adminpanel.project.status.add_financial_progress', $data)->with('title', $title);
+    }
+
+    public function store_financial_progress(Request $request){
         $userId = Auth::id();
         $insertData = $request->all();
         $rules = [
-            'project' => 'required',
-            'description' => 'required'
+            'project' => 'required'
         ];
         $customMessages = [
             'required' => 'The :attribute field is required.'
         ];
         $this->validate($request, $rules, $customMessages);
-        $insertData['type'] = 'issue';
         $insertData['created_by'] = $userId;
         $insertData['updated_by'] = $userId;
-        ProjectIssues::create($insertData);
+        ProjectFinancialProgress::create($insertData);
     //    return redirect('add_issue_status')->with('success', 'Issue Added Successfully');
-        return redirect()->back()->with('success', 'Issue Added Successfully');
+        return redirect()->back()->with('success', 'Record Added Successfully');
     }
 
     public function create_issue($id){

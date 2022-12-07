@@ -137,11 +137,10 @@ Route::get('completed_physical_targets_status/{id}', [\App\Http\Controllers\Proj
 Route::get('not_achieved_physical_targets_status/{id}', [\App\Http\Controllers\ProjectStatusController::class, 'not_achieved_physical_targets']);
 Route::get('ongoing_physical_targets_status/{id}', [\App\Http\Controllers\ProjectStatusController::class, 'ongoing_physical_targets']);
 Route::get('financial_progress_status/{id}', [\App\Http\Controllers\ProjectStatusController::class, 'financial_progress']);
-Route::post('financial_progress_status', [\App\Http\Controllers\ProjectStatusController::class, 'add_financial_progress']);
+Route::get('add_financial_progress_status/{id}', [\App\Http\Controllers\ProjectStatusController::class, 'create_financial_progress']);
+Route::post('add_financial_progress_status', [\App\Http\Controllers\ProjectStatusController::class, 'store_financial_progress']);
 Route::get('edit_physical_targets/{id}', [\App\Http\Controllers\ProjectStatusController::class, 'edit_physical_targets']);
 Route::post('update_physical_targets/{id}', [\App\Http\Controllers\ProjectStatusController::class, 'update_physical_targets']);
-
-
 /* Issues & Suggestions */
 Route::get('add_issue_status/{id}', [\App\Http\Controllers\ProjectStatusController::class, 'create_issue']);
 Route::post('add_issue_status', [\App\Http\Controllers\ProjectStatusController::class, 'store_issue']);
