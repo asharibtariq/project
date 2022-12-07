@@ -75,8 +75,9 @@
             var post_data = {
                 "_token": "{{ csrf_token() }}",
                 "project_id": '{{$project_id}}',
+                "status": 'complete',
                 "select_limit": $("#select_limit").val(),
-                'action': "physical_target_content_completed"
+                'action': "physical_target_content"
             };
 
             $.ajax({

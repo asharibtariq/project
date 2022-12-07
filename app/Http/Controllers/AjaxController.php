@@ -322,7 +322,7 @@ class AjaxController extends Controller{
                 if (!empty($id))
                     $where['tbl_physical_target.project_id'] = $id;
                 if (!empty($status))
-                    $where['tbl_physical_target.status'] = $status;
+                    $where['tbl_physical_target.target_status'] = $status;
 
             //    DB::enableQueryLog(); // Enable query log
 
@@ -342,7 +342,7 @@ class AjaxController extends Controller{
                         'tbl_physical_target.updated_at')
                     ->orderBy('tbl_physical_target.id', 'DESC')
                 //    ->where('tbl_physical_target.project_id', '=',   $id )
-//                    ->where($where)
+                    ->where($where)
                     ->paginate($per_page);
 
             //    dd(DB::getQueryLog());
@@ -350,123 +350,6 @@ class AjaxController extends Controller{
                 $data['result'] = $project->items();
                 $data['links'] = $project;
                 return view('adminpanel.project.profile.physical_target_list')->with($data);
-                break;
-            case 'physical_target_content_completed':
-                $where = array();
-                $id = $request->project_id != '' ? $request->project_id : '';
-//                $status = $request->status != '' ? $request->status : '';
-                $status = 'complete';
-                $per_page = $request->select_limit != '' ? $request->select_limit : 10;
-
-                if (!empty($id))
-                    $where['tbl_physical_target.project_id'] = $id;
-                if (!empty($status))
-                    $where['tbl_physical_target.status'] = $status;
-
-                //    DB::enableQueryLog(); // Enable query log
-
-                $project = DB::table('tbl_physical_target')
-                    ->select('tbl_physical_target.id',
-                        'tbl_physical_target.project_id',
-                        'tbl_physical_target.fiscal_year',
-                        'tbl_physical_target.component_id',
-                        'tbl_physical_target.component',
-                        'tbl_physical_target.physical_description',
-                        'tbl_physical_target.currency_id',
-                        'tbl_physical_target.currency',
-                        'tbl_physical_target.amount',
-                        'tbl_physical_target.start_date',
-                        'tbl_physical_target.end_date',
-                        'tbl_physical_target.created_at',
-                        'tbl_physical_target.updated_at')
-                    ->orderBy('tbl_physical_target.id', 'DESC')
-                    ->where('tbl_physical_target.target_status', '=',   $status)
-//                    ->where($where)
-                    ->paginate($per_page);
-
-                //    dd(DB::getQueryLog());
-
-                $data['result'] = $project->items();
-                $data['links'] = $project;
-                return view('adminpanel.project.status.completed_physical_target_list')->with($data);
-                break;
-            case 'physical_target_content_ongoing':
-                $where = array();
-                $id = $request->project_id != '' ? $request->project_id : '';
-//                $status = $request->status != '' ? $request->status : '';
-                $status = 'ongoing';
-                $per_page = $request->select_limit != '' ? $request->select_limit : 10;
-
-                if (!empty($id))
-                    $where['tbl_physical_target.project_id'] = $id;
-                if (!empty($status))
-                    $where['tbl_physical_target.status'] = $status;
-
-                //    DB::enableQueryLog(); // Enable query log
-
-                $project = DB::table('tbl_physical_target')
-                    ->select('tbl_physical_target.id',
-                        'tbl_physical_target.project_id',
-                        'tbl_physical_target.fiscal_year',
-                        'tbl_physical_target.component_id',
-                        'tbl_physical_target.component',
-                        'tbl_physical_target.physical_description',
-                        'tbl_physical_target.currency_id',
-                        'tbl_physical_target.currency',
-                        'tbl_physical_target.amount',
-                        'tbl_physical_target.start_date',
-                        'tbl_physical_target.end_date',
-                        'tbl_physical_target.created_at',
-                        'tbl_physical_target.updated_at')
-                    ->orderBy('tbl_physical_target.id', 'DESC')
-                    ->where('tbl_physical_target.target_status', '=',   $status)
-//                    ->where($where)
-                    ->paginate($per_page);
-
-                //    dd(DB::getQueryLog());
-
-                $data['result'] = $project->items();
-                $data['links'] = $project;
-                return view('adminpanel.project.status.ongoing_physical_target_list')->with($data);
-                break;
-            case 'physical_target_content_not_achieve':
-                $where = array();
-                $id = $request->project_id != '' ? $request->project_id : '';
-//                $status = $request->status != '' ? $request->status : '';
-                $status = 'not_achieve';
-                $per_page = $request->select_limit != '' ? $request->select_limit : 10;
-
-                if (!empty($id))
-                    $where['tbl_physical_target.project_id'] = $id;
-                if (!empty($status))
-                    $where['tbl_physical_target.status'] = $status;
-
-                //    DB::enableQueryLog(); // Enable query log
-
-                $project = DB::table('tbl_physical_target')
-                    ->select('tbl_physical_target.id',
-                        'tbl_physical_target.project_id',
-                        'tbl_physical_target.fiscal_year',
-                        'tbl_physical_target.component_id',
-                        'tbl_physical_target.component',
-                        'tbl_physical_target.physical_description',
-                        'tbl_physical_target.currency_id',
-                        'tbl_physical_target.currency',
-                        'tbl_physical_target.amount',
-                        'tbl_physical_target.start_date',
-                        'tbl_physical_target.end_date',
-                        'tbl_physical_target.created_at',
-                        'tbl_physical_target.updated_at')
-                    ->orderBy('tbl_physical_target.id', 'DESC')
-                    ->where('tbl_physical_target.target_status', '=',   $status)
-//                    ->where($where)
-                    ->paginate($per_page);
-
-                //    dd(DB::getQueryLog());
-
-                $data['result'] = $project->items();
-                $data['links'] = $project;
-                return view('adminpanel.project.status.not_achieved_physical_target_list')->with($data);
                 break;
             case 'action_items_content':
                 $where = array();
