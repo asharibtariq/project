@@ -11,7 +11,7 @@
                     </div>
                     <div class="card-body">
                         <!-- Project Forms Tabs -->
-                        @include('adminpanel.project.status.project_details')
+                        @include('adminpanel.project.project_details')
                         @include('adminpanel.project.status_tabs')
 
                         @if($errors->any())
@@ -22,7 +22,7 @@
                         @if(Session::has('success'))
                             <div class="alert alert-success">{{Session::get('success')}}</div>
                         @endif
-s
+
                         <form name="" method="post" action="{{url('add_suggestion_status')}}">
                             @csrf
                             <div class="row">

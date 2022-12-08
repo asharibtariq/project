@@ -10,7 +10,7 @@
                         <h4>Project Details</h4>
                     </div>
                     <div class="card-body">
-                    @include('adminpanel.project.status.project_details')
+                    @include('adminpanel.project.project_details')
                         <!-- Project Forms Tabs -->
                         @if($errors->any())
                             @foreach($errors->all() as $error)

@@ -19,7 +19,7 @@
                             <div class="alert alert-success">{{Session::get('success')}}</div>
                         @endif
 
-                        <form name="" method="post" action="{{url('add_financial_progress_status')}}" enctype="multipart/form-data">
+                        <form name="" method="post" action="{{url('add_physical_progress_status')}}" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-md-4">
