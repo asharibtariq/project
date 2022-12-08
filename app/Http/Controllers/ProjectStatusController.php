@@ -21,6 +21,7 @@ class ProjectStatusController extends Controller{
         $title = "Completed Physical Targets";
         $data['current_page'] = request()->segment(1);
         $data['target_status'] = 'complete';
+        $data['next_page'] = '';
         $data['project_id'] = $id;
         $data['project'] = Project::findOrFail($id);
         return view('adminpanel.project.status.physical_targets', $data)->with('title', $title);
@@ -30,6 +31,7 @@ class ProjectStatusController extends Controller{
         $title = "Not Achieved Physical Targets";
         $data['current_page'] = request()->segment(1);
         $data['target_status'] = 'not_achieve';
+        $data['next_page'] = '';
         $data['project_id'] = $id;
         $data['project'] = Project::findOrFail($id);
         return view('adminpanel.project.status.physical_targets', $data)->with('title', $title);
@@ -39,6 +41,7 @@ class ProjectStatusController extends Controller{
         $title = "Ongoing Physical Targets";
         $data['current_page'] = request()->segment(1);
         $data['target_status'] = 'ongoing';
+        $data['next_page'] = '';
         $data['project_id'] = $id;
         $data['project'] = Project::findOrFail($id);
         return view('adminpanel.project.status.physical_targets', $data)->with('title', $title);
@@ -69,9 +72,10 @@ class ProjectStatusController extends Controller{
         $title = "Financial Progress";
         $data['current_page'] = request()->segment(1);
         $data['next_page'] = 'add_financial_progress_status';
+        $data['target_status'] = '';
         $data['project_id'] = $id;
         $data['project'] = Project::findOrFail($id);
-        return view('adminpanel.project.status.financial_progress', $data)->with('title', $title);
+        return view('adminpanel.project.status.physical_targets', $data)->with('title', $title);
     }
 
     public function create_financial_progress($physical_target_id){
@@ -106,9 +110,10 @@ class ProjectStatusController extends Controller{
         $title = "Physical Progress";
         $data['current_page'] = request()->segment(1);
         $data['next_page'] = 'add_physical_progress_status';
+        $data['target_status'] = '';
         $data['project_id'] = $id;
         $data['project'] = Project::findOrFail($id);
-        return view('adminpanel.project.status.physical_progress', $data)->with('title', $title);
+        return view('adminpanel.project.status.physical_targets', $data)->with('title', $title);
     }
 
     public function create_physical_progress($physical_target_id){

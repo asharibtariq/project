@@ -76,6 +76,7 @@
                 "_token": "{{ csrf_token() }}",
                 "project_id": '{{$project_id}}',
                 "status": '{{$target_status}}',
+                "next_page": '{{$next_page}}',
                 "select_limit": $("#select_limit").val(),
                 'action': "physical_target_content"
             };
