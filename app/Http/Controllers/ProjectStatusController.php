@@ -65,6 +65,7 @@ class ProjectStatusController extends Controller{
     public function financial_progress($id){
         $title = "Financial Progress";
         $data['current_page'] = request()->segment(1);
+        $data['next_page'] = 'add_financial_progress_status';
         $data['project_id'] = $id;
         $data['project'] = Project::findOrFail($id);
         return view('adminpanel.project.status.financial_progress', $data)->with('title', $title);

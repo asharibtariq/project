@@ -31,7 +31,7 @@
                 <td> {{$r->start_date}} </td>
                 <td>
                     <div class="btn-group">
-                        <a onClick="return confirm('Are you sure you want to update?');" title="Edit" href="{{url('edit_physical_target', $r->id)}}" class="btn btn-info" id="btn-view"><i class="fa fa-edit"></i> </a>
+                        <a onClick="return confirm('Are you sure you want to update?');" title="Edit" href="{{url($next_page, $r->id)}}{{--url('edit_physical_target', $r->id)--}}" class="btn btn-info" id="btn-view"><i class="fa fa-edit"></i> </a>
                         <a onClick="return confirm('Are you sure you want to delete?');" title="Delete" href="#" class="btn btn-danger"><i class="fa fa-trash"></i> </a>
                     </div>
                 </td>
