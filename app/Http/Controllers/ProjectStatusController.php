@@ -18,27 +18,30 @@ class ProjectStatusController extends Controller{
     }
 
     public function completed_physical_targets($id){
-        $title = "Physical Targets";
+        $title = "Completed Physical Targets";
         $data['current_page'] = request()->segment(1);
+        $data['target_status'] = 'complete';
         $data['project_id'] = $id;
         $data['project'] = Project::findOrFail($id);
-        return view('adminpanel.project.status.completed_physical_targets', $data)->with('title', $title);
+        return view('adminpanel.project.status.physical_targets', $data)->with('title', $title);
     }
 
     public function not_achieved_physical_targets($id){
-        $title = "Physical Targets";
+        $title = "Not Achieved Physical Targets";
         $data['current_page'] = request()->segment(1);
+        $data['target_status'] = 'not_achieve';
         $data['project_id'] = $id;
         $data['project'] = Project::findOrFail($id);
-        return view('adminpanel.project.status.not_achieved_physical_targets', $data)->with('title', $title);
+        return view('adminpanel.project.status.physical_targets', $data)->with('title', $title);
     }
 
     public function ongoing_physical_targets($id){
-        $title = "Physical Targets";
+        $title = "Ongoing Physical Targets";
         $data['current_page'] = request()->segment(1);
+        $data['target_status'] = 'ongoing';
         $data['project_id'] = $id;
         $data['project'] = Project::findOrFail($id);
-        return view('adminpanel.project.status.ongoing_physical_targets', $data)->with('title', $title);
+        return view('adminpanel.project.status.physical_targets', $data)->with('title', $title);
     }
 
     public function edit_physical_targets($id){
