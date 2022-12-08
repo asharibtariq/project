@@ -25,19 +25,20 @@
         </h2>
     </div>
     <HR>
+
     <div class="container-fluid">
 
         <form>
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label>Start Date</label>
+                        <label>From</label>
                         <input type="text" class="form-control datepicker" placeholder="DD/MM/YY" readonly>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label>End Date </label>
+                        <label>To </label>
                         <input type="text" class="form-control datepicker" placeholder="DD/MM/YY" readonly>
                     </div>
                 </div>
@@ -54,11 +55,9 @@
     </div>
 
     <hr>
-
+<!--
     <div class="row">
-
-
-        <!-- product profit start -->
+         product profit start
         <div class="col-xl-4 col-md-12">
             <div class="card prod-p-card bg-c-red">
                 <div class="card-body">
@@ -147,7 +146,70 @@
             </div>
         </div>
     </div>
+    -->
     <!-- sessions-section start -->
+    <div class="row">
+        <!-- New DashBoard Design  -->
+        <div class="col-xl-4 col-md-12">
+            <div class="card prod-p-card bg-c-green h-100">
+                <div class="card-body">
+                    <div class="row align-items-center m-b-25">
+                        <div class="col">
+                            <h3 class="m-b-5 text-white">Project Count</h3>
+
+                        </div>
+
+                        <div class="col-auto">
+                            <i class="fas fa-money-bill-alt text-c-green f-18"></i>
+                        </div>
+                    </div>
+                    <p class="m-b-0 text-white">Currently Active Projects</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-md-12">
+            <div class="card prod-p-card bg-c-blue h-100 ">
+                <div class="card-body">
+                    <div class="row align-items-center m-b-25">
+                        <div class="col">
+                            <h3 class="m-b-5 text-white">Project Monitoring</h3>
+
+                        </div>
+
+                        <div class="col-auto">
+                            <i class="fas fa-money-bill-alt text-c-blue f-18"></i>
+                        </div>
+                    </div>
+                    <p class="m-b-0 text-white">From Previous
+                        Month</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-md-12">
+            <div class="card prod-p-card bg-c-yellow h-100">
+                <div class="card-body">
+                    <div class="row align-items-center m-b-25">
+                        <div class="col">
+                            <h3 class="m-b-5 text-white">Total Tasks</h3>
+
+                        </div>
+
+                        <div class="col-auto">
+                            <i class="fas fa-money-bill-alt text-c-yellow f-18"></i>
+                        </div>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item list-group-item-primary">Completed</li>
+                        <li class="list-group-item list-group-item-success">InCompleted</li>
+                        <li class="list-group-item list-group-item-warning">Noted</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+    </div> <br>
+
     <div class="card table-card">
         {{--
         <div class="card-header">
