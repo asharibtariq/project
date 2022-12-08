@@ -139,6 +139,9 @@ Route::get('ongoing_physical_targets_status/{id}', [\App\Http\Controllers\Projec
 Route::get('financial_progress_status/{id}', [\App\Http\Controllers\ProjectStatusController::class, 'financial_progress']);
 Route::get('add_financial_progress_status/{id}', [\App\Http\Controllers\ProjectStatusController::class, 'create_financial_progress']);
 Route::post('add_financial_progress_status', [\App\Http\Controllers\ProjectStatusController::class, 'store_financial_progress']);
+Route::get('physical_progress_status/{id}', [\App\Http\Controllers\ProjectStatusController::class, 'physical_progress']);
+Route::get('add_physical_progress_status/{id}', [\App\Http\Controllers\ProjectStatusController::class, 'create_physical_progress']);
+Route::post('add_physical_progress_status', [\App\Http\Controllers\ProjectStatusController::class, 'store_physical_progress']);
 Route::get('edit_physical_targets/{id}', [\App\Http\Controllers\ProjectStatusController::class, 'edit_physical_targets']);
 Route::post('update_physical_targets/{id}', [\App\Http\Controllers\ProjectStatusController::class, 'update_physical_targets']);
 /* Issues & Suggestions */

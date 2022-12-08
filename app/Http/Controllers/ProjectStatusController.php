@@ -99,6 +99,43 @@ class ProjectStatusController extends Controller{
     //    return redirect('add_issue_status')->with('success', 'Issue Added Successfully');
         return redirect()->back()->with('success', 'Record Added Successfully');
     }
+    public function physical_progress($id){
+        $title = "Physical Progress";
+        $data['current_page'] = request()->segment(1);
+        $data['next_page'] = 'add_physical_progress_status';
+        $data['project_id'] = $id;
+        $data['project'] = Project::findOrFail($id);
+        return view('adminpanel.project.status.physical_progress', $data)->with('title', $title);
+    }
+
+    public function create_physical_progress($physical_target_id){
+        $title = "Physical Progress";
+        $data['current_page'] = request()->segment(1);
+        $data['physical_target_id'] = $physical_target_id;
+        $data['physical_target'] = ProjectPhysicalTarget::findOrFail($physical_target_id);
+        $data['project_id'] = $data['physical_target']['project_id'];
+        $data['project'] = Project::findOrFail($data['physical_target']['project_id']);
+        $data['fy_select'] = get_fiscal_year();
+        $data['component_select'] = get_component();
+        return view('adminpanel.project.status.add_physical_progress', $data)->with('title', $title);
+    }
+
+    public function store_physical_progress(Request $request){
+        $userId = Auth::id();
+        $insertData = $request->all();
+        $rules = [
+            'project' => 'required'
+        ];
+        $customMessages = [
+            'required' => 'The :attribute field is required.'
+        ];
+        $this->validate($request, $rules, $customMessages);
+        $insertData['created_by'] = $userId;
+        $insertData['updated_by'] = $userId;
+        ProjectPhysicalProgress::create($insertData);
+        //    return redirect('add_issue_status')->with('success', 'Issue Added Successfully');
+        return redirect()->back()->with('success', 'Record Added Successfully');
+    }
 
     public function create_issue($id){
         $title = "Add Issue";
