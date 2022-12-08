@@ -159,8 +159,8 @@ Route::get('project_summary/{id}', [\App\Http\Controllers\ProjectController::cla
 
 // Project Monitoring
 Route::get('ongoing_physical_targets/{id}', [\App\Http\Controllers\ProjectMonitoringController::class, 'ongoing_physical_targets']);
-Route::get('physical_target_status_monitoring/{id}', [\App\Http\Controllers\ProjectMonitoringController::class, 'physical_target_status']);
-Route::post('add_physical_target_status_monitoring', [\App\Http\Controllers\ProjectMonitoringController::class, 'add_physical_target_status']);
+Route::get('add_physical_target_status_monitoring/{id}', [\App\Http\Controllers\ProjectMonitoringController::class, 'create_physical_target_status']);
+Route::post('add_physical_target_status_monitoring', [\App\Http\Controllers\ProjectMonitoringController::class, 'store_physical_target_status']);
 /* Issues & Suggestions */
 Route::get('add_issue_monitoring/{id}', [\App\Http\Controllers\ProjectMonitoringController::class, 'create_issue']);
 Route::post('add_issue_monitoring', [\App\Http\Controllers\ProjectMonitoringController::class, 'store_issue']);

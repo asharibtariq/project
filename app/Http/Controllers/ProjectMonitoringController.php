@@ -17,12 +17,14 @@ class ProjectMonitoringController extends Controller{
     public function ongoing_physical_targets($id){
         $title = "Physical Targets";
         $data['current_page'] = request()->segment(1);
+        $data['next_page'] = 'add_physical_target_status_monitoring';
+        $data['target_status'] = 'ongoing';
         $data['project_id'] = $id;
         $data['project'] = Project::findOrFail($id);
-        return view('adminpanel.project.monitoring.ongoing_physical_targets', $data)->with('title', $title);
+        return view('adminpanel.project.status.physical_targets', $data)->with('title', $title);
     }
 
-    public function physical_target_status($physical_target_id){
+    public function create_physical_target_status($physical_target_id){
         $title = "Physical Target Status";
         $data['current_page'] = request()->segment(1);
         $data['physical_target_id'] = $physical_target_id;
@@ -32,7 +34,7 @@ class ProjectMonitoringController extends Controller{
         return view('adminpanel.project.monitoring.physical_target_status', $data)->with('title', $title);
     }
 
-    public function add_physical_target_status(Request $request){
+    public function store_physical_target_status(Request $request){
         $userId = Auth::id();
         $insertData = $request->all();
         $rules = [
