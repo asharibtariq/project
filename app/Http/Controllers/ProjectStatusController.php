@@ -137,10 +137,37 @@ class ProjectStatusController extends Controller{
         $customMessages = [
             'required' => 'The :attribute field is required.'
         ];
-        $this->validate($request, $rules, $customMessages);
-        $insertData['created_by'] = $userId;
-        $insertData['updated_by'] = $userId;
-        ProjectPhysicalProgress::create($insertData);
+        $this->validate($request,$rules, $customMessages, [
+            'multimedia' => 'required',
+            'multimedia.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ]);
+        if ($request->hasfile('multimedia')) {
+
+            foreach ($request->file('multimedia') as $image) {
+                $name = $image->getClientOriginalName();
+                $image->move(public_path() . '/uploads/physicalprogress', $name);
+                $data[] = $name;
+            }
+        }
+        $project = new ProjectPhysicalProgress();
+        $project->project_id = $insertData['project_id'];
+        $project->project = $insertData['project'];
+        $project->physical_target_id = $insertData['physical_target_id'];
+        $project->fiscal_year = $insertData['fiscal_year'];
+        $project->date = $insertData['date'];
+        $project->progress_detail = $insertData['progress_detail'];
+        $project->component_id = $insertData['component_id'];
+        $project->component = $insertData['component'];
+        $project->physical_description = $insertData['physical_description'];
+        $project->created_by = $userId;
+        $project->updated_by = $userId;
+        $project->save();
+        $id = $project->id;
+
+        $projectmedia = new ProjectPhysicalProgressMedia();
+        $projectmedia->physical_progress_id = $id;
+        $projectmedia->file = json_encode($data);
+        $projectmedia->save();
         //    return redirect('add_issue_status')->with('success', 'Issue Added Successfully');
         return redirect()->back()->with('success', 'Record Added Successfully');
     }

@@ -62,6 +62,12 @@
                                         <textarea name="physical_description" class="form-control" placeholder="Description"></textarea>
                                     </div>
                                 </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="multimedia">MultiMedia <span class="text-danger">*</span></label>
+                                        <input type="file" name="multimedia[]" id="images" multiple="multiple">
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="row">

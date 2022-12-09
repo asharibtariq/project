@@ -12,18 +12,15 @@
                     <div class="card-body">
                         <!-- Project Forms Tabs -->
                         @include('adminpanel.project.profile_tabs')
-
                         @if($errors->any())
                             @foreach($errors->all() as $error)
-                                <div class="alert alert-danger" style="margin: 6px; padding: 10px"
-                                     role="alert">{{ $error }}</div>
+                                <div class="alert alert-danger" style="margin: 6px; padding: 10px" role="alert">{{ $error }}</div>
                             @endforeach
-                            @if(Session::has('success'))
-                                <div class="col-md-12">
-                                    <div class="alert alert-success">{{Session::get('success')}}</div>
-                                </div>
-                            @endif
                         @endif
+                        @if(Session::has('success'))
+                            <div class="alert alert-success">{{Session::get('success')}}</div>
+                        @endif
+
 
                         <form name="" method="post" action="{{url('add_project_director')}}">
                             @csrf

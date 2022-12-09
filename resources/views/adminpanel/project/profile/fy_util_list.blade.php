@@ -48,13 +48,13 @@
             @endphp
         @endforeach
         <tr>
-            <th colspan="3" class="text-center">Total</th>
+            <th colspan="5" class="text-center">Total</th>
             <td>{{$alloc_amount}}</td>
             <td>{{$foreign_alloc_amount}}</td>
-            <td>-</td>
+
         </tr>
         <tr>
-            <td colspan="6"></td>
+            <td colspan="7"></td>
         </tr>
     @else
         <tr>

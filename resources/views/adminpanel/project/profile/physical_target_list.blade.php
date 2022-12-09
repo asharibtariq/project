@@ -43,10 +43,9 @@
         <tr>
             <th colspan="4" class="text-center">Total</th>
             <td>{{$alloc_amount}}</td>
-            <td>-</td>
         </tr>
         <tr>
-            <td colspan="6"></td>
+            <td colspan="5"></td>
         </tr>
     @else
         <tr>

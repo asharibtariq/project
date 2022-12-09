@@ -43,7 +43,7 @@
         <tr>
             <th colspan="3" class="text-center">Total</th>
             <td>{{$alloc_amount}}</td>
-            <td>{{$foreign_alloc_amount}}</td>
+
             <td>-</td>
         </tr>
         <tr>
