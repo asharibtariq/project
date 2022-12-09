@@ -141,14 +141,7 @@ class ProjectStatusController extends Controller{
             'multimedia' => 'required',
             'multimedia.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
-        if ($request->hasfile('multimedia')) {
 
-            foreach ($request->file('multimedia') as $image) {
-                $name = $image->getClientOriginalName();
-                $image->move(public_path() . '/uploads/physicalprogress', $name);
-                $data[] = $name;
-            }
-        }
         $project = new ProjectPhysicalProgress();
         $project->project_id = $insertData['project_id'];
         $project->project = $insertData['project'];
@@ -164,10 +157,17 @@ class ProjectStatusController extends Controller{
         $project->save();
         $id = $project->id;
 
-        $projectmedia = new ProjectPhysicalProgressMedia();
-        $projectmedia->physical_progress_id = $id;
-        $projectmedia->file = json_encode($data);
-        $projectmedia->save();
+        if ($request->hasfile('multimedia')) {
+
+            foreach ($request->file('multimedia') as $image) {
+                $name = $image->getClientOriginalName();
+                $image->move(public_path() . '/uploads/physicalprogress', $name);
+                $projectmedia = new ProjectPhysicalProgressMedia();
+                $projectmedia->physical_progress_id = $id;
+                $projectmedia->file = $name;
+                $projectmedia->save();
+            }
+        }
         //    return redirect('add_issue_status')->with('success', 'Issue Added Successfully');
         return redirect()->back()->with('success', 'Record Added Successfully');
     }
