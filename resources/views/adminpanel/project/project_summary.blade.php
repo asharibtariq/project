@@ -65,12 +65,6 @@
                     </div>
                     <div class="card-body">
                         <div class="row">
-
-                            @php
-                                $fiscal_year_start = $project->fiscal_year - 1;
-                                $fiscal_year = $fiscal_year_start." - ".$project->fiscal_year;
-                            @endphp
-
                             <h6> {{--10.--}} Fiscal Year Wise Allocation </h6>
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover">
@@ -83,13 +77,40 @@
                                         <th data-column-index="3"> Foreign Aid</th>
                                     </thead>
                                     <tbody>
+                                    @php
+                                        $project_allocation = json_decode($project_allocation)
+                                    @endphp
+                                    <?php
+                                    if (!empty($project_allocation)){
+                                    $i = 0;
+                                    ?>
+                                    <?php
+                                    foreach ($project_allocation as $allocation){
+                                    ?>
+                                    @php
+                                        $fiscal_year_start = $allocation->fiscal_year - 1;
+                                        $fiscal_year = $fiscal_year_start." - ".$allocation->fiscal_year;
+                                    @endphp
                                     <tr role="row">
-                                        <td> 1</td>
-                                        <td> 2022-2023</td>
-                                        <td> 13-11-2022</td>
-                                        <td> 1200000 PKR</td>
-                                        <td> 10000$</td>
+                                        <td> {{$i}}</td>
+                                        <td> {{$fiscal_year}}</td>
+                                        <td> {{$allocation->alloc_date}}</td>
+                                        <td> {{$allocation->alloc_amount}} (<small class="text-muted">PKR</small>)</td>
+                                        <td> {{$allocation->foreign_alloc_amount}} (<small class="text-muted">{{$allocation->currency}}</small>)</td>
                                     </tr>
+                                    <?php
+                                    $i++;
+                                    }
+                                    ?>
+                                    <?php
+                                    }else{
+                                    ?>
+                                    <tr role="row">
+                                        <td colspan="5" class="text-center"> No Data Found </td>
+                                    </tr>
+                                    <?php
+                                    }
+                                    ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -107,14 +128,41 @@
                                         <th data-column-index="3"> Foreign Aid Released</th>
                                     </thead>
                                     <tbody>
+                                    @php
+                                        $project_release = json_decode($project_release)
+                                    @endphp
+                                    <?php
+                                    if (!empty($project_release)){
+                                    $i = 0;
+                                    ?>
+                                    <?php
+                                    foreach ($project_release as $release){
+                                    ?>
+                                    @php
+                                        $fiscal_year_start = $release->fiscal_year - 1;
+                                        $fiscal_year = $fiscal_year_start." - ".$release->fiscal_year;
+                                    @endphp
                                     <tr role="row">
-                                        <td> 1</td>
-                                        <td> 2022-2023</td>
-                                        <td> First Quarter</td>
-                                        <td> 13-11-2022</td>
-                                        <td> 1200000 PKR</td>
-                                        <td> 10000$</td>
+                                        <td> {{$i}}</td>
+                                        <td> {{$fiscal_year}}</td>
+                                        <td> {{$release->quarter}}</td>
+                                        <td> {{$release->release_date}}</td>
+                                        <td> {{$release->rel_amount}}</td>
+                                        <td> {{$release->foreign_rel_amount}}</td>
                                     </tr>
+                                    <?php
+                                    $i++;
+                                    }
+                                    ?>
+                                    <?php
+                                    }else{
+                                    ?>
+                                    <tr role="row">
+                                        <td colspan="6" class="text-center"> No Data Found </td>
+                                    </tr>
+                                    <?php
+                                    }
+                                    ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -126,22 +174,49 @@
                                     <tr role="row">
                                         <th data-column-index="0"> Sr#</th>
                                         <th data-column-index="1"> FY</th>
-                                        <th data-column-index="1"> Quarter</th>
+                                        <th data-column-index="3"> Quarter</th>
                                         <th data-column-index="3"> Date</th>
-                                        <th data-column-index="1"> Component</th>
+                                        <th data-column-index="3"> Component</th>
                                         <th data-column-index="3"> Amount Utilized</th>
                                         <th data-column-index="3"> Foreign Aid Utilized</th>
                                     </thead>
                                     <tbody>
+                                    @php
+                                        $project_fy_utilization = json_decode($project_fy_utilization)
+                                    @endphp
+                                    <?php
+                                    if (!empty($project_fy_utilization)){
+                                    $i = 0;
+                                    ?>
+                                    <?php
+                                    foreach ($project_fy_utilization as $fy_utilization){
+                                    ?>
+                                    @php
+                                        $fiscal_year_start = $fy_utilization->fiscal_year - 1;
+                                        $fiscal_year = $fiscal_year_start." - ".$fy_utilization->fiscal_year;
+                                    @endphp
                                     <tr role="row">
-                                        <td> 1</td>
-                                        <td> 2022-2023</td>
-                                        <td> First Quarter</td>
-                                        <td> 13-11-2022</td>
-                                        <td> Component</td>
-                                        <td> 1200000 PKR</td>
-                                        <td> 10000$</td>
+                                        <td> {{$i}}</td>
+                                        <td> {{$fiscal_year}}</td>
+                                        <td> {{$fy_utilization->quarter}}</td>
+                                        <td> {{$fy_utilization->fy_date}}</td>
+                                        <td> {{$fy_utilization->component}}</td>
+                                        <td> {{$fy_utilization->fy_amount}}</td>
+                                        <td> {{$fy_utilization->foreign_fy_amount}}</td>
                                     </tr>
+                                    <?php
+                                    $i++;
+                                    }
+                                    ?>
+                                    <?php
+                                    }else{
+                                    ?>
+                                    <tr role="row">
+                                        <td colspan="7" class="text-center"> No Data Found </td>
+                                    </tr>
+                                    <?php
+                                    }
+                                    ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -157,12 +232,39 @@
                                         <th data-column-index="3"> Amount</th>
                                     </thead>
                                     <tbody>
+                                    @php
+                                        $project_component_pc1 = json_decode($project_component_pc1)
+                                    @endphp
+                                    <?php
+                                    if (!empty($project_component_pc1)){
+                                    $i = 0;
+                                    ?>
+                                    <?php
+                                    foreach ($project_component_pc1 as $component_pc1){
+                                    ?>
+                                    @php
+                                        $fiscal_year_start = $component_pc1->fiscal_year - 1;
+                                        $fiscal_year = $fiscal_year_start." - ".$component_pc1->fiscal_year;
+                                    @endphp
                                     <tr role="row">
-                                        <td> 1</td>
-                                        <td> 2022-2023</td>
-                                        <td> Furniture</td>
-                                        <td> 1200000 PKR</td>
+                                        <td> {{$i}}</td>
+                                        <td> {{$fiscal_year}}</td>
+                                        <td> {{$component_pc1->component}}</td>
+                                        <td> {{$component_pc1->comp_amount}} (<small class="text-muted">{{$component_pc1->currency}}</small>)</td>
                                     </tr>
+                                    <?php
+                                    $i++;
+                                    }
+                                    ?>
+                                    <?php
+                                    }else{
+                                    ?>
+                                    <tr role="row">
+                                        <td colspan="4" class="text-center"> No Data Found </td>
+                                    </tr>
+                                    <?php
+                                    }
+                                    ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -178,12 +280,39 @@
                                         <th data-column-index="3"> Amount</th>
                                     </thead>
                                     <tbody>
+                                    @php
+                                        $project_component_nis = json_decode($project_component_nis)
+                                    @endphp
+                                    <?php
+                                    if (!empty($project_component_nis)){
+                                    $i = 0;
+                                    ?>
+                                    <?php
+                                    foreach ($project_component_nis as $component_nis){
+                                    ?>
+                                    @php
+                                        $fiscal_year_start = $component_nis->fiscal_year - 1;
+                                        $fiscal_year = $fiscal_year_start." - ".$component_nis->fiscal_year;
+                                    @endphp
                                     <tr role="row">
-                                        <td> 1</td>
-                                        <td> 2022-2023</td>
-                                        <td> Furniture</td>
-                                        <td> 1200000 PKR</td>
+                                        <td> {{$i}}</td>
+                                        <td> {{$fiscal_year}}</td>
+                                        <td> {{$component_nis->component}}</td>
+                                        <td> {{$component_nis->comp_amount}} (<small class="text-muted">{{$component_pc1->currency}}</small>)</td>
                                     </tr>
+                                    <?php
+                                    $i++;
+                                    }
+                                    ?>
+                                    <?php
+                                    }else{
+                                    ?>
+                                    <tr role="row">
+                                        <td colspan="4" class="text-center"> No Data Found </td>
+                                    </tr>
+                                    <?php
+                                    }
+                                    ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -202,15 +331,42 @@
                                         <th data-column-index="3"> Planned End Date</th>
                                     </thead>
                                     <tbody>
+                                    @php
+                                        $project_physical_target = json_decode($project_physical_target)
+                                    @endphp
+                                    <?php
+                                    if (!empty($project_physical_target)){
+                                    $i = 0;
+                                    ?>
+                                    <?php
+                                    foreach ($project_physical_target as $physical_target){
+                                    ?>
+                                    @php
+                                        $fiscal_year_start = $physical_target->fiscal_year - 1;
+                                        $fiscal_year = $fiscal_year_start." - ".$physical_target->fiscal_year;
+                                    @endphp
                                     <tr role="row">
-                                        <td> 1</td>
-                                        <td> 2022-2023</td>
-                                        <td> 13-11-2022</td>
-                                        <td> 1200000 PKR</td>
-                                        <td> 10000$</td>
-                                        <td> 1200000 PKR</td>
-                                        <td> 10000$</td>
+                                        <td> {{$i}}</td>
+                                        <td> {{$fiscal_year}}</td>
+                                        <td> {{$physical_target->component}}</td>
+                                        <td> {{$physical_target->physical_description}}</td>
+                                        <td> {{$physical_target->amount}} (<small class="text-muted">{{$physical_target->currency}}</small>)</td>
+                                        <td> {{$physical_target->start_date}}</td>
+                                        <td> {{$physical_target->end_date}}</td>
                                     </tr>
+                                    <?php
+                                    $i++;
+                                    }
+                                    ?>
+                                    <?php
+                                    }else{
+                                    ?>
+                                    <tr role="row">
+                                        <td colspan="7" class="text-center"> No Data Found </td>
+                                    </tr>
+                                    <?php
+                                    }
+                                    ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -275,16 +431,43 @@
                                         <th data-column-index="3"> Remarks</th>
                                     </thead>
                                     <tbody>
+                                    @php
+                                        $project_end_of_fy = json_decode($project_end_of_fy)
+                                    @endphp
+                                    <?php
+                                    if (!empty($project_end_of_fy)){
+                                    $i = 0;
+                                    ?>
+                                    <?php
+                                    foreach ($project_end_of_fy as $end_of_fy){
+                                    ?>
+                                    @php
+                                        $fiscal_year_start = $end_of_fy->fiscal_year - 1;
+                                        $fiscal_year = $fiscal_year_start." - ".$end_of_fy->fiscal_year;
+                                    @endphp
                                     <tr role="row">
-                                        <td> 1</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
+                                        <td> {{$i}}</td>
+                                        <td> {{$fiscal_year}}</td>
+                                        <td> {{$end_of_fy->date}}</td>
+                                        <td> {{$end_of_fy->local_amount_surrender}} (<small class="text-muted">{{$end_of_fy->currency_surrender}}</small>)</td>
+                                        <td> {{$end_of_fy->local_amount_lapsed}} (<small class="text-muted">{{$end_of_fy->currency_lapsed}}</small>)</td>
+                                        <td> {{$end_of_fy->financial_progress}}</td>
+                                        <td> {{$end_of_fy->physical_progress}}</td>
+                                        <td> {{$end_of_fy->remarks}}</td>
                                     </tr>
+                                    <?php
+                                    $i++;
+                                    }
+                                    ?>
+                                    <?php
+                                    }else{
+                                    ?>
+                                    <tr role="row">
+                                        <td colspan="8" class="text-center"> No Data Found </td>
+                                    </tr>
+                                    <?php
+                                    }
+                                    ?>
                                     </tbody>
                                 </table>
                             </div>

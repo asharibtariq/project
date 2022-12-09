@@ -3,15 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
+use App\Models\ProjectDirector;
 use App\Models\ProjectAllocation;
+use App\Models\ProjectRelease;
+use App\Models\ProjectFyUtilization;
 use App\Models\ProjectComponent;
 use App\Models\ProjectComponentNis;
-use App\Models\ProjectDirector;
-use App\Models\ProjectFyUtilization;
-use App\Models\ProjectPc4;
 use App\Models\ProjectPhysicalTarget;
+use App\Models\ProjectPc4;
+use App\Models\ProjectEndOfFy;
 use App\Models\ProjectPhysicalTargetActionItem;
-use App\Models\ProjectRelease;
 use Illuminate\Validation\Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -187,6 +188,18 @@ class ProjectController extends Controller{
         $title = "Project Summary";
         $data['project_id'] = $id;
         $data['project'] = Project::findOrFail($id);
+        // General Where for all rec
+    //    $where['project_id'] = $id;
+    //    $where['status'] = "Y";
+        ////////////////////////////
+        $data['project_allocation'] = ProjectAllocation::all()->where('project_id','=',$id)->where('status','=','Y');
+        $data['project_release'] = ProjectRelease::all()->where('project_id','=',$id)->where('status','=','Y');
+        $data['project_fy_utilization'] = ProjectFyUtilization::all()->where('project_id','=',$id)->where('status','=','Y');
+        $data['project_component_pc1'] = ProjectComponent::all()->where('project_id','=',$id)->where('status','=','Y');
+        $data['project_component_nis'] = ProjectComponentNis::all()->where('project_id','=',$id)->where('status','=','Y');
+        $data['project_physical_target'] = ProjectPhysicalTarget::all()->where('project_id','=',$id)->where('status','=','Y');
+        $data['project_pc4'] = ProjectPc4::all()->where('project_id','=',$id)->where('status','=','Y');
+        $data['project_end_of_fy'] = ProjectEndOfFy::all()->where('project_id','=',$id)->where('status','=','Y');
         return view('adminpanel.project.project_summary',$data)->with('title', $title);
     }
 
