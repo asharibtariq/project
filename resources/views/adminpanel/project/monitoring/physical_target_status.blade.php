@@ -11,7 +11,7 @@
                     </div>
                     <div class="card-body">
                         <!-- Project Forms Tabs -->
-                        @include('adminpanel.project.monitoring.sproject_details')
+                        @include('adminpanel.project.monitoring.project_details')
                         @include('adminpanel.project.monitoring.physical_target_details')
                         @include('adminpanel.project.monitoring_tabs')
                         @if(Session::has('success'))
