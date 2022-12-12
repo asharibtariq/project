@@ -10,9 +10,10 @@ use App\Models\ProjectFyUtilization;
 use App\Models\ProjectComponent;
 use App\Models\ProjectComponentNis;
 use App\Models\ProjectPhysicalTarget;
+use App\Models\ProjectPhysicalTargetStatus;
+use App\Models\ProjectPhysicalTargetActionItem;
 use App\Models\ProjectPc4;
 use App\Models\ProjectEndOfFy;
-use App\Models\ProjectPhysicalTargetActionItem;
 use Illuminate\Validation\Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -198,8 +199,12 @@ class ProjectController extends Controller{
         $data['project_component_pc1'] = ProjectComponent::all()->where('project_id','=',$id)->where('status','=','Y');
         $data['project_component_nis'] = ProjectComponentNis::all()->where('project_id','=',$id)->where('status','=','Y');
         $data['project_physical_target'] = ProjectPhysicalTarget::all()->where('project_id','=',$id)->where('status','=','Y');
+        $data['completed_project_physical_target'] = ProjectPhysicalTarget::all()->where('project_id','=',$id)->where('target_status','=','complete')->where('status','=','Y');
+        $data['not_achieved_project_physical_target'] = ProjectPhysicalTarget::all()->where('project_id','=',$id)->where('target_status','=','not_achieve')->where('status','=','Y');
+        $data['on_going_project_physical_target'] = ProjectPhysicalTarget::all()->where('project_id','=',$id)->where('target_status','=','ongoing')->where('status','=','Y');
         $data['project_pc4'] = ProjectPc4::all()->where('project_id','=',$id)->where('status','=','Y');
         $data['project_end_of_fy'] = ProjectEndOfFy::all()->where('project_id','=',$id)->where('status','=','Y');
+        $data['project_physical_target_status'] = ProjectPhysicalTargetStatus::all()->where('project_id','=',$id)->where('status','=','Y');
         return view('adminpanel.project.project_summary',$data)->with('title', $title);
     }
 

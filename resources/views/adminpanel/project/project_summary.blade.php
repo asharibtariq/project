@@ -501,16 +501,43 @@
                                         <th data-column-index="3"> Actual End Date</th>
                                     </thead>
                                     <tbody>
+                                    @php
+                                        $completed_project_physical_target = json_decode($completed_project_physical_target)
+                                    @endphp
+                                    <?php
+                                    if (!empty($completed_project_physical_target)){
+                                    $i = 0;
+                                    ?>
+                                    <?php
+                                    foreach ($completed_project_physical_target as $completed_physical_target){
+                                    ?>
+                                    @php
+                                        $fiscal_year_start = $completed_physical_target->fiscal_year - 1;
+                                        $fiscal_year = $fiscal_year_start." - ".$completed_physical_target->fiscal_year;
+                                    @endphp
                                     <tr role="row">
-                                        <td> 1</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
+                                        <td> {{$i}}</td>
+                                        <td> {{$fiscal_year}}</td>
+                                        <td> {{$completed_physical_target->component}}</td>
+                                        <td> {{$completed_physical_target->physical_description}}</td>
+                                        <td> {{$completed_physical_target->amount}} (<small class="text-muted">{{$completed_physical_target->currency}}</small>)</td>
+                                        <td> {{$completed_physical_target->amount}} (<small class="text-muted">{{$completed_physical_target->currency}}</small>)</td>
+                                        <td> {{$completed_physical_target->start_date}}</td>
+                                        <td> {{$completed_physical_target->end_date}}</td>
                                     </tr>
+                                    <?php
+                                    $i++;
+                                    }
+                                    ?>
+                                    <?php
+                                    }else{
+                                    ?>
+                                    <tr role="row">
+                                        <td colspan="8" class="text-center"> No Data Found </td>
+                                    </tr>
+                                    <?php
+                                    }
+                                    ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -530,16 +557,43 @@
                                         <th data-column-index="3"> Reason</th>
                                     </thead>
                                     <tbody>
+                                    @php
+                                        $not_achieved_project_physical_target = json_decode($not_achieved_project_physical_target)
+                                    @endphp
+                                    <?php
+                                    if (!empty($not_achieved_project_physical_target)){
+                                    $i = 0;
+                                    ?>
+                                    <?php
+                                    foreach ($not_achieved_project_physical_target as $not_achieved_physical_target){
+                                    ?>
+                                    @php
+                                        $fiscal_year_start = $not_achieved_physical_target->fiscal_year - 1;
+                                        $fiscal_year = $fiscal_year_start." - ".$not_achieved_physical_target->fiscal_year;
+                                    @endphp
                                     <tr role="row">
-                                        <td> 1</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
+                                        <td> {{$i}}</td>
+                                        <td> {{$fiscal_year}}</td>
+                                        <td> {{$not_achieved_physical_target->component}}</td>
+                                        <td> {{$not_achieved_physical_target->physical_description}}</td>
+                                        <td> {{$not_achieved_physical_target->amount}} (<small class="text-muted">{{$not_achieved_physical_target->currency}}</small>)</td>
+                                        <td> {{$not_achieved_physical_target->start_date}}</td>
+                                        <td> {{$not_achieved_physical_target->end_date}}</td>
+                                        <td> {{$not_achieved_physical_target->reason}}</td>
                                     </tr>
+                                    <?php
+                                    $i++;
+                                    }
+                                    ?>
+                                    <?php
+                                    }else{
+                                    ?>
+                                    <tr role="row">
+                                        <td colspan="8" class="text-center"> No Data Found </td>
+                                    </tr>
+                                    <?php
+                                    }
+                                    ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -558,15 +612,42 @@
                                         <th data-column-index="3"> Actual End Date</th>
                                     </thead>
                                     <tbody>
+                                    @php
+                                        $on_going_project_physical_target = json_decode($on_going_project_physical_target)
+                                    @endphp
+                                    <?php
+                                    if (!empty($on_going_project_physical_target)){
+                                    $i = 0;
+                                    ?>
+                                    <?php
+                                    foreach ($on_going_project_physical_target as $on_going_physical_target){
+                                    ?>
+                                    @php
+                                        $fiscal_year_start = $on_going_physical_target->fiscal_year - 1;
+                                        $fiscal_year = $fiscal_year_start." - ".$on_going_physical_target->fiscal_year;
+                                    @endphp
                                     <tr role="row">
-                                        <td> 1</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
+                                        <td> {{$i}}</td>
+                                        <td> {{$fiscal_year}}</td>
+                                        <td> {{$on_going_physical_target->component}}</td>
+                                        <td> {{$on_going_physical_target->physical_description}}</td>
+                                        <td> {{$on_going_physical_target->amount}} (<small class="text-muted">{{$on_going_physical_target->currency}}</small>)</td>
+                                        <td> {{$on_going_physical_target->start_date}}</td>
+                                        <td> {{$on_going_physical_target->end_date}}</td>
                                     </tr>
+                                    <?php
+                                    $i++;
+                                    }
+                                    ?>
+                                    <?php
+                                    }else{
+                                    ?>
+                                    <tr role="row">
+                                        <td colspan="7" class="text-center"> No Data Found </td>
+                                    </tr>
+                                    <?php
+                                    }
+                                    ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -636,28 +717,54 @@
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            <h6> {{--23.--}} Ongoing Physical Targets.</h6>
                             <h6> {{--a.--}} Physical Target description</h6>
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover">
                                     <thead>
                                     <tr role="row">
-                                        <th data-column-index="1"> FY</th>
-                                        <th data-column-index="3"> Component</th>
+                                        <th data-column-index="0"> FY</th>
+                                        <th data-column-index="1"> Component</th>
                                         <th data-column-index="3"> Physical Target Description</th>
                                         <th data-column-index="3"> Budget Required</th>
                                         <th data-column-index="3"> Actual Start Date</th>
                                         <th data-column-index="3"> Actual End Date</th>
                                     </thead>
                                     <tbody>
+                                    @php
+                                    //    $on_going_project_physical_target = json_decode($on_going_project_physical_target)
+                                    @endphp
+                                    <?php
+                                    if (!empty($on_going_project_physical_target)){
+                                    $i = 0;
+                                    ?>
+                                    <?php
+                                    foreach ($on_going_project_physical_target as $on_going_physical_target){
+                                    ?>
+                                    @php
+                                        $fiscal_year_start = $on_going_physical_target->fiscal_year - 1;
+                                        $fiscal_year = $fiscal_year_start." - ".$on_going_physical_target->fiscal_year;
+                                    @endphp
                                     <tr role="row">
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
+                                        <td> {{$fiscal_year}}</td>
+                                        <td> {{$on_going_physical_target->component}}</td>
+                                        <td> {{$on_going_physical_target->physical_description}}</td>
+                                        <td> {{$on_going_physical_target->amount}} (<small class="text-muted">{{$on_going_physical_target->currency}}</small>)</td>
+                                        <td> {{$on_going_physical_target->start_date}}</td>
+                                        <td> {{$on_going_physical_target->end_date}}</td>
                                     </tr>
+                                    <?php
+                                    $i++;
+                                    }
+                                    ?>
+                                    <?php
+                                    }else{
+                                    ?>
+                                    <tr role="row">
+                                        <td colspan="6" class="text-center"> No Data Found </td>
+                                    </tr>
+                                    <?php
+                                    }
+                                    ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -672,12 +779,39 @@
                                         <th data-column-index="3"> Status</th>
                                     </thead>
                                     <tbody>
+                                    @php
+                                        $project_physical_target_status = json_decode($project_physical_target_status)
+                                    @endphp
+                                    <?php
+                                    if (!empty($project_physical_target_status)){
+                                    $i = 0;
+                                    ?>
+                                    <?php
+                                    foreach ($project_physical_target_status as $physical_target_status){
+                                    ?>
+                                    @php
+                                        $fiscal_year_start = $physical_target_status->fiscal_year - 1;
+                                        $fiscal_year = $fiscal_year_start." - ".$physical_target_status->fiscal_year;
+                                    @endphp
                                     <tr role="row">
-                                        <td> 1</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
+                                        <td> {{$i}}</td>
+                                        <td> {{$physical_target_status->date}}</td>
+                                        <td> {{$physical_target_status->pace}}</td>
+                                        <td> {{$physical_target_status->status}}</td>
                                     </tr>
+                                    <?php
+                                    $i++;
+                                    }
+                                    ?>
+                                    <?php
+                                    }else{
+                                    ?>
+                                    <tr role="row">
+                                        <td colspan="4" class="text-center"> No Data Found </td>
+                                    </tr>
+                                    <?php
+                                    }
+                                    ?>
                                     </tbody>
                                 </table>
                             </div>
