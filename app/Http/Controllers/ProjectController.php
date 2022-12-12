@@ -110,6 +110,9 @@ class ProjectController extends Controller{
         $project = Project::findOrFail($id);
         $title = "Edit Project";
         $data['project'] = $project;
+        $data['fiscal_year_select'] = get_fiscal_year($project->fiscal_year);
+        $data['executiveagency_select'] = get_executiveagency($project->executiveagency_id);
+        $data['currency_select'] = get_currency($project->currency_id);
         return view('adminpanel.project.edit_project', $data)->with('title', $title);
     }
 
