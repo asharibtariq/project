@@ -185,7 +185,7 @@ if(!function_exists('get_fiscal_year')) {
         for ($i = $end_date; $i > $start_date; $i--) {
             $date_minus_one = $i - 1;
             $fy_date_formate = $date_minus_one.' - '.$i;
-            if ($default > 0){
+            if ($default == $i){
                 $html .= "<option selected=\"selected\" value=\"" . $i . "\" >" . $fy_date_formate . "</option>";
             }else{
                 $html .= "<option value=\"" . $i . "\" >" . $fy_date_formate . "</option>";

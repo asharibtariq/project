@@ -24,14 +24,17 @@
     @endphp
     @if(is_array($result) && count($result) > 0)
         @foreach ($result as $r)
-
+            @php
+                $fiscal_year_start = $r->fiscal_year - 1;
+                $fiscal_year = $fiscal_year_start." - ".$r->fiscal_year;
+            @endphp
             <tr role="row">
                 <td> {{$i}} </td>
                 <td> {{$r->psdp}} </td>
                 <td> {{$r->psid}} </td>
                 <td> {{$r->name}} </td>
                 <td> {{$r->approval_type}} </td>
-                <td> {{$r->fiscal_year}} </td>
+                <td> {{$fiscal_year}} </td>
                 <td> {{$r->executiveagency}} </td>
                 <td> {{$r->approval_date}} </td>
                 <td> {{$r->cost}} (<small class="text-muted">{{$r->currency}}</small>)</td>
@@ -47,13 +50,15 @@
                 </td>
                 <td>
                     <div class="btn-group">
-                        <a href="{{url('add_project_director', $r->id)}}" class="btn btn-success" title="Project Profile" id="btn-view"><i class="fa fa-list"></i> </a>
-                        <a href="{{url('completed_physical_targets_status', $r->id)}}" class="btn btn-info" title="Project Status" id="btn-view"><i class="fa fa-list"></i> </a>
-                        <a href="{{url('ongoing_physical_targets', $r->id)}}" class="btn btn-primary" title="Project Monitoring" id="btn-view"><i class="fa fa-list"></i> </a>
-                        <a href="{{url('action_items', $r->id)}}" class="btn btn-danger" title="Action Items" id="btn-view"><i class="fa fa-circle"></i> </a>
-                        <a onClick="return confirm('Are you sure you want to update?');" title="Edit" href="{{url('edit_project', $r->id)}}" class="btn btn-warning" id="btn-view"><i class="fa fa-edit"></i> </a>
-                        <a href="{{url('project_summary', $r->id)}}" title="Summary" class="btn btn-success"><i class="fa fa-file-archive"></i> </a>
-                        <a onClick="return confirm('Are you sure you want to delete?');" title="Delete" href="{{url('delete_project', $r->id)}}" class="btn btn-danger"><i class="fa fa-trash"></i> </a>
+                        <a href="{{url('add_project_director', $r->id)}}" class="btn btn-success" title="Project Profile" id="btn-view"><i class="fa fa-list"></i> {{--Profile--}}</a>
+                        <a href="{{url('completed_physical_targets_status', $r->id)}}" class="btn btn-info" title="Project Status" id="btn-view"><i class="fa fa-list"></i> {{--Status--}}</a>
+                        <a href="{{url('ongoing_physical_targets', $r->id)}}" class="btn btn-primary" title="Project Monitoring" id="btn-view"><i class="fa fa-list"></i> {{--Monitoring--}}</a>
+                    </div><br/>
+                    <div class="btn-group">
+                        <a href="{{url('action_items', $r->id)}}" class="btn btn-danger" title="Action Items" id="btn-view"><i class="fa fa-circle"></i> {{--Action Items--}}</a>
+                        <a onClick="return confirm('Are you sure you want to update?');" title="Edit" href="{{url('edit_project', $r->id)}}" class="btn btn-warning" id="btn-view"><i class="fa fa-edit"></i> {{--Edit--}}</a>
+                        <a href="{{url('project_summary', $r->id)}}" title="Summary" class="btn btn-success"><i class="fa fa-file-archive"></i> {{--Summary--}}</a>
+                        {{--<a onClick="return confirm('Are you sure you want to delete?');" title="Delete" href="{{url('delete_project', $r->id)}}" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>--}}
                     </div>
                 </td>
             </tr>
