@@ -65,7 +65,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="multimedia">MultiMedia <span class="text-danger">*</span></label>
-                                        <input type="file" name="multimedia[]" id="images" multiple="multiple">
+                                        <input type="file" class="form-control" name="multimedia[]" id="images" multiple="multiple">
                                     </div>
                                 </div>
                             </div>
