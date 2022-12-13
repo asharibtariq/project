@@ -21,7 +21,7 @@ class ProjectMonitoringController extends Controller{
         $data['target_status'] = 'ongoing';
         $data['project_id'] = $id;
         $data['project'] = Project::findOrFail($id);
-        return view('adminpanel.project.status.physical_targets', $data)->with('title', $title);
+        return view('adminpanel.project.monitoring.physical_targets', $data)->with('title', $title);
     }
 
     public function create_physical_target_status($physical_target_id){
