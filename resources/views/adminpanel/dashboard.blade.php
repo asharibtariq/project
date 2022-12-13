@@ -156,7 +156,7 @@
                     <div class="row align-items-center m-b-25">
                         <div class="col">
                             <h3 class="m-b-5 text-white">Project Count</h3>
-
+                            <h3 class="m-b-0 text-white">{{$total_projects}}</h3>
                         </div>
 
                         <div class="col-auto">
@@ -173,7 +173,7 @@
                     <div class="row align-items-center m-b-25">
                         <div class="col">
                             <h3 class="m-b-5 text-white">Project Monitoring</h3>
-
+                            <h3 class="m-b-0 text-white">{{$total_projects_monitored}}</h3>
                         </div>
 
                         <div class="col-auto">
@@ -191,7 +191,8 @@
                     <div class="row align-items-center m-b-25">
                         <div class="col">
                             <h3 class="m-b-5 text-white">Total Tasks</h3>
-
+                            @php $total_tasks = $total_tasks_complete + $total_tasks_ongoing + $total_tasks_not_achieve; @endphp
+                            <h3 class="m-b-0 text-white">{{$total_tasks}}</h3>
                         </div>
 
                         <div class="col-auto">
@@ -199,9 +200,9 @@
                         </div>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item list-group-item-primary">Completed</li>
-                        <li class="list-group-item list-group-item-success">InCompleted</li>
-                        <li class="list-group-item list-group-item-warning">Noted</li>
+                        <li class="list-group-item list-group-item-primary">Completed: {{$total_tasks_complete}}</li>
+                        <li class="list-group-item list-group-item-success">On Going: {{$total_tasks_ongoing}}</li>
+                        <li class="list-group-item list-group-item-warning">Not Achieved: {{$total_tasks_not_achieve}}</li>
                     </ul>
                 </div>
             </div>
