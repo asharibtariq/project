@@ -422,8 +422,7 @@ class AjaxController extends Controller{
                         'tbl_project_financial_progress.component',
                         'tbl_project_financial_progress.physical_description',
                         'tbl_project_financial_progress.amount',
-                        'tbl_project_financial_progress.start_date',
-                        'tbl_project_financial_progress.end_date',
+                        'tbl_project_financial_progress.date',
                         'tbl_project_financial_progress.status')
                     //    ->groupBy('tbl_project_financial_progress.id')
                     ->orderBy('tbl_project_financial_progress.id', 'DESC')
@@ -432,7 +431,7 @@ class AjaxController extends Controller{
 
                 $data['result'] = $project->items();
                 $data['links'] = $project;
-                return view('adminpanel.project.monitoring.list')->with($data);
+                return view('adminpanel.project.monitoring.financial_progress_list')->with($data);
                 break;
             case 'physical_progress_content':
                 $where = array();
@@ -456,7 +455,7 @@ class AjaxController extends Controller{
 
                 $data['result'] = $project->items();
                 $data['links'] = $project;
-                return view('adminpanel.project.monitoring.list')->with($data);
+                return view('adminpanel.project.monitoring.physical_progress_list')->with($data);
                 break;
             default:
                 break;

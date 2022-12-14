@@ -161,6 +161,14 @@ Route::get('project_summary/{id}', [\App\Http\Controllers\ProjectController::cla
 Route::get('ongoing_physical_targets/{id}', [\App\Http\Controllers\ProjectMonitoringController::class, 'ongoing_physical_targets']);
 Route::get('add_physical_target_status/{id}', [\App\Http\Controllers\ProjectMonitoringController::class, 'create_physical_target_status']);
 Route::post('add_physical_target_status', [\App\Http\Controllers\ProjectMonitoringController::class, 'store_physical_target_status']);
+Route::get('physical_progress_monitoring/{id}', [\App\Http\Controllers\ProjectMonitoringController::class, 'physical_progress_monitoring']);
+Route::get('edit_physical_progress/{id}', [\App\Http\Controllers\ProjectMonitoringController::class, 'edit_physical_progress']);
+Route::post('update_physical_progress/{id}', [\App\Http\Controllers\ProjectMonitoringController::class, 'update_physical_progress']);
+Route::get('financial_progress_monitoring/{id}', [\App\Http\Controllers\ProjectMonitoringController::class, 'financial_progress_monitoring']);
+Route::get('edit_financial_progress/{id}', [\App\Http\Controllers\ProjectMonitoringController::class, 'edit_financial_progress']);
+Route::post('update_financial_progress/{id}', [\App\Http\Controllers\ProjectMonitoringController::class, 'update_financial_progress']);
+
+
 /* Issues & Suggestions */
 Route::get('add_issue_monitoring/{id}', [\App\Http\Controllers\ProjectMonitoringController::class, 'create_issue']);
 Route::post('add_issue_monitoring', [\App\Http\Controllers\ProjectMonitoringController::class, 'store_issue']);

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
+use App\Models\ProjectFinancialProgress;
+use App\Models\ProjectPhysicalProgress;
 use App\Models\ProjectPhysicalTarget;
 use App\Models\ProjectPhysicalTargetStatus;
 use Illuminate\Http\Request;
@@ -52,6 +54,68 @@ class ProjectMonitoringController extends Controller{
         return redirect('physical_target_status_monitoring/'.$request['physical_target_id'])->with('success', 'Record Added Successfully');
     }
 
+    public function physical_progress_monitoring($physical_target_id){
+        $title = "Physical Progress Monitoring";
+        $data['current_page'] = request()->segment(1);
+        $data['next_page'] = 'edit_physical_progress';
+        $data['physical_target_id'] = $physical_target_id;
+        $data['physical_target'] = ProjectPhysicalTarget::findOrFail($physical_target_id);
+        $data['project_id'] = $data['physical_target']['project_id'];
+        $data['project'] = Project::findOrFail($data['physical_target']['project_id']);
+        return view('adminpanel.project.monitoring.physical_progress_monitoring', $data)->with('title', $title);
+    }
+    public function edit_physical_progress($id){
+        $project = ProjectPhysicalProgress::findOrFail($id);
+        $title = "Edit Physical Target";
+        $data['fiscal_year_select'] = get_fiscal_year($project->fiscal_year);
+        $data['currency_select'] = get_currency($project->currency_id);
+        $data['component_select'] = get_component($project->component_id);
+        $data['project'] = $project;
+        return view('adminpanel.project.monitoring.edit_physical_progress', $data)->with('title', $title);
+    }
+
+    public function update_physical_progress(Request $request,$id){
+        $userId = Auth::id();
+        $project = ProjectPhysicalProgress::findOrFail($id);
+        $updateData = $request->all();
+        //    $updateData['slug'] = strtolower(str_replace(' ','_',$updateData['title']));
+        $updateData['updated_by'] = $userId;
+        //    pre($request->all(),1);
+        $project->update($updateData);
+        return redirect('physical_progress_monitoring/'.$request['project_id'])->with('success', 'Project Physical Progress Updated Successfully');
+    }
+
+    public function financial_progress_monitoring($physical_target_id){
+        $title = "Financial Progress Monitoring";
+        $data['current_page'] = request()->segment(1);
+        $data['next_page'] = 'edit_financial_progress';
+        $data['physical_target_id'] = $physical_target_id;
+        $data['physical_target'] = ProjectPhysicalTarget::findOrFail($physical_target_id);
+        $data['project_id'] = $data['physical_target']['project_id'];
+        $data['project'] = Project::findOrFail($data['physical_target']['project_id']);
+        return view('adminpanel.project.monitoring.financial_progress_monitoring', $data)->with('title', $title);
+    }
+
+    public function edit_financial_progress($id){
+        $project = ProjectFinancialProgress::findOrFail($id);
+        $title = "Edit Physical Target";
+        $data['fiscal_year_select'] = get_fiscal_year($project->fiscal_year);
+        $data['currency_select'] = get_currency($project->currency_id);
+        $data['component_select'] = get_component($project->component_id);
+        $data['project'] = $project;
+        return view('adminpanel.project.monitoring.edit_financial_progress', $data)->with('title', $title);
+    }
+
+    public function update_financial_progress(Request $request,$id){
+        $userId = Auth::id();
+        $project = ProjectFinancialProgress::findOrFail($id);
+        $updateData = $request->all();
+        //    $updateData['slug'] = strtolower(str_replace(' ','_',$updateData['title']));
+        $updateData['updated_by'] = $userId;
+        //    pre($request->all(),1);
+        $project->update($updateData);
+        return redirect('financial_progress_monitoring/'.$request['project_id'])->with('success', 'Project Financial Progress Updated Successfully');
+    }
     public function create_issue($physical_target_id){
         $title = "Add Issue";
         $data['current_page'] = request()->segment(1);
