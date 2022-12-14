@@ -1,5 +1,11 @@
 @extends('layouts.app')
 @section('content')
+    <style>
+        .dashboard_box {
+            border-radius: 1em;
+            box-shadow: 0 10px 20px rgba(0,0,0,.2);
+        }
+    </style>
     <!-- [ breadcrumb ] start -->
     <div class="page-header">
         <div class="page-block">
@@ -151,7 +157,7 @@
     <div class="row">
         <!-- New DashBoard Design  -->
         <div class="col-xl-4 col-md-12">
-            <div class="card prod-p-card bg-c-green h-100">
+            <div class="card prod-p-card bg-c-green dashboard_box h-100">
                 <div class="card-body">
                     <div class="row align-items-center m-b-25">
                         <div class="col">
@@ -164,11 +170,16 @@
                         </div>
                     </div>
                     <p class="m-b-0 text-white">Currently Active Projects</p>
+
+                </div>
+                <hr class="dark horizontal my-0">
+                <div class="card-footer p-3">
+                    <p class="mb-0"><span class="text-white text-sm font-weight-bolder">+55% than last week
                 </div>
             </div>
         </div>
         <div class="col-xl-4 col-md-12">
-            <div class="card prod-p-card bg-c-blue h-100 ">
+            <div class="card prod-p-card bg-c-blue dashboard_box h-100">
                 <div class="card-body">
                     <div class="row align-items-center m-b-25">
                         <div class="col">
@@ -183,10 +194,14 @@
                     <p class="m-b-0 text-white">From Previous
                         Month</p>
                 </div>
+                <hr class="dark horizontal my-0">
+                <div class="card-footer p-3">
+                    <p class="mb-0"><span class="text-white text-sm font-weight-bolder">+55% than last week
+                </div>
             </div>
         </div>
         <div class="col-xl-4 col-md-12">
-            <div class="card prod-p-card bg-c-yellow h-100">
+            <div class="card prod-p-card bg-c-yellow dashboard_box h-100">
                 <div class="card-body">
                     <div class="row align-items-center m-b-25">
                         <div class="col">
@@ -199,17 +214,43 @@
                             <i class="fas fa-money-bill-alt text-c-yellow f-18"></i>
                         </div>
                     </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item list-group-item-primary">Completed: {{$total_tasks_complete}}</li>
-                        <li class="list-group-item list-group-item-success">On Going: {{$total_tasks_ongoing}}</li>
-                        <li class="list-group-item list-group-item-warning">Not Achieved: {{$total_tasks_not_achieve}}</li>
-                    </ul>
+                   <div class="row">
+                       <div class="col-md-6">
+                           <h6 class="text-white"> Completed  </h6>
+                       </div>
+                       <div class="col-md-6">
+                           <h6 class="text-white"> 20  </h6>
+                       </div>
+                   </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6 class="text-white"> InCompleted  </h6>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="text-white"> 48  </h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6 class="text-white"> Noted  </h6>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="text-white"> 13  </h6>
+                        </div>
+                    </div>
+
+                </div>
+                <hr class="dark horizontal my-0">
+                <div class="card-footer p-3">
+                    <p class="mb-0"><span class="text-white text-sm font-weight-bolder">+3% than last month
                 </div>
             </div>
         </div>
 
 
     </div> <br>
+
+
 
     <div class="card table-card">
         {{--
