@@ -166,7 +166,11 @@
 
 .select2-container--default .select2-selection--single .select2-selection__rendered {
     color: #444;
+    /* Custom Work Start */
+    /* Custom Commented */
     /*line-height: 25px;*/
+    background: #eff3f6;
+    /* Custom Work End */
     line-height: 40px;
 }
 
