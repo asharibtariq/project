@@ -54,7 +54,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label> Physical Target Description </label>
-                                        <textarea type="text" name="physical_description" class="form-control"  >{{ $project->physical_description}}</textarea>
+                                        <textarea type="text" name="physical_description" class="form-control" readonly >{{ $project->physical_description}}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -69,7 +69,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Allocated Amount </label>
-                                        <input type="number" name="amount" class="form-control" value="{{$project->amount}}" placeholder="Amount">
+                                        <input type="number" name="amount" class="form-control" value="{{$project->amount}}" placeholder="Amount" readonly>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
