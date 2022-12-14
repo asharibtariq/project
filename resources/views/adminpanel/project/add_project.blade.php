@@ -85,7 +85,7 @@
                                         <label for="executiveagency">Executive Agency</label>
                                         {!! $executiveagency_select!!}
                                         <input type="hidden" name="executiveagency" id="executiveagency" required/>
-                                        <a href="../add_executiveagency" type="button"
+                                        <a href="add_executiveagency" type="button"
                                            class="btn btn-info btn-sm float-right m-1"><i class="feather icon-plus"></i>Add</a>
                                         @if ($errors->has('executiveagency'))
                                             <span class="text-danger">{{ $errors->first('executiveagency') }}</span>
