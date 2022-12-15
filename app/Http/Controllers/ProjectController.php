@@ -14,6 +14,11 @@ use App\Models\ProjectPhysicalTargetStatus;
 use App\Models\ProjectPhysicalTargetActionItem;
 use App\Models\ProjectPc4;
 use App\Models\ProjectEndOfFy;
+use App\Models\ProjectFinancialProgress;
+use App\Models\ProjectPhysicalProgress;
+use App\Models\ProjectPhysicalProgressMedia;
+use App\Models\ProjectActionItems;
+use App\Models\ProjectIssues;
 use Illuminate\Validation\Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -207,7 +212,13 @@ class ProjectController extends Controller{
         $data['on_going_project_physical_target'] = ProjectPhysicalTarget::all()->where('project_id','=',$id)->where('target_status','=','ongoing')->where('status','=','Y');
         $data['project_pc4'] = ProjectPc4::all()->where('project_id','=',$id)->where('status','=','Y');
         $data['project_end_of_fy'] = ProjectEndOfFy::all()->where('project_id','=',$id)->where('status','=','Y');
+        $data['project_financial_progress'] = ProjectFinancialProgress::all()->where('project_id','=',$id)->where('status','=','Y');
+        $data['project_physical_progress'] = ProjectPhysicalProgress::all()->where('project_id','=',$id)->where('status','=','Y');
+        // ProjectPhysicalProgressMedia
         $data['project_physical_target_status'] = ProjectPhysicalTargetStatus::all()->where('project_id','=',$id)->where('status','=','Y');
+        $data['project_action_items'] = ProjectActionItems::all()->where('project_id','=',$id)->where('status','=','Y');
+        $data['project_issues'] = ProjectIssues::all()->where('project_id','=',$id)->where('type','=','issue')->where('status','=','Y');
+        $data['project_suggest'] = ProjectIssues::all()->where('project_id','=',$id)->where('type','=','suggest')->where('status','=','Y');
         return view('adminpanel.project.project_summary',$data)->with('title', $title);
     }
 

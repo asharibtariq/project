@@ -15,8 +15,7 @@
 
                     </div>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/"><i
-                                        class="feather icon-home"></i></a></li>
+                        <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
                         <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
                     </ul>
                 </div>
@@ -174,7 +173,7 @@
                 </div>
                 <hr class="dark horizontal my-0">
                 <div class="card-footer p-3">
-                    <p class="mb-0"><span class="text-white text-sm font-weight-bolder">+55% than last week
+                    <p class="mb-0"><span class="text-white text-sm font-weight-bolder">+55% than last week</span></p>
                 </div>
             </div>
         </div>
@@ -196,7 +195,7 @@
                 </div>
                 <hr class="dark horizontal my-0">
                 <div class="card-footer p-3">
-                    <p class="mb-0"><span class="text-white text-sm font-weight-bolder">+55% than last week
+                    <p class="mb-0"><span class="text-white text-sm font-weight-bolder">+55% than last week</span></p>
                 </div>
             </div>
         </div>
@@ -216,33 +215,33 @@
                     </div>
                    <div class="row">
                        <div class="col-md-6">
-                           <h6 class="text-white"> Completed  </h6>
+                           <h6 class="text-white">Completed</h6>
                        </div>
                        <div class="col-md-6">
-                           <h6 class="text-white"> 20  </h6>
+                           <h6 class="text-white">{{$total_tasks_complete}}</h6>
                        </div>
                    </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <h6 class="text-white"> InCompleted  </h6>
+                            <h6 class="text-white">On Going</h6>
                         </div>
                         <div class="col-md-6">
-                            <h6 class="text-white"> 48  </h6>
+                            <h6 class="text-white">{{$total_tasks_ongoing}}</h6>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <h6 class="text-white"> Noted  </h6>
+                            <h6 class="text-white">Not Achieved</h6>
                         </div>
                         <div class="col-md-6">
-                            <h6 class="text-white"> 13  </h6>
+                            <h6 class="text-white">{{$total_tasks_not_achieve}}</h6>
                         </div>
                     </div>
 
                 </div>
                 <hr class="dark horizontal my-0">
                 <div class="card-footer p-3">
-                    <p class="mb-0"><span class="text-white text-sm font-weight-bolder">+3% than last month
+                    <p class="mb-0"><span class="text-white text-sm font-weight-bolder">+3% than last month</span></p>
                 </div>
             </div>
         </div>

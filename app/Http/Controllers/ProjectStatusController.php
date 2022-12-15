@@ -47,24 +47,27 @@ class ProjectStatusController extends Controller{
         return view('adminpanel.project.status.physical_targets', $data)->with('title', $title);
     }
 
-    public function edit_physical_targets($id){
-        $project = ProjectPhysicalTarget::findOrFail($id);
+    public function edit_physical_targets($physical_target_id){
         $title = "Edit Physical Target";
+        $data['physical_target_id'] = $physical_target_id;
+        $data['physical_target'] = ProjectPhysicalTarget::findOrFail($physical_target_id);
+        $data['project_id'] = $data['physical_target']['project_id'];
+        $data['project'] = Project::findOrFail($data['physical_target']['project_id']);
+        /*
         $data['fiscal_year_select'] = get_fiscal_year($project->fiscal_year);
         $data['currency_select'] = get_currency($project->currency_id);
         $data['component_select'] = get_component($project->component_id);
-        $data['project'] = $project;
+        */
         return view('adminpanel.project.status.edit_physical_targets', $data)->with('title', $title);
     }
 
-    public function update_physical_targets(Request $request,$id){
+    public function update_physical_targets(Request $request,$physical_target_id){
         $userId = Auth::id();
-        $project = ProjectPhysicalTarget::findOrFail($id);
+        $physical_target = ProjectPhysicalTarget::findOrFail($physical_target_id);
         $updateData = $request->all();
-        //    $updateData['slug'] = strtolower(str_replace(' ','_',$updateData['title']));
+    //    $updateData['slug'] = strtolower(str_replace(' ','_',$updateData['title']));
         $updateData['updated_by'] = $userId;
-        //    pre($request->all(),1);
-        $project->update($updateData);
+        $physical_target->update($updateData);
         return redirect('completed_physical_target_status/'.$request['project_id'])->with('success', 'Project Physical Target Updated Successfully');
     }
 

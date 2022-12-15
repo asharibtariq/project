@@ -25,36 +25,26 @@
                         @endif
 
                         <h4>Physical Target Details</h4>
-                        <form name="" method="post" action="{{url('update_physical_targets', $project->id)}}">
+                        <hr/><br/>
+                        <form name="" method="post" action="{{url('update_physical_targets', $physical_target->id)}}">
                             @csrf
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <input type="hidden" name="project_id" value="{{$project->project_id}}" />
                                         <label for="fiscal_year">FY</label>
-                                        {!! $fiscal_year_select !!}
-                                        @if ($errors->has('fiscal_year'))
-                                            <span class="text-danger">{{ $errors->first('fiscal_year') }}</span>
-                                        @endif
+                                        <label class="form-control">{{$physical_target->fiscal_year}}</label>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="fiscal_year">Component</label>
-                                        {!! $component_select !!}
-                                        <input type="hidden" name="component" value="{{$project->component}}" id="component"/>
-                                        {{--<a href="../add_component" type="button" class="btn btn-info btn-sm float-right m-1"><i class="feather icon-plus"></i>Add</a>--}}
-                                        @if ($errors->has('component'))
-                                            <span class="text-danger">{{ $errors->first('component') }}</span>
-                                        @endif
+                                        <label class="form-control">{{$physical_target->component}}</label>
                                     </div>
                                 </div>
-
-
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label> Physical Target Description </label>
-                                        <textarea type="text" name="physical_description" class="form-control" readonly >{{ $project->physical_description}}</textarea>
+                                        <label>Physical Target Description </label>
+                                        <label class="form-control">{{$physical_target->physical_description}}</label>
                                     </div>
                                 </div>
                             </div>
@@ -69,42 +59,35 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Allocated Amount </label>
-                                        <input type="number" name="amount" class="form-control" value="{{$project->amount}}" placeholder="Amount" readonly>
+                                        <label class="form-control">{{$physical_target->amount}}</label>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label> Start Date</label>
-                                        <input type="text" name="start_date" id="start_date" value="{{ $project->start_date}}" class="form-control datepicker" placeholder="MM/DD/YYYY" readonly>
-                                        @if ($errors->has('start_date'))
-                                            <span class="text-danger">{{ $errors->first('start_date') }}</span>
-                                        @endif
+                                        <label>Start Date</label>
+                                        <label class="form-control">{{$physical_target->start_date}}</label>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label> End Date</label>
-                                        <input type="text" name="end_date" id="end_date" value="{{ $project->end_date}}" class="form-control datepicker" placeholder="MM/DD/YYYY" readonly>
-                                        @if ($errors->has('end_date'))
-                                            <span class="text-danger">{{ $errors->first('end_date') }}</span>
-                                        @endif
+                                        <label>End Date</label>
+                                        <label class="form-control">{{$physical_target->end_date}}</label>
                                     </div>
                                 </div>
                             </div>
-                        <h4> Edit Physical Target</h4>
                             <div class="row">
-                                @if($project->target_status == 'complete')
-
+                                <input type="hidden" name="project_id" value="{{$physical_target->project_id}}" />
+                                @if($physical_target->target_status == 'complete')
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Consumed Budget</label>
-                                            <input type="number" name="amount" class="form-control" value="{{$project->consumed_budget}}" placeholder="Amount">
+                                            <input type="number" name="amount" class="form-control" value="{{$physical_target->consumed_budget}}" placeholder="Amount">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label> Actual Start Date</label>
-                                            <input type="text" name="act_start_date" id="act_start_date" value="{{ $project->act_start_date}}" class="form-control datepicker" placeholder="MM/DD/YYYY" readonly>
+                                            <label>Actual Start Date</label>
+                                            <input type="text" name="act_start_date" id="act_start_date" value="{{$physical_target->act_start_date}}" class="form-control datepicker" placeholder="MM/DD/YYYY" readonly>
                                             @if ($errors->has('act_start_date'))
                                                 <span class="text-danger">{{ $errors->first('act_start_date') }}</span>
                                             @endif
@@ -112,25 +95,25 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label> Actual End Date</label>
-                                            <input type="text" name="act_end_date" id="act_end_date" value="{{ $project->act_end_date}}" class="form-control datepicker" placeholder="MM/DD/YYYY" readonly>
+                                            <label>Actual End Date</label>
+                                            <input type="text" name="act_end_date" id="act_end_date" value="{{$physical_target->act_end_date}}" class="form-control datepicker" placeholder="MM/DD/YYYY" readonly>
                                             @if ($errors->has('act_end_date'))
                                                 <span class="text-danger">{{ $errors->first('act_end_date') }}</span>
                                             @endif
                                         </div>
                                     </div>
-                                @elseif($project->target_status == 'not_achieve')
+                                @elseif($physical_target->target_status == 'not_achieve')
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label> Reason </label>
-                                            <textarea type="text" name="reason" class="form-control"  >{{ $project->reason}}</textarea>
+                                            <label>Reason</label>
+                                            <textarea type="text" name="reason" class="form-control">{{$physical_target->reason}}</textarea>
                                         </div>
                                     </div>
-                                @elseif($project->target_status == 'ongoing')
+                                @elseif($physical_target->target_status == 'ongoing')
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label> Actual Start Date</label>
-                                            <input type="text" name="act_start_date" id="act_start_date" value="{{ $project->act_start_date}}" class="form-control datepicker" placeholder="MM/DD/YYYY" readonly>
+                                            <input type="text" name="act_start_date" id="act_start_date" value="{{$physical_target->act_start_date}}" class="form-control datepicker" placeholder="MM/DD/YYYY" readonly>
                                             @if ($errors->has('act_start_date'))
                                                 <span class="text-danger">{{ $errors->first('act_start_date') }}</span>
                                             @endif
@@ -138,8 +121,8 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label> Actual End Date</label>
-                                            <input type="text" name="act_end_date" id="act_end_date" value="{{ $project->act_end_date}}" class="form-control datepicker" placeholder="MM/DD/YYYY" readonly>
+                                            <label>Actual End Date</label>
+                                            <input type="text" name="act_end_date" id="act_end_date" value="{{$physical_target->act_end_date}}" class="form-control datepicker" placeholder="MM/DD/YYYY" readonly>
                                             @if ($errors->has('act_end_date'))
                                                 <span class="text-danger">{{ $errors->first('act_end_date') }}</span>
                                             @endif
@@ -151,7 +134,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group"><br/>
                                         <button type="submit" class="btn btn-info pull-right">
-                                            <i class="fa fa-check"> Update</i>
+                                            <i class="fa fa-check">Update</i>
                                         </button>
                                     </div>
                                 </div>

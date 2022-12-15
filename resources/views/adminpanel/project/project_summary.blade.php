@@ -82,7 +82,7 @@
                                     @endphp
                                     <?php
                                     if (!empty($project_allocation)){
-                                    $i = 0;
+                                    $i = 1;
                                     ?>
                                     <?php
                                     foreach ($project_allocation as $allocation){
@@ -133,7 +133,7 @@
                                     @endphp
                                     <?php
                                     if (!empty($project_release)){
-                                    $i = 0;
+                                    $i = 1;
                                     ?>
                                     <?php
                                     foreach ($project_release as $release){
@@ -186,7 +186,7 @@
                                     @endphp
                                     <?php
                                     if (!empty($project_fy_utilization)){
-                                    $i = 0;
+                                    $i = 1;
                                     ?>
                                     <?php
                                     foreach ($project_fy_utilization as $fy_utilization){
@@ -237,7 +237,7 @@
                                     @endphp
                                     <?php
                                     if (!empty($project_component_pc1)){
-                                    $i = 0;
+                                    $i = 1;
                                     ?>
                                     <?php
                                     foreach ($project_component_pc1 as $component_pc1){
@@ -285,7 +285,7 @@
                                     @endphp
                                     <?php
                                     if (!empty($project_component_nis)){
-                                    $i = 0;
+                                    $i = 1;
                                     ?>
                                     <?php
                                     foreach ($project_component_nis as $component_nis){
@@ -336,7 +336,7 @@
                                     @endphp
                                     <?php
                                     if (!empty($project_physical_target)){
-                                    $i = 0;
+                                    $i = 1;
                                     ?>
                                     <?php
                                     foreach ($project_physical_target as $physical_target){
@@ -436,7 +436,7 @@
                                     @endphp
                                     <?php
                                     if (!empty($project_end_of_fy)){
-                                    $i = 0;
+                                    $i = 1;
                                     ?>
                                     <?php
                                     foreach ($project_end_of_fy as $end_of_fy){
@@ -506,7 +506,7 @@
                                     @endphp
                                     <?php
                                     if (!empty($completed_project_physical_target)){
-                                    $i = 0;
+                                    $i = 1;
                                     ?>
                                     <?php
                                     foreach ($completed_project_physical_target as $completed_physical_target){
@@ -562,7 +562,7 @@
                                     @endphp
                                     <?php
                                     if (!empty($not_achieved_project_physical_target)){
-                                    $i = 0;
+                                    $i = 1;
                                     ?>
                                     <?php
                                     foreach ($not_achieved_project_physical_target as $not_achieved_physical_target){
@@ -617,7 +617,7 @@
                                     @endphp
                                     <?php
                                     if (!empty($on_going_project_physical_target)){
-                                    $i = 0;
+                                    $i = 1;
                                     ?>
                                     <?php
                                     foreach ($on_going_project_physical_target as $on_going_physical_target){
@@ -665,14 +665,41 @@
                                         <th data-column-index="3"> Date</th>
                                     </thead>
                                     <tbody>
+                                    @php
+                                        $project_financial_progress = json_decode($project_financial_progress)
+                                    @endphp
+                                    <?php
+                                    if (!empty($project_financial_progress)){
+                                    $i = 1;
+                                    ?>
+                                    <?php
+                                    foreach ($project_financial_progress as $financial_progress){
+                                    ?>
+                                    @php
+                                        $fiscal_year_start = $financial_progress->fiscal_year - 1;
+                                        $fiscal_year = $fiscal_year_start." - ".$financial_progress->fiscal_year;
+                                    @endphp
                                     <tr role="row">
-                                        <td> 1</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
+                                        <td> {{$i}}</td>
+                                        <td> {{$fiscal_year}}</td>
+                                        <td> {{$financial_progress->component}}</td>
+                                        <td> {{$financial_progress->physical_description}}</td>
+                                        <td> {{$financial_progress->amount}}</td>
+                                        <td> {{$financial_progress->date}}</td>
                                     </tr>
+                                    <?php
+                                    $i++;
+                                    }
+                                    ?>
+                                    <?php
+                                    }else{
+                                    ?>
+                                    <tr role="row">
+                                        <td colspan="6" class="text-center"> No Data Found </td>
+                                    </tr>
+                                    <?php
+                                    }
+                                    ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -691,15 +718,42 @@
                                         <th data-column-index="3"> Pictorial/Video Evidence Annex Reference</th>
                                     </thead>
                                     <tbody>
+                                    @php
+                                        $project_physical_progress = json_decode($project_physical_progress)
+                                    @endphp
+                                    <?php
+                                    if (!empty($project_physical_progress)){
+                                    $i = 1;
+                                    ?>
+                                    <?php
+                                    foreach ($project_physical_progress as $physical_progress){
+                                    ?>
+                                    @php
+                                        $fiscal_year_start = $physical_progress->fiscal_year - 1;
+                                        $fiscal_year = $fiscal_year_start." - ".$physical_progress->fiscal_year;
+                                    @endphp
                                     <tr role="row">
-                                        <td> 1</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
+                                        <td> {{$i}}</td>
+                                        <td> {{$fiscal_year}}</td>
+                                        <td> {{$physical_progress->date}}</td>
+                                        <td> {{$physical_progress->component}}</td>
+                                        <td> {{$physical_progress->physical_description}}</td>
+                                        <td> {{$physical_progress->progress_detail}}</td>
+                                        <td> Pictorial/Video Evidence Annex Reference</td>
                                     </tr>
+                                    <?php
+                                    $i++;
+                                    }
+                                    ?>
+                                    <?php
+                                    }else{
+                                    ?>
+                                    <tr role="row">
+                                        <td colspan="7" class="text-center"> No Data Found </td>
+                                    </tr>
+                                    <?php
+                                    }
+                                    ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -735,7 +789,6 @@
                                     @endphp
                                     <?php
                                     if (!empty($on_going_project_physical_target)){
-                                    $i = 0;
                                     ?>
                                     <?php
                                     foreach ($on_going_project_physical_target as $on_going_physical_target){
@@ -753,7 +806,6 @@
                                         <td> {{$on_going_physical_target->end_date}}</td>
                                     </tr>
                                     <?php
-                                    $i++;
                                     }
                                     ?>
                                     <?php
@@ -784,7 +836,7 @@
                                     @endphp
                                     <?php
                                     if (!empty($project_physical_target_status)){
-                                    $i = 0;
+                                    $i = 1;
                                     ?>
                                     <?php
                                     foreach ($project_physical_target_status as $physical_target_status){
@@ -830,15 +882,42 @@
                                         <th data-column-index="3"> Unpaid Liability</th>
                                     </thead>
                                     <tbody>
+                                    @php
+                                    //    $project_financial_progress = json_decode($project_financial_progress)
+                                    @endphp
+                                    <?php
+                                    if (!empty($project_financial_progress)){
+                                    $i = 1;
+                                    ?>
+                                    <?php
+                                    foreach ($project_financial_progress as $financial_progress){
+                                    ?>
+                                    @php
+                                        $fiscal_year_start = $financial_progress->fiscal_year - 1;
+                                        $fiscal_year = $fiscal_year_start." - ".$financial_progress->fiscal_year;
+                                    @endphp
                                     <tr role="row">
-                                        <td> 1</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
+                                        <td> {{$i}}</td>
+                                        <td> {{$fiscal_year}}</td>
+                                        <td> {{$financial_progress->date}}</td>
+                                        <td> {{$financial_progress->amount_spent}}</td>
+                                        <td> {{$financial_progress->instrument_detail}}</td>
+                                        <td> {{$financial_progress->file}}</td>
+                                        <td> {{$financial_progress->amount_unpaid}}</td>
                                     </tr>
+                                    <?php
+                                    $i++;
+                                    }
+                                    ?>
+                                    <?php
+                                    }else{
+                                    ?>
+                                    <tr role="row">
+                                        <td colspan="7" class="text-center"> No Data Found </td>
+                                    </tr>
+                                    <?php
+                                    }
+                                    ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -855,13 +934,40 @@
                                         <th data-column-index="3"> Pictorial Evidence Annex ref</th>
                                     </thead>
                                     <tbody>
+                                    @php
+                                    //    $project_physical_progress = json_decode($project_physical_progress)
+                                    @endphp
+                                    <?php
+                                    if (!empty($project_physical_progress)){
+                                    $i = 1;
+                                    ?>
+                                    <?php
+                                    foreach ($project_physical_progress as $physical_progress){
+                                    ?>
+                                    @php
+                                        $fiscal_year_start = $physical_progress->fiscal_year - 1;
+                                        $fiscal_year = $fiscal_year_start." - ".$physical_progress->fiscal_year;
+                                    @endphp
                                     <tr role="row">
-                                        <td> 1</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
+                                        <td> {{$i}}</td>
+                                        <td> {{$fiscal_year}}</td>
+                                        <td> {{$physical_progress->date}}</td>
+                                        <td> {{$physical_progress->progress_detail}}</td>
+                                        <td> Pictorial Evidence Annex ref</td>
                                     </tr>
+                                    <?php
+                                    $i++;
+                                    }
+                                    ?>
+                                    <?php
+                                    }else{
+                                    ?>
+                                    <tr role="row">
+                                        <td colspan="5" class="text-center"> No Data Found </td>
+                                    </tr>
+                                    <?php
+                                    }
+                                    ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -884,15 +990,38 @@
                                         <th data-column-index="3"> End Date</th>
                                     </thead>
                                     <tbody>
+                                    @php
+                                        $project_action_items = json_decode($project_action_items)
+                                    @endphp
+                                    <?php
+                                    if (!empty($project_action_items)){
+                                    $i = 1;
+                                    ?>
+                                    <?php
+                                    foreach ($project_action_items as $action_items){
+                                    ?>
                                     <tr role="row">
-                                        <td> 1</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
+                                        <td> {{$i}}</td>
+                                        <td> {{$action_items->date}}</td>
+                                        <td> {{$action_items->component}}</td>
+                                        <td> {{$action_items->action_item}}</td>
+                                        <td> {{$action_items->assigned_to}}</td>
+                                        <td> {{$action_items->start_date}}</td>
+                                        <td> {{$action_items->end_date}}</td>
                                     </tr>
+                                    <?php
+                                    $i++;
+                                    }
+                                    ?>
+                                    <?php
+                                    }else{
+                                    ?>
+                                    <tr role="row">
+                                        <td colspan="7" class="text-center"> No Data Found </td>
+                                    </tr>
+                                    <?php
+                                    }
+                                    ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -920,11 +1049,34 @@
                                         <th data-column-index="3"> Issues</th>
                                     </thead>
                                     <tbody>
+                                    @php
+                                        $project_issues = json_decode($project_issues)
+                                    @endphp
+                                    <?php
+                                    if (!empty($project_issues)){
+                                    $i = 1;
+                                    ?>
+                                    <?php
+                                    foreach ($project_issues as $issues){
+                                    ?>
                                     <tr role="row">
-                                        <td> 1</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
+                                        <td> {{$i}}</td>
+                                        <td> {{$issues->component}}</td>
+                                        <td> {{$issues->description}}</td>
                                     </tr>
+                                    <?php
+                                    $i++;
+                                    }
+                                    ?>
+                                    <?php
+                                    }else{
+                                    ?>
+                                    <tr role="row">
+                                        <td colspan="3" class="text-center"> No Data Found </td>
+                                    </tr>
+                                    <?php
+                                    }
+                                    ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -939,11 +1091,34 @@
                                         <th data-column-index="3"> Suggestions</th>
                                     </thead>
                                     <tbody>
+                                    @php
+                                        $project_suggest = json_decode($project_suggest)
+                                    @endphp
+                                    <?php
+                                    if (!empty($project_suggest)){
+                                    $i = 1;
+                                    ?>
+                                    <?php
+                                    foreach ($project_suggest as $suggest){
+                                    ?>
                                     <tr role="row">
-                                        <td> 1</td>
-                                        <td> Insert Text Here</td>
-                                        <td> Insert Text Here</td>
+                                        <td> {{$i}}</td>
+                                        <td> {{$suggest->component}}</td>
+                                        <td> {{$suggest->description}}</td>
                                     </tr>
+                                    <?php
+                                    $i++;
+                                    }
+                                    ?>
+                                    <?php
+                                    }else{
+                                    ?>
+                                    <tr role="row">
+                                        <td colspan="3" class="text-center"> No Data Found </td>
+                                    </tr>
+                                    <?php
+                                    }
+                                    ?>
                                     </tbody>
                                 </table>
                             </div>
