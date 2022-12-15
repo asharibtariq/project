@@ -122,8 +122,6 @@ Route::post('add_physical_target', [\App\Http\Controllers\ProjectProfileControll
 Route::get('edit_physical_target/{id}', [\App\Http\Controllers\ProjectProfileController::class, 'edit_physical_target']);
 Route::post('update_physical_target/{id}', [\App\Http\Controllers\ProjectProfileController::class, 'update_physical_target']);
 
-Route::get('add_pc4/{id}', [\App\Http\Controllers\ProjectProfileController::class, 'pc4']);
-Route::post('add_pc4', [\App\Http\Controllers\ProjectProfileController::class, 'add_pc4']);
 Route::get('edit_pc4/{id}', [\App\Http\Controllers\ProjectProfileController::class, 'edit_pc4']);
 Route::post('update_pc4/{id}', [\App\Http\Controllers\ProjectProfileController::class, 'update_pc4']);
 

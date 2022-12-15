@@ -22,7 +22,7 @@
         <a class="nav-link @php echo $current_page == 'add_physical_target' ? 'active' : '' @endphp" href="{{url('add_physical_target', $project_id)}}" role="tab" aria-selected="false">Physical Targets</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link @php echo $current_page == 'add_pc4' ? 'active' : '' @endphp" href="{{url('add_pc4', $project_id)}}" role="tab" aria-selected="false">PC-4</a>
+        <a class="nav-link @php echo $current_page == 'edit_pc4' ? 'active' : '' @endphp" href="{{url('edit_pc4', $project_id)}}" role="tab" aria-selected="false">PC-4</a>
     </li>
     <li class="nav-item">
         <a class="nav-link @php echo $current_page == 'add_end_of_fy' ? 'active' : '' @endphp" href="{{url('add_end_of_fy', $project_id)}}" role="tab" aria-selected="false">End of FY</a>

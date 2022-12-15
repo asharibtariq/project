@@ -87,6 +87,12 @@ class ProjectController extends Controller{
         $project->updated_by = $userId;
         $project->save();
         $id = $project->id;
+        $name = $project->name;
+
+        $pc4 = new ProjectPc4();
+        $pc4->project_id = $id;
+        $pc4->project_name = $name;
+        $pc4->save();
 
         return redirect('project')->with('success', 'Project Added Successfully');
     }

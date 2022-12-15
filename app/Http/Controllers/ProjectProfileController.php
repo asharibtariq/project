@@ -364,30 +364,49 @@ class ProjectProfileController extends Controller
     }
 
 
-    public function pc4($id){
-        $title = "PC-4 Details";
-        $data['project_id'] = $id;
-        $data['project'] = Project::findOrFail($id);
-        $data['current_page'] = request()->segment(1);
-        return view('adminpanel.project.profile.pc4', $data)->with('title', $title);
+//    public function pc4($id){
+//        $title = "PC-4 Details";
+//        $data['project_id'] = $id;
+//        $data['project'] = Project::findOrFail($id);
+//        $data['current_page'] = request()->segment(1);
+//        return view('adminpanel.project.profile.pc4', $data)->with('title', $title);
+//    }
+//    public function add_pc4(Request $request)
+//    {
+//        $userId = Auth::id();
+//        $insertData = $request->all();
+//        $rules = [
+//            'project_id' => 'required',
+//            'ministry_status' => 'required',
+////            'start_date' => 'required'
+//        ];
+//        $customMessages = [
+//            'required' => 'The :attribute field is required.'
+//        ];
+//        $this->validate($request, $rules, $customMessages);
+//        $insertData['created_by'] = $userId;
+//        $insertData['updated_by'] = $userId;
+//        ProjectPc4::create($insertData);
+//        return redirect('add_pc4/' . $request['project_id'])->with('success', 'Pc4 Added Successfully');
+//    }
+
+    public function edit_pc4($id){
+        $project = ProjectPc4::findOrFail($id);
+        $title = "Edit Pc4";
+        $data['fiscal_year_select'] = get_fiscal_year();
+        $data['project'] = $project;
+        return view('adminpanel.project.profile.edit_pc4', $data)->with('title', $title);
     }
-    public function add_pc4(Request $request)
-    {
+
+    public function update_pc4(Request $request,$id){
         $userId = Auth::id();
-        $insertData = $request->all();
-        $rules = [
-            'project_id' => 'required',
-            'ministry_status' => 'required',
-//            'start_date' => 'required'
-        ];
-        $customMessages = [
-            'required' => 'The :attribute field is required.'
-        ];
-        $this->validate($request, $rules, $customMessages);
-        $insertData['created_by'] = $userId;
-        $insertData['updated_by'] = $userId;
-        ProjectPc4::create($insertData);
-        return redirect('add_pc4/' . $request['project_id'])->with('success', 'Pc4 Added Successfully');
+        $project = ProjectPc4::findOrFail($id);
+        $updateData = $request->all();
+        //    $updateData['slug'] = strtolower(str_replace(' ','_',$updateData['title']));
+        $updateData['updated_by'] = $userId;
+        //    pre($request->all(),1);
+        $project->update($updateData);
+        return redirect('edit_pc4/'.$request['project_id'])->with('success', 'Project Pc4 Updated Successfully');
     }
 
 

@@ -21,7 +21,7 @@
                         @if(Session::has('success'))
                             <div class="alert alert-success">{{Session::get('success')}}</div>
                         @endif
-                        <form name="" method="post" action="{{url('add_pc4')}}" enctype="multipart/form-data">
+                        <form name="" method="post" action="{{url('update_pc4')}}" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-md-12">
@@ -36,10 +36,10 @@
                                 <div class="form-group">
                                     <label
                                         for="exampleFormControlSelect1">Status</label>
-                                    <input type="hidden" name="project_id" value="{{$project_id}}" />
+                                    <input type="hidden" name="project_id" value="{{$project->project_id}}" />
                                     <input type="hidden" name="project_name" value="{{$project->name}}" />
                                     <select name="preparation_status" class="form-control select2"
-                                            id="exampleFormControlSelect1">
+                                            id="exampleFormControlSelect1" value="{{$project->preparation_status}}">
                                         <option value="Complete">Complete</option>
                                         <option value="Incomplete">Incomplete</option>
 
@@ -50,9 +50,9 @@
                                     <div class="form-group">
                                         <label for="exampleFormControlTextarea1">Remarks/
                                             issues/Bottlenecks (if any)</label>
-                                        <textarea  class="form-control"
+                                        <textarea  class="form-control" name="remarks"
                                                   id="exampleFormControlTextarea1" rows="3"
-                                                  placeholder="Remarks"></textarea>
+                                                   value="{{$project->remarks}}"  placeholder="Remarks"></textarea>
                                     </div>
                                 </div>
 
@@ -71,7 +71,7 @@
                                         <label
                                             for="exampleFormControlSelect1">Status</label>
                                         <select name="ministry_status" class="form-control select2"
-                                                id="exampleFormControlSelect1">
+                                                id="exampleFormControlSelect1"  value="{{$project->ministry_status}}" >
                                             <option  value="Complete">Complete </option>
                                             <option value="Incomplete">Incomplete</option>
 
@@ -82,7 +82,7 @@
                                     <div class="form-group">
                                         <label for="exampleFormControlTextarea1">Remarks/
                                             issues/Bottlenecks (if any)</label>
-                                        <textarea name="ministry_remarks" class="form-control"
+                                        <textarea name="ministry_remarks" value="{{$project->ministry_remarks}}" class="form-control"
                                                   id="exampleFormControlTextarea1" rows="3"
                                                   placeholder="Remarks"></textarea>
                                     </div>
@@ -103,7 +103,7 @@
                                         <label
                                             for="exampleFormControlSelect1">Status</label>
                                         <select name="planning_status" class="form-control select2"
-                                                id="exampleFormControlSelect1">
+                                                id="exampleFormControlSelect1" value="{{$project->planning_status}}">
                                             <option value="complete">Complete </option>
                                             <option value="Incomplete">Incomplete</option>
 
@@ -116,7 +116,7 @@
                                             issues/Bottlenecks (if any)</label>
                                         <textarea name="planning_remarks" class="form-control"
                                                   id="exampleFormControlTextarea1" rows="3"
-                                                  placeholder="Remarks"></textarea>
+                                                  value="{{$project->planning_remarks}}"  placeholder="Remarks"></textarea>
                                     </div>
                                 </div>
 
@@ -135,7 +135,7 @@
                                         <label
                                             for="exampleFormControlSelect1">Status</label>
                                         <select name="finance_status" class="form-control select2"
-                                                id="exampleFormControlSelect1">
+                                                id="exampleFormControlSelect1" value="{{$project->finance_status}}">
                                             <option value="complete">Complete </option>
                                             <option value="complete">Incomplete</option>
 
@@ -148,7 +148,7 @@
                                             issues/Bottlenecks (if any)</label>
                                         <textarea name="finance_remarks" class="form-control"
                                                   id="exampleFormControlTextarea1" rows="3"
-                                                  placeholder="Remarks"></textarea>
+                                                  placeholder="Remarks" value="{{$project->finance_remarks}}"></textarea>
                                     </div>
                                 </div>
 
@@ -167,7 +167,7 @@
                                         <label
                                             for="exampleFormControlSelect1">Status</label>
                                         <select name="budget_status" class="form-control select2"
-                                                id="exampleFormControlSelect1">
+                                                id="exampleFormControlSelect1" value="{{$project->budget_status}}">
                                             <option value="complete">Complete </option>
                                             <option value="Incomplete">Incomplete</option>
 
@@ -180,7 +180,7 @@
                                             issues/Bottlenecks (if any)</label>
                                         <textarea name="budget_remarks" class="form-control"
                                                   id="exampleFormControlTextarea1" rows="3"
-                                                  placeholder="Remarks"></textarea>
+                                                  placeholder="Remarks" value="{{$project->budget_remarks}}"></textarea>
                                     </div>
                                 </div>
 
@@ -192,7 +192,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group"><br/>
                                         <button type="submit" class="btn btn-info pull-right">
-                                            <i class="fa fa-check"> Add</i>
+                                            <i class="fa fa-check"> Update Pc4</i>
                                         </button>
                                     </div>
                                 </div>
