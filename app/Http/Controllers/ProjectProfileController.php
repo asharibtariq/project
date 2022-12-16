@@ -24,41 +24,48 @@ class ProjectProfileController extends Controller
         $this->middleware('auth');
     }
 
-    public function project_director($id){
-        $title = "Project Director";
-        $data['current_page'] = request()->segment(1);
-        $data['fiscal_year_select'] = get_fiscal_year();
-        $data['project_id'] = $id;
-        $data['project'] = Project::findOrFail($id);
-        $data['designation_select'] = get_designation();
-        $data['organization_select'] = get_organization();
-        return view('adminpanel.project.profile.project_director', $data)->with('title', $title);
-    }
-    public function add_project_director(Request $request){
-        $userId = Auth::id();
-        $insertData = $request->all();
-        $rules = [
-            'name' => 'required',
-            'email' => 'required',
-            'wef_date' => 'required'
-        ];
-        $customMessages = [
-            'required' => 'The :attribute field is required.'
-        ];
-        $this->validate($request, $rules, $customMessages);
-        $insertData['created_by'] = $userId;
-        $insertData['updated_by'] = $userId;
-        ProjectDirector::create($insertData);
-        return redirect('add_project_director'.$request['project_id'])->with('success', 'Project Director Added Successfully');
-    }
+//    public function project_director($id){
+//        $title = "Project Director";
+//        $data['current_page'] = request()->segment(1);
+//        $data['fiscal_year_select'] = get_fiscal_year();
+//        $data['project_id'] = $id;
+//        $data['project'] = Project::findOrFail($id);
+//        $data['designation_select'] = get_designation();
+//        $data['organization_select'] = get_organization();
+//        return view('adminpanel.project.profile.project_director', $data)->with('title', $title);
+//    }
+//    public function add_project_director(Request $request){
+//        $userId = Auth::id();
+//        $insertData = $request->all();
+//        $rules = [
+//            'name' => 'required',
+//            'email' => 'required',
+//            'wef_date' => 'required'
+//        ];
+//        $customMessages = [
+//            'required' => 'The :attribute field is required.'
+//        ];
+//        $this->validate($request, $rules, $customMessages);
+//        $insertData['created_by'] = $userId;
+//        $insertData['updated_by'] = $userId;
+//        ProjectDirector::create($insertData);
+//        return redirect('add_project_director'.$request['project_id'])->with('success', 'Project Director Added Successfully');
+//    }
+
     public function edit_project_director($id){
-        $project = ProjectDirector::findOrFail($id);
+
+        $pd = ProjectDirector::where('project_id', '=', $id)->firstOrFail();
+//        $project = ProjectDirector::findOrFail($id);
         $title = "Edit Project Director";
-        $data['fiscal_year_select'] = get_fiscal_year($project->fiscal_year);
-        $data['currency_select'] = get_currency($project->currency_id);
-        $data['component_select'] = get_component($project->component_id);
-        $data['project'] = $project;
-        return view('adminpanel.project.profile.edit_project_director', $data)->with('title', $title);
+        $data['current_page'] = request()->segment(1);
+        $data['project_id'] = $id;
+//        $data['fiscal_year_select'] = get_fiscal_year($pd->fiscal_year);
+        $data['designation_select'] = get_designation($pd->designation_id);
+        $data['organization_select'] = get_organization($pd->organization_id);
+//        $data['currency_select'] = get_currency($pd->currency_id);
+//        $data['component_select'] = get_component($pd->component_id);
+        $data['project'] = $pd;
+        return view('adminpanel.project.profile.project_director', $data)->with('title', $title);
     }
 
     public function update_project_director(Request $request,$id){
@@ -69,7 +76,7 @@ class ProjectProfileController extends Controller
         $updateData['updated_by'] = $userId;
         //    pre($request->all(),1);
         $project->update($updateData);
-        return redirect('add_project_director/'.$request['project_id'])->with('success', 'Project Director Updated Successfully');
+        return redirect('edit_project_director/'.$request['project_id'])->with('success', 'Project Director Updated Successfully');
     }
 
     public function allocation($id){
@@ -391,12 +398,15 @@ class ProjectProfileController extends Controller
 //    }
 
     public function edit_pc4($id){
-        $project = ProjectPc4::findOrFail($id);
+//        $pc4id = $id;
+        $pc4 = ProjectPc4::where('project_id', '=', $id)->firstOrFail();
+//        $pc4 = ProjectPc4::findOrFail($id);
+//        pre($pc4,1);
         $title = "Edit Pc4";
         $data['current_page'] = request()->segment(1);
         $data['fiscal_year_select'] = get_fiscal_year();
         $data['project_id'] = $id;
-        $data['project'] = $project;
+        $data['project'] = $pc4;
         return view('adminpanel.project.profile.edit_pc4', $data)->with('title', $title);
     }
 

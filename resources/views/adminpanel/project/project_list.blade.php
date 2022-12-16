@@ -50,7 +50,7 @@
                 </td>
                 <td>
                     <div class="btn-group">
-                        <a href="{{url('add_project_director', $r->id)}}" class="btn btn-success" title="Project Profile" id="btn-view"><i class="fa fa-list"></i> {{--Profile--}}</a>
+                        <a href="{{url('edit_project_director', $r->id)}}" class="btn btn-success" title="Project Profile" id="btn-view"><i class="fa fa-list"></i> {{--Profile--}}</a>
                         <a href="{{url('completed_physical_targets_status', $r->id)}}" class="btn btn-info" title="Project Status" id="btn-view"><i class="fa fa-list"></i> {{--Status--}}</a>
                         <a href="{{url('ongoing_physical_targets', $r->id)}}" class="btn btn-primary" title="Project Monitoring" id="btn-view"><i class="fa fa-list"></i> {{--Monitoring--}}</a>
                     </div><br/>

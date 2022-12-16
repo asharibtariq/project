@@ -1,7 +1,7 @@
 <div class="row">
 <ul class="nav nav-pills mb-3" role="tablist">
     <li class="nav-item">
-        <a class="nav-link @php echo $current_page == 'add_project_director' ? 'active' : '' @endphp" href="{{url('add_project_director', $project_id)}}" role="tab" aria-selected="true">PD</a>
+        <a class="nav-link @php echo $current_page == 'edit_project_director' ? 'active' : '' @endphp" href="{{url('edit_project_director', $project_id)}}" role="tab" aria-selected="true">PD</a>
     </li>
     <li class="nav-item">
         <a class="nav-link @php echo $current_page == 'add_project_allocation' ? 'active' : '' @endphp" href="{{url('add_project_allocation', $project_id)}}" role="tab" aria-selected="false">Allocation</a>

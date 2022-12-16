@@ -87,8 +87,8 @@ Route::post('update_organization/{id}', [\App\Http\Controllers\OrganizationContr
 Route::get('delete_organization/{id}', [\App\Http\Controllers\OrganizationController::class, 'destroy']);
 
 // Project Profile Routes
-Route::get('add_project_director/{id}', [\App\Http\Controllers\ProjectProfileController::class, 'project_director']);
-Route::post('add_project_director', [\App\Http\Controllers\ProjectProfileController::class, 'add_project_director']);
+//Route::get('add_project_director/{id}', [\App\Http\Controllers\ProjectProfileController::class, 'project_director']);
+//Route::post('add_project_director', [\App\Http\Controllers\ProjectProfileController::class, 'add_project_director']);
 Route::get('edit_project_director/{id}', [\App\Http\Controllers\ProjectProfileController::class, 'edit_project_director']);
 Route::post('update_project_director/{id}', [\App\Http\Controllers\ProjectProfileController::class, 'update_project_director']);
 

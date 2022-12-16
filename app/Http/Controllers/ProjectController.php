@@ -94,6 +94,11 @@ class ProjectController extends Controller{
         $pc4->project_name = $name;
         $pc4->save();
 
+        $pd = new ProjectDirector();
+        $pd->project_id = $id;
+        $pd->project_name = $name;
+        $pd->save();
+
         return redirect('project')->with('success', 'Project Added Successfully');
     }
 

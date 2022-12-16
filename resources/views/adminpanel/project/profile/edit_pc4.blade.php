@@ -21,7 +21,7 @@
                         @if(Session::has('success'))
                             <div class="alert alert-success">{{Session::get('success')}}</div>
                         @endif
-                        <form name="" method="post" action="{{url('update_pc4')}}" enctype="multipart/form-data">
+                        <form name="" method="post" action="{{url('update_pc4', $project->id)}}" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-md-12">
@@ -37,7 +37,7 @@
                                     <label
                                         for="exampleFormControlSelect1">Status</label>
                                     <input type="hidden" name="project_id" value="{{$project->project_id}}" />
-                                    <input type="hidden" name="project_name" value="{{$project->name}}" />
+                                    <input type="hidden" name="project_name" value="{{$project->project_name}}" />
                                     <select name="preparation_status" class="form-control select2"
                                             id="exampleFormControlSelect1" value="{{$project->preparation_status}}">
                                         <option value="Complete">Complete</option>
@@ -50,9 +50,9 @@
                                     <div class="form-group">
                                         <label for="exampleFormControlTextarea1">Remarks/
                                             issues/Bottlenecks (if any)</label>
-                                        <textarea  class="form-control" name="remarks"
+                                        <textarea  class="form-control" name="preparation_remarks"
                                                   id="exampleFormControlTextarea1" rows="3"
-                                                   value="{{$project->remarks}}"  placeholder="Remarks"></textarea>
+                                                   placeholder="Remarks">{{$project->preparation_remarks}}</textarea>
                                     </div>
                                 </div>
 
@@ -82,9 +82,9 @@
                                     <div class="form-group">
                                         <label for="exampleFormControlTextarea1">Remarks/
                                             issues/Bottlenecks (if any)</label>
-                                        <textarea name="ministry_remarks" value="{{$project->ministry_remarks}}" class="form-control"
+                                        <textarea name="ministry_remarks"  class="form-control"
                                                   id="exampleFormControlTextarea1" rows="3"
-                                                  placeholder="Remarks"></textarea>
+                                                  placeholder="Remarks">{{$project->ministry_remarks}}</textarea>
                                     </div>
                                 </div>
 
@@ -116,7 +116,7 @@
                                             issues/Bottlenecks (if any)</label>
                                         <textarea name="planning_remarks" class="form-control"
                                                   id="exampleFormControlTextarea1" rows="3"
-                                                  value="{{$project->planning_remarks}}"  placeholder="Remarks"></textarea>
+                                                    placeholder="Remarks">{{$project->planning_remarks}}</textarea>
                                     </div>
                                 </div>
 
@@ -148,7 +148,7 @@
                                             issues/Bottlenecks (if any)</label>
                                         <textarea name="finance_remarks" class="form-control"
                                                   id="exampleFormControlTextarea1" rows="3"
-                                                  placeholder="Remarks" value="{{$project->finance_remarks}}"></textarea>
+                                                  placeholder="Remarks" >{{$project->finance_remarks}}</textarea>
                                     </div>
                                 </div>
 
@@ -180,7 +180,7 @@
                                             issues/Bottlenecks (if any)</label>
                                         <textarea name="budget_remarks" class="form-control"
                                                   id="exampleFormControlTextarea1" rows="3"
-                                                  placeholder="Remarks" value="{{$project->budget_remarks}}"></textarea>
+                                                  placeholder="Remarks" >{{$project->budget_remarks}}</textarea>
                                     </div>
                                 </div>
 
