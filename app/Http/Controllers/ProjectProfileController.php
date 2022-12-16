@@ -393,7 +393,9 @@ class ProjectProfileController extends Controller
     public function edit_pc4($id){
         $project = ProjectPc4::findOrFail($id);
         $title = "Edit Pc4";
+        $data['current_page'] = request()->segment(1);
         $data['fiscal_year_select'] = get_fiscal_year();
+        $data['project_id'] = $id;
         $data['project'] = $project;
         return view('adminpanel.project.profile.edit_pc4', $data)->with('title', $title);
     }
