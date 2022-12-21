@@ -191,10 +191,11 @@ class ProjectController extends Controller{
             'required' => 'The :attribute field is required.'
         ];
         $this->validate($request, $rules, $customMessages);
+        $insertData['date'] = date('m/d/Y');
         $insertData['created_by'] = $userId;
         $insertData['updated_by'] = $userId;
         ProjectPhysicalTargetActionItem::create($insertData);
-        return redirect('action_items/'.$request['physical_target_id'])->with('success', 'Record Added Successfully');
+        return redirect('action_items/'.$request['project_id'])->with('success', 'Record Added Successfully');
     }
 
     public function review_action_items($id){
@@ -221,7 +222,9 @@ class ProjectController extends Controller{
         $data['completed_project_physical_target'] = ProjectPhysicalTarget::all()->where('project_id','=',$id)->where('target_status','=','complete')->where('status','=','Y');
         $data['not_achieved_project_physical_target'] = ProjectPhysicalTarget::all()->where('project_id','=',$id)->where('target_status','=','not_achieve')->where('status','=','Y');
         $data['on_going_project_physical_target'] = ProjectPhysicalTarget::all()->where('project_id','=',$id)->where('target_status','=','ongoing')->where('status','=','Y');
-        $data['project_pc4'] = ProjectPc4::all()->where('project_id','=',$id)->where('status','=','Y');
+        ////////////////////////////////////////////////////////////////////////////////
+        $data['project_pc4'] = ProjectPc4::where('project_id', '=', $id)->firstOrFail();
+        ////////////////////////////////////////////////////////////////////////////////
         $data['project_end_of_fy'] = ProjectEndOfFy::all()->where('project_id','=',$id)->where('status','=','Y');
         $data['project_financial_progress'] = ProjectFinancialProgress::all()->where('project_id','=',$id)->where('status','=','Y');
         $data['project_physical_progress'] = ProjectPhysicalProgress::all()->where('project_id','=',$id)->where('status','=','Y');

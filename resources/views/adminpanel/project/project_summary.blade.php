@@ -385,32 +385,32 @@
                                     <tr role="row">
                                         <td> 1</td>
                                         <td> PC-IV Preparation</td>
-                                        <td> insert text here</td>
-                                        <td> insert text here</td>
+                                        <td> {{$project_pc4->preparation_status != '' ? $project_pc4->preparation_status : '-'}}</td>
+                                        <td> {{$project_pc4->preparation_remarks != '' ? $project_pc4->preparation_remarks : '-'}}</td>
                                     </tr>
                                     <tr role="row">
                                         <td> 2</td>
                                         <td> PC-IV approval by Ministry</td>
-                                        <td> insert text here</td>
-                                        <td> insert text here</td>
+                                        <td> {{$project_pc4->ministry_status != '' ? $project_pc4->ministry_status : '-'}}</td>
+                                        <td> {{$project_pc4->ministry_remarks != '' ? $project_pc4->ministry_remarks : '-'}}</td>
                                     </tr>
                                     <tr role="row">
                                         <td> 1</td>
                                         <td> PC-IV approval by Planning</td>
-                                        <td> insert text here</td>
-                                        <td> insert text here</td>
+                                        <td> {{$project_pc4->planning_status != '' ? $project_pc4->planning_status : '-'}}</td>
+                                        <td> {{$project_pc4->planning_remarks != '' ? $project_pc4->planning_remarks : '-'}}</td>
                                     </tr>
                                     <tr role="row">
                                         <td> 1</td>
                                         <td> Approval of new posts by Finance Division</td>
-                                        <td> insert text here</td>
-                                        <td> insert text here</td>
+                                        <td> {{$project_pc4->finance_status != '' ? $project_pc4->finance_status : '-'}}</td>
+                                        <td> {{$project_pc4->finance_remarks != '' ? $project_pc4->finance_remarks : '-'}}</td>
                                     </tr>
                                     <tr role="row">
                                         <td> 1</td>
                                         <td> Inclusion in next year's budget</td>
-                                        <td> insert text here</td>
-                                        <td> insert text here</td>
+                                        <td> {{$project_pc4->budget_status != '' ? $project_pc4->budget_status : '-'}}</td>
+                                        <td> {{$project_pc4->budget_remarks != '' ? $project_pc4->budget_remarks : '-'}}</td>
                                     </tr>
                                     </tbody>
                                 </table>
