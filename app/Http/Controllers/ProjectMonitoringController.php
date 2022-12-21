@@ -51,7 +51,7 @@ class ProjectMonitoringController extends Controller{
         $insertData['created_by'] = $userId;
         $insertData['updated_by'] = $userId;
         ProjectPhysicalTargetStatus::create($insertData);
-        return redirect('physical_target_status_monitoring/'.$request['physical_target_id'])->with('success', 'Record Added Successfully');
+        return redirect('add_physical_target_status/'.$request['physical_target_id'])->with('success', 'Record Added Successfully');
     }
 
     public function physical_progress_monitoring($physical_target_id){

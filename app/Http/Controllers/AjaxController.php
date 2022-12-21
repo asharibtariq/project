@@ -441,12 +441,11 @@ class AjaxController extends Controller{
                     ->select('tbl_project_physical_progress.id',
                         'tbl_project_physical_progress.project_id',
                         'tbl_project_physical_progress.fiscal_year',
+                        'tbl_project_physical_progress.date',
                         'tbl_project_physical_progress.component_id',
                         'tbl_project_physical_progress.component',
                         'tbl_project_physical_progress.physical_description',
                         'tbl_project_physical_progress.amount',
-                        'tbl_project_physical_progress.start_date',
-                        'tbl_project_physical_progress.end_date',
                         'tbl_project_physical_progress.status')
                     //    ->groupBy('tbl_project_physical_progress.id')
                     ->orderBy('tbl_project_physical_progress.id', 'DESC')

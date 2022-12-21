@@ -28,7 +28,7 @@
                 <td> {{$r->component}} </td>
                 <td> {{$r->physical_description}} </td>
                 <td> {{$r->amount}}  </td>
-                <td> {{$r->start_date}} </td>
+                <td> {{$r->date}} </td>
                 <td>
                     <!--<div class="btn-group">-->
                     <a onClick="return confirm('Are you sure you want to proceed?');" title="Action" href="{{url('edit_physical_progress', $r->id)}}{{--url('edit_physical_target', $r->id)--}}" class="btn btn-info" id="btn-view"><i class="fa fa-list"></i> </a>

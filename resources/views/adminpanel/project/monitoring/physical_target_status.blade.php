@@ -23,7 +23,7 @@
                             @endforeach
                         @endif
 
-                        <form name="" method="post" action="{{url('add_physical_target_status_monitoring')}}">
+                        <form name="" method="post" action="{{url('add_physical_target_status')}}">
                             @csrf
                             <div class="row">
                                 <div class="col-md-4">
