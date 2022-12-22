@@ -380,6 +380,37 @@ class AjaxController extends Controller{
                 $data['links'] = $project;
                 return view('adminpanel.project.action_items.action_items_list')->with($data);
                 break;
+            case 'add_action_items_content':
+                $where = array();
+                $name = $request->name != '' ? $request->name : '';
+                $id = $request->project_id != '' ? $request->project_id : '';
+                $per_page = $request->select_limit != '' ? $request->select_limit : 10;
+                /*
+                    if (!empty($name))
+                        $where['tbl_action_items.name'] = $name;
+                */
+                $project = DB::table('tbl_action_items')
+                    ->select('tbl_action_items.id',
+                        'tbl_action_items.project_id',
+                        'tbl_action_items.project',
+                        'tbl_action_items.physical_target_id',
+                        'tbl_action_items.date',
+                        'tbl_action_items.component_id',
+                        'tbl_action_items.component',
+                        'tbl_action_items.action_item',
+                        'tbl_action_items.assigned_to',
+                        'tbl_action_items.start_date',
+                        'tbl_action_items.end_date',
+                        'tbl_action_items.created_at',
+                        'tbl_action_items.updated_at')
+                    ->orderBy('tbl_action_items.id', 'DESC')
+                    ->where('tbl_action_items.project_id', '=', $id)
+                    ->paginate($per_page);
+
+                $data['result'] = $project->items();
+                $data['links'] = $project;
+                return view('adminpanel.project.action_items.add_action_items_list')->with($data);
+                break;
             default:
                 break;
         }

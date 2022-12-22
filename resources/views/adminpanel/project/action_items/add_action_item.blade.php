@@ -82,10 +82,67 @@
                                 </div>
                             </div>
                         </form>
+                        <hr/>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="dataTables_length" id="sample_1_length">
+                                    <label>
+                                        <select id="select_limit" name="sample_1_length" aria-controls="sample_1" class="form-control input-sm input-xsmall input-inline">
+                                            <option value="10">10</option>
+                                            <option value="20">20</option>
+                                            <option value="50">50</option>
+                                            <option value="100">100</option>
+                                            <!--<option value="">All</option>-->
+                                        </select> entries
+                                    </label>
+                                </div>
+                                <br/>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="table-group-actions pull-right"></div>
+                            </div>
+                        </div>
+                        <div class="table-responsive" id='my_data'></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+<script>
+    var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+    $(document).ready(function () {
+        $(document).on('change', '#select_limit', function () {
+            show_ajax_cards('');
+        });
+        //load page for fitrs time
+        show_ajax_cards('');
+    });
+    $(document).on('click','.pagination a', function(e){
+        e.preventDefault();
+        var page = $(this).attr('href').split('page=')[1];
+        show_ajax_cards(page);
+    });
+    function show_ajax_cards(page='') {
+
+        var baseurl = '{{url('/ajax_project_content')}}';
+        if (page != ''){baseurl = '{{url('/ajax_project_content?page=')}}'+ page;}
+
+        var post_data = {
+            "_token": "{{ csrf_token() }}",
+            "project_id": '{{$project_id}}',
+            "select_limit": $("#select_limit").val(),
+            'action': "add_action_items_content"
+        };
+
+        $.ajax({
+            url: baseurl,
+            data: post_data,
+            type: 'POST',
+            success: function (data) {
+                $('#my_data').html(data);
+            }
+        });
+    }
+</script>
 @endsection
