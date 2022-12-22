@@ -21,8 +21,7 @@
                 <td> {{$r->assigned_to}}</td>
                 <td>
                     <div class="btn-group">
-                        -
-                        {{--<a onClick="return confirm('Are you sure you want to update?');" title="Update" href="{{url('update_action_item', $r->id)}}" class="btn btn-info" id="btn-view"><i class="fa fa-edit"></i> Edit</a>--}}
+                        <a onClick="return confirm('Are you sure you want to update?');" title="Update" href="{{url('update_action_item', $r->id)}}" class="btn btn-info" id="btn-view"><i class="fa fa-edit"></i> Edit</a>
                     </div>
                 </td>
             </tr>

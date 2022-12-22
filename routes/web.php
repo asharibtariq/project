@@ -153,6 +153,8 @@ Route::get('action_items/{id}', [\App\Http\Controllers\ProjectController::class,
 Route::get('review_action_items/{id}', [\App\Http\Controllers\ProjectController::class, 'review_action_items']);
 Route::get('add_action_item/{id}', [\App\Http\Controllers\ProjectController::class, 'add_action_item']);
 Route::post('add_action_item', [\App\Http\Controllers\ProjectController::class, 'store_action_item']);
+Route::get('update_action_item/{id}', [\App\Http\Controllers\ProjectController::class, 'edit_action_item']);
+Route::post('update_action_item/{id}', [\App\Http\Controllers\ProjectController::class, 'update_action_item']);
 Route::get('project_summary/{id}', [\App\Http\Controllers\ProjectController::class, 'summary']);
 
 // Project Monitoring

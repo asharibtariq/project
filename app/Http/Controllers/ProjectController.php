@@ -198,6 +198,24 @@ class ProjectController extends Controller{
         return redirect('action_items/'.$request['project_id'])->with('success', 'Record Added Successfully');
     }
 
+    public function edit_action_item($id){
+        $title = "Edit Action Item";
+        $data['action_items'] = ProjectActionItems::findOrFail($id);
+        return view('adminpanel.project.action_items.edit_action_item', $data)->with('title', $title);
+    }
+
+    public function update_action_item(Request $request, $id){
+        $userId = Auth::id();
+        $updateData = $request->all();
+        $rules = ['action_item' => 'required'];
+        $customMessages = ['required' => 'The :attribute field is required.'];
+        $this->validate($request, $rules, $customMessages);
+        $action_items = ProjectActionItems::findOrFail($id);
+        $updateData['updated_by'] = $userId;
+        $action_items->update($updateData);
+        return redirect('add_action_item/'.$action_items->physical_target_id)->with('success', 'Action Item Updated Successfully');
+    }
+
     public function review_action_items($id){
         $title = "Review Action Items";
         $data['project_id'] = $id;

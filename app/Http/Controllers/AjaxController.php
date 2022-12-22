@@ -384,6 +384,7 @@ class AjaxController extends Controller{
                 $where = array();
                 $name = $request->name != '' ? $request->name : '';
                 $id = $request->project_id != '' ? $request->project_id : '';
+                $physical_target_id = $request->physical_target_id != '' ? $request->physical_target_id : '';
                 $per_page = $request->select_limit != '' ? $request->select_limit : 10;
                 /*
                     if (!empty($name))
@@ -405,6 +406,7 @@ class AjaxController extends Controller{
                         'tbl_action_items.updated_at')
                     ->orderBy('tbl_action_items.id', 'DESC')
                     ->where('tbl_action_items.project_id', '=', $id)
+                    ->where('tbl_action_items.physical_target_id', '=', $physical_target_id)
                     ->paginate($per_page);
 
                 $data['result'] = $project->items();
