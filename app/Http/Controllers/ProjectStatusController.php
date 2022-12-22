@@ -68,7 +68,7 @@ class ProjectStatusController extends Controller{
     //    $updateData['slug'] = strtolower(str_replace(' ','_',$updateData['title']));
         $updateData['updated_by'] = $userId;
         $physical_target->update($updateData);
-        return redirect('completed_physical_target_status/'.$request['project_id'])->with('success', 'Project Physical Target Updated Successfully');
+        return redirect('completed_physical_targets_status/'.$request['project_id'])->with('success', 'Project Physical Target Updated Successfully');
     }
 
     public function financial_progress($id){
@@ -102,7 +102,16 @@ class ProjectStatusController extends Controller{
         $customMessages = [
             'required' => 'The :attribute field is required.'
         ];
-        $this->validate($request, $rules, $customMessages);
+//        $this->validate($request,$rules, $customMessages, [
+//            'multimedia' => 'required',
+//            'multimedia.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+//        ]);
+//        if ($request->hasfile('multimedia')) {
+//                $name = $request->file('multimedia')->getClientOriginalName();
+//            $request->file('multimedia')->move(public_path() . '/uploads/financialprogress', $name);
+//            }
+//
+//        $insertData['file'] = $name;
         $insertData['created_by'] = $userId;
         $insertData['updated_by'] = $userId;
         ProjectFinancialProgress::create($insertData);

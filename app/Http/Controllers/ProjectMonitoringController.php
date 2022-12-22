@@ -82,7 +82,7 @@ class ProjectMonitoringController extends Controller{
         $updateData['updated_by'] = $userId;
         //    pre($request->all(),1);
         $project->update($updateData);
-        return redirect('physical_progress_monitoring/'.$request['project_id'])->with('success', 'Project Physical Progress Updated Successfully');
+        return redirect('physical_progress_monitoring/'.$request['physical_target_id'])->with('success', 'Project Physical Progress Updated Successfully');
     }
 
     public function financial_progress_monitoring($physical_target_id){
@@ -111,10 +111,20 @@ class ProjectMonitoringController extends Controller{
         $project = ProjectFinancialProgress::findOrFail($id);
         $updateData = $request->all();
         //    $updateData['slug'] = strtolower(str_replace(' ','_',$updateData['title']));
+        $this->validate($request, [
+            'multimedia' => 'required',
+            'multimedia.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ]);
+        if ($request->hasfile('multimedia')) {
+            $name = $request->file('multimedia')->getClientOriginalName();
+            $request->file('multimedia')->move(public_path() . '/uploads/financialprogress', $name);
+        }
+
+        $updateData['file'] = $name;
         $updateData['updated_by'] = $userId;
         //    pre($request->all(),1);
         $project->update($updateData);
-        return redirect('financial_progress_monitoring/'.$request['project_id'])->with('success', 'Project Financial Progress Updated Successfully');
+        return redirect('financial_progress_monitoring/'.$request['physical_target_id'])->with('success', 'Project Financial Progress Updated Successfully');
     }
     public function create_issue($physical_target_id){
         $title = "Add Issue";

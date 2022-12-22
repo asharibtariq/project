@@ -19,7 +19,7 @@
                             <div class="alert alert-success">{{Session::get('success')}}</div>
                         @endif
 
-                        <form name="" method="post" action="{{url('update_financial_progress')}}" enctype="multipart/form-data">
+                        <form name="" method="post" action="{{url('update_financial_progress', $project->id)}}" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-md-4">
@@ -60,6 +60,12 @@
                                     <div class="form-group">
                                         <label for="physical_description">Physical Target Description <span class="text-danger">*</span></label>
                                         <textarea name="physical_description" class="form-control"  placeholder="Description">{{$project->physical_description}}</textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="instrument_detail">Instrument Detial <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" name="instrument_detail" id="instrument_detail">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
