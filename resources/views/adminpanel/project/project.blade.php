@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 
     <div class="container">
@@ -9,9 +8,11 @@
                     <div class="alert alert-success">{{Session::get('success')}}</div>
                 </div>
             @endif
+            @if($role_id == 1)
             <div class="col-md-12">
                 <a href="{{url('add_project')}}" class="btn btn-success"><i class="fa fa-plus-circle"></i> Add Project</a>
             </div>
+            @endif
         </div>
         <div class="row">
             <div class="col-md-12">

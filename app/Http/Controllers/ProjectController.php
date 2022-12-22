@@ -38,7 +38,9 @@ class ProjectController extends Controller{
      */
     public function index(){
         $title = "Project";
-        return view('adminpanel.project.project')->with('title', $title);
+        $role_id = Auth::user()->role_id;
+        $data['role_id'] = $role_id;
+        return view('adminpanel.project.project', $data)->with('title', $title);
     }
 
     /**
