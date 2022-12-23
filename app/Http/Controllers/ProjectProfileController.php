@@ -24,34 +24,6 @@ class ProjectProfileController extends Controller
         $this->middleware('auth');
     }
 
-//    public function project_director($id){
-//        $title = "Project Director";
-//        $data['current_page'] = request()->segment(1);
-//        $data['fiscal_year_select'] = get_fiscal_year();
-//        $data['project_id'] = $id;
-//        $data['project'] = Project::findOrFail($id);
-//        $data['designation_select'] = get_designation();
-//        $data['organization_select'] = get_organization();
-//        return view('adminpanel.project.profile.project_director', $data)->with('title', $title);
-//    }
-//    public function add_project_director(Request $request){
-//        $userId = Auth::id();
-//        $insertData = $request->all();
-//        $rules = [
-//            'name' => 'required',
-//            'email' => 'required',
-//            'wef_date' => 'required'
-//        ];
-//        $customMessages = [
-//            'required' => 'The :attribute field is required.'
-//        ];
-//        $this->validate($request, $rules, $customMessages);
-//        $insertData['created_by'] = $userId;
-//        $insertData['updated_by'] = $userId;
-//        ProjectDirector::create($insertData);
-//        return redirect('add_project_director'.$request['project_id'])->with('success', 'Project Director Added Successfully');
-//    }
-
     public function edit_project_director($id){
 
         $pd = ProjectDirector::where('project_id', '=', $id)->firstOrFail();
@@ -371,37 +343,8 @@ class ProjectProfileController extends Controller
     }
 
 
-//    public function pc4($id){
-//        $title = "PC-4 Details";
-//        $data['project_id'] = $id;
-//        $data['project'] = Project::findOrFail($id);
-//        $data['current_page'] = request()->segment(1);
-//        return view('adminpanel.project.profile.pc4', $data)->with('title', $title);
-//    }
-//    public function add_pc4(Request $request)
-//    {
-//        $userId = Auth::id();
-//        $insertData = $request->all();
-//        $rules = [
-//            'project_id' => 'required',
-//            'ministry_status' => 'required',
-////            'start_date' => 'required'
-//        ];
-//        $customMessages = [
-//            'required' => 'The :attribute field is required.'
-//        ];
-//        $this->validate($request, $rules, $customMessages);
-//        $insertData['created_by'] = $userId;
-//        $insertData['updated_by'] = $userId;
-//        ProjectPc4::create($insertData);
-//        return redirect('add_pc4/' . $request['project_id'])->with('success', 'Pc4 Added Successfully');
-//    }
-
     public function edit_pc4($id){
-//        $pc4id = $id;
         $pc4 = ProjectPc4::where('project_id', '=', $id)->firstOrFail();
-//        $pc4 = ProjectPc4::findOrFail($id);
-//        pre($pc4,1);
         $title = "Edit Pc4";
         $data['current_page'] = request()->segment(1);
         $data['fiscal_year_select'] = get_fiscal_year();
