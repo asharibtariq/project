@@ -38,13 +38,13 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>From</label>
-                        <input type="text" class="form-control datepicker" placeholder="DD/MM/YY" readonly>
+                        <input type="text" id="start_date" class="form-control datepicker date-filter" placeholder="DD/MM/YY" readonly>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>To </label>
-                        <input type="text" class="form-control datepicker" placeholder="DD/MM/YY" readonly>
+                        <input type="text" id="end_date" class="form-control datepicker date-filter" placeholder="DD/MM/YY" readonly>
                     </div>
                 </div>
 
@@ -344,6 +344,19 @@
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
     <script>
+        $(document).ready(function () {
+            $(document).on("change", ".date-filter", function () {
+                var startdate = $("#start_date").val();
+                var enddate = $("#end_date").val();
+                if (startdate != '' && enddate != '') {
+                    if (startdate > enddate) {
+                        alert("To date should be greater then From date...");
+                        $(this).val('');
+                        return false;
+                    }
+                }
+            });
+        });
         $(document).on("click", "#submit_btn", function () {
             var startdate = $("#start_date").val();
             var enddate = $("#end_date").val();
