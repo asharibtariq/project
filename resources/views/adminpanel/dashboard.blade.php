@@ -263,70 +263,56 @@
                 <figure class="highcharts-figure">
                     <div id="percent_range"></div>
                     <div class="highcharts-description table-responsive">
-                        <table class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline"
-                               id="sample_1" role="grid"
-                               aria-describedby="sample_1_info">
+                        <table class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline" id="sample_1" role="grid" aria-describedby="sample_1_info">
                             <thead>
                             <tr role="row">
-                                <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1"
-                                    data-column-index="0"> Sr#
-                                </th>
-                                <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1"
-                                    data-column-index="1"> Task
-                                </th>
-                                <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1"
-                                    data-column-index="3"> Planned Start Date
-                                </th>
-                                <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1"
-                                    data-column-index="3"> Planned End Date
-                                </th>
-                                <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1"
-                                    data-column-index="3"> Actual Start Date
-                                </th>
-                                <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1"
-                                    data-column-index="3"> Actual End Date
-                                </th>
-                                <th class="" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1"
-                                    data-column-index="3"> Status
-                                </th>
+                                <th data-column-index="0"> Sr#</th>
+                                <th data-column-index="1"> Task</th>
+                                <th data-column-index="3"> Planned Start Date</th>
+                                <th data-column-index="3"> Planned End Date</th>
+                                <th data-column-index="3"> Actual Start Date</th>
+                                <th data-column-index="3"> Actual End Date</th>
+                                <th data-column-index="3"> Status</th>
                             </thead>
                             <tbody>
+                            <?php
+                            $project_physical_targets = json_decode($project_physical_targets);
+                            if (!empty($project_physical_targets)){
+                            $i = 1;
+                            ?>
+                            <?php
+                            foreach ($project_physical_targets as $physical_targets){
+                            ?>
                             <tr role="row">
-                                <td> 1</td>
-                                <td> Backup</td>
-                                <td> 01/01/1991</td>
-                                <td> 31/12/2000</td>
-                                <td> 01/01/2000</td>
-                                <td> 31/12/2022</td>
-                                <td> 25%</td>
+                                <td> {{$i}}</td>
+                                <td> {{$physical_targets->physical_description}}</td>
+                                <td> {{$physical_targets->start_date}}</td>
+                                <td> {{$physical_targets->end_date}}</td>
+                                <td> {{$physical_targets->act_start_date}}</td>
+                                <td> {{$physical_targets->act_end_date}}</td>
+                                <td>
+                                    @if($physical_targets->target_status == "complete")
+                                        @php echo "Complete" @endphp
+                                    @elseif($physical_targets->target_status == "ongoing")
+                                        @php echo "On-Going" @endphp
+                                    @elseif($physical_targets->target_status == "not_achieve")
+                                        @php echo "Not Achieved" @endphp
+                                    @endif
+                                </td>
                             </tr>
+                            <?php
+                            $i++;
+                            }
+                            ?>
+                            <?php
+                            }else{
+                            ?>
                             <tr role="row">
-                                <td> 2</td>
-                                <td> Recovery</td>
-                                <td> 01/01/1991</td>
-                                <td> 31/12/2000</td>
-                                <td> 01/01/2000</td>
-                                <td> 31/12/2022</td>
-                                <td> 75%</td>
+                                <td colspan="7" class="text-center"> No Data Found </td>
                             </tr>
-                            <tr role="row">
-                                <td> 3</td>
-                                <td> Elementor Issue</td>
-                                <td> 01/01/1991</td>
-                                <td> 31/12/2000</td>
-                                <td> 01/01/2000</td>
-                                <td> 31/12/2022</td>
-                                <td> 80%</td>
-                            </tr>
-                            <tr role="row">
-                                <td> 4</td>
-                                <td> VPN Issue</td>
-                                <td> 01/01/1991</td>
-                                <td> 31/12/2000</td>
-                                <td> 01/01/2000</td>
-                                <td> 31/12/2022</td>
-                                <td> 100%</td>
-                            </tr>
+                            <?php
+                            }
+                            ?>
                             </tbody>
                         </table>
                     </div>
