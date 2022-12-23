@@ -54,10 +54,12 @@ class ProjectProfileController extends Controller
     public function allocation($id){
         $title = "Allocation";
         $data['current_page'] = request()->segment(1);
-        $data['fiscal_year_select'] = get_fiscal_year();
+
         $data['project_id'] = $id;
         $data['project'] = Project::findOrFail($id);
-        $data['currency_select'] = get_currency();
+        $project = Project::findOrFail($id);
+        $data['fiscal_year_select'] = get_fiscal_year($project->fiscal_year);
+        $data['currency_select'] = get_currency($project->currency_id);
         return view('adminpanel.project.profile.allocation', $data)->with('title', $title);
     }
 
@@ -102,8 +104,9 @@ class ProjectProfileController extends Controller
     public function release($id){
         $title = "Release";
         $data['current_page'] = request()->segment(1);
-        $data['fiscal_year_select'] = get_fiscal_year();
-        $data['currency_select'] = get_currency();
+        $project = Project::findOrFail($id);
+        $data['fiscal_year_select'] = get_fiscal_year($project->fiscal_year);
+        $data['currency_select'] = get_currency($project->currency_id);
         $data['project_id'] = $id;
         $data['project'] = Project::findOrFail($id);
         return view('adminpanel.project.profile.release', $data)->with('title', $title);
@@ -150,8 +153,9 @@ class ProjectProfileController extends Controller
     public function component_pc1($id){
         $title = "Component as per PC-1";
         $data['current_page'] = request()->segment(1);
-        $data['fiscal_year_select'] = get_fiscal_year();
-        $data['currency_select'] = get_currency();
+        $project = Project::findOrFail($id);
+        $data['fiscal_year_select'] = get_fiscal_year($project->fiscal_year);
+        $data['currency_select'] = get_currency($project->currency_id);
         $data['project_id'] = $id;
         $data['project'] = Project::findOrFail($id);
         $data['component_select'] = get_component();
@@ -198,8 +202,9 @@ class ProjectProfileController extends Controller
     public function component_nis($id){
         $title = "Component as per NIS";
         $data['current_page'] = request()->segment(1);
-        $data['fiscal_year_select'] = get_fiscal_year();
-        $data['currency_select'] = get_currency();
+        $project = Project::findOrFail($id);
+        $data['fiscal_year_select'] = get_fiscal_year($project->fiscal_year);
+        $data['currency_select'] = get_currency($project->currency_id);
         $data['project_id'] = $id;
         $data['project'] = Project::findOrFail($id);
         $data['component_select'] = get_component();
@@ -248,8 +253,9 @@ class ProjectProfileController extends Controller
     public function fy_util($id){
         $title = "FY wise Utilization";
         $data['current_page'] = request()->segment(1);
-        $data['fiscal_year_select'] = get_fiscal_year();
-        $data['currency_select'] = get_currency();
+        $project = Project::findOrFail($id);
+        $data['fiscal_year_select'] = get_fiscal_year($project->fiscal_year);
+        $data['currency_select'] = get_currency($project->currency_id);
         $data['project_id'] = $id;
         $data['project'] = Project::findOrFail($id);
         $data['component_select'] = get_component();
@@ -296,8 +302,9 @@ class ProjectProfileController extends Controller
     public function physical_target($id){
         $title = "Physical Target";
         $data['current_page'] = request()->segment(1);
-        $data['fiscal_year_select'] = get_fiscal_year();
-        $data['currency_select'] = get_currency();
+        $project = Project::findOrFail($id);
+        $data['fiscal_year_select'] = get_fiscal_year($project->fiscal_year);
+        $data['currency_select'] = get_currency($project->currency_id);
         $data['project_id'] = $id;
         $data['project'] = Project::findOrFail($id);
         $data['component_select'] = get_component();
@@ -347,7 +354,9 @@ class ProjectProfileController extends Controller
         $pc4 = ProjectPc4::where('project_id', '=', $id)->firstOrFail();
         $title = "Edit Pc4";
         $data['current_page'] = request()->segment(1);
-        $data['fiscal_year_select'] = get_fiscal_year();
+        $project = Project::findOrFail($id);
+        $data['fiscal_year_select'] = get_fiscal_year($project->fiscal_year);
+        $data['currency_select'] = get_currency($project->currency_id);
         $data['project_id'] = $id;
         $data['project'] = $pc4;
         return view('adminpanel.project.profile.edit_pc4', $data)->with('title', $title);
@@ -370,7 +379,9 @@ class ProjectProfileController extends Controller
         $data['project_id'] = $id;
         $data['project'] = Project::findOrFail($id);
         $data['current_page'] = request()->segment(1);
-        $data['fiscal_year_select'] = get_fiscal_year();
+        $project = Project::findOrFail($id);
+        $data['fiscal_year_select'] = get_fiscal_year($project->fiscal_year);
+        $data['currency_select'] = get_currency($project->currency_id);
         $data['currency_select_surrender'] = get_currency(0,'','currency_id_surrender');
         $data['currency_select_lapsed'] = get_currency(0,'','currency_id_lapsed');
         return view('adminpanel.project.profile.end_of_fy', $data)->with('title', $title);
