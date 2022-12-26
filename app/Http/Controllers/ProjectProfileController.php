@@ -60,6 +60,7 @@ class ProjectProfileController extends Controller
         $project = Project::findOrFail($id);
         $data['fiscal_year_select'] = get_fiscal_year($project->fiscal_year);
         $data['currency_select'] = get_currency($project->currency_id);
+//        $data['currency'] = get_currency($project->currency_id);
         return view('adminpanel.project.profile.allocation', $data)->with('title', $title);
     }
 

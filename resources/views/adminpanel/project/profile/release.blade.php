@@ -82,7 +82,7 @@
                                     <div class="form-group">
                                         <label for="exampleFormControlSelect1">Currency</label>
                                         {!! $currency_select !!}
-                                        <input type="hidden" name="currency" id="currency" />
+                                        <input type="hidden" name="currency" id="currency"value="{{$project->currency}}" />
                                         @if ($errors->has('currency'))
                                             <span class="text-danger">{{ $errors->first('currency') }}</span>
                                         @endif
