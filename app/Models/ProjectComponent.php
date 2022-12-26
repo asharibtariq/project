@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ProjectComponent extends Model
 {
     use HasFactory;
-    protected $table = "tbl_component";
+    protected $table = "tbl_project_component";
     protected $fillable = [
         'id',
         'project_id',

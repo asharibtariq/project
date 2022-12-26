@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ProjectFyUtilization extends Model
 {
     use HasFactory;
-    protected $table = "tbl_fy_util";
+    protected $table = "tbl_project_fy_util";
     protected $fillable = [
         'id',
         'project_id',

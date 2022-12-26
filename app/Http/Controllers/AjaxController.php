@@ -233,21 +233,21 @@ class AjaxController extends Controller{
                 $per_page = $request->select_limit != '' ? $request->select_limit : 10;
                 /*
                     if (!empty($title))
-                        $where['tbl_project.title'] = $title;
+                        $where['tbl_project_component.project'] = $title;
                 */
-                $project = DB::table('tbl_component')
-                    ->select('tbl_component.id',
-                        'tbl_component.project_id',
-                        'tbl_component.fiscal_year',
-                        'tbl_component.component_id',
-                        'tbl_component.component',
-                        'tbl_component.comp_amount',
-                        'tbl_component.currency_id',
-                        'tbl_component.currency',
-                        'tbl_component.created_at',
-                        'tbl_component.updated_at')
-                    ->orderBy('tbl_component.id', 'DESC')
-                    ->where('tbl_component.project_id', '=',   $id )
+                $project = DB::table('tbl_project_component')
+                    ->select('tbl_project_component.id',
+                        'tbl_project_component.project_id',
+                        'tbl_project_component.fiscal_year',
+                        'tbl_project_component.component_id',
+                        'tbl_project_component.component',
+                        'tbl_project_component.comp_amount',
+                        'tbl_project_component.currency_id',
+                        'tbl_project_component.currency',
+                        'tbl_project_component.created_at',
+                        'tbl_project_component.updated_at')
+                    ->orderBy('tbl_project_component.id', 'DESC')
+                    ->where('tbl_project_component.project_id', '=',   $id )
                     ->paginate($per_page);
 
                 $data['result'] = $project->items();
@@ -289,24 +289,24 @@ class AjaxController extends Controller{
                 $per_page = $request->select_limit != '' ? $request->select_limit : 10;
                 /*
                     if (!empty($title))
-                        $where['tbl_project.title'] = $title;
+                        $where['tbl_project_fy_util.project'] = $title;
                 */
-                $project = DB::table('tbl_fy_util')
-                    ->select('tbl_fy_util.id',
-                        'tbl_fy_util.project_id',
-                        'tbl_fy_util.fiscal_year',
-                        'tbl_fy_util.quarter',
-                        'tbl_fy_util.fy_date',
-                        'tbl_fy_util.component_id',
-                        'tbl_fy_util.component',
-                        'tbl_fy_util.fy_amount',
-                        'tbl_fy_util.currency_id',
-                        'tbl_fy_util.currency',
-                        'tbl_fy_util.foreign_fy_amount',
-                        'tbl_fy_util.created_at',
-                        'tbl_fy_util.updated_at')
-                    ->orderBy('tbl_fy_util.id', 'DESC')
-                    ->where('tbl_fy_util.project_id', '=',   $id )
+                $project = DB::table('tbl_project_fy_util')
+                    ->select('tbl_project_fy_util.id',
+                        'tbl_project_fy_util.project_id',
+                        'tbl_project_fy_util.fiscal_year',
+                        'tbl_project_fy_util.quarter',
+                        'tbl_project_fy_util.fy_date',
+                        'tbl_project_fy_util.component_id',
+                        'tbl_project_fy_util.component',
+                        'tbl_project_fy_util.fy_amount',
+                        'tbl_project_fy_util.currency_id',
+                        'tbl_project_fy_util.currency',
+                        'tbl_project_fy_util.foreign_fy_amount',
+                        'tbl_project_fy_util.created_at',
+                        'tbl_project_fy_util.updated_at')
+                    ->orderBy('tbl_project_fy_util.id', 'DESC')
+                    ->where('tbl_project_fy_util.project_id', '=',   $id )
                     ->paginate($per_page);
 
                 $data['result'] = $project->items();
@@ -388,25 +388,25 @@ class AjaxController extends Controller{
                 $per_page = $request->select_limit != '' ? $request->select_limit : 10;
                 /*
                     if (!empty($name))
-                        $where['tbl_action_items.name'] = $name;
+                        $where['tbl_project_action_items.name'] = $name;
                 */
-                $project = DB::table('tbl_action_items')
-                    ->select('tbl_action_items.id',
-                        'tbl_action_items.project_id',
-                        'tbl_action_items.project',
-                        'tbl_action_items.physical_target_id',
-                        'tbl_action_items.date',
-                        'tbl_action_items.component_id',
-                        'tbl_action_items.component',
-                        'tbl_action_items.action_item',
-                        'tbl_action_items.assigned_to',
-                        'tbl_action_items.start_date',
-                        'tbl_action_items.end_date',
-                        'tbl_action_items.created_at',
-                        'tbl_action_items.updated_at')
-                    ->orderBy('tbl_action_items.id', 'DESC')
-                    ->where('tbl_action_items.project_id', '=', $id)
-                    ->where('tbl_action_items.physical_target_id', '=', $physical_target_id)
+                $project = DB::table('tbl_project_action_items')
+                    ->select('tbl_project_action_items.id',
+                        'tbl_project_action_items.project_id',
+                        'tbl_project_action_items.project',
+                        'tbl_project_action_items.physical_target_id',
+                        'tbl_project_action_items.date',
+                        'tbl_project_action_items.component_id',
+                        'tbl_project_action_items.component',
+                        'tbl_project_action_items.action_item',
+                        'tbl_project_action_items.assigned_to',
+                        'tbl_project_action_items.start_date',
+                        'tbl_project_action_items.end_date',
+                        'tbl_project_action_items.created_at',
+                        'tbl_project_action_items.updated_at')
+                    ->orderBy('tbl_project_action_items.id', 'DESC')
+                    ->where('tbl_project_action_items.project_id', '=', $id)
+                    ->where('tbl_project_action_items.physical_target_id', '=', $physical_target_id)
                     ->paginate($per_page);
 
                 $data['result'] = $project->items();

@@ -32,7 +32,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <input type="hidden" name="project_id" value="{{$project_id}}" />
-                                        <input type="hidden" name="project_name" value="{{$project->name}}" />
+                                        <input type="hidden" name="project" value="{{$project->name}}" />
                                         <input type="hidden" name="physical_target_id" value="{{$physical_target_id}}" />
                                         <input type="hidden" name="component_id" value="{{$physical_target->component_id}}" />
                                         <input type="hidden" name="component" value="{{$physical_target->component}}" />

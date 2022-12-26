@@ -581,7 +581,6 @@ class ComposerStaticInit7d168628b301479f35af957a18da04f9
         'App\\Models\\ProjectPhysicalProgress' => __DIR__ . '/../..' . '/app/Models/ProjectPhysicalProgress.php',
         'App\\Models\\ProjectPhysicalProgressMedia' => __DIR__ . '/../..' . '/app/Models/ProjectPhysicalProgressMedia.php',
         'App\\Models\\ProjectPhysicalTarget' => __DIR__ . '/../..' . '/app/Models/ProjectPhysicalTarget.php',
-        'App\\Models\\ProjectPhysicalTargetActionItem' => __DIR__ . '/../..' . '/app/Models/ProjectPhysicalTargetActionItem.php',
         'App\\Models\\ProjectPhysicalTargetStatus' => __DIR__ . '/../..' . '/app/Models/ProjectPhysicalTargetStatus.php',
         'App\\Models\\ProjectRelease' => __DIR__ . '/../..' . '/app/Models/ProjectRelease.php',
         'App\\Models\\Roles' => __DIR__ . '/../..' . '/app/Models/Roles.php',

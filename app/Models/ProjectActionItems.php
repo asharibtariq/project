@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class ProjectActionItems extends Model{
 
     use HasFactory;
-    protected $table = "tbl_action_items";
+    protected $table = "tbl_project_action_items";
     protected $fillable = [
+        'id',
         'project_id',
         'project',
         'physical_target_id',

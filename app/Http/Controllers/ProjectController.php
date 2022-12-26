@@ -11,7 +11,6 @@ use App\Models\ProjectComponent;
 use App\Models\ProjectComponentNis;
 use App\Models\ProjectPhysicalTarget;
 use App\Models\ProjectPhysicalTargetStatus;
-use App\Models\ProjectPhysicalTargetActionItem;
 use App\Models\ProjectPc4;
 use App\Models\ProjectEndOfFy;
 use App\Models\ProjectFinancialProgress;
@@ -228,7 +227,7 @@ class ProjectController extends Controller{
         $insertData['date'] = date('m/d/Y');
         $insertData['created_by'] = $userId;
         $insertData['updated_by'] = $userId;
-        ProjectPhysicalTargetActionItem::create($insertData);
+        ProjectActionItems::create($insertData);
         return redirect('action_items/'.$request['project_id'])->with('success', 'Record Added Successfully');
     }
 

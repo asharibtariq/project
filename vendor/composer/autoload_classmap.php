@@ -60,7 +60,6 @@ return array(
     'App\\Models\\ProjectPhysicalProgress' => $baseDir . '/app/Models/ProjectPhysicalProgress.php',
     'App\\Models\\ProjectPhysicalProgressMedia' => $baseDir . '/app/Models/ProjectPhysicalProgressMedia.php',
     'App\\Models\\ProjectPhysicalTarget' => $baseDir . '/app/Models/ProjectPhysicalTarget.php',
-    'App\\Models\\ProjectPhysicalTargetActionItem' => $baseDir . '/app/Models/ProjectPhysicalTargetActionItem.php',
     'App\\Models\\ProjectPhysicalTargetStatus' => $baseDir . '/app/Models/ProjectPhysicalTargetStatus.php',
     'App\\Models\\ProjectRelease' => $baseDir . '/app/Models/ProjectRelease.php',
     'App\\Models\\Roles' => $baseDir . '/app/Models/Roles.php',
