@@ -38,11 +38,10 @@
                                         for="exampleFormControlSelect1">Status</label>
                                     <input type="hidden" name="project_id" value="{{$project->project_id}}" />
                                     <input type="hidden" name="project_name" value="{{$project->project_name}}" />
-                                    <select name="preparation_status" class="form-control select2"
-                                            id="exampleFormControlSelect1" value="{{$project->preparation_status}}">
-                                        <option value="Complete">Complete</option>
-                                        <option value="Incomplete">Incomplete</option>
 
+                                    <select name="preparation_status" id="preparation_status" class="form-control select2">
+                                        <option value="complete" @php echo $project->preparation_status == 'complete' ? 'selected' : ''; @endphp>Complete</option>
+                                        <option value="incomplete" @php echo $project->preparation_status == 'incomplete' ? 'selected' : ''; @endphp>Incomplete</option>
                                     </select>
                                 </div>
                                 </div>
@@ -70,11 +69,9 @@
                                     <div class="form-group">
                                         <label
                                             for="exampleFormControlSelect1">Status</label>
-                                        <select name="ministry_status" class="form-control select2"
-                                                id="exampleFormControlSelect1"  value="{{$project->ministry_status}}" >
-                                            <option  value="Complete">Complete </option>
-                                            <option value="Incomplete">Incomplete</option>
-
+                                        <select name="ministry_status" id="ministry_status" class="form-control select2">
+                                            <option value="complete" @php echo $project->ministry_status == 'complete' ? 'selected' : ''; @endphp>Complete</option>
+                                            <option value="incomplete" @php echo $project->ministry_status == 'incomplete' ? 'selected' : ''; @endphp>Incomplete</option>
                                         </select>
                                     </div>
                                 </div>
@@ -102,11 +99,9 @@
                                     <div class="form-group">
                                         <label
                                             for="exampleFormControlSelect1">Status</label>
-                                        <select name="planning_status" class="form-control select2"
-                                                id="exampleFormControlSelect1" value="{{$project->planning_status}}">
-                                            <option value="complete">Complete </option>
-                                            <option value="Incomplete">Incomplete</option>
-
+                                        <select name="planning_status" id="planning_status" class="form-control select2">
+                                            <option value="complete" @php echo $project->planning_status == 'complete' ? 'selected' : ''; @endphp>Complete</option>
+                                            <option value="incomplete" @php echo $project->planning_status == 'incomplete' ? 'selected' : ''; @endphp>Incomplete</option>
                                         </select>
                                     </div>
                                 </div>
@@ -134,11 +129,9 @@
                                     <div class="form-group">
                                         <label
                                             for="exampleFormControlSelect1">Status</label>
-                                        <select name="finance_status" class="form-control select2"
-                                                id="exampleFormControlSelect1" value="{{$project->finance_status}}">
-                                            <option value="complete">Complete </option>
-                                            <option value="complete">Incomplete</option>
-
+                                        <select name="finance_status" id="finance_status" class="form-control select2">
+                                            <option value="complete" @php echo $project->finance_status == 'complete' ? 'selected' : ''; @endphp>Complete</option>
+                                            <option value="incomplete" @php echo $project->finance_status == 'incomplete' ? 'selected' : ''; @endphp>Incomplete</option>
                                         </select>
                                     </div>
                                 </div>
@@ -166,11 +159,9 @@
                                     <div class="form-group">
                                         <label
                                             for="exampleFormControlSelect1">Status</label>
-                                        <select name="budget_status" class="form-control select2"
-                                                id="exampleFormControlSelect1" value="{{$project->budget_status}}">
-                                            <option value="complete">Complete </option>
-                                            <option value="Incomplete">Incomplete</option>
-
+                                        <select name="budget_status" id="budget_status" class="form-control select2">
+                                            <option value="complete" @php echo $project->budget_status == 'complete' ? 'selected' : ''; @endphp>Complete</option>
+                                            <option value="incomplete" @php echo $project->budget_status == 'incomplete' ? 'selected' : ''; @endphp>Incomplete</option>
                                         </select>
                                     </div>
                                 </div>
