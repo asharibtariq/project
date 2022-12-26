@@ -164,6 +164,37 @@ class ProjectController extends Controller{
         return redirect('project')->with('success', 'Project Successfully Deleted');
     }
 
+    public function create_physical_target($id, $target_status){
+        $title = "Physical Target";
+        $data['current_page'] = request()->segment(1);
+        $project = Project::findOrFail($id);
+        $data['fiscal_year_select'] = get_fiscal_year($project->fiscal_year);
+        $data['currency_select'] = get_currency($project->currency_id);
+        $data['target_status'] = $target_status != '' ? $target_status : 'ongoing';
+        $data['project_id'] = $id;
+        $data['project'] = Project::findOrFail($id);
+        $data['component_select'] = get_component();
+        return view('adminpanel.project.add_physical_target', $data)->with('title', $title);
+    }
+
+    public function store_physical_target(Request $request){
+        $userId = Auth::id();
+        $insertData = $request->all();
+        $rules = [
+            'project_id' => 'required',
+            'fiscal_year' => 'required',
+            'start_date' => 'required'
+        ];
+        $customMessages = [
+            'required' => 'The :attribute field is required.'
+        ];
+        $this->validate($request, $rules, $customMessages);
+        $insertData['created_by'] = $userId;
+        $insertData['updated_by'] = $userId;
+        ProjectPhysicalTarget::create($insertData);
+        return redirect()->back()->with('success', 'Record Added Successfully');
+    }
+
     public function action_items($id){
         $title = "Action Items";
         $data['project_id'] = $id;
