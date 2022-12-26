@@ -172,7 +172,7 @@ class ProjectController extends Controller{
         $data['currency_select'] = get_currency($project->currency_id);
         $data['target_status'] = $target_status != '' ? $target_status : 'ongoing';
         $data['project_id'] = $id;
-        $data['project'] = Project::findOrFail($id);
+        $data['project'] = $project;
         $data['component_select'] = get_component();
         return view('adminpanel.project.add_physical_target', $data)->with('title', $title);
     }
@@ -183,7 +183,8 @@ class ProjectController extends Controller{
         $rules = [
             'project_id' => 'required',
             'fiscal_year' => 'required',
-            'start_date' => 'required'
+            'start_date' => 'required',
+            'status' => 'required'
         ];
         $customMessages = [
             'required' => 'The :attribute field is required.'

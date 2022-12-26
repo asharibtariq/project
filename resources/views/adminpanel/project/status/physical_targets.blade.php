@@ -23,9 +23,11 @@
                         @endif
 
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-6 col-sm-6 col-xs-6">
                                 <h4>{{$title}}</h4>
-                                <br/>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <a href="{{url('add_physical_target_new/'.$project_id.'/'.$target_status)}}" class="btn btn-info float-right"><i class="fa fa-plus"></i> Add</a>
                             </div>
                             <div class="col-md-2">
                                 <div class="dataTables_length" id="sample_1_length">

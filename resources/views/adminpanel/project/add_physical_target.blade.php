@@ -67,7 +67,7 @@
                                     <div class="form-group">
                                         <label for="exampleFormControlSelect1">Currency</label>
                                         {!! $currency_select !!}
-                                        <input type="hidden" name="currency" id="currency" />
+                                        <input type="hidden" name="currency" id="currency" value="{{$project->currency}}" />
                                         @if ($errors->has('currency'))
                                             <span class="text-danger">{{ $errors->first('currency') }}</span>
                                         @endif
@@ -92,6 +92,7 @@
                                                 Not Achieved
                                             @endif
                                         </label>
+                                        <input type="hidden" name="target_status" id="target_status" value="{{$target_status}}" />
                                         @else
                                         <select name="target_status" id="target_status" class="form-control select2">
                                             <option value="">Select</option>

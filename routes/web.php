@@ -50,7 +50,7 @@ Route::get('edit_project/{id}', [\App\Http\Controllers\ProjectController::class,
 Route::post('update_project/{id}', [\App\Http\Controllers\ProjectController::class, 'update']);
 Route::get('delete_project/{id}', [\App\Http\Controllers\ProjectController::class, 'destroy']);
 /* Physical Target Add */
-Route::get('add_physical_target_new/{id}/target_status', [\App\Http\Controllers\ProjectController::class, 'create_physical_target']);
+Route::get('add_physical_target_new/{id}/{target_status}', [\App\Http\Controllers\ProjectController::class, 'create_physical_target']);
 Route::post('add_physical_target_new', [\App\Http\Controllers\ProjectController::class, 'store_physical_target']);
 
 // Designation Routes
