@@ -33,25 +33,26 @@
 
     <div class="container-fluid">
 
-        <form>
+        <form name="dashboard_post" method="post" action="{{url('dashboard')}}">
+        @csrf
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label>From</label>
-                        <input type="text" id="start_date" class="form-control datepicker date-filter" placeholder="DD/MM/YY" readonly>
+                        <label for="start_date">From</label>
+                        <input type="text" name="start_date" id="start_date" class="form-control datepicker date-filter" placeholder="DD/MM/YY" value="{{$start_date}}" readonly>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label>To </label>
-                        <input type="text" id="end_date" class="form-control datepicker date-filter" placeholder="DD/MM/YY" readonly>
+                        <label for="end_date">To </label>
+                        <input type="text" name="end_date" id="end_date" class="form-control datepicker date-filter" placeholder="DD/MM/YY" value="{{$end_date}}" readonly>
                     </div>
                 </div>
 
                 <div class="col-md-4">
                     <div class="form-group">
                         <label> &nbsp; </label><br/>
-                        <button type="button" class="btn btn-info"><i class="feather icon-search"></i>Search</button>
+                        <button type="submit" class="btn btn-info"><i class="feather icon-search"></i>Search</button>
                     </div>
                 </div>
             </div>

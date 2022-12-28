@@ -32,6 +32,9 @@ Route::post('ajax_expenditure_list', [\App\Http\Controllers\AjaxController::clas
 Route::get('/', [App\Http\Controllers\DashboardController::class, 'index']);
 Route::post('/', [App\Http\Controllers\DashboardController::class, 'dashboard']);
 
+// Route::get('dashboard', [App\Http\Controllers\DashboardController::class, 'index']);
+// Route::post('dashboard', [App\Http\Controllers\DashboardController::class, 'dashboard']);
+
 // User Routes
 Route::get('user', [\App\Http\Controllers\UserController::class, 'index']);
 Route::get('add_user', [\App\Http\Controllers\UserController::class, 'create']);

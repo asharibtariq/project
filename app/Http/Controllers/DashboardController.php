@@ -39,13 +39,29 @@ class DashboardController extends Controller{
         $data['project_physical_targets'] = $physicalTargetSqlData;
 
         $data['range_data'] = $this->_rangeData($physicalTargetSqlData);
-
+        $data['start_date'] = '';
+        $data['end_date'] = '';
         return view('adminpanel/dashboard', $data);
     }
 
     public function dashboard(Request $request){
         $data = array();
-        $data['range_data'] = $this->_rangeData();
+        $postData = $request->all();
+        $start_date = isset($postData['start_date']) && $postData['start_date'] != '' ? $postData['start_date'] : '';
+        $end_date = isset($postData['end_date']) && $postData['end_date'] != '' ? $postData['end_date'] : '';
+
+        $data['total_projects'] = ProjectAllocation::where('date','>=',$start_date)->where('date','<=', $end_date)->where('status', 'Y')->distinct('project_id')->count('project_id');
+        $data['total_projects_monitored'] = ProjectPhysicalTargetStatus::where('status', 'Y')->distinct('project_id')->count('project_id');
+        $data['total_tasks_complete'] = ProjectPhysicalTarget::where('target_status', 'complete')->where('status', 'Y')->distinct('project_id')->count('project_id');
+        $data['total_tasks_ongoing'] = ProjectPhysicalTarget::where('target_status', 'ongoing')->where('status', 'Y')->distinct('project_id')->count('project_id');
+        $data['total_tasks_not_achieve'] = ProjectPhysicalTarget::where('target_status', 'not_achieve')->where('status', 'Y')->distinct('project_id')->count('project_id');
+
+        $physicalTargetSqlData = ProjectPhysicalTarget::all()->where('status','=','Y');
+        $data['project_physical_targets'] = $physicalTargetSqlData;
+
+        $data['start_date'] = $start_date;
+        $data['end_date'] = $end_date;
+        $data['range_data'] = $this->_rangeData($physicalTargetSqlData);
         return view('adminpanel/dashboard', $data);
     }
 
