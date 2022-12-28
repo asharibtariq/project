@@ -391,8 +391,20 @@
                 title: {
                     text: ''
                 },
-                categories: ['Backup', 'Recovery', 'Elementor Issue', 'VPN Issue'],
-                //    categories: [{{$range_data['categories']}}],
+            //    categories: ['Backup', 'Recovery', 'Elementor Issue', 'VPN Issue'],
+            //    categories: [{{--$range_data['categories']--}}],
+                categories: [
+                    @if(!empty($range_data['categories_array'] && count($range_data['categories_array']) > 0))
+                    <?php
+                    $category_string = "";
+                    foreach ($range_data['categories_array'] as $category_name){
+                        $category_string .= "'" . $category_name . "',";
+                    }
+                    $category_string = rtrim($category_string, ',');
+                    echo $category_string;
+                    ?>
+                    @endif
+                ],
                 reversed: true
             },
             credits: {
@@ -402,7 +414,6 @@
                 name: 'Range',
                 events: {
                     click: function (event) {
-                        //    console.log(this);
                         alert(this.name + ' clicked\n');
                     }
                 },

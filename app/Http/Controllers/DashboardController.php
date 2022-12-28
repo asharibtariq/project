@@ -52,31 +52,28 @@ class DashboardController extends Controller{
     function _rangeData($physicalTargetSqlData){
         $record = array();
 
-        $record[0]['project'] = 'Backup';
+        $record[0]['project_name'] = 'Backup';
         $record[0]['start_date'] = '21/11/2014';
         $record[0]['end_date'] = '02/12/2014';
         $record[0]['status_precent'] = 25;
 
-        $record[1]['project'] = 'Recovery';
+        $record[1]['project_name'] = 'Recovery';
         $record[1]['start_date'] = '02/12/2014';
         $record[1]['end_date'] = '19/12/2014';
         $record[1]['status_precent'] = 75;
 
-        $record[2]['project'] = 'Elementor';
+        $record[2]['project_name'] = 'Elementor';
         $record[2]['start_date'] = '10/12/2014';
         $record[2]['end_date'] = '23/12/2014';
         $record[2]['status_precent'] = 80;
 
-        $record[3]['project'] = 'VPN';
+        $record[3]['project_name'] = 'VPN';
         $record[3]['start_date'] = '02/12/2014';
         $record[3]['end_date'] = '10/12/2014';
         $record[3]['status_precent'] = 100;
 
-    //    $range_graph_data_categories = ['Backup', 'Recovery', 'Elementor Issue', 'VPN Issue'];
-
         $range_graph_data = array();
         $string_raw = "";
-
         $record = $physicalTargetSqlData;
 
         if (!empty($record) && count($record) > 0) {
@@ -106,10 +103,9 @@ class DashboardController extends Controller{
                 $end_date_year = $end_date_array[2];
 
                 $string_raw .= "{x: Date.UTC(" . $start_date_year . ", " . $start_date_month . ", " . $start_date_day . "), x2: Date.UTC(" . $end_date_year . ", " . $end_date_month . ", " . $end_date_day . "), y: " . $key . ", partialFill: " . $percentage . "},";
-                $range_graph_data_categories[] = $value['project'];
+                $range_graph_data_categories[] = $value['project_name'];
             }
             $data_string = rtrim($string_raw, ',');
-        //    $category_string = "'".implode($range_graph_data_categories,"','")."'";
             $category_string = "";
 
             foreach ($range_graph_data_categories as $category) {
@@ -119,9 +115,11 @@ class DashboardController extends Controller{
         }else{
             $data_string = '';
             $category_string = '';
+            $range_graph_data_categories = array();
         }
         $rangeData['graph_data'] = $data_string;
         $rangeData['categories'] = $category_string;
+        $rangeData['categories_array'] = $range_graph_data_categories;
     //    pre($rangeData,1);
         return $rangeData;
     }
