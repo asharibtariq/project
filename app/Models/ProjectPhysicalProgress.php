@@ -16,6 +16,7 @@ class ProjectPhysicalProgress extends Model
         'physical_target_id',
         'fiscal_year',
         'date',
+        'inspect_date',
         'progress_detail',
         'component_id',
         'component',

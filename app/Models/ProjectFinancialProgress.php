@@ -18,6 +18,7 @@ class ProjectFinancialProgress extends Model
         'component_id',
         'component',
         'date',
+        'inspect_date',
         'physical_description',
         'amount',
         'amount_spent',
