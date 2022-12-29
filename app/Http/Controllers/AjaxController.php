@@ -351,6 +351,43 @@ class AjaxController extends Controller{
                 $data['links'] = $project;
                 return view('adminpanel.project.profile.physical_target_list')->with($data);
                 break;
+            case 'end_of_fy_content':
+                $where = array();
+                $name = $request->name != '' ? $request->name : '';
+                $id = $request->project_id != '' ? $request->project_id : '';
+                $per_page = $request->select_limit != '' ? $request->select_limit : 10;
+                /*
+                    if (!empty($title))
+                        $where['tbl_project_fy_util.project'] = $title;
+                */
+                $project = DB::table('tbl_end_of_fy')
+                    ->select('tbl_end_of_fy.id',
+                        'tbl_end_of_fy.project_id',
+                        'tbl_end_of_fy.project_name',
+                        'tbl_end_of_fy.fiscal_year',
+                        'tbl_end_of_fy.date',
+                        'tbl_end_of_fy.local_amount_surrender',
+                        'tbl_end_of_fy.currency_id_surrender',
+                        'tbl_end_of_fy.currency_surrender',
+                        'tbl_end_of_fy.foreign_amount_surrender',
+                        'tbl_end_of_fy.local_amount_lapsed',
+                        'tbl_end_of_fy.currency_id_lapsed',
+                        'tbl_end_of_fy.currency_lapsed',
+                        'tbl_end_of_fy.foreign_amount_lapsed',
+                        'tbl_end_of_fy.financial_progress',
+                        'tbl_end_of_fy.physical_progress',
+                        'tbl_end_of_fy.remarks',
+                        'tbl_end_of_fy.status',
+                        'tbl_end_of_fy.created_at',
+                        'tbl_end_of_fy.updated_at')
+                    ->orderBy('tbl_end_of_fy.id', 'DESC')
+                    ->where('tbl_end_of_fy.project_id', '=',   $id )
+                    ->paginate($per_page);
+
+                $data['result'] = $project->items();
+                $data['links'] = $project;
+                return view('adminpanel.project.profile.end_of_fy_list')->with($data);
+                break;
             case 'action_items_content':
                 $where = array();
                 $name = $request->name != '' ? $request->name : '';

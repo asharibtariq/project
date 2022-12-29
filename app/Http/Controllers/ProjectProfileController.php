@@ -327,7 +327,7 @@ class ProjectProfileController extends Controller
         $insertData['created_by'] = $userId;
         $insertData['updated_by'] = $userId;
         ProjectPhysicalTarget::create($insertData);
-        return redirect('add_physical_target/'.$request['project_id'])->with('success', 'FY Utilization Added Successfully');
+        return redirect('add_physical_target/'.$request['project_id'])->with('success', 'Physical Target Added Successfully');
     }
     public function edit_physical_target($id){
         $project = ProjectPhysicalTarget::findOrFail($id);
