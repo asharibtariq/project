@@ -1,3 +1,4 @@
+@include('adminpanel.project.project_details')
 <div class="row">
 <ul class="nav nav-pills mb-3" role="tablist">
     <li class="nav-item">

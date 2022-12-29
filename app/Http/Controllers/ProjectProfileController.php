@@ -25,18 +25,18 @@ class ProjectProfileController extends Controller
     }
 
     public function edit_project_director($id){
-
-        $pd = ProjectDirector::where('project_id', '=', $id)->firstOrFail();
-//        $project = ProjectDirector::findOrFail($id);
         $title = "Edit Project Director";
         $data['current_page'] = request()->segment(1);
         $data['project_id'] = $id;
+        $pd = ProjectDirector::where('project_id', '=', $id)->firstOrFail();
+        $data['pd'] = $pd;
+//        $project = ProjectDirector::findOrFail($id);
+        $data['project'] = Project::findOrFail($id);
 //        $data['fiscal_year_select'] = get_fiscal_year($pd->fiscal_year);
         $data['designation_select'] = get_designation($pd->designation_id);
         $data['organization_select'] = get_organization($pd->organization_id);
 //        $data['currency_select'] = get_currency($pd->currency_id);
 //        $data['component_select'] = get_component($pd->component_id);
-        $data['project'] = $pd;
         return view('adminpanel.project.profile.project_director', $data)->with('title', $title);
     }
 
@@ -54,10 +54,9 @@ class ProjectProfileController extends Controller
     public function allocation($id){
         $title = "Allocation";
         $data['current_page'] = request()->segment(1);
-
         $data['project_id'] = $id;
-        $data['project'] = Project::findOrFail($id);
         $project = Project::findOrFail($id);
+        $data['project'] = $project;
         $data['fiscal_year_select'] = get_fiscal_year($project->fiscal_year);
         $data['currency_select'] = get_currency($project->currency_id);
 //        $data['currency'] = get_currency($project->currency_id);
@@ -352,14 +351,15 @@ class ProjectProfileController extends Controller
 
 
     public function edit_pc4($id){
-        $pc4 = ProjectPc4::where('project_id', '=', $id)->firstOrFail();
         $title = "Edit Pc4";
         $data['current_page'] = request()->segment(1);
+        $pc4 = ProjectPc4::where('project_id', '=', $id)->firstOrFail();
         $project = Project::findOrFail($id);
         $data['fiscal_year_select'] = get_fiscal_year($project->fiscal_year);
         $data['currency_select'] = get_currency($project->currency_id);
         $data['project_id'] = $id;
-        $data['project'] = $pc4;
+        $data['project'] = $project;
+        $data['pc4'] = $pc4;
         return view('adminpanel.project.profile.edit_pc4', $data)->with('title', $title);
     }
 
