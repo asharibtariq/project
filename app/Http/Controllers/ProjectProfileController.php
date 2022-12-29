@@ -325,7 +325,25 @@ class ProjectProfileController extends Controller
         $this->validate($request, $rules, $customMessages);
         $insertData['created_by'] = $userId;
         $insertData['updated_by'] = $userId;
-        ProjectPhysicalTarget::create($insertData);
+        $str = $insertData['project_name'].' ('.$insertData['component'].')'; ;
+
+        $project = new ProjectPhysicalTarget();
+        $project->project_id = $insertData['project_id'];
+        $project->project_name = $insertData['project_name'];
+        $project->fiscal_year = $insertData['fiscal_year'];
+        $project->component_id = $insertData['component_id'];
+        $project->component = $insertData['component'];
+        $project->physical_description = $str;
+        $project->currency_id = $insertData['currency_id'];
+        $project->currency = $insertData['currency'];
+        $project->amount = $insertData['amount'];
+        $project->target_status = $insertData['target_status'];
+        $project->start_date = $insertData['start_date'];
+        $project->end_date = $insertData['end_date'];
+        $project->created_by = $userId;
+        $project->updated_by = $userId;
+        $project->save();
+
         return redirect('add_physical_target/'.$request['project_id'])->with('success', 'Physical Target Added Successfully');
     }
     public function edit_physical_target($id){
