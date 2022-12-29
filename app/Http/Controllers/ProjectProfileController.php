@@ -404,4 +404,25 @@ class ProjectProfileController extends Controller
         ProjectEndOfFy::create($insertData);
         return redirect('add_end_of_fy/'.$request['project_id'])->with('success', 'End of FY Added Successfully');
     }
+    public function edit_end_of_fy($id){
+        $project = ProjectEndOfFy::findOrFail($id);
+        $title = "Edit End Of Fy";
+        $data['fiscal_year_select'] = get_fiscal_year($project->fiscal_year);
+        $data['currency_select_surrender'] = get_currency($project->currency_id_surrender);
+        $data['currency_select_lapsed'] = get_currency($project->currency_id_lapsed);
+        $data['project'] = $project;
+        return view('adminpanel.project.profile.edit_end_of_fy', $data)->with('title', $title);
+    }
+
+    public function update_end_of_fy(Request $request,$id){
+        $userId = Auth::id();
+        $project = ProjectEndOfFy::findOrFail($id);
+        $updateData = $request->all();
+        //    $updateData['slug'] = strtolower(str_replace(' ','_',$updateData['title']));
+        $updateData['updated_by'] = $userId;
+        //    pre($request->all(),1);
+        $project->update($updateData);
+        return redirect('add_end_of_fy/'.$request['project_id'])->with('success', 'End of FY Updated Successfully');
+    }
+
 }

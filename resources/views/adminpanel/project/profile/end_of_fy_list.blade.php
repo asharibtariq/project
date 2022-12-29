@@ -36,10 +36,10 @@
                 <td> {{$i}} </td>
                 <td> {{$fiscal_year}} </td>
                 <td> {{$r->date}} </td>
-                <td> {{$r->local_amount_surrender}} (<small class="text-muted">{{$r->currency_surrender}}</small>) </td>
-                <td> {{$r->foreign_amount_surrender}} </td>
-                <td> {{$r->local_amount_lapsed}} (<small class="text-muted">{{$r->currency_lapsed}}</small>) </td>
-                <td> {{$r->foreign_amount_lapsed}}  </td>
+                <td> {{$r->local_amount_surrender}} </td>
+                <td> {{$r->foreign_amount_surrender}} (<small class="text-muted">{{$r->currency_surrender}}</small>) </td>
+                <td> {{$r->local_amount_lapsed}} </td>
+                <td> {{$r->foreign_amount_lapsed}}  (<small class="text-muted">{{$r->currency_lapsed}}</small>) </td>
                 <td> {{$r->financial_progress}} </td>
                 <td> {{$r->physical_progress}} </td>
                 <td> {{$r->remarks}} </td>
