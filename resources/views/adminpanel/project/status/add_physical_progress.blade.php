@@ -7,7 +7,8 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Add Physicall Progress</h4>
+                        @include('adminpanel.project.physical_target_details')
+                        <h4>Add Physical Progress</h4>
                     </div>
                     <div class="card-body">
                         @if($errors->any())

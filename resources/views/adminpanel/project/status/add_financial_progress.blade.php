@@ -7,6 +7,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
+                        @include('adminpanel.project.physical_target_details')
                         <h4>Add Financial Progress</h4>
                     </div>
                     <div class="card-body">

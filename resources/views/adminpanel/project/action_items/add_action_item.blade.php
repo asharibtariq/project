@@ -11,8 +11,8 @@
                     </div>
                     <div class="card-body">
                         <!-- Project Forms Tabs -->
-                        @include('adminpanel.project.action_items.project_details')
-                        @include('adminpanel.project.action_items.physical_target_details')
+                        @include('adminpanel.project.project_details')
+                        @include('adminpanel.project.physical_target_details')
 
                         @if($errors->any())
                             @foreach($errors->all() as $error)

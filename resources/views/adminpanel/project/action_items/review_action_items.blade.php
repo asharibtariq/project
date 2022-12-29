@@ -11,7 +11,7 @@
                     </div>
                     <div class="card-body">
                         <!-- Project Forms Tabs -->
-                        @include('adminpanel.project.action_items.project_details')
+                        @include('adminpanel.project.project_details')
                         @if(Session::has('success'))
                              <div class="alert alert-success">{{Session::get('success')}}</div><br/>
                         @endif

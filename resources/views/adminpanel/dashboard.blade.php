@@ -246,12 +246,7 @@
                 </div>
             </div>
         </div>
-
-
     </div> <br>
-
-
-
     <div class="card table-card">
         {{--
         <div class="card-header">
@@ -412,7 +407,7 @@
                 enabled: false
             },
             series: [{
-                name: 'Range',
+                name: 'Project',
                 events: {
                     click: function (event) {
                         alert(this.name + ' clicked\n');
