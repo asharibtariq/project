@@ -7,7 +7,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Add Physical Progress</h4>
+                        <h4>Edit Physical Progress</h4>
                     </div>
                     <div class="card-body">
                         @if($errors->any())
@@ -19,14 +19,14 @@
                             <div class="alert alert-success">{{Session::get('success')}}</div>
                         @endif
 
-                        <form name="" method="post" action="{{url('update_physical_progress', $project->id)}}" enctype="multipart/form-data">
+                        <form name="" method="post" action="{{url('update_physical_progress', $physical_progress->id)}}" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <input type="hidden" name="physical_target_id" value="{{$project->physical_target_id}}" />
-                                        <input type="hidden" name="project_id" value="{{$project->project_id}}" />
-                                        <input type="hidden" name="project" value="{{$project->name}}" />
+                                        <input type="hidden" name="physical_target_id" value="{{$physical_progress->physical_target_id}}" />
+                                        <input type="hidden" name="project_id" value="{{$physical_progress->project_id}}" />
+                                        <input type="hidden" name="project" value="{{$physical_progress->name}}" />
                                         <label for="fiscal_year">Fiscal Year <span class="text-danger">*</span></label>
                                         {!! $fiscal_year_select !!}
                                         @if ($errors->has('fiscal_year'))
@@ -54,6 +54,12 @@
                                     <div class="form-group">
                                         <label for="date">Date <span class="text-danger">*</span></label>
                                         <input type="text" name="date" class="form-control datepicker" placeholder="MM/DD/YYYY" readonly />
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="inspect_date">Inspection Date <span class="text-danger">*</span></label>
+                                        <input type="text" name="inspect_date" class="form-control datepicker" placeholder="MM/DD/YYYY" readonly />
                                     </div>
                                 </div>
                                 <div class="col-md-4">

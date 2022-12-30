@@ -65,12 +65,12 @@ class ProjectMonitoringController extends Controller{
         return view('adminpanel.project.monitoring.physical_progress_monitoring', $data)->with('title', $title);
     }
     public function edit_physical_progress($id){
-        $project = ProjectPhysicalProgress::findOrFail($id);
+        $physical_progress = ProjectPhysicalProgress::findOrFail($id);
         $title = "Edit Physical Target";
-        $data['fiscal_year_select'] = get_fiscal_year($project->fiscal_year);
-        $data['currency_select'] = get_currency($project->currency_id);
-        $data['component_select'] = get_component($project->component_id);
-        $data['project'] = $project;
+        $data['fiscal_year_select'] = get_fiscal_year($physical_progress->fiscal_year);
+        $data['currency_select'] = get_currency($physical_progress->currency_id);
+        $data['component_select'] = get_component($physical_progress->component_id);
+        $data['physical_progress'] = $physical_progress;
         return view('adminpanel.project.monitoring.edit_physical_progress', $data)->with('title', $title);
     }
 
@@ -97,12 +97,12 @@ class ProjectMonitoringController extends Controller{
     }
 
     public function edit_financial_progress($id){
-        $project = ProjectFinancialProgress::findOrFail($id);
+        $financial_progress = ProjectFinancialProgress::findOrFail($id);
         $title = "Edit Physical Target";
-        $data['fiscal_year_select'] = get_fiscal_year($project->fiscal_year);
-        $data['currency_select'] = get_currency($project->currency_id);
-        $data['component_select'] = get_component($project->component_id);
-        $data['project'] = $project;
+        $data['fiscal_year_select'] = get_fiscal_year($financial_progress->fiscal_year);
+        $data['currency_select'] = get_currency($financial_progress->currency_id);
+        $data['component_select'] = get_component($financial_progress->component_id);
+        $data['financial_progress'] = $financial_progress;
         return view('adminpanel.project.monitoring.edit_financial_progress', $data)->with('title', $title);
     }
 

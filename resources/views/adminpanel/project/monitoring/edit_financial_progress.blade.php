@@ -7,7 +7,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Add Financial Progress</h4>
+                        <h4>Edit Financial Progress</h4>
                     </div>
                     <div class="card-body">
                         @if($errors->any())
@@ -19,14 +19,14 @@
                             <div class="alert alert-success">{{Session::get('success')}}</div>
                         @endif
 
-                        <form name="" method="post" action="{{url('update_financial_progress', $project->id)}}" enctype="multipart/form-data">
+                        <form name="" method="post" action="{{url('update_financial_progress', $financial_progress->id)}}" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <input type="hidden" name="physical_target_id" value="{{$project->physical_target_id}}" />
-                                        <input type="hidden" name="project_id" value="{{$project->project_id}}" />
-                                        <input type="hidden" name="project" value="{{$project->project}}"/>
+                                        <input type="hidden" name="physical_target_id" value="{{$financial_progress->physical_target_id}}" />
+                                        <input type="hidden" name="project_id" value="{{$financial_progress->project_id}}" />
+                                        <input type="hidden" name="project" value="{{$financial_progress->project}}"/>
                                         <label for="fiscal_year">Fiscal Year <span class="text-danger">*</span></label>
                                         {!! $fiscal_year_select !!}
                                         @if ($errors->has('fiscal_year'))
@@ -38,7 +38,7 @@
                                     <div class="form-group">
                                         <label for="component_id">Component <span class="text-danger">*</span></label>
                                         {!! $component_select !!}
-                                        <input type="hidden" name="component" id="component" value="{{$project->component}}"/>
+                                        <input type="hidden" name="component" id="component" value="{{$financial_progress->component}}"/>
                                         @if ($errors->has('component'))
                                             <span class="text-danger">{{ $errors->first('component') }}</span>
                                         @endif
@@ -47,19 +47,25 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="amount">Amount <span class="text-danger">*</span></label>
-                                        <input type="number" name="amount" class="form-control" value="{{$project->amount}}" placeholder="Amount" />
+                                        <input type="number" name="amount" class="form-control" value="{{$financial_progress->amount}}" placeholder="Amount" />
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="date">Date <span class="text-danger">*</span></label>
-                                        <input type="text" name="date" class="form-control datepicker" value="{{$project->date}}" placeholder="MM/DD/YYYY" readonly />
+                                        <input type="text" name="date" class="form-control datepicker" value="{{$financial_progress->date}}" placeholder="MM/DD/YYYY" readonly />
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="inspect_date">Inspection Date <span class="text-danger">*</span></label>
+                                        <input type="text" name="inspect_date" class="form-control datepicker" value="{{$financial_progress->inspect_date}}" placeholder="MM/DD/YYYY" readonly />
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="physical_description">Physical Target Description <span class="text-danger">*</span></label>
-                                        <textarea name="physical_description" class="form-control"  placeholder="Description">{{$project->physical_description}}</textarea>
+                                        <textarea name="physical_description" class="form-control"  placeholder="Description">{{$financial_progress->physical_description}}</textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-4">

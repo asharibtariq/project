@@ -26,18 +26,28 @@
                         <form name="" method="post" action="{{url('add_physical_target_status')}}">
                             @csrf
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label>Date</label>
                                         <input type="text" name="date" id="date" class="form-control datepicker" placeholder="MM/DD/YYYY" readonly>
                                         <input type="hidden" name="project_id" value="{{$project_id}}" />
+                                        <input type="hidden" name="project" value="{{$project->name}}" />
                                         <input type="hidden" name="physical_target_id" value="{{$physical_target_id}}" />
                                         @if ($errors->has('date'))
                                             <span class="text-danger">{{ $errors->first('date') }}</span>
                                         @endif
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Inspection Date</label>
+                                        <input type="text" name="inspect_date" id="inspect_date" class="form-control datepicker" placeholder="MM/DD/YYYY" readonly>
+                                        @if ($errors->has('inspect_date'))
+                                            <span class="text-danger">{{ $errors->first('inspect_date') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label>Pace</label>
                                         <select name="pace" id="pace" class="form-control select2">
@@ -51,7 +61,7 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label>Status</label>
                                         <select name="status" id="status" class="form-control select2">
