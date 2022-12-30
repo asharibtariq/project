@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ProjectPhysicalTarget extends Model
 {
     use HasFactory;
-    protected $table = "tbl_physical_target";
+    protected $table = "tbl_project_physical_target";
     protected $fillable = [
         'id',
         'project_id',

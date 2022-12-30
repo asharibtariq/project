@@ -203,21 +203,22 @@ class AjaxController extends Controller{
                 $per_page = $request->select_limit != '' ? $request->select_limit : 10;
                 /*
                     if (!empty($title))
-                        $where['tbl_project.title'] = $title;
+                        $where['tbl_project_release.name'] = $title;
                 */
-                $project = DB::table('tbl_release')
-                    ->select('tbl_release.id',
-                        'tbl_release.project_id',
-                        'tbl_release.fiscal_year',
-                        'tbl_release.release_date',
-                        'tbl_release.rel_amount',
-                        'tbl_release.currency_id',
-                        'tbl_release.currency',
-                        'tbl_release.foreign_rel_amount',
-                        'tbl_release.created_at',
-                        'tbl_release.updated_at')
-                    ->orderBy('tbl_release.id', 'DESC')
-                    ->where('tbl_release.project_id', '=',   $id )
+                $project = DB::table('tbl_project_release')
+                    ->select('tbl_project_release.id',
+                        'tbl_project_release.project_id',
+                        'tbl_project_release.project_name',
+                        'tbl_project_release.fiscal_year',
+                        'tbl_project_release.release_date',
+                        'tbl_project_release.rel_amount',
+                        'tbl_project_release.currency_id',
+                        'tbl_project_release.currency',
+                        'tbl_project_release.foreign_rel_amount',
+                        'tbl_project_release.created_at',
+                        'tbl_project_release.updated_at')
+                    ->orderBy('tbl_project_release.id', 'DESC')
+                    ->where('tbl_project_release.project_id', '=',   $id )
                     ->paginate($per_page);
 
                 $data['result'] = $project->items();
@@ -236,6 +237,7 @@ class AjaxController extends Controller{
                 $project = DB::table('tbl_project_component')
                     ->select('tbl_project_component.id',
                         'tbl_project_component.project_id',
+                        'tbl_project_component.project_name',
                         'tbl_project_component.fiscal_year',
                         'tbl_project_component.component_id',
                         'tbl_project_component.component',
@@ -264,6 +266,7 @@ class AjaxController extends Controller{
                 $project = DB::table('tbl_project_component_nis')
                     ->select('tbl_project_component_nis.id',
                         'tbl_project_component_nis.project_id',
+                        'tbl_project_component_nis.project_name',
                         'tbl_project_component_nis.fiscal_year',
                         'tbl_project_component_nis.component_id',
                         'tbl_project_component_nis.component',
@@ -292,6 +295,7 @@ class AjaxController extends Controller{
                 $project = DB::table('tbl_project_fy_util')
                     ->select('tbl_project_fy_util.id',
                         'tbl_project_fy_util.project_id',
+                        'tbl_project_fy_util.project_name',
                         'tbl_project_fy_util.fiscal_year',
                         'tbl_project_fy_util.quarter',
                         'tbl_project_fy_util.fy_date',
@@ -319,28 +323,28 @@ class AjaxController extends Controller{
                 $next_page = $request->next_page != '' ? $request->next_page : 'edit_physical_target';
 
                 if (!empty($id))
-                    $where['tbl_physical_target.project_id'] = $id;
+                    $where['tbl_project_physical_target.project_id'] = $id;
                 if (!empty($status))
-                    $where['tbl_physical_target.target_status'] = $status;
+                    $where['tbl_project_physical_target.target_status'] = $status;
 
             //    DB::enableQueryLog(); // Enable query log
 
-                $project = DB::table('tbl_physical_target')
-                    ->select('tbl_physical_target.id',
-                        'tbl_physical_target.project_id',
-                        'tbl_physical_target.fiscal_year',
-                        'tbl_physical_target.component_id',
-                        'tbl_physical_target.component',
-                        'tbl_physical_target.physical_description',
-                        'tbl_physical_target.currency_id',
-                        'tbl_physical_target.currency',
-                        'tbl_physical_target.amount',
-                        'tbl_physical_target.start_date',
-                        'tbl_physical_target.end_date',
-                        'tbl_physical_target.created_at',
-                        'tbl_physical_target.updated_at')
-                    ->orderBy('tbl_physical_target.id', 'DESC')
-                //    ->where('tbl_physical_target.project_id', '=',   $id )
+                $project = DB::table('tbl_project_physical_target')
+                    ->select('tbl_project_physical_target.id',
+                        'tbl_project_physical_target.project_id',
+                        'tbl_project_physical_target.fiscal_year',
+                        'tbl_project_physical_target.component_id',
+                        'tbl_project_physical_target.component',
+                        'tbl_project_physical_target.physical_description',
+                        'tbl_project_physical_target.currency_id',
+                        'tbl_project_physical_target.currency',
+                        'tbl_project_physical_target.amount',
+                        'tbl_project_physical_target.start_date',
+                        'tbl_project_physical_target.end_date',
+                        'tbl_project_physical_target.created_at',
+                        'tbl_project_physical_target.updated_at')
+                    ->orderBy('tbl_project_physical_target.id', 'DESC')
+                //    ->where('tbl_project_physical_target.project_id', '=',   $id )
                     ->where($where)
                     ->paginate($per_page);
 
@@ -395,20 +399,21 @@ class AjaxController extends Controller{
                 $per_page = $request->select_limit != '' ? $request->select_limit : 10;
                 /*
                     if (!empty($title))
-                        $where['tbl_project.title'] = $title;
+                        $where['tbl_project_physical_target.name'] = $title;
                 */
-                $project = DB::table('tbl_physical_target')
-                    ->select('tbl_physical_target.id',
-                        'tbl_physical_target.project_id',
-                        'tbl_physical_target.fiscal_year',
-                        'tbl_physical_target.component_id',
-                        'tbl_physical_target.component',
-                        'tbl_physical_target.physical_description',
-                        'tbl_physical_target.created_at',
-                        'tbl_physical_target.updated_at')
-                    ->orderBy('tbl_physical_target.id', 'DESC')
-                    ->where('tbl_physical_target.project_id', '=', $id)
-                    ->where('tbl_physical_target.target_status', '=', 'ongoing')
+                $project = DB::table('tbl_project_physical_target')
+                    ->select('tbl_project_physical_target.id',
+                        'tbl_project_physical_target.project_id',
+                        'tbl_project_physical_target.project_name',
+                        'tbl_project_physical_target.fiscal_year',
+                        'tbl_project_physical_target.component_id',
+                        'tbl_project_physical_target.component',
+                        'tbl_project_physical_target.physical_description',
+                        'tbl_project_physical_target.created_at',
+                        'tbl_project_physical_target.updated_at')
+                    ->orderBy('tbl_project_physical_target.id', 'DESC')
+                    ->where('tbl_project_physical_target.project_id', '=', $id)
+                    ->where('tbl_project_physical_target.target_status', '=', 'ongoing')
                     ->paginate($per_page);
 
                 $data['result'] = $project->items();
