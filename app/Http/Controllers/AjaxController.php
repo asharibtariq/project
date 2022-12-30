@@ -462,16 +462,16 @@ class AjaxController extends Controller{
                 $where = array();
                 $id = $request->physical_target_id != '' ? $request->physical_target_id : '';
                 $per_page = $request->select_limit != '' ? $request->select_limit : 10;
-                $project = DB::table('tbl_physical_target_status')
-                    ->select('tbl_physical_target_status.id',
-                        'tbl_physical_target_status.project_id',
-                        'tbl_physical_target_status.physical_target_id',
-                        'tbl_physical_target_status.date',
-                        'tbl_physical_target_status.pace',
-                        'tbl_physical_target_status.status')
-                //    ->groupBy('tbl_physical_target_status.id')
-                    ->orderBy('tbl_physical_target_status.id', 'DESC')
-                    ->where('tbl_physical_target_status.physical_target_id', '=',   $id )
+                $project = DB::table('tbl_project_physical_target_status')
+                    ->select('tbl_project_physical_target_status.id',
+                        'tbl_project_physical_target_status.project_id',
+                        'tbl_project_physical_target_status.physical_target_id',
+                        'tbl_project_physical_target_status.date',
+                        'tbl_project_physical_target_status.pace',
+                        'tbl_project_physical_target_status.status')
+                //    ->groupBy('tbl_project_physical_target_status.id')
+                    ->orderBy('tbl_project_physical_target_status.id', 'DESC')
+                    ->where('tbl_project_physical_target_status.physical_target_id', '=',   $id )
                     ->paginate($per_page);
 
                 $data['result'] = $project->items();
