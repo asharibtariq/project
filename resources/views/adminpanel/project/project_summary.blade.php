@@ -61,6 +61,30 @@
                 <br/>
                 <div class="card">
                     <div class="card-header">
+                        <h4>Project Director</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4><strong class="text-muted">Name:</strong> <span class="float-right">{{$project_pd->name != '' ? $project_pd->name : ''}}</span></h4>
+                                <h4><strong class="text-muted">Email ID:</strong> <span class="float-right">{{$project_pd->email != '' ? $project_pd->email : ''}}</span></h4>
+                                <h4><strong class="text-muted">W.E.F Date:</strong> <span class="float-right">{{$project_pd->wef_date != '' ? $project_pd->wef_date : ''}}</span></h4>
+                            </div>
+                            <div class="col-md-6">
+                                <h4><strong class="text-muted">Designation:</strong> <span class="float-right">{{$project_pd->designation != '' ? $project_pd->designation : ''}}</span></h4>
+                                <h4><strong class="text-muted">Phone Number:</strong> <span class="float-right">{{$project_pd->phone_no != '' ? $project_pd->phone_no : ''}}</span></h4>
+                                <h4><strong class="text-muted">Mobile Number:</strong> <span class="float-right">{{$project_pd->cell_number != '' ? $project_pd->cell_number : ''}}</span></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> {{--Project Director--}}
+        <div class="row">
+            <div class="col-md-12">
+                <br/>
+                <div class="card">
+                    <div class="card-header">
                         <h4>Project Profile</h4>
                     </div>
                     <div class="card-body">

@@ -264,6 +264,7 @@ class ProjectController extends Controller{
     //    $where['project_id'] = $id;
     //    $where['status'] = "Y";
         ////////////////////////////
+        $data['project_pd'] = ProjectDirector::where('project_id', '=', $id)->firstOrFail();
         $data['project_allocation'] = ProjectAllocation::all()->where('project_id','=',$id)->where('status','=','Y');
         $data['project_release'] = ProjectRelease::all()->where('project_id','=',$id)->where('status','=','Y');
         $data['project_fy_utilization'] = ProjectFyUtilization::all()->where('project_id','=',$id)->where('status','=','Y');
@@ -273,9 +274,7 @@ class ProjectController extends Controller{
         $data['completed_project_physical_target'] = ProjectPhysicalTarget::all()->where('project_id','=',$id)->where('target_status','=','complete')->where('status','=','Y');
         $data['not_achieved_project_physical_target'] = ProjectPhysicalTarget::all()->where('project_id','=',$id)->where('target_status','=','not_achieve')->where('status','=','Y');
         $data['on_going_project_physical_target'] = ProjectPhysicalTarget::all()->where('project_id','=',$id)->where('target_status','=','ongoing')->where('status','=','Y');
-        ////////////////////////////////////////////////////////////////////////////////
         $data['project_pc4'] = ProjectPc4::where('project_id', '=', $id)->firstOrFail();
-        ////////////////////////////////////////////////////////////////////////////////
         $data['project_end_of_fy'] = ProjectEndOfFy::all()->where('project_id','=',$id)->where('status','=','Y');
         $data['project_financial_progress'] = ProjectFinancialProgress::all()->where('project_id','=',$id)->where('status','=','Y');
         $data['project_physical_progress'] = ProjectPhysicalProgress::all()->where('project_id','=',$id)->where('status','=','Y');
