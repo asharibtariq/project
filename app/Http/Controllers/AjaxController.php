@@ -259,21 +259,21 @@ class AjaxController extends Controller{
                 $per_page = $request->select_limit != '' ? $request->select_limit : 10;
                 /*
                     if (!empty($title))
-                        $where['tbl_project.title'] = $title;
+                        $where['tbl_project_component_nis.name'] = $title;
                 */
-                $project = DB::table('tbl_component_nis')
-                    ->select('tbl_component_nis.id',
-                        'tbl_component_nis.project_id',
-                        'tbl_component_nis.fiscal_year',
-                        'tbl_component_nis.component_id',
-                        'tbl_component_nis.component',
-                        'tbl_component_nis.comp_amount',
-                        'tbl_component_nis.currency_id',
-                        'tbl_component_nis.currency',
-                        'tbl_component_nis.created_at',
-                        'tbl_component_nis.updated_at')
-                    ->orderBy('tbl_component_nis.id', 'DESC')
-                    ->where('tbl_component_nis.project_id', '=',   $id )
+                $project = DB::table('tbl_project_component_nis')
+                    ->select('tbl_project_component_nis.id',
+                        'tbl_project_component_nis.project_id',
+                        'tbl_project_component_nis.fiscal_year',
+                        'tbl_project_component_nis.component_id',
+                        'tbl_project_component_nis.component',
+                        'tbl_project_component_nis.comp_amount',
+                        'tbl_project_component_nis.currency_id',
+                        'tbl_project_component_nis.currency',
+                        'tbl_project_component_nis.created_at',
+                        'tbl_project_component_nis.updated_at')
+                    ->orderBy('tbl_project_component_nis.id', 'DESC')
+                    ->where('tbl_project_component_nis.project_id', '=',   $id )
                     ->paginate($per_page);
 
                 $data['result'] = $project->items();
@@ -358,30 +358,30 @@ class AjaxController extends Controller{
                 $per_page = $request->select_limit != '' ? $request->select_limit : 10;
                 /*
                     if (!empty($title))
-                        $where['tbl_project_fy_util.project'] = $title;
+                        $where['tbl_project_end_of_fy.name'] = $title;
                 */
-                $project = DB::table('tbl_end_of_fy')
-                    ->select('tbl_end_of_fy.id',
-                        'tbl_end_of_fy.project_id',
-                        'tbl_end_of_fy.project_name',
-                        'tbl_end_of_fy.fiscal_year',
-                        'tbl_end_of_fy.date',
-                        'tbl_end_of_fy.local_amount_surrender',
-                        'tbl_end_of_fy.currency_id_surrender',
-                        'tbl_end_of_fy.currency_surrender',
-                        'tbl_end_of_fy.foreign_amount_surrender',
-                        'tbl_end_of_fy.local_amount_lapsed',
-                        'tbl_end_of_fy.currency_id_lapsed',
-                        'tbl_end_of_fy.currency_lapsed',
-                        'tbl_end_of_fy.foreign_amount_lapsed',
-                        'tbl_end_of_fy.financial_progress',
-                        'tbl_end_of_fy.physical_progress',
-                        'tbl_end_of_fy.remarks',
-                        'tbl_end_of_fy.status',
-                        'tbl_end_of_fy.created_at',
-                        'tbl_end_of_fy.updated_at')
-                    ->orderBy('tbl_end_of_fy.id', 'DESC')
-                    ->where('tbl_end_of_fy.project_id', '=',   $id )
+                $project = DB::table('tbl_project_end_of_fy')
+                    ->select('tbl_project_end_of_fy.id',
+                        'tbl_project_end_of_fy.project_id',
+                        'tbl_project_end_of_fy.project_name',
+                        'tbl_project_end_of_fy.fiscal_year',
+                        'tbl_project_end_of_fy.date',
+                        'tbl_project_end_of_fy.local_amount_surrender',
+                        'tbl_project_end_of_fy.currency_id_surrender',
+                        'tbl_project_end_of_fy.currency_surrender',
+                        'tbl_project_end_of_fy.foreign_amount_surrender',
+                        'tbl_project_end_of_fy.local_amount_lapsed',
+                        'tbl_project_end_of_fy.currency_id_lapsed',
+                        'tbl_project_end_of_fy.currency_lapsed',
+                        'tbl_project_end_of_fy.foreign_amount_lapsed',
+                        'tbl_project_end_of_fy.financial_progress',
+                        'tbl_project_end_of_fy.physical_progress',
+                        'tbl_project_end_of_fy.remarks',
+                        'tbl_project_end_of_fy.status',
+                        'tbl_project_end_of_fy.created_at',
+                        'tbl_project_end_of_fy.updated_at')
+                    ->orderBy('tbl_project_end_of_fy.id', 'DESC')
+                    ->where('tbl_project_end_of_fy.project_id', '=',   $id )
                     ->paginate($per_page);
 
                 $data['result'] = $project->items();
@@ -465,8 +465,10 @@ class AjaxController extends Controller{
                 $project = DB::table('tbl_project_physical_target_status')
                     ->select('tbl_project_physical_target_status.id',
                         'tbl_project_physical_target_status.project_id',
+                        'tbl_project_physical_target_status.project',
                         'tbl_project_physical_target_status.physical_target_id',
                         'tbl_project_physical_target_status.date',
+                        'tbl_project_physical_target_status.inspect_date',
                         'tbl_project_physical_target_status.pace',
                         'tbl_project_physical_target_status.status')
                 //    ->groupBy('tbl_project_physical_target_status.id')
@@ -485,12 +487,14 @@ class AjaxController extends Controller{
                 $project = DB::table('tbl_project_financial_progress')
                     ->select('tbl_project_financial_progress.id',
                         'tbl_project_financial_progress.project_id',
+                        'tbl_project_financial_progress.project',
                         'tbl_project_financial_progress.fiscal_year',
                         'tbl_project_financial_progress.component_id',
                         'tbl_project_financial_progress.component',
                         'tbl_project_financial_progress.physical_description',
                         'tbl_project_financial_progress.amount',
                         'tbl_project_financial_progress.date',
+                        'tbl_project_financial_progress.inspect_date',
                         'tbl_project_financial_progress.status')
                     //    ->groupBy('tbl_project_financial_progress.id')
                     ->orderBy('tbl_project_financial_progress.id', 'DESC')
@@ -508,8 +512,10 @@ class AjaxController extends Controller{
                 $project = DB::table('tbl_project_physical_progress')
                     ->select('tbl_project_physical_progress.id',
                         'tbl_project_physical_progress.project_id',
+                        'tbl_project_physical_progress.project',
                         'tbl_project_physical_progress.fiscal_year',
                         'tbl_project_physical_progress.date',
+                        'tbl_project_physical_progress.inspect_date',
                         'tbl_project_physical_progress.component_id',
                         'tbl_project_physical_progress.component',
                         'tbl_project_physical_progress.physical_description',

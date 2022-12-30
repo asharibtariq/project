@@ -3,6 +3,7 @@
     <tr>
         <th> Sr. No </th>
         <th> Date </th>
+        <th> Inspection Date </th>
         <th> Pace </th>
         <th> Status </th>
     </tr>
@@ -18,6 +19,7 @@
             <tr role="row">
                 <td> {{$i}} </td>
                 <td> {{$r->date}} </td>
+                <td> {{$r->inspect_date}} </td>
                 <td>
                     <?php
                     if ($r->pace == 'fast'){

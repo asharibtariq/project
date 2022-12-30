@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ProjectComponentNis extends Model
 {
     use HasFactory;
-    protected $table = "tbl_component_nis";
+    protected $table = "tbl_project_component_nis";
     protected $fillable = [
         'id',
         'project_id',
