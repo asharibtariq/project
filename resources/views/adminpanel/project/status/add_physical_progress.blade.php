@@ -27,7 +27,7 @@
                                     <div class="form-group">
                                         <input type="hidden" name="physical_target_id" value="{{$physical_target_id}}" />
                                         <input type="hidden" name="project_id" value="{{$project_id}}" />
-                                        <input type="hidden" name="project" value="{{$project->name}}" />
+                                        <input type="hidden" name="project" value="{{$project->project}}" />
                                         <label for="fiscal_year">Fiscal Year <span class="text-danger">*</span></label>
                                         {!! $fy_select !!}
                                         @if ($errors->has('fiscal_year'))

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Project;
 use App\Models\ProjectFinancialProgress;
 use App\Models\ProjectPhysicalProgress;
+use App\Models\ProjectPhysicalProgressMedia;
 use App\Models\ProjectPhysicalTarget;
 use App\Models\ProjectPhysicalTargetStatus;
 use Illuminate\Http\Request;
@@ -78,6 +79,17 @@ class ProjectMonitoringController extends Controller{
         $userId = Auth::id();
         $project = ProjectPhysicalProgress::findOrFail($id);
         $updateData = $request->all();
+        if ($request->hasfile('multimedia')) {
+
+            foreach ($request->file('multimedia') as $image) {
+                $name = $image->getClientOriginalName();
+                $image->move(public_path() . '/uploads/physicalprogress', $name);
+                $projectmedia = new ProjectPhysicalProgressMedia();
+                $projectmedia->physical_progress_id = $id;
+                $projectmedia->file = $name;
+                $projectmedia->save();
+            }
+        }
         //    $updateData['slug'] = strtolower(str_replace(' ','_',$updateData['title']));
         $updateData['updated_by'] = $userId;
         //    pre($request->all(),1);

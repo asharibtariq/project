@@ -49,12 +49,12 @@
                                 </div>
 
 
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label> Physical Target Description </label>
-                                        <textarea type="text" name="physical_description" class="form-control" placeholder="Physical Target Description" readonly></textarea>
-                                    </div>
-                                </div>
+                                {{--<div class="col-md-4">--}}
+                                    {{--<div class="form-group">--}}
+                                        {{--<label> Physical Target Description </label>--}}
+                                        {{--<textarea type="text" name="physical_description" class="form-control" placeholder="Physical Target Description" readonly></textarea>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
 
 
                             </div>
