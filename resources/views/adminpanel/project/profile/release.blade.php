@@ -36,20 +36,16 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                <div class="form-group">
-                                    <label
-                                        for="exampleFormControlSelect1">Quarter</label>
-                                    <select name="quarter" class="form-control"
-                                            id="exampleFormControlSelect1">
-                                        <option>First Quarter</option>
-                                        <option>Second Quarter</option>
-                                        <option>Third Quarter</option>
-                                        <option>Fourth Quarter</option>
-
-                                    </select>
+                                    <div class="form-group">
+                                        <label for="quarter">Quarter</label>
+                                        <select name="quarter" id="quarter" class="form-control select2">
+                                            <option>First Quarter</option>
+                                            <option>Second Quarter</option>
+                                            <option>Third Quarter</option>
+                                            <option>Fourth Quarter</option>
+                                        </select>
+                                    </div>
                                 </div>
-                                </div>
-
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label> Date</label>
@@ -59,7 +55,6 @@
                                         @endif
                                     </div>
                                 </div>
-
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Amount Released (<small class="text-muted">PKR</small>)</label>

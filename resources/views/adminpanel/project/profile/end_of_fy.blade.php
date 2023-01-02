@@ -63,7 +63,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="exampleFormControlSelect1">Currency</label>
+                                        <label for="currency_id_surrender">Currency</label>
                                         {!! $currency_select_surrender !!}
                                         <input type="hidden" name="currency_surrender" id="currency_surrender" />
                                         @if ($errors->has('currency'))
@@ -95,7 +95,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="exampleFormControlSelect1">Currency</label>
+                                        <label for="currency_id_lapsed">Currency</label>
                                         {!! $currency_select_lapsed !!}
                                         <input type="hidden" name="currency_lapsed" id="currency_lapsed" />
                                         @if ($errors->has('currency'))
@@ -109,10 +109,8 @@
                                         <input type="number" name="foreign_amount_lapsed" id="foreign_amount_lapsed" class="form-control" placeholder="Amount">
                                     </div>
                                 </div>
-
                             </div>
                             <div class="row">
-
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Financial Progress % </label>
@@ -125,22 +123,13 @@
                                         <input type="number" name="physical_progress" id="physical_progress" class="form-control" placeholder="Physical Progress %">
                                     </div>
                                 </div>
-
-
-
-                            </div>
-                            <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="exampleFormControlTextarea1">Remarks/
-                                            issues/Bottlenecks (if any)</label>
-                                        <textarea class="form-control" name="remarks"
-                                                  id="exampleFormControlTextarea1" rows="4"
-                                                  placeholder="Remarks"></textarea>
+                                        <label for="remarks">Remarks/issues/Bottlenecks (if any)</label>
+                                        <textarea class="form-control" name="remarks" id="remarks" rows="4" placeholder="Remarks"></textarea>
                                     </div>
                                 </div>
                             </div>
-
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group"><br/>

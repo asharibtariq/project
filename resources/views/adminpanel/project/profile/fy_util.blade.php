@@ -38,15 +38,12 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label
-                                            for="exampleFormControlSelect1">Quarter</label>
-                                        <select name="quarter" class="form-control"
-                                                id="exampleFsormControlSelect1">
+                                        <label for="quarter">Quarter</label>
+                                        <select name="quarter" id="quarter" class="form-control select2">
                                             <option value="1st">First Quarter</option>
                                             <option value="2nd">Second Quarter</option>
                                             <option value="3rd">Third Quarter</option>
                                             <option value="4th">Fourth Quarter</option>
-
                                         </select>
                                     </div>
                                 </div>
