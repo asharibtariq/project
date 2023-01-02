@@ -14,7 +14,7 @@ class DropFieldTblProjectComponent extends Migration
     public function up()
     {
         Schema::table('tbl_project_component', function (Blueprint $table) {
-            $table->dropColumn('foreign_amount');
+        //    $table->dropColumn('foreign_amount');
             $table->dropColumn('foreign_amount_d');
         });
     }
@@ -27,7 +27,7 @@ class DropFieldTblProjectComponent extends Migration
     public function down()
     {
         Schema::table('tbl_project_component', function (Blueprint $table) {
-            $table->string('foreign_amount', 20)->after('currency')->default(null)->nullable();
+        //    $table->string('foreign_amount', 20)->after('currency')->default(null)->nullable();
             $table->string('foreign_amount_d', 20)->default(null)->nullable();
         });
     }
