@@ -5,6 +5,7 @@
         <th> FY </th>
         <th> Component </th>
         <th> Amount Released </th>
+        <th> Foreign Amount Released </th>
         <th> Action </th>
     </tr>
     </thead>
@@ -28,7 +29,8 @@
                 <td> {{$i}} </td>
                 <td> {{$fiscal_year}} </td>
                 <td> {{$r->component}} </td>
-                <td> {{$r->comp_amount}}(<small class="text-muted">{{$r->currency}}</small>) </td>
+                <td> {{$r->comp_amount}}(<small class="text-muted">pkr</small>) </td>
+                <td> {{$r->foreign_amount}}(<small class="text-muted">{{$r->currency}}</small>) </td>
                 <td>
                     <div class="btn-group">
                         <a onClick="return confirm('Are you sure you want to update?');" title="Edit" href="{{url('edit_component_pc1', $r->id)}}" class="btn btn-info" id="btn-view"><i class="fa fa-edit"></i> </a>

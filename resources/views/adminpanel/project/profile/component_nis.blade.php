@@ -67,6 +67,12 @@
                                         @endif
                                     </div>
                                 </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Foreign Amount </label>
+                                        <input type="number" name="foreign_amount" id="foreign_amount" class="form-control" placeholder="Amount">
+                                    </div>
+                                </div>
 
                             </div>
 

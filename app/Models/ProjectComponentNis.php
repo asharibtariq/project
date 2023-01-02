@@ -19,6 +19,7 @@ class ProjectComponentNis extends Model
         'comp_amount',
         'currency_id',
         'currency',
+        'foreign_amount',
         'status',
         'created_by',
         'updated_by'

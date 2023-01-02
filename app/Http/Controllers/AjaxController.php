@@ -244,6 +244,7 @@ class AjaxController extends Controller{
                         'tbl_project_component.comp_amount',
                         'tbl_project_component.currency_id',
                         'tbl_project_component.currency',
+                        'tbl_project_component.foreign_amount',
                         'tbl_project_component.created_at',
                         'tbl_project_component.updated_at')
                     ->orderBy('tbl_project_component.id', 'DESC')
@@ -273,6 +274,7 @@ class AjaxController extends Controller{
                         'tbl_project_component_nis.comp_amount',
                         'tbl_project_component_nis.currency_id',
                         'tbl_project_component_nis.currency',
+                        'tbl_project_component_nis.foreign_amount',
                         'tbl_project_component_nis.created_at',
                         'tbl_project_component_nis.updated_at')
                     ->orderBy('tbl_project_component_nis.id', 'DESC')

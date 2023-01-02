@@ -68,6 +68,12 @@
                                         @endif
                                     </div>
                                 </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Amount </label>
+                                        <input type="number" name="foreign_amount" id="foreign_amount" value="{{$project->foreign_amount}}" class="form-control" placeholder="Amount">
+                                    </div>
+                                </div>
 
                             </div>
 
