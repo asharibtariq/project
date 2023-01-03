@@ -20,6 +20,7 @@ class ProjectPhysicalTarget extends Model
         'currency_id',
         'currency',
         'amount',
+        'date',
         'start_date',
         'end_date',
         'target_status',

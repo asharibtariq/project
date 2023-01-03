@@ -44,16 +44,15 @@
                                         @endif
                                     </div>
                                 </div>
-
-
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label> Physical Target Description </label>
                                         <textarea type="text" name="physical_description" class="form-control" placeholder="Physical Target Description"></textarea>
+                                        @if ($errors->has('physical_description'))
+                                            <span class="text-danger">{{ $errors->first('physical_description') }}</span>
+                                        @endif
                                     </div>
                                 </div>
-
-
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
@@ -77,6 +76,9 @@
                                     <div class="form-group">
                                         <label>Amount </label>
                                         <input type="number" name="amount" class="form-control" placeholder="Amount">
+                                        @if ($errors->has('amount'))
+                                            <span class="text-danger">{{ $errors->first('amount') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -121,6 +123,17 @@
                                         @endif
                                     </div>
                                 </div>
+                                @if($target_status == 'not_achieve')
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Reason</label>
+                                        <textarea type="text" name="reason" class="form-control"></textarea>
+                                        @if ($errors->has('reason'))
+                                            <span class="text-danger">{{ $errors->first('reason') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                                @endif
                             </div>
 
                             <div class="row">

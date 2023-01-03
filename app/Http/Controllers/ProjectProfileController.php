@@ -337,6 +337,9 @@ class ProjectProfileController extends Controller
         $project->currency_id = $insertData['currency_id'];
         $project->currency = $insertData['currency'];
         $project->amount = $insertData['amount'];
+        /////////////////////////////////////
+        $project->date = date("m/d/Y");
+        /////////////////////////////////////
         $project->target_status = $insertData['target_status'];
         $project->start_date = $insertData['start_date'];
         $project->end_date = $insertData['end_date'];

@@ -33,7 +33,7 @@
 
     <div class="container-fluid">
 
-        <form name="dashboard_post" method="post" action="{{url('dashboard')}}">
+        <form name="dashboard_post" method="post" action="{{url('')}}">
         @csrf
             <div class="row">
                 <div class="col-md-4">

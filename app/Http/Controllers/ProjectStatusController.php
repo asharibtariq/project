@@ -88,7 +88,7 @@ class ProjectStatusController extends Controller{
         $data['physical_target'] = ProjectPhysicalTarget::findOrFail($physical_target_id);
         $data['project_id'] = $data['physical_target']['project_id'];
         $data['project'] = Project::findOrFail($data['physical_target']['project_id']);
-        $data['fy_select'] = get_fiscal_year();
+        $data['fy_select'] = get_fiscal_year($data['physical_target']->fiscal_year);
         $data['component_select'] = get_component();
         return view('adminpanel.project.status.add_financial_progress', $data)->with('title', $title);
     }

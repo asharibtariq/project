@@ -341,6 +341,7 @@ class AjaxController extends Controller{
                         'tbl_project_physical_target.currency_id',
                         'tbl_project_physical_target.currency',
                         'tbl_project_physical_target.amount',
+                        'tbl_project_physical_target.date',
                         'tbl_project_physical_target.start_date',
                         'tbl_project_physical_target.end_date',
                         'tbl_project_physical_target.created_at',
@@ -410,6 +411,7 @@ class AjaxController extends Controller{
                         'tbl_project_physical_target.fiscal_year',
                         'tbl_project_physical_target.component_id',
                         'tbl_project_physical_target.component',
+                        'tbl_project_physical_target.date',
                         'tbl_project_physical_target.physical_description',
                         'tbl_project_physical_target.created_at',
                         'tbl_project_physical_target.updated_at')

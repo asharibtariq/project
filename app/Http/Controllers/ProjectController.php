@@ -189,6 +189,9 @@ class ProjectController extends Controller{
             'required' => 'The :attribute field is required.'
         ];
         $this->validate($request, $rules, $customMessages);
+        //////////////////////////////////////////
+        $insertData['date'] = date("m/d/Y");
+        //////////////////////////////////////////
         $insertData['created_by'] = $userId;
         $insertData['updated_by'] = $userId;
         ProjectPhysicalTarget::create($insertData);

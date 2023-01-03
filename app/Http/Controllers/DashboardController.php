@@ -50,13 +50,13 @@ class DashboardController extends Controller{
         $start_date = isset($postData['start_date']) && $postData['start_date'] != '' ? $postData['start_date'] : '';
         $end_date = isset($postData['end_date']) && $postData['end_date'] != '' ? $postData['end_date'] : '';
 
-        $data['total_projects'] = ProjectAllocation::where('date','>=',$start_date)->where('date','<=', $end_date)->where('status', 'Y')->distinct('project_id')->count('project_id');
-        $data['total_projects_monitored'] = ProjectPhysicalTargetStatus::where('status', 'Y')->distinct('project_id')->count('project_id');
-        $data['total_tasks_complete'] = ProjectPhysicalTarget::where('target_status', 'complete')->where('status', 'Y')->distinct('project_id')->count('project_id');
-        $data['total_tasks_ongoing'] = ProjectPhysicalTarget::where('target_status', 'ongoing')->where('status', 'Y')->distinct('project_id')->count('project_id');
-        $data['total_tasks_not_achieve'] = ProjectPhysicalTarget::where('target_status', 'not_achieve')->where('status', 'Y')->distinct('project_id')->count('project_id');
+        $data['total_projects'] = ProjectAllocation::where('alloc_date','>=',$start_date)->where('alloc_date','<=', $end_date)->where('status', 'Y')->distinct('project_id')->count('project_id');
+        $data['total_projects_monitored'] = ProjectPhysicalTargetStatus::where('date','>=',$start_date)->where('date','<=', $end_date)->where('status', 'Y')->distinct('project_id')->count('project_id');
+        $data['total_tasks_complete'] = ProjectPhysicalTarget::where('date','>=',$start_date)->where('date','<=', $end_date)->where('target_status', 'complete')->where('status', 'Y')->distinct('project_id')->count('project_id');
+        $data['total_tasks_ongoing'] = ProjectPhysicalTarget::where('date','>=',$start_date)->where('date','<=', $end_date)->where('target_status', 'ongoing')->where('status', 'Y')->distinct('project_id')->count('project_id');
+        $data['total_tasks_not_achieve'] = ProjectPhysicalTarget::where('date','>=',$start_date)->where('date','<=', $end_date)->where('target_status', 'not_achieve')->where('status', 'Y')->distinct('project_id')->count('project_id');
 
-        $physicalTargetSqlData = ProjectPhysicalTarget::all()->where('status','=','Y');
+        $physicalTargetSqlData = ProjectPhysicalTarget::all()->where('date','>=',$start_date)->where('date','<=', $end_date)->where('status','=','Y');
         $data['project_physical_targets'] = $physicalTargetSqlData;
 
         $data['start_date'] = $start_date;
