@@ -281,6 +281,7 @@ class ProjectController extends Controller{
         $data['project_end_of_fy'] = ProjectEndOfFy::all()->where('project_id','=',$id)->where('status','=','Y');
         $data['project_financial_progress'] = ProjectFinancialProgress::all()->where('project_id','=',$id)->where('status','=','Y');
         $data['project_physical_progress'] = ProjectPhysicalProgress::all()->where('project_id','=',$id)->where('status','=','Y');
+        $data['project_physical_progress_media'] = ProjectPhysicalProgressMedia::all()->where('project_id','=',$id)->where('status','=','Y');
         // ProjectPhysicalProgressMedia
         $data['project_physical_target_status'] = ProjectPhysicalTargetStatus::all()->where('project_id','=',$id)->where('status','=','Y');
         $data['project_action_items'] = ProjectActionItems::all()->where('project_id','=',$id)->where('status','=','Y');
