@@ -116,7 +116,7 @@ class ProjectStatusController extends Controller{
         $insertData['updated_by'] = $userId;
         ProjectFinancialProgress::create($insertData);
     //    return redirect('add_issue_status')->with('success', 'Issue Added Successfully');
-        return redirect()->back()->with('success', 'Record Added Successfully');
+        return redirect('financial_progress_status/'.$request['project_id'])->with('success', 'Project Financial     Progress Added Successfully');
     }
     public function physical_progress($id){
         $title = "Physical Progress";
@@ -181,7 +181,7 @@ class ProjectStatusController extends Controller{
             }
         }
         //    return redirect('add_issue_status')->with('success', 'Issue Added Successfully');
-        return redirect()->back()->with('success', 'Record Added Successfully');
+        return redirect('physical_progress_status/'.$request['project_id'])->with('success', 'Project Physical Progress Added Successfully');
     }
 
     public function create_issue($physical_target_id){
