@@ -402,20 +402,15 @@ class AjaxController extends Controller{
                 $per_page = $request->select_limit != '' ? $request->select_limit : 10;
                 /*
                     if (!empty($title))
-                        $where['tbl_project_physical_target.name'] = $title;
+                        $where['tbl_project_physical_target_status.name'] = $title;
                 */
-                $project = DB::table('tbl_project_physical_target')
-                    ->select('tbl_project_physical_target.id',
-                        'tbl_project_physical_target.project_id',
-                        'tbl_project_physical_target.project_name',
-                        'tbl_project_physical_target.fiscal_year',
-                        'tbl_project_physical_target.component_id',
-                        'tbl_project_physical_target.component',
-                        'tbl_project_physical_target.date',
-                        'tbl_project_physical_target.physical_description',
-                        'tbl_project_physical_target.created_at',
-                        'tbl_project_physical_target.updated_at')
-                    ->orderBy('tbl_project_physical_target.id', 'DESC')
+                $project = DB::table('tbl_project_physical_target_status')
+                    ->leftJoin('tbl_project_physical_target', 'tbl_project_physical_target_status.physical_target_id', '=', 'tbl_project_physical_target.id')
+                    ->select('tbl_project_physical_target_status.id',
+                        'tbl_project_physical_target_status.physical_target_id',
+                        'tbl_project_physical_target_status.inspect_date',
+                        'tbl_project_physical_target.physical_description')
+                    ->orderBy('tbl_project_physical_target_status.id', 'DESC')
                     ->where('tbl_project_physical_target.project_id', '=', $id)
                     ->where('tbl_project_physical_target.target_status', '=', 'ongoing')
                     ->paginate($per_page);

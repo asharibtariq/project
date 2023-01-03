@@ -16,10 +16,10 @@
             <tr role="row">
                 <td> {{$i}} </td>
                 <td> {{$r->physical_description}}</td>
-                <td> {{$r->created_at}}</td>
+                <td> {{$r->inspect_date}}</td>
                 <td>
                     <div class="btn-group">
-                        <a onClick="return confirm('Are you sure you want to review?');" title="Review" href="{{url('add_action_item', $r->id)}}" class="btn btn-info" id="btn-view"><i class="fa fa-edit"></i> Review</a>
+                        <a onClick="return confirm('Are you sure you want to review?');" title="Review" href="{{url('add_action_item', $r->physical_target_id)}}" class="btn btn-info" id="btn-view"><i class="fa fa-edit"></i> Review</a>
                     </div>
                 </td>
             </tr>
