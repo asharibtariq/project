@@ -763,7 +763,7 @@
                                         <td> {{$physical_progress->component}}</td>
                                         <td> {{$physical_progress->physical_description}}</td>
                                         <td> {{$physical_progress->progress_detail}}</td>
-                                        <td> <a class="fa fa-file-image" href=""></a> Pictorial/Video Evidence Annex Reference</td>
+                                        <td> <a class="fa fa-file-image" href="#" target="_blank"></a> Pictorial/Video Evidence Annex Reference</td>
                                     </tr>
                                     <?php
                                     $i++;

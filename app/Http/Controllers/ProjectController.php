@@ -290,4 +290,10 @@ class ProjectController extends Controller{
         return view('adminpanel.project.project_summary',$data)->with('title', $title);
     }
 
+    function _physical_progress_data($id){
+        $physicalProgressData = array();
+
+        return $physicalProgressData;
+    }
+
 }

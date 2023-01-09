@@ -43,21 +43,21 @@
                 <td> {{$r->end_date}} </td>
                 <td>
                     @if($r->status == 'Y')
-                        <button type="button" class="btn btn-primary">Active</button>
+                        <button type="button" class="btn btn-primary"><i class="fa fa-check"></i> Active</button>
                     @elseif($r->status == 'N')
                         <button type="button" class="btn btn-danger">In-active</button>
                     @endif
                 </td>
                 <td>
                     <div class="btn-group">
-                        <a href="{{url('edit_project_director', $r->id)}}" class="btn btn-success" title="Project Profile" id="btn-view"><i class="fa fa-list"></i> {{--Profile--}}</a>
-                        <a href="{{url('completed_physical_targets_status', $r->id)}}" class="btn btn-info" title="Project Status" id="btn-view"><i class="fa fa-list"></i> {{--Status--}}</a>
-                        <a href="{{url('ongoing_physical_targets', $r->id)}}" class="btn btn-primary" title="Project Monitoring" id="btn-view"><i class="fa fa-list"></i> {{--Monitoring--}}</a>
+                        <a href="{{url('edit_project_director', $r->id)}}" class="btn btn-success" title="Project Profile" id="btn-view"><i class="fa fa-file-invoice"></i> Profile</a>
+                        <a href="{{url('completed_physical_targets_status', $r->id)}}" class="btn btn-info" title="Project Status" id="btn-view"><i class="fa fa-clone"></i> Status</a>
+                        <a href="{{url('ongoing_physical_targets', $r->id)}}" class="btn btn-primary" title="Project Monitoring" id="btn-view"><i class="fa fa-clipboard-check"></i> Monitoring</a>
                     </div><br/>
                     <div class="btn-group">
-                        <a href="{{url('action_items', $r->id)}}" class="btn btn-danger" title="Action Items" id="btn-view"><i class="fa fa-circle"></i> {{--Action Items--}}</a>
-                        <a onClick="return confirm('Are you sure you want to update?');" title="Edit" href="{{url('edit_project', $r->id)}}" class="btn btn-warning" id="btn-view"><i class="fa fa-edit"></i> {{--Edit--}}</a>
-                        <a href="{{url('project_summary', $r->id)}}" title="Summary" class="btn btn-success"><i class="fa fa-file-archive"></i> {{--Summary--}}</a>
+                        <a href="{{url('action_items', $r->id)}}" class="btn btn-danger" title="Action Items" id="btn-view"><i class="fa fa-file-alt"></i> Action Items</a>
+                        <a onClick="return confirm('Are you sure you want to update?');" title="Edit" href="{{url('edit_project', $r->id)}}" class="btn btn-warning" id="btn-view"><i class="fa fa-edit"></i> Edit</a>
+                        <a href="{{url('project_summary', $r->id)}}" title="Summary" class="btn btn-success"><i class="fa fa-file-archive"></i> Summary</a>
                         {{--<a onClick="return confirm('Are you sure you want to delete?');" title="Delete" href="{{url('delete_project', $r->id)}}" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>--}}
                     </div>
                 </td>

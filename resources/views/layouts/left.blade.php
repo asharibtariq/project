@@ -39,6 +39,14 @@
                 <li class="nav-item">
                     <a href="{{ url('project') }}" class="nav-link"><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Project</span></a>
                 </li>
+                @if($role_id == 1)
+                <li class="nav-item pcoded-hasmenu">
+                    <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-pie-chart"></i></span><span class="pcoded-mtext">Reports</span></a>
+                    <ul class="pcoded-submenu">
+                        <li class=""><a href="{{ url('report') }}" class="">Task Monitoring</a></li>
+                    </ul>
+                </li>
+                @endif
             </ul>
         </div>
     </div>
