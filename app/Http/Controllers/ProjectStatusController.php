@@ -184,13 +184,11 @@ class ProjectStatusController extends Controller{
         return redirect('physical_progress_status/'.$request['project_id'])->with('success', 'Project Physical Progress Added Successfully');
     }
 
-    public function create_issue($physical_target_id){
+    public function create_issue($id){
         $title = "Add Issue";
         $data['current_page'] = request()->segment(1);
-        $data['physical_target_id'] = $physical_target_id;
-        $data['physical_target'] = ProjectPhysicalTarget::findOrFail($physical_target_id);
-        $data['project_id'] = $data['physical_target']['project_id'];
-        $data['project'] = Project::findOrFail($data['physical_target']['project_id']);
+        $data['project_id'] = $id;
+        $data['project'] = Project::findOrFail($id);
         $data['component_select'] = get_component();
         return view('adminpanel.project.status.add_issue',$data)->with('title', $title);
     }
@@ -214,13 +212,11 @@ class ProjectStatusController extends Controller{
         return redirect()->back()->with('success', 'Issue Added Successfully');
     }
 
-    public function create_suggestion($physical_target_id){
+    public function create_suggestion($id){
         $title = "Add Suggestion";
         $data['current_page'] = request()->segment(1);
-        $data['physical_target_id'] = $physical_target_id;
-        $data['physical_target'] = ProjectPhysicalTarget::findOrFail($physical_target_id);
-        $data['project_id'] = $data['physical_target']['project_id'];
-        $data['project'] = Project::findOrFail($data['physical_target']['project_id']);
+        $data['project_id'] = $id;
+        $data['project'] = Project::findOrFail($id);
         $data['component_select'] = get_component();
         return view('adminpanel.project.status.add_suggestion',$data)->with('title', $title);
     }

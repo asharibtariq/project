@@ -43,7 +43,7 @@
                 <li class="nav-item pcoded-hasmenu">
                     <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-pie-chart"></i></span><span class="pcoded-mtext">Reports</span></a>
                     <ul class="pcoded-submenu">
-                        <li class=""><a href="{{ url('report') }}" class="">Task Monitoring</a></li>
+                        <li class=""><a href="{{ url('task_percent_report') }}" class="">Task Monitoring</a></li>
                     </ul>
                 </li>
                 @endif

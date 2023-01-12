@@ -109,6 +109,22 @@ if(!function_exists('getUserProjects')) {
     }
 }
 
+if(!function_exists('getPhysicalProgressMedia')) {
+    function getPhysicalProgressMedia($physical_progress_id) {
+        $data = array();
+        $media_files = DB::table('tbl_project_physical_progress_media')
+            ->select(DB::raw('file'))
+            ->where('physical_progress_id', $physical_progress_id)
+            ->get();
+        if (!empty($media_files) && count($media_files) > 0){
+            foreach ($media_files as $media_file){
+                $data[] = $media_file->file;
+            }
+        }
+        return $data;
+    }
+}
+
 if(!function_exists('tbl_role')) {
     function get_role($default = 0, $where = '', $name = 'role_id') {
         if (empty($where)){$where = array('status' => 'Y');}

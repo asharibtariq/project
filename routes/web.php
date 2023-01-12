@@ -173,12 +173,14 @@ Route::post('update_physical_progress/{id}', [\App\Http\Controllers\ProjectMonit
 Route::get('financial_progress_monitoring/{id}', [\App\Http\Controllers\ProjectMonitoringController::class, 'financial_progress_monitoring']);
 Route::get('edit_financial_progress/{id}', [\App\Http\Controllers\ProjectMonitoringController::class, 'edit_financial_progress']);
 Route::post('update_financial_progress/{id}', [\App\Http\Controllers\ProjectMonitoringController::class, 'update_financial_progress']);
-
-
 /* Issues & Suggestions */
 Route::get('add_issue_monitoring/{id}', [\App\Http\Controllers\ProjectMonitoringController::class, 'create_issue']);
 Route::post('add_issue_monitoring', [\App\Http\Controllers\ProjectMonitoringController::class, 'store_issue']);
 Route::get('add_suggestion_monitoring/{id}', [\App\Http\Controllers\ProjectMonitoringController::class, 'create_suggestion']);
 Route::post('add_suggestion_monitoring', [\App\Http\Controllers\ProjectMonitoringController::class, 'store_suggestion']);
+
+// Report Routes
+Route::get('task_percent_report', [\App\Http\Controllers\ReportController::class, 'task_percent_report']);
+Route::post('task_percent_report', [\App\Http\Controllers\ReportController::class, 'task_percent_report']);
 
 

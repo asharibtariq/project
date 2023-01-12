@@ -763,7 +763,22 @@
                                         <td> {{$physical_progress->component}}</td>
                                         <td> {{$physical_progress->physical_description}}</td>
                                         <td> {{$physical_progress->progress_detail}}</td>
-                                        <td> <a class="fa fa-file-image" href="#" target="_blank"></a> Pictorial/Video Evidence Annex Reference</td>
+                                        <td>
+                                            <?php
+                                            $mediaFiles = getPhysicalProgressMedia($physical_progress->id);
+                                            if (!empty($mediaFiles) && count($mediaFiles) > 0){
+                                            foreach ($mediaFiles as $mediaFile){
+                                            ?>
+                                            <a href="{{asset('uploads/physicalprogress/'.$mediaFile)}}" target="_blank" title="Image">
+                                                <i class="fa fa-file-image fa-2x"></i>
+                                            </a> &nbsp; &nbsp;
+                                            <?php
+                                            }
+                                            }else{
+                                            echo "No Media Found";
+                                            }
+                                            ?>
+                                        </td>
                                     </tr>
                                     <?php
                                     $i++;
@@ -1070,6 +1085,7 @@
                                     <tr role="row">
                                         <th data-column-index="0"> Sr#</th>
                                         <th data-column-index="1"> Component</th>
+                                        <th data-column-index="3"> Date</th>
                                         <th data-column-index="3"> Issues</th>
                                     </thead>
                                     <tbody>
@@ -1086,6 +1102,7 @@
                                     <tr role="row">
                                         <td> {{$i}}</td>
                                         <td> {{$issues->component}}</td>
+                                        <td> {{$issues->date}}</td>
                                         <td> {{$issues->description}}</td>
                                     </tr>
                                     <?php
@@ -1112,6 +1129,7 @@
                                     <tr role="row">
                                         <th data-column-index="0"> Sr#</th>
                                         <th data-column-index="3"> Component</th>
+                                        <th data-column-index="3"> Date</th>
                                         <th data-column-index="3"> Suggestions</th>
                                     </thead>
                                     <tbody>
@@ -1128,6 +1146,7 @@
                                     <tr role="row">
                                         <td> {{$i}}</td>
                                         <td> {{$suggest->component}}</td>
+                                        <td> {{$suggest->date}}</td>
                                         <td> {{$suggest->description}}</td>
                                     </tr>
                                     <?php
